@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="560" viewBox="0 0 480 560">
+  <rect width="480" height="560" fill="#D9773F"/>
+  <circle cx="240" cy="220" r="90" fill="#f2e4d8"/>
+  <path d="M100 520c0-90 63-150 140-150s140 60 140 150" fill="#f2e4d8"/>
+  <text x="240" y="540" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#ffffffaa">portrait placeholder</text>
+</svg>

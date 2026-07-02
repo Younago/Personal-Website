@@ -1,0 +1,236 @@
+/* Profile / résumé page — extends style.css tokens */
+
+.profile-bar {
+  /* Sits below the fixed chromeTop bar (menu + language toggle), which is
+     always present — this bar only adds a back-link (and, on the résumé
+     page, a download button), so it must not duplicate or overlap chromeTop.
+     Deliberately NOT position:sticky: since chromeTop is position:fixed and
+     reserves no flow space, a sticky offset here would reserve space at its
+     natural (unstuck) position while rendering visually offset — causing it
+     to overlap the content that follows. A plain top margin is simpler and
+     has no such mismatch. */
+  margin-top: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--u) * 2) var(--gutter);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.profile-bar .back-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.profile-bar .back-link:hover {
+  color: var(--color-accent);
+}
+
+.profile-bar .actions {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 2);
+}
+
+.btn-download {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--color-text);
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-download:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.resume {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: calc(var(--u) * 8) var(--gutter) calc(var(--u) * 12);
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: calc(var(--u) * 3);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: calc(var(--u) * 3);
+  margin-bottom: calc(var(--u) * 5);
+}
+
+.resume-header h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 56px);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.resume-header .role-line {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+.resume-contact {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.resume-section {
+  /* Reset the generic `section { padding: var(--section-gap) ... }' rule
+     from style.css — this page's sections are dense resume blocks, not
+     full-height landing sections. */
+  padding: 0;
+  margin-bottom: calc(var(--u) * 6);
+}
+
+.resume-section h2 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: calc(var(--u) * 1.25);
+  margin-bottom: calc(var(--u) * 2.5);
+}
+
+.resume-summary {
+  max-width: 68ch;
+  font-size: 15px;
+}
+
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 1.25);
+}
+
+.resume-skills .chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+.resume-entry {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: calc(var(--u) * 3);
+  padding: calc(var(--u) * 2) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.resume-entry:last-child {
+  border-bottom: none;
+}
+
+.resume-entry .dates {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.resume-entry .title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.resume-entry .org {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.resume-entry .detail {
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.resume-projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--u) * 3);
+}
+
+.resume-projects .item {
+  border: 1px solid var(--color-line);
+  padding: calc(var(--u) * 2);
+}
+
+.resume-projects .item h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.resume-projects .item .role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.resume-projects .item p.summary {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .resume-contact {
+    text-align: left;
+  }
+  .resume-entry {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .resume-projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- Print styles ---------------- */
+@media print {
+  .profile-bar {
+    display: none;
+  }
+  body {
+    background: #fff;
+  }
+  .resume {
+    max-width: 100%;
+    padding: 0;
+  }
+  .resume-header {
+    border-bottom-color: #000;
+  }
+  .resume-header h1,
+  .resume-section h2 {
+    color: #000;
+  }
+  a[href]::after {
+    content: "";
+  }
+  .resume-section {
+    break-inside: avoid;
+  }
+}

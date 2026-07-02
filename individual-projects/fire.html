@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Fire — Individual Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/profile.css" />
+<link rel="stylesheet" href="../css/subpage.css" />
+</head>
+<body data-project="fire" data-root="../">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" id="backLink" href="../projects.html"></a></div>
+
+<main class="resume">
+  <div class="resume-header" style="border-bottom-color: var(--color-line);">
+    <div>
+      <p class="mono" id="tagLabel" style="color: var(--color-accent); font-size: 12px; margin-bottom: 8px;"></p>
+      <h1 id="projectName" style="font-size: clamp(28px,5vw,44px);"></h1>
+    </div>
+  </div>
+
+  <div class="detail-thumb"><img id="detailImage" src="../images/project-placeholder.svg" alt="Fire project image placeholder" /></div>
+
+  <div class="detail-meta-grid" id="projectMeta"></div>
+
+  <section class="resume-section">
+    <h2 id="synopsisHeading"></h2>
+    <p class="resume-summary" id="synopsisBody"></p>
+  </section>
+
+  <section class="resume-section" id="trailerSection">
+    <h2 id="trailerHeading"></h2>
+    <p class="resume-summary" id="trailerBody"></p>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="respHeading"></h2>
+    <ul class="detail-list" id="respList" style="padding-left: 1.1em; display:flex; flex-direction:column; gap:8px;"></ul>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="shotsHeading"></h2>
+    <p class="resume-summary" id="shotsBody"></p>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="postHeading"></h2>
+    <p class="resume-summary" id="postBody"></p>
+  </section>
+
+  <div class="related-projects">
+    <p class="related-heading mono" id="relatedHeading"></p>
+    <div class="related-row" id="relatedProjects"></div>
+  </div>
+
+  <div class="page-contact-cta" id="pageContactCta"></div>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="../js/content.js"></script>
+<script src="../js/chrome.js"></script>
+<script src="../js/project-detail.js"></script>
+</body>
+</html>
