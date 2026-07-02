@@ -102,8 +102,8 @@
 
   function secBlock(heading, body) {
     return (
-      '<div class="resume-entry" style="grid-template-columns:1fr;">' +
-      "<h3>" + heading + "</h3><p class=\"detail\">" + body + "</p></div>"
+      '<section class="resume-section">' +
+      "<h2>" + heading + "</h2><p class=\"resume-summary\">" + body + "</p></section>"
     );
   }
 

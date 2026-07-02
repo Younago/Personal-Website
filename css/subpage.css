@@ -30,6 +30,12 @@
 }
 
 /* ---------------- Project detail pages ---------------- */
+.detail-tag {
+  color: var(--color-accent);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
 .detail-meta-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
