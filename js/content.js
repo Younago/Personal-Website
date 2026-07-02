@@ -33,8 +33,8 @@ const SITE_CONTENT = {
 
     home: {
       teamProjectsHeading: "Team Projects",
-      resumeCard: { title: "Resume", body: "Full work history, skills, and education.", cta: "View resume →" },
-      aboutCard: { title: "About Me", body: "Who I am, how I got here, and what's next.", cta: "Read more →" },
+      resumeCard: { title: "Resume", body: "Full work history, skills, and education.", cta: "View resume" },
+      aboutCard: { title: "About Me", body: "Who I am, how I got here, and what's next.", cta: "Read more" },
       contactHeading: "Contact",
     },
 
@@ -43,7 +43,7 @@ const SITE_CONTENT = {
       heading: "About",
       lead: "My passion lies in game production, leading diverse cross-disciplinary teams to create fantastic games.",
       body: "Producer with several years of experience managing multidisciplinary teams and optimization pipelines. I fuse a background in architecture with expertise in game systems design to bring a structural approach to project logistics, scope management, and cross-departmental communication.",
-      readMore: "Read the full story →",
+      readMore: "Read the full story",
       readMoreHref: "about.html",
       skills: [
         "Project Management",
@@ -316,9 +316,9 @@ const SITE_CONTENT = {
 
     blog: {
       heading: "Writing",
-      viewAll: "View all writing →",
+      viewAll: "View all writing",
       recentLabel: "Recent Posts",
-      viewAllPosts: "View all posts →",
+      viewAllPosts: "View all posts",
       items: [
         {
           slug: "lessons-from-gearbox",
@@ -410,8 +410,8 @@ const SITE_CONTENT = {
 
     home: {
       teamProjectsHeading: "团队项目",
-      resumeCard: { title: "简历", body: "完整的工作经历、技能与教育背景。", cta: "查看简历 →" },
-      aboutCard: { title: "关于我", body: "我是谁、我如何走到这里，以及接下来的方向。", cta: "了解更多 →" },
+      resumeCard: { title: "简历", body: "完整的工作经历、技能与教育背景。", cta: "查看简历" },
+      aboutCard: { title: "关于我", body: "我是谁、我如何走到这里，以及接下来的方向。", cta: "了解更多" },
       contactHeading: "联系方式",
     },
 
@@ -419,7 +419,7 @@ const SITE_CONTENT = {
       heading: "关于我",
       lead: "我的热情在于游戏制作，带领多元的跨领域团队打造出色的游戏。",
       body: "我是一名拥有多年跨领域团队管理和流程优化经验的制作人。我将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种结构化的方法。",
-      readMore: "查看完整介绍 →",
+      readMore: "查看完整介绍",
       readMoreHref: "about.html",
       skills: [
         "项目管理",
@@ -688,9 +688,9 @@ const SITE_CONTENT = {
 
     blog: {
       heading: "文章",
-      viewAll: "查看全部文章 →",
+      viewAll: "查看全部文章",
       recentLabel: "最新文章",
-      viewAllPosts: "查看全部文章 →",
+      viewAllPosts: "查看全部文章",
       items: [
         {
           slug: "lessons-from-gearbox",

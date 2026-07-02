@@ -173,6 +173,16 @@ body.loaded .hero-stagger > *:nth-child(5) { animation-delay: 0.52s; }
   margin-bottom: calc(var(--u) * 6);
 }
 
+/* When a section heading links out to its own dedicated sub-page, it becomes
+   an <a> — reset link defaults and add a pointer + a hover reveal on the
+   trailing rule (the accent tick widens into a solid line and a chevron
+   slides in), echoing the "hover to jump to the sub-page" pattern. */
+a.section-heading {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .section-heading .index {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -215,6 +225,32 @@ body.loaded .hero-stagger > *:nth-child(5) { animation-delay: 0.52s; }
   width: 48px;
   height: 3px;
   background: var(--color-accent);
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+a.section-heading:hover .rule::after {
+  width: 140px;
+}
+
+/* Chevron — a generated flex item that sits after the rule (last child in
+   flex order), hidden until hover, then slides in from the left. */
+a.section-heading::after {
+  content: "";
+  flex-shrink: 0;
+  align-self: center;
+  width: 11px;
+  height: 11px;
+  margin-left: calc(var(--u) * -1);
+  border-top: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  transform: translateX(-10px) rotate(45deg);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+}
+
+a.section-heading:hover::after {
+  transform: translateX(0) rotate(45deg);
+  opacity: 1;
 }
 
 /* ==========================================================================
@@ -543,16 +579,34 @@ body.loaded .hero-stagger > *:nth-child(5) { animation-delay: 0.52s; }
 }
 
 .link-more {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-size: 13px;
   color: var(--color-accent);
   border-bottom: 1px solid var(--color-accent);
   padding-bottom: 2px;
+  text-decoration: none;
+}
+
+.link-more::after {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: translateX(0) rotate(45deg);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .link-more:hover {
   color: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
+}
+
+.link-more:hover::after {
+  transform: translateX(4px) rotate(45deg);
 }
 
 /* ==========================================================================
