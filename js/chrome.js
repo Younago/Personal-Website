@@ -107,6 +107,42 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
+  // Floating "back to top" pill — appears once the page has scrolled past
+  // roughly one viewport height, stacked directly above the theme toggle.
+  function buildBackToTop() {
+    if (document.getElementById("backToTop")) return;
+    var btn = document.createElement("button");
+    btn.id = "backToTop";
+    btn.className = "back-to-top";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Back to top");
+    btn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>';
+    document.body.appendChild(btn);
+
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+
+    var ticking = false;
+    function updateVisibility() {
+      ticking = false;
+      var threshold = window.innerHeight * 0.6;
+      btn.classList.toggle("is-visible", window.scrollY > threshold);
+    }
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateVisibility);
+      },
+      { passive: true }
+    );
+    updateVisibility();
+  }
+
   // Nav link targets are pages (not anchors) — every top-level section has
   // its own page now, per the site's "jump to a dedicated page" model.
   // `home` is prefixed with `root` (empty string on the homepage itself,
@@ -118,6 +154,7 @@
       buildNavOverlay();
       buildFooter();
       buildThemeToggle();
+      buildBackToTop();
       initMenu();
       initYear();
       window.SITE_CHROME._root = root;
