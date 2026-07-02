@@ -61,6 +61,21 @@
       trailerSection.style.display = "";
       document.getElementById("trailerHeading").textContent = d.trailerHeading;
       document.getElementById("trailerBody").textContent = d.trailerNote;
+      var trailerEmbed = document.getElementById("trailerEmbed");
+      if (trailerEmbed) {
+        if (d.trailerVideoId) {
+          trailerEmbed.style.display = "";
+          trailerEmbed.innerHTML =
+            '<iframe src="https://www.youtube.com/embed/' +
+            d.trailerVideoId +
+            '" title="' +
+            (d.gameName || d.projectName) +
+            ' trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+        } else {
+          trailerEmbed.style.display = "none";
+          trailerEmbed.innerHTML = "";
+        }
+      }
     } else {
       trailerSection.style.display = "none";
     }
@@ -70,6 +85,19 @@
 
     document.getElementById("shotsHeading").textContent = d.screenshotsHeading;
     document.getElementById("shotsBody").textContent = d.screenshotsNote;
+    var shotsGrid = document.getElementById("shotsGrid");
+    if (shotsGrid) {
+      if (d.screenshots && d.screenshots.length) {
+        shotsGrid.style.display = "";
+        shotsGrid.innerHTML = d.screenshots
+          .map(function (src, i) {
+            return '<img src="' + src + '" alt="' + (d.gameName || d.projectName) + " screenshot " + (i + 1) + '" loading="lazy" />';
+          })
+          .join("");
+      } else {
+        shotsGrid.style.display = "none";
+      }
+    }
 
     document.getElementById("postHeading").textContent = d.postmortemHeading;
     document.getElementById("postBody").textContent = d.postmortem;
