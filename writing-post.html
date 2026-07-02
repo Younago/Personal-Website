@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — Writing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/profile.css" />
+<link rel="stylesheet" href="css/subpage.css" />
+</head>
+<body data-page="writing-post" data-root="">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" href="writing.html">← Back to Writing</a></div>
+
+<main class="resume" id="postMain">
+  <div class="resume-header" style="border-bottom-color: var(--color-line); align-items: flex-start; flex-direction: column; gap: calc(var(--u) * 1.5);">
+    <p class="mono">
+      <span class="category" id="postCategory" style="color: var(--color-accent);"></span>
+      <span id="postDate" style="color: var(--color-text-muted); margin-left: 14px;"></span>
+    </p>
+    <h1 id="postTitle" style="font-size: clamp(28px,5vw,44px);"></h1>
+    <p class="resume-summary" id="postExcerpt" style="color: var(--color-text-muted);"></p>
+  </div>
+
+  <section class="resume-section" id="postBody"></section>
+
+  <div class="related-projects">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom: calc(var(--u) * 2.5);">
+      <p class="related-heading mono" id="recentHeading" style="margin-bottom:0;"></p>
+      <a class="link-more mono" id="recentViewAll" href="writing.html"></a>
+    </div>
+    <div class="blog-list" id="recentPosts" style="border-top: 1px solid var(--color-line);"></div>
+  </div>
+
+  <div class="page-contact-cta" id="pageContactCta"></div>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="js/content.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/post.js"></script>
+</body>
+</html>

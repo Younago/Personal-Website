@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>网站内容编辑工具</title>
+<style>
+  :root {
+    --bg: #efefef; --line: #cfcfcf; --accent: #e34b4b; --text: #1a1a1a; --muted: #6b6b6b;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: "Segoe UI", "PingFang SC", sans-serif; background: var(--bg); color: var(--text); }
+  header { position: sticky; top:0; background: rgba(239,239,239,0.95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 16px 24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; z-index: 10; }
+  header h1 { font-size: 16px; margin:0; margin-right:auto; }
+  button { font: inherit; cursor:pointer; border-radius: 6px; border: 1px solid var(--line); background:#fff; padding: 8px 14px; }
+  button.primary { background: var(--accent); color:#fff; border-color: var(--accent); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #status { font-size: 13px; color: var(--muted); min-width: 160px; }
+  #status.ok { color: #1a7a3c; }
+  #status.err { color: var(--accent); }
+  main { max-width: 960px; margin: 0 auto; padding: 24px; }
+  .lang-tabs { display:flex; gap:8px; margin-bottom: 20px; }
+  .lang-tabs button.active { background: var(--accent); color:#fff; border-color:var(--accent); }
+  fieldset { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 16px; padding: 14px 16px; }
+  fieldset > legend { font-weight:600; padding: 0 8px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
+  .field { margin-bottom: 12px; }
+  .field label { display:block; font-size: 12px; color: var(--muted); margin-bottom: 4px; font-family: monospace; }
+  .field input[type=text], .field textarea { width:100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; font: inherit; background:#fff; }
+  .field textarea { min-height: 64px; resize: vertical; }
+  .list-item { border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; position:relative; }
+  .list-item .remove-btn { position:absolute; top:6px; right:6px; font-size:11px; padding:4px 8px; }
+  .add-btn { font-size: 12px; }
+  .image-field { display:flex; align-items:center; gap:12px; }
+  .image-field img { width:64px; height:48px; object-fit:cover; border:1px solid var(--line); border-radius:4px; background:#fff; }
+  .image-field input[type=file] { font-size: 12px; }
+  .image-field .path { font-family: monospace; font-size: 11px; color: var(--muted); word-break: break-all; }
+  .checkbox-field { display:flex; align-items:center; gap:8px; font-size: 13px; }
+  #welcome { max-width: 640px; margin: 60px auto; text-align:center; }
+  #welcome p { color: var(--muted); line-height:1.7; }
+  .hidden { display:none !important; }
+  .unsupported { background:#fff3f3; border:1px solid var(--accent); padding:16px; border-radius:8px; color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>网站内容编辑工具（本地，Chrome / Edge）</h1>
+  <span id="status">尚未打开项目文件夹</span>
+  <button id="openBtn">打开网站文件夹…</button>
+  <button id="reloadBtn" disabled>重新读取</button>
+  <button id="saveBtn" class="primary" disabled>保存修改</button>
+</header>
+
+<main>
+  <div id="unsupported" class="unsupported hidden">
+    你当前的浏览器不支持直接读写本地文件（File System Access API），请用 Chrome 或 Edge 打开这个页面。
+  </div>
+
+  <div id="welcome">
+    <p>点击上面的"打开网站文件夹…"，选中你解压出来的网站根目录（里面应该能看到 index.html、css、js、images 这些文件/文件夹）。</p>
+    <p>打开后就能在下面直接改文字、换图片，改完点"保存修改"会直接写回 <code>js/content.js</code> 和 <code>images/</code> 文件夹。保存后记得刷新网页看效果，满意了再 git push。</p>
+  </div>
+
+  <div id="editorRoot" class="hidden">
+    <div class="lang-tabs">
+      <button data-lang="en" class="active">English</button>
+      <button data-lang="zh">中文</button>
+    </div>
+    <div id="formHost"></div>
+  </div>
+</main>
+
+<script src="js/editor.js"></script>
+</body>
+</html>

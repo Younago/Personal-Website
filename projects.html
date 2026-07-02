@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/profile.css" />
+<link rel="stylesheet" href="css/subpage.css" />
+</head>
+<body data-page="projects" data-root="">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" href="index.html">← Back to site</a></div>
+
+<main class="resume">
+  <div class="resume-header" style="border-bottom-color: var(--color-line);">
+    <div>
+      <h1 data-i18n="teamProjects.heading" style="font-size: clamp(28px,5vw,44px);"></h1>
+      <p class="role-line" data-i18n="teamProjects.intro"></p>
+    </div>
+  </div>
+
+  <section class="resume-section">
+    <h2 data-i18n="teamProjects.heading"></h2>
+    <div class="projects-grid" id="teamGrid" style="margin-bottom:0;"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 data-i18n="individualProjects.heading"></h2>
+    <p class="resume-summary" data-i18n="individualProjects.intro" style="margin-bottom: 16px;"></p>
+    <div class="projects-grid" id="individualGrid" style="margin-bottom:0;"></div>
+  </section>
+
+  <div class="page-contact-cta" id="pageContactCta"></div>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="js/content.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

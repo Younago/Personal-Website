@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — Game Producer</title>
+<meta name="description" content="Young Gou — a passionate game producer dedicated to guiding cross-functional teams in developing games that players truly love and enjoy." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/profile.css" />
+<link rel="stylesheet" href="css/subpage.css" />
+</head>
+<body>
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="hero-copy hero-stagger">
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow"></p>
+        <h1 class="hero-name" id="heroName"></h1>
+        <p class="hero-intro" data-i18n="hero.intro"></p>
+        <div class="hero-scroll">
+          <span data-i18n="hero.scroll"></span>
+          <span class="stem"></span>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <div class="hero-photo-frame">
+          <img id="heroPortrait" src="images/portrait-placeholder.svg" alt="Portrait placeholder" />
+        </div>
+        <p class="hero-photo-caption mono">
+          <span class="index">00</span>
+          <span id="heroPhotoCaption"></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <span class="index mono">01</span>
+        <h2 data-i18n="about.heading"></h2>
+        <span class="rule"></span>
+      </div>
+      <div class="about-grid reveal">
+        <p class="about-lead" data-i18n="about.lead"></p>
+        <div class="about-body-col">
+          <p class="about-body" data-i18n="about.body"></p>
+          <div class="skill-cards" id="skillCards"></div>
+          <a class="link-more mono" id="aboutReadMore" href="about.html"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <span class="index mono">02</span>
+        <h2 data-i18n="projects.heading"></h2>
+        <span class="rule"></span>
+      </div>
+      <div class="projects-grid reveal" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-heading">
+        <span class="index mono">03</span>
+        <h2 data-i18n="experience.heading"></h2>
+        <span class="rule"></span>
+      </div>
+      <div class="experience-grid reveal" id="experienceGrid"></div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-heading">
+        <span class="index mono">04</span>
+        <h2 data-i18n="education.heading"></h2>
+        <span class="rule"></span>
+      </div>
+      <div class="education-grid reveal" id="educationGrid"></div>
+    </div>
+  </section>
+
+  <!-- WRITING / BLOG -->
+  <section id="writing">
+    <div class="container">
+      <div class="section-heading">
+        <span class="index mono">05</span>
+        <h2 data-i18n="blog.heading"></h2>
+        <span class="rule"></span>
+      </div>
+      <div class="blog-list reveal" id="blogList" style="margin-bottom: calc(var(--u) * 3);"></div>
+      <a class="link-more mono" id="blogReadMore" href="writing.html"></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="index mono">06</span>
+        <h2 data-i18n="contact.heading"></h2>
+        <span class="rule"></span>
+      </div>
+      <p class="contact-lead reveal" data-i18n="contact.lead"></p>
+      <div class="contact-grid reveal">
+        <div>
+          <p class="label" data-i18n="contact.locationLabel"></p>
+          <p class="value" data-i18n="contact.location"></p>
+        </div>
+        <div>
+          <p class="label" data-i18n="contact.emailLabel"></p>
+          <p class="value"><a id="contactEmail" href="#" data-i18n="contact.email"></a></p>
+        </div>
+        <div>
+          <p class="label" data-i18n="contact.websiteLabel"></p>
+          <p class="value" data-i18n="contact.website"></p>
+        </div>
+      </div>
+      <div class="resume-cta reveal">
+        <a class="btn-download" href="resume.pdf" download data-i18n="resumePage.downloadPdf"></a>
+        <a class="link-more mono" href="resume.html" data-i18n="home.resumeCard.cta"></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="js/content.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

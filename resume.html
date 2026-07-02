@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/profile.css" />
+</head>
+<body data-page="resume">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" href="index.html" data-i18n="resumePage.backHome"></a>
+  <div class="actions">
+    <a class="btn-download" id="downloadBtn" href="resume.pdf" download data-i18n="resumePage.downloadPdf"></a>
+  </div>
+</div>
+
+<main class="resume">
+  <div class="resume-header">
+    <div>
+      <h1 data-i18n="hero.name"></h1>
+      <p class="role-line" data-i18n="resumePage.roleTag"></p>
+    </div>
+    <div class="resume-contact">
+      <div id="resumeLocation"></div>
+      <div><a id="resumeEmail" href="#"></a></div>
+      <div id="resumeWebsite"></div>
+    </div>
+  </div>
+
+  <section class="resume-section">
+    <h2 data-i18n="resumePage.summaryHeading"></h2>
+    <p class="resume-summary" data-i18n="resumePage.summary"></p>
+  </section>
+
+  <section class="resume-section">
+    <h2 data-i18n="skills.heading"></h2>
+    <div class="resume-skills" id="resumeSkills"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 data-i18n="resumePage.experienceHeading"></h2>
+    <div id="resumeExperience"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 data-i18n="resumePage.educationHeading"></h2>
+    <div id="resumeEducation"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 data-i18n="resumePage.projectsHeading"></h2>
+    <div class="resume-projects" id="resumeProjects"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 data-i18n="resumePage.embedHeading"></h2>
+    <p class="resume-summary" id="resumeEmbedNote" style="margin-bottom: 16px;"></p>
+    <div id="resumeEmbedWrap"></div>
+  </section>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="js/content.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/resume.js"></script>
+</body>
+</html>

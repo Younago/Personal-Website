@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/profile.css" />
+<link rel="stylesheet" href="css/subpage.css" />
+</head>
+<body data-page="contact" data-root="">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" href="index.html">← Back to site</a></div>
+
+<main class="resume">
+  <div class="resume-header" style="border-bottom-color: var(--color-line);">
+    <div>
+      <h1 data-i18n="contact.heading" style="font-size: clamp(28px,5vw,44px);"></h1>
+      <p class="role-line" data-i18n="contact.lead"></p>
+    </div>
+  </div>
+
+  <section class="resume-section">
+    <div class="contact-grid">
+      <div>
+        <p class="label" data-i18n="contact.locationLabel"></p>
+        <p class="value" id="contactLocation"></p>
+      </div>
+      <div>
+        <p class="label" data-i18n="contact.emailLabel"></p>
+        <p class="value"><a id="contactEmailFull" href="#"></a></p>
+      </div>
+      <div>
+        <p class="label" data-i18n="contact.websiteLabel"></p>
+        <p class="value" id="contactWebsite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="js/content.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>
