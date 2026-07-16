@@ -58,21 +58,43 @@
     el.classList.toggle("is-error", !!isError);
   }
 
-  function renderList(id, items, emptyNote) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.innerHTML = "";
-    if (!items || !items.length) {
-      var li = document.createElement("li");
-      li.className = "ai-tool-empty";
-      li.textContent = emptyNote;
-      el.appendChild(li);
+  // The backend no longer forces feedback into a fixed bugs/UX/positive/
+  // suggestions split — it returns however many thematic categories (with
+  // AI-chosen labels) genuinely fit the input. Since the count and labels
+  // are unknown ahead of time, cards are built on the fly and colored by
+  // cycling through this palette instead of relying on fixed CSS classes
+  // keyed to fixed category names.
+  var CATEGORY_COLORS = ["#d9534f", "#e0a233", "#4a9d5f", "#4a7fd9", "#9d6bd9", "#d94a9c"];
+
+  function renderCategoryCards(categories) {
+    var grid = document.getElementById("aiToolCategoryGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+    if (!categories || !categories.length) {
+      var empty = document.createElement("p");
+      empty.className = "ai-tool-empty";
+      empty.textContent = dict.emptyCategoryNote;
+      grid.appendChild(empty);
       return;
     }
-    items.forEach(function (item) {
-      var row = document.createElement("li");
-      row.textContent = item;
-      el.appendChild(row);
+    categories.forEach(function (cat, i) {
+      var card = document.createElement("div");
+      card.className = "ai-tool-card";
+      card.style.borderLeftColor = CATEGORY_COLORS[i % CATEGORY_COLORS.length];
+
+      var h3 = document.createElement("h3");
+      h3.textContent = cat.label || "";
+      card.appendChild(h3);
+
+      var ul = document.createElement("ul");
+      (cat.items || []).forEach(function (item) {
+        var row = document.createElement("li");
+        row.textContent = item;
+        ul.appendChild(row);
+      });
+      card.appendChild(ul);
+
+      grid.appendChild(card);
     });
   }
 
@@ -82,10 +104,7 @@
     results.style.display = "";
     var summaryEl = document.getElementById("aiToolSummary");
     if (summaryEl) summaryEl.textContent = data.summary || "";
-    renderList("aiToolBugs", data.bugs, dict.emptyCategoryNote);
-    renderList("aiToolUx", data.uxIssues, dict.emptyCategoryNote);
-    renderList("aiToolPositive", data.positive, dict.emptyCategoryNote);
-    renderList("aiToolSuggestions", data.suggestions, dict.emptyCategoryNote);
+    renderCategoryCards(data.categories);
   }
 
   function updateRateLimitNote() {

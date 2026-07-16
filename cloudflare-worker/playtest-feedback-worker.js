@@ -3,8 +3,10 @@
  *
  * Deploy this as a Cloudflare Worker with a Workers AI binding. It accepts a
  * POST body of { feedback: string, lang: "en" | "zh" }, asks a small LLM to
- * sort the feedback into bugs / uxIssues / positive / suggestions, and
- * returns that as JSON.
+ * organize it into a summary plus however many thematic categories genuinely
+ * fit the content (the model picks its own category labels, 2-6 of them,
+ * rather than being forced into a fixed bugs/UX/positive/suggestions split),
+ * and returns { summary, categories: [{ label, items }] } as JSON.
  *
  * See README.md in this folder for step-by-step deployment instructions.
  */
@@ -16,24 +18,36 @@
 const ALLOWED_ORIGIN = "https://gogo.fyi";
 
 const MAX_FEEDBACK_CHARS = 4000;
+const MAX_CATEGORIES = 8;
+const MAX_ITEMS_PER_CATEGORY = 12;
 
+// The model chooses its own category labels per request (rather than being
+// forced into a fixed bugs/UX/positive/suggestions split) — a "balance
+// issues" or "audio" cluster can show up as its own card when the feedback
+// actually warrants it, instead of getting mashed into "suggestions".
 const SYSTEM_PROMPT = {
   en:
     "You are an assistant for a game producer triaging playtest feedback. " +
-    "Categorize the input into four buckets: bugs (technical/bugs), " +
-    "uxIssues (usability/experience issues), positive (positive feedback), " +
-    "suggestions (improvement ideas). Output STRICT JSON only, in the shape " +
-    '{"summary": "one-line summary", "bugs": [...], "uxIssues": [...], ' +
-    '"positive": [...], "suggestions": [...]}. Each array holds short ' +
-    "string entries; use an empty array for categories with nothing to " +
-    "report. Output nothing but the JSON — no markdown, no commentary.",
+    "Read the feedback and organize it into short thematic categories that " +
+    "genuinely fit what's in THIS feedback — do not force it into a fixed " +
+    "set of buckets. Typical categories include things like Bugs, UX Issues, " +
+    "Positive Feedback, Suggestions, Balance, Audio, Performance, Onboarding " +
+    "— but invent whatever labels best fit the actual content, and skip " +
+    "categories that have nothing to report. Use 2 to 6 categories total. " +
+    "Output STRICT JSON only, in the shape " +
+    '{"summary": "one-line overall summary", "categories": [{"label": ' +
+    '"short category name", "items": ["short point", "short point"]}]}. ' +
+    "Each item should be a short, specific point (under ~15 words). " +
+    "Output nothing but the JSON — no markdown, no commentary.",
   zh:
-    "你是一名游戏制作人的助手，负责整理 playtest 玩家反馈。将输入的反馈归类到" +
-    "四个类别：bugs（bug/技术问题）、uxIssues（体验/易用性问题）、positive" +
-    "（正向反馈）、suggestions（改进建议）。只输出严格的 JSON，格式为 " +
-    '{"summary": "一句话总结", "bugs": [...], "uxIssues": [...], ' +
-    '"positive": [...], "suggestions": [...]}，每个数组里是简短的字符串条目，' +
-    "没有内容的类别给空数组。不要输出 JSON 以外的任何文字，不要用 markdown。",
+    "你是一名游戏制作人的助手，负责整理 playtest 玩家反馈。阅读这段反馈，" +
+    "把它整理成几个真正贴合这段内容的简短主题分类——不要强行套用固定的几个类别。" +
+    "常见的分类可能包括 Bug、体验问题、正向反馈、改进建议、数值平衡、音效、" +
+    "性能、新手引导等，但请根据实际内容自己想出最合适的分类名称，没有内容的" +
+    "类别就不要列出来。总共用 2 到 6 个分类。只输出严格的 JSON，格式为 " +
+    '{"summary": "一句话总体总结", "categories": [{"label": "简短分类名", ' +
+    '"items": ["简短要点", "简短要点"]}]}。每条 item 要简短具体（不超过约' +
+    "20个字）。不要输出 JSON 以外的任何文字，不要用 markdown。",
 };
 
 function corsHeaders() {
@@ -100,21 +114,34 @@ export default {
       } catch (parseErr) {
         // Model didn't return clean JSON — fall back to a minimal shape
         // rather than surfacing a raw-text blob as if it were structured.
-        parsed = { summary: raw.slice(0, 300), bugs: [], uxIssues: [], positive: [], suggestions: [] };
+        parsed = { summary: raw.slice(0, 300), categories: [] };
       }
 
       // Guard against a "valid JSON but wrong shape" response too (e.g. the
       // model returns a JSON array, or an object missing the fields we
-      // expect) — normalize so the frontend always gets the fields it reads.
+      // expect) — normalize so the frontend always gets fields it can render,
+      // however many (or few) categories the model decided to use.
       if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-        parsed = { summary: raw.slice(0, 300), bugs: [], uxIssues: [], positive: [], suggestions: [] };
+        parsed = { summary: raw.slice(0, 300), categories: [] };
       }
-      parsed.summary = typeof parsed.summary === "string" ? parsed.summary : "";
-      ["bugs", "uxIssues", "positive", "suggestions"].forEach(function (key) {
-        if (!Array.isArray(parsed[key])) parsed[key] = [];
-      });
+      const summary = typeof parsed.summary === "string" ? parsed.summary : "";
+      const rawCategories = Array.isArray(parsed.categories) ? parsed.categories : [];
+      const categories = rawCategories
+        .filter(function (c) { return c && typeof c === "object" && typeof c.label === "string" && c.label.trim(); })
+        .slice(0, MAX_CATEGORIES)
+        .map(function (c) {
+          const items = Array.isArray(c.items) ? c.items : [];
+          return {
+            label: c.label.trim().slice(0, 60),
+            items: items
+              .filter(function (i) { return typeof i === "string" && i.trim(); })
+              .slice(0, MAX_ITEMS_PER_CATEGORY)
+              .map(function (i) { return i.trim().slice(0, 300); }),
+          };
+        })
+        .filter(function (c) { return c.items.length > 0; });
 
-      return jsonResponse(parsed);
+      return jsonResponse({ summary: summary, categories: categories });
     } catch (err) {
       // Log the real error server-side so `wrangler tail` shows the actual
       // cause (auth/quota/model-name issue, etc.) instead of just a generic

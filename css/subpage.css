@@ -487,15 +487,16 @@ a.blog-row {
   opacity: 0.6;
 }
 
-.ai-tool-card .ai-tool-empty {
+.ai-tool-card .ai-tool-empty,
+.ai-tool-grid > .ai-tool-empty {
   color: var(--color-text-muted);
   font-style: italic;
 }
 
-.ai-tool-card.bugs { border-left-color: #d9534f; }
-.ai-tool-card.ux { border-left-color: #e0a233; }
-.ai-tool-card.positive { border-left-color: #4a9d5f; }
-.ai-tool-card.suggestions { border-left-color: var(--color-accent); }
+/* Category count/labels now come from the AI per request, so card accent
+   colors are assigned by cycling a palette in JS (see js/ai-feedback.js's
+   CATEGORY_COLORS) via inline style.borderLeftColor rather than fixed
+   classes tied to a fixed set of category names. */
 
 @media (max-width: 640px) {
   .ai-tool-grid {
