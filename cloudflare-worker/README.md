@@ -71,8 +71,11 @@ key/调用逻辑藏在后端，不暴露在网页源码里）。
 
 `playtest-feedback-worker.js` 里唯一需要改的地方是这一行：
 ```js
-const aiResponse = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", { ... });
+const aiResponse = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fast", { ... });
 ```
+（原来用的 `llama-3.1-8b-instruct` 在 2026-05-30 被 Cloudflare 下线了，部署时如果报
+`This model was deprecated` 类似的错，说明又有模型下线了，去下面的模型列表页面挑一个
+还在用的换上就行——用 `wrangler tail <worker-name>` 能看到这类具体报错原因。）
 Cloudflare Workers AI 目录里还有其他文本模型可以替换着试（保持 `messages` 格式不变
 即可），具体可用模型列表见 Cloudflare 官方文档：
 https://developers.cloudflare.com/workers-ai/models/

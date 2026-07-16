@@ -75,7 +75,7 @@ export default {
     }
 
     try {
-      const aiResponse = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+      const aiResponse = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fast", {
         messages: [
           { role: "system", content: SYSTEM_PROMPT[lang] },
           { role: "user", content: feedback },
@@ -95,7 +95,11 @@ export default {
 
       return jsonResponse(parsed);
     } catch (err) {
-      return jsonResponse({ error: "AI request failed" }, 500);
+      // Log the real error server-side so `wrangler tail` shows the actual
+      // cause (auth/quota/model-name issue, etc.) instead of just a generic
+      // 500 with no detail in the browser console.
+      console.error("AI request failed:", err && err.message ? err.message : err);
+      return jsonResponse({ error: "AI request failed", detail: err && err.message ? err.message : String(err) }, 500);
     }
   },
 };
