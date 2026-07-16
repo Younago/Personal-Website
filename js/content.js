@@ -13,6 +13,7 @@ const SITE_CONTENT = {
       "experience": "EXPERIENCE",
       "education": "EDUCATION",
       "writing": "WRITING",
+      "beyondWork": "BEYOND WORK",
       "contact": "CONTACT",
       "aboutFull": "ABOUT ME",
       "resume": "RESUME"
@@ -294,6 +295,21 @@ const SITE_CONTENT = {
       "funHeading": "A few fun facts",
       "fun": "Placeholder — a couple of light, personal details (hobbies, favorite games, etc.) that show your voice."
     },
+    "beyondWorkPage": {
+      "pageTitle": "Young Gou — Beyond Work",
+      "heading": "Beyond Work",
+      "lead": "Placeholder — a short introduction to who you are outside of games and work.",
+      "galleryHeading": "Photo Wall",
+      "galleryNote": "Placeholder — swap these for real photos any time.",
+      "photos": [
+        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
+        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
+        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
+        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
+        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
+        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" }
+      ]
+    },
     "skills": {
       "heading": "Skills",
       "items": [
@@ -439,6 +455,7 @@ const SITE_CONTENT = {
       "experience": "工作经历",
       "education": "教育背景",
       "writing": "文章",
+      "beyondWork": "工作之外",
       "contact": "联系方式",
       "aboutFull": "关于我（详情）",
       "resume": "简历"
@@ -719,6 +736,21 @@ const SITE_CONTENT = {
       "next": "占位文字 — 描述你希望加入的角色、工作室或团队类型。",
       "funHeading": "一些有趣的小事",
       "fun": "占位文字 — 一两个轻松的个人细节（爱好、最喜欢的游戏等），展现你的个性。"
+    },
+    "beyondWorkPage": {
+      "pageTitle": "苟阳 — 工作之外",
+      "heading": "工作之外",
+      "lead": "占位文字 — 简短介绍一下工作和游戏之外的你。",
+      "galleryHeading": "照片墙",
+      "galleryNote": "占位 — 之后随时可以替换成真实照片。",
+      "photos": [
+        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
+        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
+        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
+        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
+        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
+        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" }
+      ]
     },
     "skills": {
       "heading": "技能",

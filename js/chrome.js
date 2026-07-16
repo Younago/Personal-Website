@@ -171,6 +171,7 @@
         ["experience", root + "experience.html"],
         ["education", root + "education.html"],
         ["writing", root + "writing.html"],
+        ["beyondWork", root + "beyond-work.html"],
         ["contact", root + "contact.html"],
         ["resume", root + "resume.html"],
       ];

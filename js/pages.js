@@ -90,6 +90,22 @@
       renderBlog(lang);
     },
 
+    "beyond-work": function (lang) {
+      var d = content[lang].beyondWorkPage;
+      document.title = d.pageTitle;
+      var wrap = document.getElementById("beyondWorkGallery");
+      if (!wrap) return;
+      wrap.innerHTML = "";
+      (d.photos || []).forEach(function (p) {
+        var fig = document.createElement("figure");
+        fig.className = "photo-wall-item";
+        fig.innerHTML =
+          '<img src="' + p.src + '" alt="' + (p.caption || "") + '" />' +
+          "<figcaption>" + (p.caption || "") + "</figcaption>";
+        wrap.appendChild(fig);
+      });
+    },
+
     contact: function (lang) {
       var d = content[lang].contact;
       document.getElementById("contactLocation").textContent = d.location;
