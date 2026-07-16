@@ -267,6 +267,16 @@ a.section-heading:hover::after {
   justify-content: space-between;
   padding: 0 var(--gutter);
   z-index: 220;
+  /* Give the fixed header its own backdrop so scrolled-under content (photos,
+     dark sections, etc.) never reads as merged with the nav — a translucent,
+     blurred surface tint plus a hairline bottom border keeps it legible over
+     anything behind it while still feeling light. pointer-events stays none
+     on the bar itself (it has no click target of its own); children opt back
+     in via .topbar > *. */
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-line);
   pointer-events: none;
 }
 
