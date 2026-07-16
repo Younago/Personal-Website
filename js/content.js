@@ -100,7 +100,7 @@ const SITE_CONTENT = {
           "placeholder": false
         },
         {
-          "title": "Fire",
+          "title": "Heart Arsonist",
           "tag": "INDIVIDUAL",
           "role": "Placeholder role",
           "summary": "Placeholder — one or two sentences on what the game is and what you contributed.",
@@ -168,7 +168,8 @@ const SITE_CONTENT = {
       "synopsisHeading": "Synopsis",
       "synopsis": "Hamsterballin' is a fast-paced racing game built in Unreal Engine 5 by a 43-person cross-functional student team of designers, artists, and programmers, released on Steam.",
       "trailerHeading": "Trailer",
-      "trailerNote": "Placeholder — embed the game trailer here.",
+      "trailerNote": "Gameplay trailer.",
+      "trailerVideoId": "SGqrpin8Yuk",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
         "Led a 43-person cross-functional team of designers, artists, and programmers through the full development cycle.",
@@ -251,7 +252,7 @@ const SITE_CONTENT = {
         {
           "id": "fire",
           "tag": "INDIVIDUAL PROJECT",
-          "name": "Fire",
+          "name": "Heart Arsonist",
           "blurb": "Placeholder — one-line description. Work-in-progress projects are welcome here.",
           "href": "individual-projects/fire.html",
           "image": "../images/project-placeholder.svg",
@@ -262,7 +263,7 @@ const SITE_CONTENT = {
     "fire": {
       "backLink": "← Back to Projects",
       "tagLabel": "INDIVIDUAL PROJECT (PLACEHOLDER)",
-      "projectName": "Fire",
+      "projectName": "Heart Arsonist",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "Role",
       "role": "Placeholder",
@@ -272,6 +273,9 @@ const SITE_CONTENT = {
       "length": "Placeholder",
       "synopsisHeading": "Synopsis",
       "synopsis": "Placeholder — describe the project, even if it's a work in progress.",
+      "trailerHeading": "Trailer",
+      "trailerNote": "Gameplay trailer.",
+      "trailerVideoId": "713lnqBMnyk",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
         "Placeholder — list your specific responsibilities and contributions."
@@ -541,7 +545,7 @@ const SITE_CONTENT = {
           "placeholder": false
         },
         {
-          "title": "Fire",
+          "title": "Heart Arsonist",
           "tag": "INDIVIDUAL",
           "role": "占位角色",
           "summary": "占位文字 — 一两句话介绍这款游戏和你的具体贡献。",
@@ -609,7 +613,8 @@ const SITE_CONTENT = {
       "synopsisHeading": "游戏简介",
       "synopsis": "Hamsterballin' 是一款用 Unreal Engine 5 制作的快节奏竞速游戏，由一支 43 人的跨职能学生团队（设计、美术、程序）共同完成，已上线 Steam。",
       "trailerHeading": "预告片",
-      "trailerNote": "占位 — 在此嵌入游戏预告片。",
+      "trailerNote": "游戏预告片。",
+      "trailerVideoId": "SGqrpin8Yuk",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
         "带领一支由设计师、美术和程序员组成的 43 人跨职能团队，完成了完整的开发周期。",
@@ -692,7 +697,7 @@ const SITE_CONTENT = {
         {
           "id": "fire",
           "tag": "个人项目",
-          "name": "Fire",
+          "name": "Heart Arsonist",
           "blurb": "占位文字 — 一句话描述，进行中的项目也可以放在这里。",
           "href": "individual-projects/fire.html",
           "image": "../images/project-placeholder.svg",
@@ -703,7 +708,7 @@ const SITE_CONTENT = {
     "fire": {
       "backLink": "← 返回项目",
       "tagLabel": "个人项目（占位）",
-      "projectName": "Fire",
+      "projectName": "Heart Arsonist",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "角色",
       "role": "占位",
@@ -713,6 +718,9 @@ const SITE_CONTENT = {
       "length": "占位",
       "synopsisHeading": "项目简介",
       "synopsis": "占位文字 — 描述这个项目，即使还在进行中也没关系。",
+      "trailerHeading": "预告片",
+      "trailerNote": "游戏预告片。",
+      "trailerVideoId": "713lnqBMnyk",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
         "占位文字 — 列出你的具体职责与贡献。"
