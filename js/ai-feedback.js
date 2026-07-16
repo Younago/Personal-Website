@@ -13,9 +13,8 @@
 (function () {
   "use strict";
 
-  // Fill this in once you've deployed the Cloudflare Worker in
-  // /cloudflare-worker/ — e.g. "https://playtest-feedback-worker.your-name.workers.dev"
-  var AI_TOOL_ENDPOINT = "";
+  // Deployed Cloudflare Worker backend (see /cloudflare-worker/README.md).
+  var AI_TOOL_ENDPOINT = "https://playtest-feedback-worker.younggou.workers.dev";
 
   var DAILY_LIMIT = 8;
   var MAX_CHARS = 4000;
