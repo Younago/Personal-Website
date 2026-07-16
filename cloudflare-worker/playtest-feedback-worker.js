@@ -82,7 +82,17 @@ export default {
         ],
       });
 
-      const raw = (aiResponse && aiResponse.response) || "";
+      // Different Workers AI models (and even different variants of the
+      // "same" model) don't all shape their output identically — most put
+      // generated text in a string `response` field, but some return an
+      // object, or put the text somewhere else entirely. Coerce to a string
+      // up front so the rest of this function never has to guess.
+      const responseField = aiResponse && aiResponse.response;
+      const raw =
+        typeof responseField === "string"
+          ? responseField
+          : JSON.stringify(responseField !== undefined ? responseField : aiResponse || {});
+
       let parsed;
       try {
         const match = raw.match(/\{[\s\S]*\}/);
@@ -92,6 +102,17 @@ export default {
         // rather than surfacing a raw-text blob as if it were structured.
         parsed = { summary: raw.slice(0, 300), bugs: [], uxIssues: [], positive: [], suggestions: [] };
       }
+
+      // Guard against a "valid JSON but wrong shape" response too (e.g. the
+      // model returns a JSON array, or an object missing the fields we
+      // expect) — normalize so the frontend always gets the fields it reads.
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        parsed = { summary: raw.slice(0, 300), bugs: [], uxIssues: [], positive: [], suggestions: [] };
+      }
+      parsed.summary = typeof parsed.summary === "string" ? parsed.summary : "";
+      ["bugs", "uxIssues", "positive", "suggestions"].forEach(function (key) {
+        if (!Array.isArray(parsed[key])) parsed[key] = [];
+      });
 
       return jsonResponse(parsed);
     } catch (err) {
