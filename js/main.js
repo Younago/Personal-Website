@@ -90,42 +90,10 @@
       .join("");
   }
 
-  function renderEducation(lang) {
-    var wrap = document.getElementById("educationGrid");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    content[lang].education.items.forEach(function (item) {
-      var el = document.createElement("div");
-      el.className = "education-item";
-      el.innerHTML =
-        '<h3>' + item.degree + '</h3>' +
-        '<p class="school">' + item.school + (item.location ? " — " + item.location : "") + '</p>' +
-        '<p class="dates mono">' + item.dates + '</p>';
-      wrap.appendChild(el);
-    });
-  }
-
-  function renderBlog(lang) {
-    var wrap = document.getElementById("blogList");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    // Posts with a `slug` have a real article page (writing-post.html) and
-    // are rendered as links. Posts without one are still placeholders, so
-    // they render as plain (non-navigating) rows — a href="#" here used to
-    // just scroll the homepage back up to its own top, which read as a
-    // broken "clicking an article sends me back to the homepage" bug.
-    content[lang].blog.items.slice(0, 3).forEach(function (post) {
-      var row = document.createElement(post.slug ? "a" : "div");
-      row.className = "blog-row";
-      if (post.slug) row.href = "writing-post.html?slug=" + encodeURIComponent(post.slug);
-      row.innerHTML =
-        '<span class="row-marker"></span>' +
-        "<h4>" + post.title + "</h4>" +
-        '<span class="date mono">' + post.date + "</span>" +
-        '<span class="category">' + post.category + "</span>";
-      wrap.appendChild(row);
-    });
-  }
+  // Education and Writing are no longer shown as homepage sections (per
+  // feedback — kept only as standalone pages / part of the résumé), so
+  // their renderers were removed along with the corresponding <section>
+  // blocks in index.html. writing.html has its own renderer in pages.js.
 
   function setLang(lang) {
     currentLang = lang;
@@ -136,8 +104,6 @@
     applyStaticText(lang);
     renderProjects(lang);
     renderMarquee(lang);
-    renderEducation(lang);
-    renderBlog(lang);
     window.SITE_CHROME.renderNav(lang, content, "home");
   }
 

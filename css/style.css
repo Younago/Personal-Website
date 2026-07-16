@@ -505,12 +505,21 @@ a.section-heading:hover::after {
 }
 
 /* Full-bleed banner photo — breaks out of the page gutters to span the
-   entire viewport width, rather than the old small 4:5 portrait frame. */
+   entire viewport width, rather than the old small 4:5 portrait frame.
+   Uses the margin-based breakout (not position:relative;left:50%;margin-left:-50vw)
+   because .hero is a flex container with horizontal padding (the shared
+   `section` gutter) and align-items:center — with the position/left variant,
+   the 50% offset resolves against the flex content box (already inset by
+   the gutter) instead of the true viewport width, and flexbox tries to
+   center the 100vw-wide item within that narrower box on top of it,
+   producing a horizontal offset/overflow. calc(50% - 50vw) margins cancel
+   the parent's gutter directly and leave zero free space for align-items
+   to redistribute, so the banner lands flush and centered regardless of
+   the parent's padding or flex alignment. */
 .hero-banner {
   width: 100vw;
-  position: relative;
-  left: 50%;
-  margin-left: -50vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   aspect-ratio: 2.2 / 1;
   max-height: 560px;
   overflow: hidden;
