@@ -7,12 +7,18 @@
 (function () {
   "use strict";
 
+  // Desktop (>900px) shows a persistent horizontal tab strip in the topbar
+  // instead of the hamburger; mobile/tablet (<=900px) keeps the hamburger +
+  // full-screen overlay. Both are built here and toggled purely with CSS
+  // media queries (see .topbar-tabs / .menu-btn rules in style.css) so there
+  // is only one JS-side nav-order source of truth (renderNav below).
   function buildTopbar() {
     var el = document.getElementById("chromeTop");
     if (!el) return;
     el.className = "topbar";
     el.innerHTML =
       '<button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
+      '<ul class="topbar-tabs" id="topbarTabs"></ul>' +
       '<div class="lang-toggle" role="group" aria-label="Language">' +
       '<button data-lang="en" aria-pressed="true">EN</button>' +
       '<button data-lang="zh" aria-pressed="false">中</button>' +
@@ -164,15 +170,16 @@
       if (!list) return;
       var dict = content[lang].nav;
       var root = window.SITE_CHROME._root || "";
+      // Experience, Education, and Contact no longer have standalone pages
+      // (folded into Resume / kept only as homepage sections), so they were
+      // dropped from this order array entirely — removing them here removes
+      // them from both the mobile overlay and the desktop tab strip at once.
       var order = [
         ["home", root + "index.html"],
         ["about", root + "about.html"],
         ["projects", root + "projects.html"],
-        ["experience", root + "experience.html"],
-        ["education", root + "education.html"],
         ["writing", root + "writing.html"],
         ["beyondWork", root + "beyond-work.html"],
-        ["contact", root + "contact.html"],
         ["resume", root + "resume.html"],
       ];
       list.innerHTML = "";
@@ -189,10 +196,28 @@
         list.appendChild(li);
       });
 
+      // Desktop persistent tab strip — same order/labels, plain text links.
+      var tabs = document.getElementById("topbarTabs");
+      if (tabs) {
+        tabs.innerHTML = "";
+        order.forEach(function (pair) {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.href = pair[1];
+          a.textContent = dict[pair[0]];
+          if (pair[0] === activeKey) a.classList.add("active");
+          li.appendChild(a);
+          tabs.appendChild(li);
+        });
+      }
+
       var photoEl = document.getElementById("navPanelPhoto");
       var hero = content[lang].hero;
-      if (photoEl && hero && hero.portrait) {
-        photoEl.src = root + hero.portrait;
+      // Use the dedicated vertical nav photo rather than hero.portrait — that
+      // field now holds the wide presentation banner image, which would crop
+      // very awkwardly into this panel's tall 4:5 frame.
+      if (photoEl && hero && (hero.navPhoto || hero.portrait)) {
+        photoEl.src = root + (hero.navPhoto || hero.portrait);
         photoEl.alt = hero.name || "";
       }
       var quoteEl = document.getElementById("navPanelQuote");

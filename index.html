@@ -22,43 +22,16 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-grid">
-      <div class="hero-copy hero-stagger">
-        <p class="hero-eyebrow" data-i18n="hero.eyebrow"></p>
-        <h1 class="hero-name" id="heroName"></h1>
-        <p class="hero-intro" data-i18n="hero.intro"></p>
-        <div class="hero-scroll">
-          <span data-i18n="hero.scroll"></span>
-          <span class="stem"></span>
-        </div>
-      </div>
-      <div class="hero-photo reveal">
-        <div class="hero-photo-frame">
-          <img id="heroPortrait" src="images/portrait-placeholder.svg" alt="Portrait placeholder" />
-        </div>
-        <p class="hero-photo-caption mono">
-          <span class="index">00</span>
-          <span id="heroPhotoCaption"></span>
-        </p>
-      </div>
+    <div class="hero-copy hero-stagger centered">
+      <h1 class="hero-name" id="heroName"></h1>
+      <p class="hero-intro" data-i18n="hero.intro"></p>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <a class="section-heading" href="about.html">
-        <span class="index mono">01</span>
-        <h2 data-i18n="about.heading"></h2>
-        <span class="rule"></span>
-      </a>
-      <div class="about-grid reveal">
-        <p class="about-lead" data-i18n="about.lead"></p>
-        <div class="about-body-col">
-          <p class="about-body" data-i18n="about.body"></p>
-          <div class="skill-cards" id="skillCards"></div>
-        </div>
-      </div>
+    <div class="hero-banner reveal">
+      <img id="heroPortrait" src="images/portrait-placeholder.svg" alt="Portrait placeholder" />
+    </div>
+    <div class="hero-scroll centered reveal">
+      <span data-i18n="hero.scroll"></span>
+      <span class="stem"></span>
     </div>
   </section>
 
@@ -66,7 +39,7 @@
   <section id="projects">
     <div class="container">
       <a class="section-heading" href="projects.html">
-        <span class="index mono">02</span>
+        <span class="index mono">01</span>
         <h2 data-i18n="projects.heading"></h2>
         <span class="rule"></span>
       </a>
@@ -74,26 +47,17 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="container">
-      <a class="section-heading" href="experience.html">
-        <span class="index mono">03</span>
-        <h2 data-i18n="experience.heading"></h2>
-        <span class="rule"></span>
-      </a>
-      <div class="experience-grid reveal" id="experienceGrid"></div>
-    </div>
-    <div class="marquee">
-      <div class="marquee-track" id="marqueeTrack"></div>
-    </div>
-  </section>
+  <!-- Decorative scrolling photo strip (kept independent of the removed
+       homepage Experience block — see js/main.js renderMarquee) -->
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
 
   <!-- EDUCATION -->
   <section id="education">
     <div class="container">
-      <a class="section-heading" href="education.html">
-        <span class="index mono">04</span>
+      <a class="section-heading" href="resume.html">
+        <span class="index mono">02</span>
         <h2 data-i18n="education.heading"></h2>
         <span class="rule"></span>
       </a>
@@ -105,7 +69,7 @@
   <section id="writing">
     <div class="container">
       <a class="section-heading" href="writing.html">
-        <span class="index mono">05</span>
+        <span class="index mono">03</span>
         <h2 data-i18n="blog.heading"></h2>
         <span class="rule"></span>
       </a>
@@ -113,14 +77,15 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (kept as the homepage's own bottom section now that the
+       standalone contact.html page has been retired) -->
   <section id="contact" class="contact-section">
     <div class="container">
-      <a class="section-heading" href="contact.html">
-        <span class="index mono">06</span>
+      <div class="section-heading">
+        <span class="index mono">04</span>
         <h2 data-i18n="contact.heading"></h2>
         <span class="rule"></span>
-      </a>
+      </div>
       <p class="contact-lead reveal" data-i18n="contact.lead"></p>
       <div class="contact-grid reveal">
         <div>
@@ -137,7 +102,7 @@
         </div>
       </div>
       <div class="resume-cta reveal">
-        <a class="btn-download" href="resume.pdf" download data-i18n="resumePage.downloadPdf"></a>
+        <a class="btn-download" href="ZhongyinGou_resume.pdf" download data-i18n="resumePage.downloadPdf"></a>
         <a class="link-more mono" href="resume.html" data-i18n="home.resumeCard.cta"></a>
       </div>
     </div>

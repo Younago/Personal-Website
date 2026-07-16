@@ -22,14 +22,13 @@ const SITE_CONTENT = {
       "name": "YOUNG GOU"
     },
     "hero": {
-      "eyebrow": "Strength in Numbers",
+      "eyebrow": "",
       "name": "YOUNG GOU",
       "nameLines": [
-        "YOUNG",
-        "GOU"
+        "YOUNG GOU"
       ],
-      "portrait": "images/portrait.jpg",
-      "photoCaption": "Dallas, TX",
+      "portrait": "images/presentation.jpg",
+      "navPhoto": "images/portrait.jpg",
       "workPhotos": [
         "images/work/work-1.jpg",
         "images/work/work-2.jpg",
@@ -74,15 +73,6 @@ const SITE_CONTENT = {
       "relatedHeading": "Related Projects",
       "items": [
         {
-          "title": "Hamsterballin'",
-          "tag": "TEAM GAME PROJECT 2",
-          "role": "Producer",
-          "summary": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
-          "href": "team-projects/tgp2.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": false
-        },
-        {
           "title": "Box Shot",
           "tag": "CAPSTONE",
           "role": "Placeholder role",
@@ -92,8 +82,17 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
+          "title": "Hamsterballin'",
+          "tag": "GAME PROJECT",
+          "role": "Producer",
+          "summary": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
+          "href": "team-projects/tgp2.html",
+          "image": "images/hamsterballin-card.jpg",
+          "placeholder": false
+        },
+        {
           "title": "Detective Folder",
-          "tag": "TEAM GAME PROJECT 1",
+          "tag": "GAME PROJECT",
           "role": "Level Designer",
           "summary": "A 2D puzzle-platformer where a detective folds a living comic-book world to gather clues and catch the \"Baahd Guys.\"",
           "href": "team-projects/tgp1.html",
@@ -116,18 +115,6 @@ const SITE_CONTENT = {
       "intro": "Game projects built with cross-functional student and studio teams.",
       "list": [
         {
-          "id": "tgp2",
-          "tag": "TEAM GAME PROJECT 2",
-          "name": "Hamsterballin'",
-          "role": "Producer",
-          "teamSize": "43",
-          "length": "1 semester",
-          "blurb": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
-          "href": "team-projects/tgp2.html",
-          "image": "../images/hamsterballin-card.jpg",
-          "placeholder": false
-        },
-        {
           "id": "capstone",
           "tag": "CAPSTONE",
           "name": "Box Shot",
@@ -140,8 +127,20 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
+          "id": "tgp2",
+          "tag": "GAME PROJECT",
+          "name": "Hamsterballin'",
+          "role": "Producer",
+          "teamSize": "43",
+          "length": "1 semester",
+          "blurb": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
+          "href": "team-projects/tgp2.html",
+          "image": "../images/hamsterballin-card.jpg",
+          "placeholder": false
+        },
+        {
           "id": "tgp1",
-          "tag": "TEAM GAME PROJECT 1",
+          "tag": "GAME PROJECT",
           "name": "Detective Folder",
           "role": "Level Designer",
           "teamSize": "5",
@@ -154,8 +153,8 @@ const SITE_CONTENT = {
       ]
     },
     "tgp2": {
-      "backLink": "← Back to Team Projects",
-      "tagLabel": "TEAM GAME PROJECT 2",
+      "backLink": "← Back to Projects",
+      "tagLabel": "GAME PROJECT",
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "Role",
@@ -183,8 +182,8 @@ const SITE_CONTENT = {
       "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned."
     },
     "tgp1": {
-      "backLink": "← Back to Team Projects",
-      "tagLabel": "TEAM GAME PROJECT 1",
+      "backLink": "← Back to Projects",
+      "tagLabel": "GAME PROJECT",
       "gameName": "Detective Folder",
       "image": "../images/detective-folder-hero.jpg",
       "roleLabel": "Role",
@@ -220,7 +219,7 @@ const SITE_CONTENT = {
       "postmortem": "Owning the folding mechanic from initial concept through four levels taught me to treat failure as data — with no existing reference for this kind of mechanic, I leaned on a \"fail fast\" approach to keep iterating at speed. The biggest lesson was around scope: features like Level 4's dinosaurs were fun but expensive, and without rigorous asset-lock discipline we spent time on spectacle instead of polish. I also learned to bring in playtesters earlier — by the time we saw players struggle with onboarding, it was late enough that we had to scramble to rebuild the tutorial. Above all, this project taught me the value of pre-production technical validation and clear documentation as a single source of truth for a team working through a genuinely novel mechanic."
     },
     "capstone": {
-      "backLink": "← Back to Team Projects",
+      "backLink": "← Back to Projects",
       "tagLabel": "CAPSTONE PROJECT (PLACEHOLDER)",
       "gameName": "Box Shot",
       "image": "../images/project-placeholder.svg",
@@ -261,7 +260,7 @@ const SITE_CONTENT = {
       ]
     },
     "fire": {
-      "backLink": "← Back to Individual Projects",
+      "backLink": "← Back to Projects",
       "tagLabel": "INDIVIDUAL PROJECT (PLACEHOLDER)",
       "projectName": "Fire",
       "image": "../images/project-placeholder.svg",
@@ -437,7 +436,7 @@ const SITE_CONTENT = {
       "downloadPdf": "Download PDF",
       "backHome": "← Back to site",
       "embedHeading": "Embedded Resume (PDF)",
-      "embedNote": "Generated from your resume draft. Replace resume.pdf with a newer export any time and this preview updates automatically.",
+      "embedNote": "Generated from your resume draft. Replace ZhongyinGou_resume.pdf with a newer export any time and this preview updates automatically.",
       "summaryHeading": "Summary",
       "summary": "Producer with several years of experience managing multidisciplinary teams and optimization pipelines. Fuses a background in architecture with expertise in game systems design to bring a unique, structural approach to project logistics, scope management, and cross-departmental communication.",
       "contactHeading": "Contact",
@@ -464,14 +463,13 @@ const SITE_CONTENT = {
       "name": "苟阳"
     },
     "hero": {
-      "eyebrow": "众多之力",
+      "eyebrow": "",
       "name": "苟阳",
       "nameLines": [
-        "YOUNG",
-        "GOU"
+        "YOUNG GOU"
       ],
-      "portrait": "images/portrait.jpg",
-      "photoCaption": "美国达拉斯",
+      "portrait": "images/presentation.jpg",
+      "navPhoto": "images/portrait.jpg",
       "workPhotos": [
         "images/work/work-1.jpg",
         "images/work/work-2.jpg",
@@ -516,15 +514,6 @@ const SITE_CONTENT = {
       "relatedHeading": "相关项目",
       "items": [
         {
-          "title": "Hamsterballin'",
-          "tag": "TEAM GAME PROJECT 2",
-          "role": "制作人",
-          "summary": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
-          "href": "team-projects/tgp2.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": false
-        },
-        {
           "title": "Box Shot",
           "tag": "CAPSTONE",
           "role": "占位角色",
@@ -534,8 +523,17 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
+          "title": "Hamsterballin'",
+          "tag": "游戏项目",
+          "role": "制作人",
+          "summary": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
+          "href": "team-projects/tgp2.html",
+          "image": "images/hamsterballin-card.jpg",
+          "placeholder": false
+        },
+        {
           "title": "Detective Folder",
-          "tag": "TEAM GAME PROJECT 1",
+          "tag": "游戏项目",
           "role": "关卡设计师",
           "summary": "一款 2D 解谜平台游戏，玩家扮演侦探折叠一个活生生的漫画世界，收集线索并抓捕「Baahd Guys」。",
           "href": "team-projects/tgp1.html",
@@ -558,18 +556,6 @@ const SITE_CONTENT = {
       "intro": "与跨职能的学生团队及工作室团队共同完成的游戏项目。",
       "list": [
         {
-          "id": "tgp2",
-          "tag": "TEAM GAME PROJECT 2",
-          "name": "Hamsterballin'",
-          "role": "制作人",
-          "teamSize": "43",
-          "length": "1 学期",
-          "blurb": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
-          "href": "team-projects/tgp2.html",
-          "image": "../images/hamsterballin-card.jpg",
-          "placeholder": false
-        },
-        {
           "id": "capstone",
           "tag": "CAPSTONE",
           "name": "Box Shot",
@@ -582,8 +568,20 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
+          "id": "tgp2",
+          "tag": "游戏项目",
+          "name": "Hamsterballin'",
+          "role": "制作人",
+          "teamSize": "43",
+          "length": "1 学期",
+          "blurb": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
+          "href": "team-projects/tgp2.html",
+          "image": "../images/hamsterballin-card.jpg",
+          "placeholder": false
+        },
+        {
           "id": "tgp1",
-          "tag": "TEAM GAME PROJECT 1",
+          "tag": "游戏项目",
           "name": "Detective Folder",
           "role": "关卡设计师",
           "teamSize": "5",
@@ -596,8 +594,8 @@ const SITE_CONTENT = {
       ]
     },
     "tgp2": {
-      "backLink": "← 返回团队项目",
-      "tagLabel": "团队游戏项目 2",
+      "backLink": "← 返回项目",
+      "tagLabel": "游戏项目",
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "角色",
@@ -625,8 +623,8 @@ const SITE_CONTENT = {
       "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。"
     },
     "tgp1": {
-      "backLink": "← 返回团队项目",
-      "tagLabel": "团队游戏项目 1",
+      "backLink": "← 返回项目",
+      "tagLabel": "游戏项目",
       "gameName": "Detective Folder",
       "image": "../images/detective-folder-hero.jpg",
       "roleLabel": "角色",
@@ -662,7 +660,7 @@ const SITE_CONTENT = {
       "postmortem": "从最初的概念构思到贯穿四个关卡的实现，主导折叠机制的过程教会了我把失败当作数据来看待——由于这类机制没有太多现成参考，我采用了「快速失败」的方法保持高速迭代。最大的教训在于范围管理：像第四关的恐龙这样的功能虽然有趣，但成本很高，如果没有严格的资产锁定纪律，我们就会把时间花在制造视觉效果上，而不是打磨核心体验。我也学到了应该更早引入玩家测试——等我们发现玩家在新手引导上遇到困难时，已经太晚了，只能仓促重做教程关卡。归根结底，这个项目让我明白了预生产阶段的技术验证，以及清晰文档作为团队「唯一真相来源」的价值，这对于一个正在摸索全新机制的团队来说尤为重要。"
     },
     "capstone": {
-      "backLink": "← 返回团队项目",
+      "backLink": "← 返回项目",
       "tagLabel": "CAPSTONE 毕业项目（占位）",
       "gameName": "Box Shot",
       "image": "../images/project-placeholder.svg",
@@ -703,7 +701,7 @@ const SITE_CONTENT = {
       ]
     },
     "fire": {
-      "backLink": "← 返回个人项目",
+      "backLink": "← 返回项目",
       "tagLabel": "个人项目（占位）",
       "projectName": "Fire",
       "image": "../images/project-placeholder.svg",
@@ -879,7 +877,7 @@ const SITE_CONTENT = {
       "downloadPdf": "下载 PDF",
       "backHome": "← 返回主页",
       "embedHeading": "简历内嵌预览（PDF）",
-      "embedNote": "已根据你的简历草稿生成。之后若有新版本，直接替换项目里的 resume.pdf 文件即可自动更新这里的预览。",
+      "embedNote": "已根据你的简历草稿生成。之后若有新版本，直接替换项目里的 ZhongyinGou_resume.pdf 文件即可自动更新这里的预览。",
       "summaryHeading": "简介",
       "summary": "拥有多年跨领域团队管理和流程优化经验的制作人。将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种独特的结构化方法。",
       "contactHeading": "联系方式",

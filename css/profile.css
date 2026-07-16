@@ -215,6 +215,33 @@
   }
 }
 
+/* Embedded résumé PDF — breaks out of the narrow 880px `.resume` column to
+   a much larger, more prominent viewer (reference: Emma's site has a big,
+   clean embedded PDF preview instead of a small cramped iframe). */
+.resume-embed-wide {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+}
+
+.resume-embed-wide #resumeEmbedWrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.resume-embed-wide iframe {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 640px) {
+  .resume-embed-wide iframe {
+    height: 100vh !important;
+  }
+}
+
 /* ---------------- Print styles ---------------- */
 @media print {
   .profile-bar {

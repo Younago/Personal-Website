@@ -310,6 +310,13 @@ a.section-heading:hover::after {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+/* Desktop persistent tab strip — hidden by default (mobile/tablet keeps the
+   hamburger); shown at >900px, where the hamburger hides instead. See the
+   "Responsive — desktop nav" block near the bottom for the media query. */
+.topbar-tabs {
+  display: none;
+}
+
 .lang-toggle {
   display: flex;
   align-items: center;
@@ -397,6 +404,51 @@ a.section-heading:hover::after {
   }
 }
 
+.nav-overlay-panel .panel-quote:empty {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsive — desktop nav (persistent tabs replace the hamburger)
+   ========================================================================== */
+@media (min-width: 901px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .topbar-tabs {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 3.5);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .topbar-tabs a {
+    position: relative;
+    color: var(--color-text-muted);
+    padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+
+  .topbar-tabs a:hover,
+  .topbar-tabs a.active {
+    color: var(--color-text);
+  }
+
+  .topbar-tabs a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+}
+
 .nav-overlay li a,
 .nav-overlay li span {
   font-family: var(--font-display);
@@ -424,92 +476,64 @@ a.section-heading:hover::after {
    Hero
    ========================================================================== */
 .hero {
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: calc(var(--nav-h) + var(--u) * 4);
-  padding-bottom: calc(var(--u) * 6);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: calc(var(--u) * 8);
   align-items: center;
-  max-width: var(--container-width);
+  padding-top: calc(var(--nav-h) + var(--u) * 6);
+  padding-bottom: calc(var(--u) * 8);
+  gap: calc(var(--u) * 6);
+}
+
+.hero-copy.centered {
+  max-width: 760px;
   margin: 0 auto;
-  width: 100%;
-}
-
-.hero-copy {
-  text-align: left;
-}
-
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
-  margin-bottom: calc(var(--u) * 3);
+  text-align: center;
 }
 
 .hero-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(48px, 8vw, 108px);
-  line-height: 0.92;
+  font-size: clamp(40px, 7vw, 88px);
+  line-height: 0.98;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: calc(var(--u) * 4);
+  margin-bottom: calc(var(--u) * 3);
 }
 
 .hero-name .name-line {
   display: block;
 }
 
-.hero-photo {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--u) * 1.5);
-}
-
-.hero-photo-frame {
-  aspect-ratio: 4 / 5;
+/* Full-bleed banner photo — breaks out of the page gutters to span the
+   entire viewport width, rather than the old small 4:5 portrait frame. */
+.hero-banner {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  aspect-ratio: 2.2 / 1;
+  max-height: 560px;
   overflow: hidden;
-  border: 1px solid var(--color-line);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
   background: var(--color-bg-alt);
 }
 
-.hero-photo-frame img {
+.hero-banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero-photo-caption {
-  display: flex;
-  align-items: baseline;
-  gap: calc(var(--u) * 1.5);
-  font-size: 12px;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.hero-photo-caption .index {
-  color: var(--color-text-muted);
+  display: block;
 }
 
 .hero-intro {
-  max-width: 520px;
+  max-width: 560px;
+  margin: 0 auto;
   font-size: clamp(16px, 1.6vw, 19px);
   color: var(--color-text);
 }
 
 .hero-scroll {
-  margin-top: calc(var(--u) * 6);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -518,6 +542,12 @@ a.section-heading:hover::after {
   font-size: 11px;
   letter-spacing: 0.14em;
   color: var(--color-text-muted);
+}
+
+.hero-scroll.centered {
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .hero-scroll .stem {
@@ -701,61 +731,21 @@ a.section-heading:hover::after {
 }
 
 /* ==========================================================================
-   Experience
+   Decorative scrolling photo strip (formerly nested under the homepage
+   Experience block — that job-history block was removed as a duplicate of
+   the résumé, but the strip itself stays as a visual divider)
    ========================================================================== */
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: calc(var(--u) * 4) calc(var(--u) * 6);
-  margin-bottom: calc(var(--u) * 8);
-}
-
-.experience-item {
-  border-top: 1px solid var(--color-line);
-  padding-top: calc(var(--u) * 2.5);
-}
-
-.experience-item .title {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-
-.experience-item .org {
-  color: var(--color-text-muted);
-  font-size: 14px;
-}
-
-.experience-item .dates {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-muted);
-  margin-bottom: calc(var(--u) * 1.5);
-}
-
-.experience-item .detail,
-.experience-item .detail-list li {
-  font-size: 14px;
-  color: var(--color-text);
-}
-
-.experience-item .detail-list {
-  list-style: disc;
-  padding-left: 1.1em;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
 
 .marquee {
+  /* Now a direct child of <main> (previously nested inside the homepage
+     Experience section's own gutter padding), so it's already edge-to-edge
+     without needing a negative-gutter breakout — that old trick would
+     overflow the viewport here since there's no parent padding to offset. */
   overflow: hidden;
   border-top: 1px solid var(--color-line-strong);
   border-bottom: 1px solid var(--color-line-strong);
   padding: calc(var(--u) * 3) 0;
-  /* No bottom margin here — the next section's own top padding
-     (--section-gap) already provides the spacer, so this stays visually
-     consistent with the gap above the marquee instead of doubling up. */
-  margin: calc(var(--u) * 2) calc(var(--gutter) * -1) 0;
+  margin: 0;
 }
 
 .marquee-track {
@@ -774,15 +764,12 @@ a.section-heading:hover::after {
   object-fit: cover;
   margin: 0 calc(var(--u) * 1.5);
   border: 1px solid var(--color-line);
-  filter: grayscale(1);
-  opacity: 0.82;
-  transition: filter 0.3s ease, opacity 0.3s ease;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
 .marquee-track .marquee-photo:hover {
-  filter: grayscale(0);
-  opacity: 1;
+  transform: scale(1.03);
 }
 
 @keyframes marquee-scroll {
@@ -972,7 +959,6 @@ footer {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  .experience-grid,
   .education-grid {
     grid-template-columns: 1fr;
     gap: calc(var(--u) * 4);
@@ -980,13 +966,9 @@ footer {
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: calc(var(--u) * 5);
-  }
-  .hero-photo {
-    order: -1;
-    max-width: 320px;
+  .hero-banner {
+    aspect-ratio: 4 / 3;
+    max-height: 420px;
   }
 }
 
@@ -1001,8 +983,9 @@ footer {
     padding-left: var(--gutter);
     padding-right: var(--gutter);
   }
-  .hero-photo {
-    max-width: 220px;
+  .hero-banner {
+    aspect-ratio: 1 / 1;
+    max-height: 340px;
   }
   .stats-row {
     flex-wrap: wrap;

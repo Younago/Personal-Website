@@ -98,8 +98,8 @@
     var wrap = document.getElementById("resumeEmbedWrap");
     if (!wrap || wrap.childElementCount) return; // only needs building once
     wrap.innerHTML =
-      '<iframe src="resume.pdf" title="Resume PDF" ' +
-      'style="width:100%;height:80vh;border:1px solid var(--color-line);background:var(--color-surface);"></iframe>';
+      '<iframe src="ZhongyinGou_resume.pdf" title="Resume PDF" ' +
+      'style="width:100%;height:130vh;min-height:900px;border:1px solid var(--color-line);background:var(--color-surface);"></iframe>';
   }
 
   function setLang(lang) {

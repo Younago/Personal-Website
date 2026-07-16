@@ -41,9 +41,6 @@
     var portraitEl = document.getElementById("heroPortrait");
     if (portraitEl && dict.hero.portrait) portraitEl.src = dict.hero.portrait;
 
-    var captionEl = document.getElementById("heroPhotoCaption");
-    if (captionEl) captionEl.textContent = dict.hero.photoCaption || "";
-
     var nameEl = document.getElementById("heroName");
     if (nameEl) {
       nameEl.innerHTML = "";
@@ -54,18 +51,6 @@
         nameEl.appendChild(span);
       });
     }
-  }
-
-  function renderSkills(lang) {
-    var wrap = document.getElementById("skillCards");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    content[lang].about.skills.forEach(function (skill) {
-      var chip = document.createElement("span");
-      chip.className = "skill-chip";
-      chip.textContent = skill;
-      wrap.appendChild(chip);
-    });
   }
 
   function renderProjects(lang) {
@@ -88,45 +73,21 @@
     });
   }
 
-  function renderExperience(lang) {
-    var wrap = document.getElementById("experienceGrid");
-    if (!wrap) return;
-    wrap.innerHTML = "";
-    content[lang].experience.items.forEach(function (item) {
-      var el = document.createElement("div");
-      el.className = "experience-item";
-      var bullets = (item.bullets || [])
-        .map(function (b) { return "<li>" + b + "</li>"; })
-        .join("");
-      el.innerHTML =
-        '<p class="title">' + item.title + '</p>' +
-        '<p class="org">' + item.org + (item.location ? " — " + item.location : "") + '</p>' +
-        '<p class="dates mono">' + item.dates + '</p>' +
-        '<ul class="detail-list">' + bullets + '</ul>';
-      wrap.appendChild(el);
-    });
-
-    var stats = document.getElementById("statsRow");
-    if (stats && content[lang].experience.stats) {
-      stats.innerHTML = "";
-      content[lang].experience.stats.forEach(function (s) {
-        var el = document.createElement("div");
-        el.className = "stat";
-        el.innerHTML = '<p class="value">' + s.value + '</p><p class="label">' + s.label + '</p>';
-        stats.appendChild(el);
-      });
-    }
-
+  // The decorative scrolling photo strip lives on its own now — it used to
+  // be built as a tail effect of renderExperience(), but the homepage
+  // Experience block (job history, duplicate of the résumé) was removed
+  // while the strip itself stays as a visual element between Projects and
+  // Education.
+  function renderMarquee(lang) {
     var track = document.getElementById("marqueeTrack");
-    if (track) {
-      var photos = content[lang].projects.items.map(function (p) { return p.image; });
-      if (content[lang].hero.workPhotos) photos = photos.concat(content[lang].hero.workPhotos);
-      if (content[lang].hero.portrait) photos.unshift(content[lang].hero.portrait);
-      var doubled = photos.concat(photos);
-      track.innerHTML = doubled
-        .map(function (src) { return '<img class="marquee-photo" src="' + src + '" alt="" />'; })
-        .join("");
-    }
+    if (!track) return;
+    var photos = content[lang].projects.items.map(function (p) { return p.image; });
+    if (content[lang].hero.workPhotos) photos = photos.concat(content[lang].hero.workPhotos);
+    if (content[lang].hero.portrait) photos.unshift(content[lang].hero.portrait);
+    var doubled = photos.concat(photos);
+    track.innerHTML = doubled
+      .map(function (src) { return '<img class="marquee-photo" src="' + src + '" alt="" />'; })
+      .join("");
   }
 
   function renderEducation(lang) {
@@ -173,9 +134,8 @@
       btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
     });
     applyStaticText(lang);
-    renderSkills(lang);
     renderProjects(lang);
-    renderExperience(lang);
+    renderMarquee(lang);
     renderEducation(lang);
     renderBlog(lang);
     window.SITE_CHROME.renderNav(lang, content, "home");
