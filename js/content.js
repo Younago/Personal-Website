@@ -14,6 +14,7 @@ const SITE_CONTENT = {
       "education": "EDUCATION",
       "writing": "BLOG",
       "beyondWork": "BEYOND WORK",
+      "aiTool": "AI TOOL",
       "contact": "CONTACT",
       "aboutFull": "ABOUT ME",
       "resume": "RESUME"
@@ -313,6 +314,31 @@ const SITE_CONTENT = {
         { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" }
       ]
     },
+    "aiToolPage": {
+      "pageTitle": "Young Gou — AI Playtest Feedback Tool",
+      "tagLabel": "AI DEMO",
+      "heading": "AI Playtest Feedback Triage",
+      "lead": "A small tool I built to demonstrate hands-on experience applying AI to real production workflows: paste raw playtest feedback and it sorts it into bugs, UX issues, positive notes, and suggestions — the kind of first-pass triage a producer normally does by hand after a playtest session.",
+      "disclaimer": "This calls a small serverless function backed by a language model. Nothing you paste here is stored — it's only used to generate the categorized summary below.",
+      "inputLabel": "Paste playtest feedback",
+      "inputPlaceholder": "Paste one or more playtesters' written feedback here…",
+      "sampleButton": "Load sample feedback",
+      "sampleText": "The controls felt great once I got used to them, but the tutorial didn't explain the dash move at all so I was stuck for a few minutes. Also the game crashed once when I paused during the boss fight. I really liked the art style and the music in level 2. It would be nice if there was a way to remap the jump button — my pinky kept slipping off.",
+      "submitButton": "Analyze feedback",
+      "loadingLabel": "Analyzing…",
+      "summaryHeading": "Summary",
+      "bugsHeading": "Bugs",
+      "uxHeading": "UX Issues",
+      "positiveHeading": "Positive Feedback",
+      "suggestionsHeading": "Suggestions",
+      "emptyCategoryNote": "Nothing flagged in this category.",
+      "errorEmpty": "Paste some feedback first.",
+      "errorTooLong": "That's a lot of text — please keep it under 4000 characters.",
+      "errorNotConfigured": "This demo's backend hasn't been deployed yet — check back soon.",
+      "errorRequestFailed": "Something went wrong reaching the AI service. Please try again in a moment.",
+      "rateLimitNote": "Limited to {limit} analyses per day on this demo to keep hosting costs in check. {remaining} left today.",
+      "rateLimitReached": "You've used all {limit} analyses available today on this demo — please come back tomorrow."
+    },
     "skills": {
       "heading": "Skills",
       "items": [
@@ -459,6 +485,7 @@ const SITE_CONTENT = {
       "education": "教育背景",
       "writing": "博客",
       "beyondWork": "工作之外",
+      "aiTool": "AI 工具",
       "contact": "联系方式",
       "aboutFull": "关于我（详情）",
       "resume": "简历"
@@ -757,6 +784,31 @@ const SITE_CONTENT = {
         { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
         { "src": "images/project-placeholder.svg", "caption": "占位说明文字" }
       ]
+    },
+    "aiToolPage": {
+      "pageTitle": "苟阳 — AI Playtest 反馈工具",
+      "tagLabel": "AI 演示",
+      "heading": "AI Playtest 反馈归纳",
+      "lead": "一个用来体现我在实际制作流程里应用 AI 经验的小工具：粘贴一段原始的 playtest 反馈文字，它会自动归类成 bug、体验问题、正向反馈和改进建议——也就是制作人在 playtest 之后通常需要手动做的第一轮分拣工作。",
+      "disclaimer": "这个功能调用了一个由语言模型驱动的小型 serverless 函数。你粘贴的内容不会被存储，只用于生成下面的归类摘要。",
+      "inputLabel": "粘贴 playtest 反馈",
+      "inputPlaceholder": "把一位或多位测试者写的反馈粘贴在这里……",
+      "sampleButton": "载入示例反馈",
+      "sampleText": "操作手感习惯了之后感觉很好，但是教程完全没解释冲刺动作是怎么用的，我卡了好几分钟。另外在Boss战暂停的时候游戏崩溃了一次。我很喜欢美术风格和第二关的音乐。如果能重新绑定跳跃键就好了，我的小指老是滑掉。",
+      "submitButton": "分析反馈",
+      "loadingLabel": "分析中…",
+      "summaryHeading": "总结",
+      "bugsHeading": "Bug",
+      "uxHeading": "体验问题",
+      "positiveHeading": "正向反馈",
+      "suggestionsHeading": "改进建议",
+      "emptyCategoryNote": "这个类别没有归类到内容。",
+      "errorEmpty": "请先粘贴一些反馈文字。",
+      "errorTooLong": "文字有点太长了，请控制在 4000 字以内。",
+      "errorNotConfigured": "这个演示的后端还没有部署，请稍后再来看看。",
+      "errorRequestFailed": "请求 AI 服务时出了点问题，请稍后再试一次。",
+      "rateLimitNote": "为了控制托管成本，这个演示每天限制使用 {limit} 次，今天还剩 {remaining} 次。",
+      "rateLimitReached": "今天这个演示的 {limit} 次额度已经用完了，明天再来试试吧。"
     },
     "skills": {
       "heading": "技能",

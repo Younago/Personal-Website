@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — AI Playtest Feedback Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/profile.css" />
+<link rel="stylesheet" href="css/subpage.css" />
+</head>
+<body data-page="ai-tool" data-root="">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" href="index.html">← Back to site</a></div>
+
+<main class="resume">
+  <div class="resume-header" style="border-bottom-color: var(--color-line);">
+    <div>
+      <p class="mono detail-tag" data-i18n="aiToolPage.tagLabel"></p>
+      <h1 data-i18n="aiToolPage.heading"></h1>
+    </div>
+  </div>
+
+  <section class="resume-section">
+    <p class="resume-summary" data-i18n="aiToolPage.lead"></p>
+    <p class="ai-tool-disclaimer" data-i18n="aiToolPage.disclaimer"></p>
+  </section>
+
+  <section class="resume-section">
+    <div class="ai-tool-form">
+      <label class="ai-tool-label" for="aiToolInput" data-i18n="aiToolPage.inputLabel"></label>
+      <textarea id="aiToolInput" class="ai-tool-textarea" rows="7" data-i18n-placeholder="aiToolPage.inputPlaceholder"></textarea>
+      <div class="ai-tool-actions">
+        <button type="button" class="ai-tool-btn-secondary" id="aiToolSampleBtn" data-i18n="aiToolPage.sampleButton"></button>
+        <button type="button" class="ai-tool-btn-primary" id="aiToolSubmitBtn" data-i18n="aiToolPage.submitButton"></button>
+      </div>
+      <p class="ai-tool-status" id="aiToolStatus" role="status"></p>
+    </div>
+
+    <div class="ai-tool-results" id="aiToolResults" style="display:none;">
+      <div class="ai-tool-summary" id="aiToolSummary"></div>
+      <div class="ai-tool-grid">
+        <div class="ai-tool-card bugs">
+          <h3 data-i18n="aiToolPage.bugsHeading"></h3>
+          <ul id="aiToolBugs"></ul>
+        </div>
+        <div class="ai-tool-card ux">
+          <h3 data-i18n="aiToolPage.uxHeading"></h3>
+          <ul id="aiToolUx"></ul>
+        </div>
+        <div class="ai-tool-card positive">
+          <h3 data-i18n="aiToolPage.positiveHeading"></h3>
+          <ul id="aiToolPositive"></ul>
+        </div>
+        <div class="ai-tool-card suggestions">
+          <h3 data-i18n="aiToolPage.suggestionsHeading"></h3>
+          <ul id="aiToolSuggestions"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-contact-cta" id="pageContactCta"></div>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="js/content.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/ai-feedback.js"></script>
+</body>
+</html>

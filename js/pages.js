@@ -32,6 +32,10 @@
       var value = get(dict, el.getAttribute("data-i18n"));
       if (typeof value === "string") el.textContent = value;
     });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+      var value = get(dict, el.getAttribute("data-i18n-placeholder"));
+      if (typeof value === "string") el.setAttribute("placeholder", value);
+    });
   }
 
   var renderers = {
@@ -104,6 +108,12 @@
           "<figcaption>" + (p.caption || "") + "</figcaption>";
         wrap.appendChild(fig);
       });
+    },
+
+    "ai-tool": function (lang) {
+      var d = content[lang].aiToolPage;
+      document.title = d.pageTitle;
+      if (window.SITE_AI_TOOL) window.SITE_AI_TOOL.setLang(lang, d);
     },
 
     contact: function (lang) {

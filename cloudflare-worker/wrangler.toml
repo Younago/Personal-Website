@@ -1,0 +1,8 @@
+name = "playtest-feedback-worker"
+main = "playtest-feedback-worker.js"
+compatibility_date = "2026-01-01"
+
+# Enables env.AI.run(...) inside the Worker — Cloudflare Workers AI has a
+# free daily allowance, no separate API key needed.
+[ai]
+binding = "AI"

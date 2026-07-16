@@ -180,6 +180,7 @@
         ["projects", root + "projects.html"],
         ["writing", root + "writing.html"],
         ["beyondWork", root + "beyond-work.html"],
+        ["aiTool", root + "ai-feedback.html"],
         ["resume", root + "resume.html"],
       ];
       list.innerHTML = "";
