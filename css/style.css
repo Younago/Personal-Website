@@ -346,6 +346,10 @@ a.section-heading:hover::after {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.lang-toggle button:not([aria-pressed="true"]):hover {
+  background: color-mix(in srgb, var(--color-text) 8%, transparent);
+}
+
 .lang-toggle button[aria-pressed="true"] {
   background: var(--color-accent);
   color: var(--color-on-accent);
@@ -681,13 +685,23 @@ a.section-heading:hover::after {
   display: flex;
   flex-direction: column;
   gap: calc(var(--u) * 1.25);
-  transition: background 0.25s ease;
+  position: relative;
+  transition: background 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
   flex: 1 1 calc(50% - 1px);
   min-width: 280px;
 }
 
 .project-card:hover {
   background: var(--color-surface);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover {
+    transform: none;
+  }
 }
 
 .project-card.is-placeholder {
@@ -1047,11 +1061,18 @@ footer {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-  transition: background 0.25s ease, transform 0.2s ease;
+  transition: background 0.25s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
 }
 
 .theme-toggle:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+  transition-duration: 0.1s;
 }
 
 .theme-toggle svg {
@@ -1104,7 +1125,7 @@ footer {
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .back-to-top.is-visible {
@@ -1115,6 +1136,13 @@ footer {
 
 .back-to-top:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.back-to-top:active {
+  transform: translateY(0) scale(0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+  transition-duration: 0.1s;
 }
 
 .back-to-top svg {
