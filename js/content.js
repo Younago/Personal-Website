@@ -35,8 +35,8 @@ const SITE_CONTENT = {
         "images/work/work-2.jpg",
         "images/work/work-3.jpg"
       ],
-      "role": "Game Producer",
-      "intro": "Passion-Driven; ACG Enthusiast; Team Leadership",
+      "role": "Producer/Project manager",
+      "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
       "scroll": "SCROLL"
     },
     "home": {
@@ -76,8 +76,8 @@ const SITE_CONTENT = {
       "items": [
         {
           "title": "Box Shot",
-          "tag": "CAPSTONE GAME PROJECT",
-          "role": "Co-Producer",
+          "tag": "GAME PROJECT",
+          "role": "Producer",
           "summary": "Placeholder — one or two sentences on what the game is and what you contributed.",
           "href": "team-projects/capstone.html",
           "image": "images/project-placeholder.svg",
@@ -86,8 +86,8 @@ const SITE_CONTENT = {
         {
           "title": "Hamsterballin'",
           "tag": "GAME PROJECT",
-          "role": "Co-Producer",
-          "summary": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
+          "role": "Producer",
+          "summary": "A Mario Kart-style racing game built in Unreal Engine 5, on Steam.",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
           "placeholder": false
@@ -103,9 +103,9 @@ const SITE_CONTENT = {
         },
         {
           "title": "Heart Arsonist",
-          "tag": "INDIVIDUAL",
-          "role": "Game Designer",
-          "summary": "Placeholder — one or two sentences on what the game is and what you contributed.",
+          "tag": "GAME PROJECT",
+          "role": "Producer / Level Designer",
+          "summary": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
           "href": "individual-projects/fire.html",
           "image": "images/project-placeholder.svg",
           "placeholder": true
@@ -120,7 +120,7 @@ const SITE_CONTENT = {
           "id": "capstone",
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
-          "role": "Co-Producer",
+          "role": "Producer",
           "teamSize": "Placeholder",
           "length": "Placeholder",
           "blurb": "Placeholder — one-line description of the game.",
@@ -132,10 +132,10 @@ const SITE_CONTENT = {
           "id": "tgp2",
           "tag": "GAME PROJECT",
           "name": "Hamsterballin'",
-          "role": "Co-Producer",
+          "role": "Producer",
           "teamSize": "43",
           "length": "1 semester",
-          "blurb": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
+          "blurb": "A Mario Kart-style racing game built in Unreal Engine 5, on Steam.",
           "href": "team-projects/tgp2.html",
           "image": "../images/hamsterballin-card.jpg",
           "placeholder": false
@@ -160,7 +160,7 @@ const SITE_CONTENT = {
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "Role",
-      "role": "Co-Producer",
+      "role": "Producer",
       "teamSizeLabel": "Team Size",
       "teamSize": "43",
       "lengthLabel": "Length",
@@ -227,7 +227,7 @@ const SITE_CONTENT = {
       "gameName": "Box Shot",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "Role",
-      "role": "Co-Producer",
+      "role": "Producer",
       "teamSizeLabel": "Team Size",
       "teamSize": "Placeholder",
       "lengthLabel": "Length",
@@ -255,7 +255,7 @@ const SITE_CONTENT = {
           "id": "fire",
           "tag": "INDIVIDUAL PROJECT",
           "name": "Heart Arsonist",
-          "blurb": "Placeholder — one-line description. Work-in-progress projects are welcome here.",
+          "blurb": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
           "href": "individual-projects/fire.html",
           "image": "../images/project-placeholder.svg",
           "placeholder": true
@@ -268,7 +268,7 @@ const SITE_CONTENT = {
       "projectName": "Heart Arsonist",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "Role",
-      "role": "Game Designer",
+      "role": "Producer / Level Designer",
       "teamSizeLabel": "Team Size",
       "teamSize": "Placeholder (e.g. Solo)",
       "lengthLabel": "Length",
@@ -503,9 +503,9 @@ const SITE_CONTENT = {
         "images/work/work-2.jpg",
         "images/work/work-3.jpg"
       ],
-      "role": "Game Producer",
-      "intro": "Passion-Driven; ACG Enthusiast; Team Leadership",
-      "scroll": "向下滚动"
+      "role": "Producer/Project manager",
+      "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
+      "scroll": "Scroll"
     },
     "home": {
       "teamProjectsHeading": "团队项目",
@@ -539,13 +539,13 @@ const SITE_CONTENT = {
       ]
     },
     "projects": {
-      "heading": "项目作品",
+      "heading": "项目",
       "relatedHeading": "相关项目",
       "items": [
         {
           "title": "Box Shot",
-          "tag": "CAPSTONE GAME PROJECT",
-          "role": "Co-Producer",
+          "tag": "游戏项目",
+          "role": "制作人",
           "summary": "占位文字 — 一两句话介绍这款游戏和你的具体贡献。",
           "href": "team-projects/capstone.html",
           "image": "images/project-placeholder.svg",
@@ -554,8 +554,8 @@ const SITE_CONTENT = {
         {
           "title": "Hamsterballin'",
           "tag": "游戏项目",
-          "role": "Co-Producer",
-          "summary": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
+          "role": "制作人",
+          "summary": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
           "placeholder": false
@@ -563,17 +563,17 @@ const SITE_CONTENT = {
         {
           "title": "Detective Folder",
           "tag": "游戏项目",
-          "role": "关卡设计师",
-          "summary": "一款 2D 解谜平台游戏，玩家扮演侦探折叠一个活生生的漫画世界，收集线索并抓捕「Baahd Guys」。",
+          "role": "关卡策划",
+          "summary": "一款 2D 解谜平台游戏，玩家扮演侦探折叠一个活生生的漫画世界，收集线索并抓捕「坏蛋」。",
           "href": "team-projects/tgp1.html",
           "image": "images/detective-folder-card.jpg",
           "placeholder": false
         },
         {
-          "title": "Heart Arsonist",
-          "tag": "INDIVIDUAL",
-          "role": "Game Designer",
-          "summary": "占位文字 — 一两句话介绍这款游戏和你的具体贡献。",
+          "title": "芳心纵火犯",
+          "tag": "游戏项目",
+          "role": "制作人/关卡策划",
+          "summary": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
           "href": "individual-projects/fire.html",
           "image": "images/project-placeholder.svg",
           "placeholder": true
@@ -588,7 +588,7 @@ const SITE_CONTENT = {
           "id": "capstone",
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
-          "role": "Co-Producer",
+          "role": "制作人",
           "teamSize": "占位",
           "length": "占位",
           "blurb": "占位文字 — 一句话介绍这款游戏。",
@@ -600,10 +600,10 @@ const SITE_CONTENT = {
           "id": "tgp2",
           "tag": "游戏项目",
           "name": "Hamsterballin'",
-          "role": "Co-Producer",
+          "role": "制作人",
           "teamSize": "43",
           "length": "1 学期",
-          "blurb": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
+          "blurb": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
           "image": "../images/hamsterballin-card.jpg",
           "placeholder": false
@@ -612,7 +612,7 @@ const SITE_CONTENT = {
           "id": "tgp1",
           "tag": "游戏项目",
           "name": "Detective Folder",
-          "role": "关卡设计师",
+          "role": "关卡策划",
           "teamSize": "5",
           "length": "1 学期",
           "blurb": "一款用 Unity 制作的 2D 解谜平台游戏，玩家折叠漫画世界来抓捕「Baahd Guys」。",
@@ -628,7 +628,7 @@ const SITE_CONTENT = {
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "角色",
-      "role": "Co-Producer",
+      "role": "制作人",
       "teamSizeLabel": "团队规模",
       "teamSize": "43 人",
       "lengthLabel": "项目周期",
@@ -658,7 +658,7 @@ const SITE_CONTENT = {
       "gameName": "Detective Folder",
       "image": "../images/detective-folder-hero.jpg",
       "roleLabel": "角色",
-      "role": "关卡设计师",
+      "role": "关卡策划",
       "teamSizeLabel": "团队规模",
       "teamSize": "5 人",
       "lengthLabel": "项目周期",
@@ -695,7 +695,7 @@ const SITE_CONTENT = {
       "gameName": "Box Shot",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "角色",
-      "role": "Co-Producer",
+      "role": "制作人",
       "teamSizeLabel": "团队规模",
       "teamSize": "占位",
       "lengthLabel": "项目周期",
@@ -722,8 +722,8 @@ const SITE_CONTENT = {
         {
           "id": "fire",
           "tag": "个人项目",
-          "name": "Heart Arsonist",
-          "blurb": "占位文字 — 一句话描述，进行中的项目也可以放在这里。",
+          "name": "芳心纵火犯",
+          "blurb": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
           "href": "individual-projects/fire.html",
           "image": "../images/project-placeholder.svg",
           "placeholder": true
@@ -733,10 +733,10 @@ const SITE_CONTENT = {
     "fire": {
       "backLink": "← 返回项目",
       "tagLabel": "个人项目（占位）",
-      "projectName": "Heart Arsonist",
+      "projectName": "芳心纵火犯",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "角色",
-      "role": "Game Designer",
+      "role": "制作人/关卡策划",
       "teamSizeLabel": "团队规模",
       "teamSize": "占位（如：独立完成）",
       "lengthLabel": "项目周期",
@@ -915,11 +915,11 @@ const SITE_CONTENT = {
       "heading": "联系方式",
       "lead": "欢迎聊聊游戏、团队或合作机会。",
       "locationLabel": "所在地",
-      "location": "美国德克萨斯州达拉斯 75206",
+      "location": "美国德州达拉斯（留学中）",
       "emailLabel": "邮箱",
-      "email": "ygou920@gmail.com",
-      "websiteLabel": "LinkedIn",
-      "website": "https://www.linkedin.com/in/young-gou-97b184381/"
+      "email": "younago@foxmail.com",
+      "websiteLabel": "微信",
+      "website": "younago920"
     },
     "footer": {
       "note": "用心打造，保留所有权利。"
@@ -928,7 +928,7 @@ const SITE_CONTENT = {
       "pageTitle": "苟阳 — 简历",
       "title": "简历",
       "roleTag": "游戏制作人",
-      "downloadPdf": "下载 PDF",
+      "downloadPdf": "下载 简历",
       "backHome": "← 返回主页",
       "embedHeading": "简历内嵌预览（PDF）",
       "embedNote": "已根据你的简历草稿生成。之后若有新版本，直接替换项目里的 ZhongyinGou_resume.pdf 文件即可自动更新这里的预览。",

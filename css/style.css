@@ -1085,6 +1085,15 @@ a.section-heading:hover::after {
   margin-bottom: 6px;
 }
 
+/* contact.website is a link in English (LinkedIn) but a bare WeChat ID in
+   Chinese. main.js strips the href in the latter case; this stops the
+   leftover <a> from still looking clickable. */
+.contact-grid .value a.is-plain {
+  color: inherit;
+  text-decoration: none;
+  cursor: text;
+}
+
 .contact-grid .value {
   font-size: 16px;
   font-weight: 600;

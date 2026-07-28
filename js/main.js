@@ -29,15 +29,26 @@
     var emailEl = document.getElementById("contactEmail");
     if (emailEl) emailEl.href = "mailto:" + dict.contact.email;
 
-    // contact.website now holds a full LinkedIn profile URL rather than a
-    // bare domain. Link to it verbatim, but display it without the
-    // "https://www." prefix and trailing slash — the raw URL is long enough
-    // to wrap awkwardly inside its contact-grid column.
+    // contact.website is deliberately per-language: English visitors get a
+    // LinkedIn URL, Chinese visitors get a WeChat ID. So the value can be
+    // either a link or a plain handle, and the markup has to cope with both.
+    // A URL is linked (and displayed without the "https://www." prefix and
+    // trailing slash, which would otherwise wrap awkwardly inside its
+    // contact-grid column); anything else has its href stripped so a WeChat
+    // ID never turns into a dead link, and .is-plain drops the link styling.
     var siteEl = document.getElementById("contactWebsite");
     if (siteEl && dict.contact.website) {
-      var url = dict.contact.website;
-      siteEl.href = /^https?:\/\//i.test(url) ? url : "https://" + url;
-      siteEl.textContent = url.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/+$/, "");
+      var value = dict.contact.website;
+      var isUrl = /^https?:\/\//i.test(value) || /^(www\.|[\w-]+(\.[\w-]+)+\/)/i.test(value);
+      if (isUrl) {
+        siteEl.href = /^https?:\/\//i.test(value) ? value : "https://" + value;
+        siteEl.textContent = value.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/+$/, "");
+        siteEl.classList.remove("is-plain");
+      } else {
+        siteEl.removeAttribute("href");
+        siteEl.textContent = value;
+        siteEl.classList.add("is-plain");
+      }
     }
 
     var readMore = document.getElementById("aboutReadMore");
@@ -75,7 +86,9 @@
       card.href = p.href;
       card.innerHTML =
         '<div class="project-thumb"><img src="' + p.image + '" alt="' + p.title + ' placeholder image" /></div>' +
-        '<div class="project-meta"><span class="index mono">' + String(i + 1).padStart(2, "0") + " / " + String(items.length).padStart(2, "0") + '</span>' +
+        // Card number only — the "/ 04" total that used to follow it was
+        // dropped, since the grid already shows how many cards there are.
+        '<div class="project-meta"><span class="index mono">' + String(i + 1).padStart(2, "0") + '</span>' +
         '<span class="project-tag mono">' + p.tag + '</span></div>' +
         '<h3>' + p.title + '</h3>' +
         '<p class="project-role">' + p.role + '</p>' +
