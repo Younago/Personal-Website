@@ -21,6 +21,7 @@
   --font-display: "Anton", "Arial Narrow", sans-serif;
   --font-body: "Work Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-cjk: "Smiley Sans";
 
   /* 8px modular grid — every spacing value is a multiple of this unit */
   --u: 8px;
@@ -50,6 +51,38 @@
 
 body {
   transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* ==========================================================================
+   Chinese typeface — Smiley Sans (得意黑), self-hosted
+   ==========================================================================
+   Only one weight/style ships with the family, so the range is declared as
+   400–700: without that the browser would synthesise a fake bold for every
+   heading, which smears an already-oblique display face. The file is
+   oblique by design, but it is registered as font-style: normal so the
+   browser doesn't slant it a second time on top.
+
+   The family is *appended* to the three font stacks (never substituted for
+   them) inside the html[lang="zh-CN"] block below, so Latin characters keep
+   coming from Anton / Work Sans / IBM Plex Mono and only the Chinese glyphs
+   — which none of those Latin faces contain — fall through to Smiley Sans.
+   Browsers download a webfont only when something actually renders in it,
+   so visitors who never switch to Chinese never pay for the ~1.1 MB file.
+   All five page scripts (main / pages / post / project-detail / resume) set
+   documentElement.lang on every language switch, so this one rule covers
+   the whole site. */
+@font-face {
+  font-family: "Smiley Sans";
+  src: url("../fonts/SmileySans-Oblique.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html[lang="zh-CN"] {
+  --font-display: "Anton", var(--font-cjk), "Arial Narrow", sans-serif;
+  --font-body: "Work Sans", var(--font-cjk), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", var(--font-cjk), "SFMono-Regular", Consolas, monospace;
 }
 
 * {
@@ -511,11 +544,47 @@ a.section-heading:hover::after {
   line-height: 0.98;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: calc(var(--u) * 3);
+  margin-bottom: calc(var(--u) * 2);
 }
 
 .hero-name .name-line {
   display: block;
+}
+
+/* Role kicker directly under the name — mono/uppercase/letter-spaced so it
+   reads as a label rather than a second headline, flanked by two short
+   accent rules that visually anchor the block's centre line. Keeping it
+   quiet is what lets the name stay the focal point. */
+.hero-role {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * 1.5);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: calc(var(--u) * 2.5);
+}
+
+.hero-role::before,
+.hero-role::after {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.55;
+}
+
+/* Short tagline that replaced the old paragraph-length bio. Sized between
+   the role kicker and body copy so the hero reads name → role → tagline
+   without any two levels competing. */
+.hero-tagline {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-text-muted);
 }
 
 /* Full-bleed banner photo — breaks out of the page gutters to span the
@@ -948,6 +1017,9 @@ a.section-heading:hover::after {
 .contact-grid .value {
   font-size: 16px;
   font-weight: 600;
+  /* The LinkedIn URL is long enough to overflow its column on narrow
+     viewports — let it break rather than push the grid wider. */
+  overflow-wrap: anywhere;
 }
 
 .resume-cta {

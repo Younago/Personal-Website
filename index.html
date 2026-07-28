@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
-<title>Young Gou — Game Producer</title>
+<title>Young(Zhongyin) Gou — Game Producer</title>
 <meta name="description" content="Young Gou — a passionate game producer dedicated to guiding cross-functional teams in developing games that players truly love and enjoy." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,8 @@
   <section class="hero" id="home">
     <div class="hero-copy hero-stagger centered">
       <h1 class="hero-name" id="heroName"></h1>
-      <p class="hero-intro" data-i18n="hero.intro"></p>
+      <p class="hero-role mono" data-i18n="hero.role"></p>
+      <p class="hero-tagline" data-i18n="hero.intro"></p>
     </div>
     <div class="hero-banner reveal">
       <img id="heroPortrait" src="images/portrait-placeholder.svg" alt="Portrait placeholder" />
@@ -74,7 +75,7 @@
         </div>
         <div>
           <p class="label" data-i18n="contact.websiteLabel"></p>
-          <p class="value" data-i18n="contact.website"></p>
+          <p class="value"><a id="contactWebsite" href="#" target="_blank" rel="noopener" data-i18n="contact.website"></a></p>
         </div>
       </div>
       <div class="resume-cta reveal">

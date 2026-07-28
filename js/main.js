@@ -29,6 +29,17 @@
     var emailEl = document.getElementById("contactEmail");
     if (emailEl) emailEl.href = "mailto:" + dict.contact.email;
 
+    // contact.website now holds a full LinkedIn profile URL rather than a
+    // bare domain. Link to it verbatim, but display it without the
+    // "https://www." prefix and trailing slash — the raw URL is long enough
+    // to wrap awkwardly inside its contact-grid column.
+    var siteEl = document.getElementById("contactWebsite");
+    if (siteEl && dict.contact.website) {
+      var url = dict.contact.website;
+      siteEl.href = /^https?:\/\//i.test(url) ? url : "https://" + url;
+      siteEl.textContent = url.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/+$/, "");
+    }
+
     var readMore = document.getElementById("aboutReadMore");
     if (readMore) {
       readMore.textContent = dict.about.readMore;

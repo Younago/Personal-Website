@@ -35,7 +35,8 @@ const SITE_CONTENT = {
         "images/work/work-2.jpg",
         "images/work/work-3.jpg"
       ],
-      "intro": "I'm Young Gou — a producer with experience of managing multidisciplinary teams and optimization pipelines. I fuse a background in architecture with expertise in game systems design to bring a structural approach to project logistics, scope management, and cross-departmental communication.",
+      "role": "Game Producer",
+      "intro": "Passion-Driven; ACG Enthusiast; Team Leadership",
       "scroll": "SCROLL"
     },
     "home": {
@@ -75,8 +76,8 @@ const SITE_CONTENT = {
       "items": [
         {
           "title": "Box Shot",
-          "tag": "CAPSTONE",
-          "role": "Placeholder role",
+          "tag": "CAPSTONE GAME PROJECT",
+          "role": "Co-Producer",
           "summary": "Placeholder — one or two sentences on what the game is and what you contributed.",
           "href": "team-projects/capstone.html",
           "image": "images/project-placeholder.svg",
@@ -85,7 +86,7 @@ const SITE_CONTENT = {
         {
           "title": "Hamsterballin'",
           "tag": "GAME PROJECT",
-          "role": "Producer",
+          "role": "Co-Producer",
           "summary": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
@@ -103,7 +104,7 @@ const SITE_CONTENT = {
         {
           "title": "Heart Arsonist",
           "tag": "INDIVIDUAL",
-          "role": "Placeholder role",
+          "role": "Game Designer",
           "summary": "Placeholder — one or two sentences on what the game is and what you contributed.",
           "href": "individual-projects/fire.html",
           "image": "images/project-placeholder.svg",
@@ -117,9 +118,9 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "capstone",
-          "tag": "CAPSTONE",
+          "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
-          "role": "Placeholder role",
+          "role": "Co-Producer",
           "teamSize": "Placeholder",
           "length": "Placeholder",
           "blurb": "Placeholder — one-line description of the game.",
@@ -131,7 +132,7 @@ const SITE_CONTENT = {
           "id": "tgp2",
           "tag": "GAME PROJECT",
           "name": "Hamsterballin'",
-          "role": "Producer",
+          "role": "Co-Producer",
           "teamSize": "43",
           "length": "1 semester",
           "blurb": "A fast-paced racing game built in Unreal Engine 5, on Steam.",
@@ -159,7 +160,7 @@ const SITE_CONTENT = {
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "Role",
-      "role": "Producer",
+      "role": "Co-Producer",
       "teamSizeLabel": "Team Size",
       "teamSize": "43",
       "lengthLabel": "Length",
@@ -226,7 +227,7 @@ const SITE_CONTENT = {
       "gameName": "Box Shot",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "Role",
-      "role": "Placeholder",
+      "role": "Co-Producer",
       "teamSizeLabel": "Team Size",
       "teamSize": "Placeholder",
       "lengthLabel": "Length",
@@ -267,7 +268,7 @@ const SITE_CONTENT = {
       "projectName": "Heart Arsonist",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "Role",
-      "role": "Placeholder",
+      "role": "Game Designer",
       "teamSizeLabel": "Team Size",
       "teamSize": "Placeholder (e.g. Solo)",
       "lengthLabel": "Length",
@@ -448,9 +449,9 @@ const SITE_CONTENT = {
       "locationLabel": "Location",
       "location": "Dallas, TX 75206",
       "emailLabel": "Email",
-      "email": "younago@foxmail.com",
-      "websiteLabel": "Website",
-      "website": "www.gogo.fyi"
+      "email": "ygou920@gmail.com",
+      "websiteLabel": "LinkedIn",
+      "website": "https://www.linkedin.com/in/young-gou-97b184381/"
     },
     "footer": {
       "note": "Built with care. All rights reserved."
@@ -502,7 +503,8 @@ const SITE_CONTENT = {
         "images/work/work-2.jpg",
         "images/work/work-3.jpg"
       ],
-      "intro": "我是苟阳（Young Gou）——一名拥有多年跨领域团队管理和流程优化经验的制作人。我将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种结构化的方法。",
+      "role": "Game Producer",
+      "intro": "Passion-Driven; ACG Enthusiast; Team Leadership",
       "scroll": "向下滚动"
     },
     "home": {
@@ -542,8 +544,8 @@ const SITE_CONTENT = {
       "items": [
         {
           "title": "Box Shot",
-          "tag": "CAPSTONE",
-          "role": "占位角色",
+          "tag": "CAPSTONE GAME PROJECT",
+          "role": "Co-Producer",
           "summary": "占位文字 — 一两句话介绍这款游戏和你的具体贡献。",
           "href": "team-projects/capstone.html",
           "image": "images/project-placeholder.svg",
@@ -552,7 +554,7 @@ const SITE_CONTENT = {
         {
           "title": "Hamsterballin'",
           "tag": "游戏项目",
-          "role": "制作人",
+          "role": "Co-Producer",
           "summary": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
@@ -570,7 +572,7 @@ const SITE_CONTENT = {
         {
           "title": "Heart Arsonist",
           "tag": "INDIVIDUAL",
-          "role": "占位角色",
+          "role": "Game Designer",
           "summary": "占位文字 — 一两句话介绍这款游戏和你的具体贡献。",
           "href": "individual-projects/fire.html",
           "image": "images/project-placeholder.svg",
@@ -584,9 +586,9 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "capstone",
-          "tag": "CAPSTONE",
+          "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
-          "role": "占位角色",
+          "role": "Co-Producer",
           "teamSize": "占位",
           "length": "占位",
           "blurb": "占位文字 — 一句话介绍这款游戏。",
@@ -598,7 +600,7 @@ const SITE_CONTENT = {
           "id": "tgp2",
           "tag": "游戏项目",
           "name": "Hamsterballin'",
-          "role": "制作人",
+          "role": "Co-Producer",
           "teamSize": "43",
           "length": "1 学期",
           "blurb": "一款用 Unreal Engine 5 制作的快节奏竞速游戏，已上线 Steam。",
@@ -626,7 +628,7 @@ const SITE_CONTENT = {
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "角色",
-      "role": "制作人",
+      "role": "Co-Producer",
       "teamSizeLabel": "团队规模",
       "teamSize": "43 人",
       "lengthLabel": "项目周期",
@@ -693,7 +695,7 @@ const SITE_CONTENT = {
       "gameName": "Box Shot",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "角色",
-      "role": "占位",
+      "role": "Co-Producer",
       "teamSizeLabel": "团队规模",
       "teamSize": "占位",
       "lengthLabel": "项目周期",
@@ -734,7 +736,7 @@ const SITE_CONTENT = {
       "projectName": "Heart Arsonist",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "角色",
-      "role": "占位",
+      "role": "Game Designer",
       "teamSizeLabel": "团队规模",
       "teamSize": "占位（如：独立完成）",
       "lengthLabel": "项目周期",
@@ -915,9 +917,9 @@ const SITE_CONTENT = {
       "locationLabel": "所在地",
       "location": "美国德克萨斯州达拉斯 75206",
       "emailLabel": "邮箱",
-      "email": "younago@foxmail.com",
-      "websiteLabel": "网站",
-      "website": "www.gogo.fyi"
+      "email": "ygou920@gmail.com",
+      "websiteLabel": "LinkedIn",
+      "website": "https://www.linkedin.com/in/young-gou-97b184381/"
     },
     "footer": {
       "note": "用心打造，保留所有权利。"
