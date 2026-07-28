@@ -55,9 +55,11 @@
     projects: function (lang) {
       var team = content[lang].teamProjects;
       var indiv = content[lang].individualProjects;
+      var analysis = content[lang].gameAnalysis;
       document.title = content[lang].nav.projects + " — " + content[lang].site.name;
       renderCardGrid("teamGrid", team.list);
       renderCardGrid("individualGrid", indiv.list);
+      if (analysis) renderCardGrid("analysisGrid", analysis.list);
     },
 
     experience: function (lang) {
@@ -97,6 +99,10 @@
     "beyond-work": function (lang) {
       var d = content[lang].beyondWorkPage;
       document.title = d.pageTitle;
+      // The four themed sections (photography / architecture / travel /
+      // cooking) each open their own story page; the gallery below them
+      // stays as a mixed overview.
+      if (d.sections) renderCardGrid("beyondWorkSections", d.sections);
       var wrap = document.getElementById("beyondWorkGallery");
       if (!wrap) return;
       wrap.innerHTML = "";
@@ -110,10 +116,58 @@
       });
     },
 
+    // The live Playtest tool. It used to sit on ai-feedback.html itself;
+    // that page is now a hub (data-page="ai-hub") and the tool moved to
+    // ai-tools/playtest-feedback.html, which still runs this renderer.
     "ai-tool": function (lang) {
       var d = content[lang].aiToolPage;
       document.title = d.pageTitle;
       if (window.SITE_AI_TOOL) window.SITE_AI_TOOL.setLang(lang, d);
+    },
+
+    "ai-hub": function (lang) {
+      var d = content[lang].aiHubPage;
+      document.title = d.pageTitle;
+      renderCardGrid("aiProjectsGrid", d.projects);
+      renderCardGrid("aiToolsGrid", d.tools);
+    },
+
+    // Generic image + text story page, shared by the four Beyond Work
+    // sections, the game-analysis write-ups and the AI side projects.
+    // <body data-page="story" data-story="stories.photography"> picks which
+    // entry of the content dictionary to render, so all of those pages are
+    // the same 20 lines of markup with one attribute changed.
+    story: function (lang) {
+      var key = document.body.getAttribute("data-story");
+      var d = get(content[lang], key);
+      if (!d) return;
+      document.title = d.pageTitle;
+      setText("storyTag", d.tagLabel);
+      setText("storyHeading", d.heading);
+      setText("storyLead", d.lead);
+      var back = document.getElementById("storyBack");
+      if (back) back.textContent = d.backLink;
+      var wrap = document.getElementById("storyBlocks");
+      if (!wrap) return;
+      wrap.innerHTML = "";
+      (d.blocks || []).forEach(function (b) {
+        // <article>, not <section>: the site's global `section { padding: ... }`
+        // rule (the page-level gutter) would otherwise squeeze every story
+        // block to ~75% width and add 144px of dead space above each one.
+        var row = document.createElement("article");
+        // The alternating left/right rhythm is done in CSS with
+        // :nth-child(even) rather than by emitting two different markup
+        // orders, so the DOM order always matches the reading order.
+        row.className = "story-block";
+        row.innerHTML =
+          '<figure class="story-figure"><img src="' + root + b.image + '" alt="' + (b.caption || "") + '" />' +
+          (b.caption ? "<figcaption>" + b.caption + "</figcaption>" : "") +
+          "</figure>" +
+          '<div class="story-body">' +
+          (b.heading ? "<h3>" + b.heading + "</h3>" : "") +
+          "<p>" + b.text + "</p></div>";
+        wrap.appendChild(row);
+      });
     },
 
     contact: function (lang) {
@@ -133,18 +187,29 @@
     );
   }
 
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el && typeof value === "string") el.textContent = value;
+  }
+
+  // One card renderer for every list on the site's subpages: team projects,
+  // individual projects, game analysis, the Beyond Work sections and both
+  // AI hub lists. Items only need { name, tag, blurb, image, href }.
   function renderCardGrid(id, items) {
     var wrap = document.getElementById(id);
-    if (!wrap) return;
+    if (!wrap || !items) return;
     wrap.innerHTML = "";
     items.forEach(function (p) {
-      var card = document.createElement("a");
+      // Entries without an href render as a plain <div>: an <a href="#">
+      // would look clickable and then just jump to the top of the page.
+      var card = document.createElement(p.href ? "a" : "div");
       card.className = "project-card" + (p.placeholder ? " is-placeholder" : "");
-      card.href = p.href;
+      if (p.href) card.href = root + p.href;
       card.innerHTML =
-        '<div class="project-thumb"><img src="' + p.image + '" alt="' + p.name + ' placeholder image" /></div>' +
+        '<div class="project-thumb"><img src="' + root + p.image + '" alt="' + p.name + '" /></div>' +
         '<div class="project-meta"><span class="index mono">' + p.tag + "</span></div>" +
         "<h3>" + p.name + "</h3>" +
+        (p.role ? '<p class="project-role">' + p.role + "</p>" : "") +
         '<p class="project-summary">' + p.blurb + "</p>";
       wrap.appendChild(card);
     });

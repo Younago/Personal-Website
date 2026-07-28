@@ -503,3 +503,129 @@ a.blog-row {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Stacked project list (projects.html)
+   ==========================================================================
+   The two-column card grid gave every project a different visual weight —
+   placeholder cards collapsed short while cards with real copy ran tall, so
+   the page read as a ranking nobody intended. `.is-stacked` puts one card
+   per row with a fixed banner ratio and identical padding, so all entries
+   carry exactly the same weight and the page reads top-to-bottom. */
+.projects-grid.is-stacked {
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.projects-grid.is-stacked .project-card {
+  flex: 1 1 auto;
+  width: 100%;
+  padding: calc(var(--u) * 4);
+  gap: calc(var(--u) * 2);
+}
+
+.projects-grid.is-stacked .project-thumb {
+  aspect-ratio: 21 / 9;
+}
+
+.projects-grid.is-stacked .project-card h3 {
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.projects-grid.is-stacked .project-summary {
+  max-width: 72ch;
+  font-size: 16px;
+}
+
+@media (max-width: 560px) {
+  .projects-grid.is-stacked .project-thumb {
+    aspect-ratio: 16 / 9;
+  }
+  .projects-grid.is-stacked .project-card {
+    padding: calc(var(--u) * 2.5);
+  }
+}
+
+/* ==========================================================================
+   Story pages (Beyond Work sections, game analysis, AI side projects)
+   ==========================================================================
+   Alternating image/text rows. The swap is done with :nth-child(even) and
+   the `order` property rather than by emitting two markup variants, so the
+   DOM order always matches reading order — which is also what a screen
+   reader and a narrow viewport (where the grid collapses to one column)
+   follow. */
+.story-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 8);
+  margin-bottom: var(--section-gap);
+}
+
+.story-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--u) * 5);
+  align-items: center;
+}
+
+.story-block:nth-child(even) .story-figure {
+  order: 2;
+}
+
+.story-figure {
+  margin: 0;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-alt);
+  overflow: hidden;
+}
+
+.story-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.story-figure:hover img {
+  transform: scale(1.03);
+}
+
+.story-figure figcaption {
+  padding: calc(var(--u) * 1.5) calc(var(--u) * 2);
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.story-body h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 30px);
+  text-transform: uppercase;
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.story-body p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+@media (max-width: 760px) {
+  .story-block {
+    grid-template-columns: 1fr;
+    gap: calc(var(--u) * 3);
+  }
+  /* Reset the alternation on narrow screens — with one column, "order: 2"
+     would push the image below its own paragraph on every other block. */
+  .story-block:nth-child(even) .story-figure {
+    order: 0;
+  }
+  .story-blocks {
+    gap: calc(var(--u) * 6);
+  }
+}

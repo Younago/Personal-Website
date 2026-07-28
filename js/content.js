@@ -14,7 +14,7 @@ const SITE_CONTENT = {
       "education": "EDUCATION",
       "writing": "BLOG",
       "beyondWork": "BEYOND WORK",
-      "aiTool": "AI TOOL",
+      "aiTool": "AI RELATED",
       "contact": "CONTACT",
       "aboutFull": "ABOUT ME",
       "resume": "RESUME"
@@ -125,7 +125,7 @@ const SITE_CONTENT = {
           "length": "Placeholder",
           "blurb": "Placeholder — one-line description of the game.",
           "href": "team-projects/capstone.html",
-          "image": "../images/project-placeholder.svg",
+          "image": "images/project-placeholder.svg",
           "placeholder": true
         },
         {
@@ -137,7 +137,7 @@ const SITE_CONTENT = {
           "length": "1 semester",
           "blurb": "A Mario Kart-style racing game built in Unreal Engine 5, on Steam.",
           "href": "team-projects/tgp2.html",
-          "image": "../images/hamsterballin-card.jpg",
+          "image": "images/hamsterballin-card.jpg",
           "placeholder": false
         },
         {
@@ -149,7 +149,7 @@ const SITE_CONTENT = {
           "length": "1 semester",
           "blurb": "A 2D puzzle-platformer built in Unity where a detective folds a living comic-book world to catch the \"Baahd Guys.\"",
           "href": "team-projects/tgp1.html",
-          "image": "../images/detective-folder-card.jpg",
+          "image": "images/detective-folder-card.jpg",
           "placeholder": false
         }
       ]
@@ -257,7 +257,7 @@ const SITE_CONTENT = {
           "name": "Heart Arsonist",
           "blurb": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
           "href": "individual-projects/fire.html",
-          "image": "../images/project-placeholder.svg",
+          "image": "images/project-placeholder.svg",
           "placeholder": true
         }
       ]
@@ -313,6 +313,46 @@ const SITE_CONTENT = {
         { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
         { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
         { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" }
+      ],
+      "sectionsHeading": "Sections",
+      "sectionsIntro": "Four things I spend my time on when I'm not producing games.",
+      "sections": [
+        {
+          "id": "photography",
+          "tag": "PHOTOGRAPHY",
+          "name": "Photography",
+          "blurb": "Placeholder — what you shoot and why you keep doing it.",
+          "href": "beyond-work/photography.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "architecture",
+          "tag": "ARCHITECTURE",
+          "name": "Architecture",
+          "blurb": "Placeholder — the background that still shapes how you look at space.",
+          "href": "beyond-work/architecture.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "travel",
+          "tag": "TRAVEL",
+          "name": "Travel",
+          "blurb": "Placeholder — where you've been and what you brought back.",
+          "href": "beyond-work/travel.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "cooking",
+          "tag": "COOKING",
+          "name": "Cooking",
+          "blurb": "Placeholder — what you cook and who you cook it for.",
+          "href": "beyond-work/cooking.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
       ]
     },
     "aiToolPage": {
@@ -471,6 +511,301 @@ const SITE_CONTENT = {
       "educationHeading": "Education",
       "skillsHeading": "Skills",
       "projectsHeading": "Selected Projects"
+    },
+    "gameAnalysis": {
+      "heading": "Game Analysis",
+      "intro": "Teardowns of the systems, economies and level flow behind games I keep coming back to.",
+      "list": [
+        {
+          "id": "analysis-1",
+          "tag": "ANALYSIS · TBD",
+          "name": "Analysis one — title TBD",
+          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
+          "href": "game-analysis/analysis-1.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "analysis-2",
+          "tag": "ANALYSIS · TBD",
+          "name": "Analysis two — title TBD",
+          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
+          "href": "game-analysis/analysis-2.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "analysis-3",
+          "tag": "ANALYSIS · TBD",
+          "name": "Analysis three — title TBD",
+          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
+          "href": "game-analysis/analysis-3.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
+      ]
+    },
+    "aiHubPage": {
+      "pageTitle": "Young Gou — AI",
+      "tagLabel": "AI",
+      "heading": "AI Work",
+      "lead": "Small experiments and working tools built with AI — pick one to open it.",
+      "projectsHeading": "AI Side Projects",
+      "projectsIntro": "Prototypes and experiments, mostly built to answer a question.",
+      "projects": [
+        {
+          "id": "ai-project-1",
+          "tag": "SIDE PROJECT · TBD",
+          "name": "AI project one — title TBD",
+          "blurb": "Placeholder — one line on what it does and what you learned.",
+          "href": "ai-projects/project-1.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "ai-project-2",
+          "tag": "SIDE PROJECT · TBD",
+          "name": "AI project two — title TBD",
+          "blurb": "Placeholder — one line on what it does and what you learned.",
+          "href": "ai-projects/project-2.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
+      ],
+      "toolsHeading": "AI Tools",
+      "toolsIntro": "Tools you can actually run right here in the browser.",
+      "tools": [
+        {
+          "id": "playtest",
+          "tag": "LIVE TOOL",
+          "name": "Playtest Feedback Sorter",
+          "blurb": "Paste raw playtest feedback and get it grouped into themes by an AI model.",
+          "href": "ai-tools/playtest-feedback.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": false
+        },
+        {
+          "id": "tool-2",
+          "tag": "TOOL · TBD",
+          "name": "Tool two — title TBD",
+          "blurb": "Placeholder — one line on what this tool will do.",
+          "href": "ai-tools/tool-2.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
+      ]
+    },
+    "stories": {
+      "photography": {
+        "pageTitle": "Young Gou — Photography",
+        "tagLabel": "PHOTOGRAPHY",
+        "heading": "Photography",
+        "lead": "Placeholder — a line or two about how you got into shooting and what you look for.",
+        "backLink": "← Back to Beyond Work",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "architecture": {
+        "pageTitle": "Young Gou — Architecture",
+        "tagLabel": "ARCHITECTURE",
+        "heading": "Architecture",
+        "lead": "Placeholder — how an architecture background still shapes the way you read space.",
+        "backLink": "← Back to Beyond Work",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "travel": {
+        "pageTitle": "Young Gou — Travel",
+        "tagLabel": "TRAVEL",
+        "heading": "Travel",
+        "lead": "Placeholder — where you've been and what stuck with you.",
+        "backLink": "← Back to Beyond Work",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "cooking": {
+        "pageTitle": "Young Gou — Cooking",
+        "tagLabel": "COOKING",
+        "heading": "Cooking",
+        "lead": "Placeholder — what you cook, and what cooking has in common with production.",
+        "backLink": "← Back to Beyond Work",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "analysis-1": {
+        "pageTitle": "Young Gou — Game Analysis",
+        "tagLabel": "ANALYSIS · TBD",
+        "heading": "Analysis one — title TBD",
+        "lead": "Placeholder — which game, and the question you were trying to answer.",
+        "backLink": "← Back to Projects",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "analysis-2": {
+        "pageTitle": "Young Gou — Game Analysis",
+        "tagLabel": "ANALYSIS · TBD",
+        "heading": "Analysis two — title TBD",
+        "lead": "Placeholder — which game, and the question you were trying to answer.",
+        "backLink": "← Back to Projects",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "analysis-3": {
+        "pageTitle": "Young Gou — Game Analysis",
+        "tagLabel": "ANALYSIS · TBD",
+        "heading": "Analysis three — title TBD",
+        "lead": "Placeholder — which game, and the question you were trying to answer.",
+        "backLink": "← Back to Projects",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "ai-project-1": {
+        "pageTitle": "Young Gou — AI Project",
+        "tagLabel": "SIDE PROJECT · TBD",
+        "heading": "AI project one — title TBD",
+        "lead": "Placeholder — what you built and why.",
+        "backLink": "← Back to AI",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "ai-project-2": {
+        "pageTitle": "Young Gou — AI Project",
+        "tagLabel": "SIDE PROJECT · TBD",
+        "heading": "AI project two — title TBD",
+        "lead": "Placeholder — what you built and why.",
+        "backLink": "← Back to AI",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      },
+      "tool-2": {
+        "pageTitle": "Young Gou — AI Tool",
+        "tagLabel": "TOOL · TBD",
+        "heading": "Tool two — title TBD",
+        "lead": "Placeholder — what this tool will do once it's built.",
+        "backLink": "← Back to AI",
+        "blocks": [
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          },
+          {
+            "heading": "Placeholder heading",
+            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "image": "images/project-placeholder.svg",
+            "caption": "Placeholder caption"
+          }
+        ]
+      }
     }
   },
   "zh": {
@@ -482,7 +817,7 @@ const SITE_CONTENT = {
       "education": "教育背景",
       "writing": "博客",
       "beyondWork": "工作之外",
-      "aiTool": "AI 工具",
+      "aiTool": "AI 相关",
       "contact": "联系方式",
       "aboutFull": "关于我（详情）",
       "resume": "简历"
@@ -593,7 +928,7 @@ const SITE_CONTENT = {
           "length": "占位",
           "blurb": "占位文字 — 一句话介绍这款游戏。",
           "href": "team-projects/capstone.html",
-          "image": "../images/project-placeholder.svg",
+          "image": "images/project-placeholder.svg",
           "placeholder": true
         },
         {
@@ -605,7 +940,7 @@ const SITE_CONTENT = {
           "length": "1 学期",
           "blurb": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
-          "image": "../images/hamsterballin-card.jpg",
+          "image": "images/hamsterballin-card.jpg",
           "placeholder": false
         },
         {
@@ -617,7 +952,7 @@ const SITE_CONTENT = {
           "length": "1 学期",
           "blurb": "一款用 Unity 制作的 2D 解谜平台游戏，玩家折叠漫画世界来抓捕「Baahd Guys」。",
           "href": "team-projects/tgp1.html",
-          "image": "../images/detective-folder-card.jpg",
+          "image": "images/detective-folder-card.jpg",
           "placeholder": false
         }
       ]
@@ -725,7 +1060,7 @@ const SITE_CONTENT = {
           "name": "芳心纵火犯",
           "blurb": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
           "href": "individual-projects/fire.html",
-          "image": "../images/project-placeholder.svg",
+          "image": "images/project-placeholder.svg",
           "placeholder": true
         }
       ]
@@ -781,6 +1116,46 @@ const SITE_CONTENT = {
         { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
         { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
         { "src": "images/project-placeholder.svg", "caption": "占位说明文字" }
+      ],
+      "sectionsHeading": "板块",
+      "sectionsIntro": "不做游戏的时候，时间大概花在这四件事上。",
+      "sections": [
+        {
+          "id": "photography",
+          "tag": "摄影",
+          "name": "摄影",
+          "blurb": "占位文字 — 你拍什么，以及为什么一直拍下去。",
+          "href": "beyond-work/photography.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "architecture",
+          "tag": "建筑",
+          "name": "建筑",
+          "blurb": "占位文字 — 建筑背景如何影响你看待空间的方式。",
+          "href": "beyond-work/architecture.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "travel",
+          "tag": "旅行",
+          "name": "旅行",
+          "blurb": "占位文字 — 去过哪里，带回了什么。",
+          "href": "beyond-work/travel.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "cooking",
+          "tag": "厨艺",
+          "name": "厨艺",
+          "blurb": "占位文字 — 你做什么菜，做给谁吃。",
+          "href": "beyond-work/cooking.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
       ]
     },
     "aiToolPage": {
@@ -939,6 +1314,301 @@ const SITE_CONTENT = {
       "educationHeading": "教育背景",
       "skillsHeading": "技能",
       "projectsHeading": "代表项目"
+    },
+    "gameAnalysis": {
+      "heading": "游戏分析",
+      "intro": "拆解那些我反复回去玩的游戏——系统、经济与关卡节奏。",
+      "list": [
+        {
+          "id": "analysis-1",
+          "tag": "分析 · 待定",
+          "name": "分析一 — 标题待定",
+          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
+          "href": "game-analysis/analysis-1.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "analysis-2",
+          "tag": "分析 · 待定",
+          "name": "分析二 — 标题待定",
+          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
+          "href": "game-analysis/analysis-2.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "analysis-3",
+          "tag": "分析 · 待定",
+          "name": "分析三 — 标题待定",
+          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
+          "href": "game-analysis/analysis-3.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
+      ]
+    },
+    "aiHubPage": {
+      "pageTitle": "苟阳 — AI",
+      "tagLabel": "AI",
+      "heading": "AI 相关",
+      "lead": "用 AI 做的小实验和能直接用的工具——点开任意一个查看。",
+      "projectsHeading": "AI 小项目",
+      "projectsIntro": "为了回答某个问题而做的原型和实验。",
+      "projects": [
+        {
+          "id": "ai-project-1",
+          "tag": "小项目 · 待定",
+          "name": "AI 小项目一 — 标题待定",
+          "blurb": "占位文字 — 一句话说明它做什么、你学到了什么。",
+          "href": "ai-projects/project-1.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        },
+        {
+          "id": "ai-project-2",
+          "tag": "小项目 · 待定",
+          "name": "AI 小项目二 — 标题待定",
+          "blurb": "占位文字 — 一句话说明它做什么、你学到了什么。",
+          "href": "ai-projects/project-2.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
+      ],
+      "toolsHeading": "AI 工具",
+      "toolsIntro": "可以在浏览器里直接跑起来的工具。",
+      "tools": [
+        {
+          "id": "playtest",
+          "tag": "可直接使用",
+          "name": "Playtest 反馈归纳器",
+          "blurb": "粘贴原始 playtest 反馈，AI 自动归纳成分类主题。",
+          "href": "ai-tools/playtest-feedback.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": false
+        },
+        {
+          "id": "tool-2",
+          "tag": "工具 · 待定",
+          "name": "工具二 — 标题待定",
+          "blurb": "占位文字 — 一句话说明这个工具将来做什么。",
+          "href": "ai-tools/tool-2.html",
+          "image": "images/project-placeholder.svg",
+          "placeholder": true
+        }
+      ]
+    },
+    "stories": {
+      "photography": {
+        "pageTitle": "苟阳 — 摄影",
+        "tagLabel": "摄影",
+        "heading": "摄影",
+        "lead": "占位文字 — 怎么开始拍照的，以及你在找什么。",
+        "backLink": "← 返回工作之外",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "architecture": {
+        "pageTitle": "苟阳 — 建筑",
+        "tagLabel": "建筑",
+        "heading": "建筑",
+        "lead": "占位文字 — 建筑背景如何影响你阅读空间的方式。",
+        "backLink": "← 返回工作之外",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "travel": {
+        "pageTitle": "苟阳 — 旅行",
+        "tagLabel": "旅行",
+        "heading": "旅行",
+        "lead": "占位文字 — 去过哪些地方，留下了什么。",
+        "backLink": "← 返回工作之外",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "cooking": {
+        "pageTitle": "苟阳 — 厨艺",
+        "tagLabel": "厨艺",
+        "heading": "厨艺",
+        "lead": "占位文字 — 你做什么菜，做饭和做项目有什么共通之处。",
+        "backLink": "← 返回工作之外",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "analysis-1": {
+        "pageTitle": "苟阳 — 游戏分析",
+        "tagLabel": "分析 · 待定",
+        "heading": "分析一 — 标题待定",
+        "lead": "占位文字 — 拆的是哪款游戏，想回答什么问题。",
+        "backLink": "← 返回项目",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "analysis-2": {
+        "pageTitle": "苟阳 — 游戏分析",
+        "tagLabel": "分析 · 待定",
+        "heading": "分析二 — 标题待定",
+        "lead": "占位文字 — 拆的是哪款游戏，想回答什么问题。",
+        "backLink": "← 返回项目",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "analysis-3": {
+        "pageTitle": "苟阳 — 游戏分析",
+        "tagLabel": "分析 · 待定",
+        "heading": "分析三 — 标题待定",
+        "lead": "占位文字 — 拆的是哪款游戏，想回答什么问题。",
+        "backLink": "← 返回项目",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "ai-project-1": {
+        "pageTitle": "苟阳 — AI 小项目",
+        "tagLabel": "小项目 · 待定",
+        "heading": "AI 小项目一 — 标题待定",
+        "lead": "占位文字 — 你做了什么，为什么做。",
+        "backLink": "← 返回 AI",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "ai-project-2": {
+        "pageTitle": "苟阳 — AI 小项目",
+        "tagLabel": "小项目 · 待定",
+        "heading": "AI 小项目二 — 标题待定",
+        "lead": "占位文字 — 你做了什么，为什么做。",
+        "backLink": "← 返回 AI",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      },
+      "tool-2": {
+        "pageTitle": "苟阳 — AI 工具",
+        "tagLabel": "工具 · 待定",
+        "heading": "工具二 — 标题待定",
+        "lead": "占位文字 — 这个工具建成后会做什么。",
+        "backLink": "← 返回 AI",
+        "blocks": [
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          },
+          {
+            "heading": "占位小标题",
+            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "image": "images/project-placeholder.svg",
+            "caption": "占位图说"
+          }
+        ]
+      }
     }
   }
 };

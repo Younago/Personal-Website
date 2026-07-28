@@ -8,49 +8,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/profile.css" />
-<link rel="stylesheet" href="css/subpage.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/profile.css" />
+<link rel="stylesheet" href="../css/subpage.css" />
 </head>
-<body data-page="ai-hub" data-root="">
+<body data-page="story" data-root="../" data-story="stories.ai-project-2">
 
 <div id="chromeTop"></div>
 <nav id="chromeNav"></nav>
 
 <div class="profile-bar">
-  <a class="back-link" href="index.html">← Back to site</a></div>
+  <a class="back-link" id="storyBack" href="../ai-feedback.html"></a></div>
 
 <main class="resume">
   <div class="resume-header" style="border-bottom-color: var(--color-line);">
     <div>
-      <p class="mono detail-tag" data-i18n="aiHubPage.tagLabel"></p>
-      <h1 data-i18n="aiHubPage.heading"></h1>
+      <p class="mono detail-tag" id="storyTag"></p>
+      <h1 id="storyHeading"></h1>
     </div>
   </div>
 
   <section class="resume-section">
-    <p class="resume-summary" data-i18n="aiHubPage.lead"></p>
+    <p class="resume-summary" id="storyLead"></p>
   </section>
 
-  <section class="resume-section">
-    <h2 data-i18n="aiHubPage.projectsHeading"></h2>
-    <p class="resume-summary" data-i18n="aiHubPage.projectsIntro" style="margin-bottom: 16px;"></p>
-    <div class="projects-grid" id="aiProjectsGrid"></div>
-  </section>
-
-  <section class="resume-section">
-    <h2 data-i18n="aiHubPage.toolsHeading"></h2>
-    <p class="resume-summary" data-i18n="aiHubPage.toolsIntro" style="margin-bottom: 16px;"></p>
-    <div class="projects-grid" id="aiToolsGrid"></div>
-  </section>
+  <div class="story-blocks" id="storyBlocks"></div>
 
   <div class="page-contact-cta" id="pageContactCta"></div>
 </main>
 
 <footer id="chromeFooter"></footer>
 
-<script src="js/content.js"></script>
-<script src="js/chrome.js"></script>
-<script src="js/pages.js"></script>
+<script src="../js/content.js"></script>
+<script src="../js/chrome.js"></script>
+<script src="../js/pages.js"></script>
 </body>
 </html>
