@@ -211,8 +211,14 @@
   // still behaves normally.
   function swallowNavigation(e) {
     if (!active) return;
-    if (e.target.closest && e.target.closest(".edm-bar")) return; // toolbar stays live
-    var link = e.target.closest && e.target.closest("a, button[type='submit'], [role='link']");
+    if (!e.target.closest) return;
+    if (e.target.closest(".edm-bar")) return; // toolbar stays live
+    // The export button works by synthesizing a temporary <a download> and
+    // clicking it. That anchor lives directly on <body>, outside the toolbar,
+    // so without this escape hatch the guard below would cancel the very
+    // download it is meant to protect.
+    if (e.target.closest("[data-edm-skip]")) return;
+    var link = e.target.closest("a, button[type='submit'], [role='link']");
     if (link) {
       e.preventDefault();
       e.stopPropagation();
@@ -324,6 +330,7 @@
     var a = document.createElement("a");
     a.href = url;
     a.download = "site-edits.json";
+    a.setAttribute("data-edm-skip", "1");
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
