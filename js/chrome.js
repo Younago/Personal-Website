@@ -149,6 +149,19 @@
     updateVisibility();
   }
 
+  // Pull in the hidden edit-mode helper (js/edit-mode.js). It is injected here
+  // rather than added as a <script> tag to each of the ~14 HTML files, since
+  // chrome.js already runs on every page — one hook covers the whole site.
+  // The script itself is inert until somebody types the trigger sequence.
+  function loadEditMode(root) {
+    if (document.getElementById("editModeScript")) return;
+    var s = document.createElement("script");
+    s.id = "editModeScript";
+    s.src = (root || "") + "js/edit-mode.js";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   // Nav link targets are pages (not anchors) — every top-level section has
   // its own page now, per the site's "jump to a dedicated page" model.
   // `home` is prefixed with `root` (empty string on the homepage itself,
@@ -163,6 +176,7 @@
       buildBackToTop();
       initMenu();
       initYear();
+      loadEditMode(root);
       window.SITE_CHROME._root = root;
     },
     renderNav: function (lang, content, activeKey) {
