@@ -162,6 +162,18 @@
     document.body.appendChild(s);
   }
 
+  // Same one-hook-covers-every-page trick as loadEditMode: the animated
+  // background (js/backdrop.js) is injected here rather than added as a
+  // <script> tag to all 20-odd HTML files.
+  function loadBackdrop(root) {
+    if (document.getElementById("backdropScript")) return;
+    var s = document.createElement("script");
+    s.id = "backdropScript";
+    s.src = (root || "") + "js/backdrop.js";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   // Nav link targets are pages (not anchors) — every top-level section has
   // its own page now, per the site's "jump to a dedicated page" model.
   // `home` is prefixed with `root` (empty string on the homepage itself,
@@ -176,6 +188,7 @@
       buildBackToTop();
       initMenu();
       initYear();
+      loadBackdrop(root);
       loadEditMode(root);
       window.SITE_CHROME._root = root;
     },

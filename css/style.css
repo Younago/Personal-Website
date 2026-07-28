@@ -166,8 +166,25 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+/* The page background colour lives on <html>, not <body>, so the fixed
+   backdrop canvas (z-index: -1, injected as body's first child by
+   js/backdrop.js) has somewhere to paint. A negatively-stacked child paints
+   behind its parent's content but *above* the root background — give <body>
+   its own opaque background and the canvas disappears underneath it. */
+html {
   background: var(--color-bg);
+}
+
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}
+
+body {
+  background: transparent;
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 1.55;
