@@ -95,6 +95,10 @@
       ".edm-on [contenteditable='true'].edm-editable{outline:1px dashed #4a90d9;outline-offset:2px;border-radius:2px;cursor:text;}",
       ".edm-on [contenteditable='true'].edm-editable:focus{outline:2px solid #4a90d9;background:rgba(74,144,217,0.08);}",
       ".edm-on .edm-changed{background:rgba(74,144,217,0.14);}",
+      // Links are inert while editing (see swallowNavigation) — don't let them
+      // keep advertising themselves as clickable.
+      ".edm-on a{cursor:default;}",
+      ".edm-on a [contenteditable='true'].edm-editable,.edm-on a[contenteditable='true'].edm-editable{cursor:text;}",
       ".edm-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin-left:4px;vertical-align:middle;border:none;border-radius:50%;background:#e08a2e;color:#fff;font-size:11px;line-height:1;cursor:pointer;padding:0;}",
       ".edm-bar{position:fixed;left:0;right:0;bottom:0;z-index:99999;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 14px;background:#1b1d21;color:#f2f3f5;font:13px/1.4 system-ui,-apple-system,'Segoe UI',sans-serif;box-shadow:0 -4px 18px rgba(0,0,0,0.35);}",
       ".edm-bar strong{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8fb8e0;}",
@@ -195,11 +199,27 @@
     el.dataset.edmKey = key;
     el.dataset.edmOriginal = (el.textContent || "").trim();
     el.addEventListener("blur", onBlur);
-    // Editing a link shouldn't navigate away mid-sentence.
-    if (el.tagName === "A") el.addEventListener("click", swallowClick);
   }
 
-  function swallowClick(e) {
+  // While edit mode is on, clicking anything that would navigate (or submit a
+  // form) has to be swallowed — otherwise the project cards, whose whole body
+  // is wrapped in an <a>, jump to the detail page the moment you click their
+  // title to edit it. Registered in the capture phase on document so it also
+  // covers the common case where the editable element is a *descendant* of the
+  // link rather than the link itself. preventDefault only kills the navigation;
+  // caret placement happens on mousedown and is unaffected, so text editing
+  // still behaves normally.
+  function swallowNavigation(e) {
+    if (!active) return;
+    if (e.target.closest && e.target.closest(".edm-bar")) return; // toolbar stays live
+    var link = e.target.closest && e.target.closest("a, button[type='submit'], [role='link']");
+    if (link) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+
+  function swallowSubmit(e) {
     if (active) e.preventDefault();
   }
 
@@ -330,14 +350,19 @@
       makeEditable(el, "custom", selectorFor(el));
     });
 
+    document.addEventListener("click", swallowNavigation, true);
+    document.addEventListener("submit", swallowSubmit, true);
+
     attachPlaceholderBadges();
     buildToolbar();
-    toast("编辑模式已开启 — 点击文字直接修改，Esc 退出");
+    toast("编辑模式已开启 — 点击文字直接修改（链接已临时禁用），Esc 退出");
   }
 
   function deactivate() {
     if (!active) return;
     active = false;
+    document.removeEventListener("click", swallowNavigation, true);
+    document.removeEventListener("submit", swallowSubmit, true);
     document.body.classList.remove("edm-on");
     var els = document.querySelectorAll(".edm-editable");
     Array.prototype.forEach.call(els, function (el) {
