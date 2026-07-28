@@ -21,7 +21,10 @@
   --font-display: "Anton", "Arial Narrow", sans-serif;
   --font-body: "Work Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  --font-cjk: "Smiley Sans";
+  /* Swap this one value to change the Chinese typeface site-wide.
+     Options currently shipped in /fonts: "Xiangcui Chaoxisong", "Smiley Sans".
+     The "Full" entry is the coverage safety net — see the @font-face block. */
+  --font-cjk: "Xiangcui Chaoxisong", "Xiangcui Chaoxisong Full";
 
   /* 8px modular grid — every spacing value is a multiple of this unit */
   --u: 8px;
@@ -54,23 +57,91 @@ body {
 }
 
 /* ==========================================================================
-   Chinese typeface — Smiley Sans (得意黑), self-hosted
+   Chinese typeface — self-hosted
    ==========================================================================
-   Only one weight/style ships with the family, so the range is declared as
-   400–700: without that the browser would synthesise a fake bold for every
-   heading, which smears an already-oblique display face. The file is
-   oblique by design, but it is registered as font-style: normal so the
-   browser doesn't slant it a second time on top.
+   Whichever family --font-cjk points at is *appended* to the three font
+   stacks (never substituted for them) inside the html[lang="zh-CN"] block
+   below, so Latin characters keep coming from Anton / Work Sans / IBM Plex
+   Mono and only the Chinese glyphs — which none of those Latin faces
+   contain — fall through to the CJK face. Browsers download a webfont only
+   when something actually renders in it, so visitors who never switch to
+   Chinese never pay for these files. All five page scripts (main / pages /
+   post / project-detail / resume) set documentElement.lang on every
+   language switch, so this one rule covers the whole site.
 
-   The family is *appended* to the three font stacks (never substituted for
-   them) inside the html[lang="zh-CN"] block below, so Latin characters keep
-   coming from Anton / Work Sans / IBM Plex Mono and only the Chinese glyphs
-   — which none of those Latin faces contain — fall through to Smiley Sans.
-   Browsers download a webfont only when something actually renders in it,
-   so visitors who never switch to Chinese never pay for the ~1.1 MB file.
-   All five page scripts (main / pages / post / project-detail / resume) set
-   documentElement.lang on every language switch, so this one rule covers
-   the whole site. */
+   Currently active: 香萃潮汐宋 (Xiangcui Chaoxisong), a modern serif shipped
+   in two weights — W15 carries body copy at 400, W40 carries headings and
+   anything bold at 700. Declaring the two files as one family with distinct
+   font-weight values lets the browser pick the real weight instead of
+   smearing a synthetic bold over the light one, and means only the weights
+   a given page actually uses get downloaded.
+
+   Each weight ships TWICE, and the pair is the whole trick:
+
+     "Xiangcui Chaoxisong"      → *.subset.woff2, cut down to the ~695 Chinese
+                                  characters this site actually uses (~230 KB
+                                  per weight instead of ~2.6 MB).
+     "Xiangcui Chaoxisong Full" → the complete 7,300-glyph originals.
+
+   The stack lists the subset first and the full font immediately after.
+   Font fallback in CSS is per-character, not per-element: any character the
+   subset happens to be missing — text added after the subset was generated —
+   silently falls through to the full family, which the browser then fetches
+   *only at that moment*. So the common path stays ~230 KB and instant, and
+   new copy can never render in the wrong typeface; it just costs one lazy
+   download the first time an unknown character appears.
+
+   Regenerating the subset after a big content change is optional (the full
+   font already covers everything) but keeps that fallback from triggering.
+   The character list is simply every CJK codepoint appearing in the repo's
+   .html/.js files, plus ASCII, Latin-1 and the CJK/fullwidth punctuation
+   blocks as a margin.
+
+   Smiley Sans (得意黑) is left defined but unreferenced — swapping --font-cjk
+   back to it is a one-line change. An unused @font-face is never fetched,
+   so keeping it here costs nothing. */
+@font-face {
+  font-family: "Xiangcui Chaoxisong";
+  src: url("../fonts/XiangcuiChaoxisong-W15.subset.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Xiangcui Chaoxisong";
+  src: url("../fonts/XiangcuiChaoxisong-W40.subset.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The unicode-range on the two "Full" faces is load-bearing, not decoration.
+   Without it the browser has to download a font before it can discover the
+   font doesn't contain the character it was looking for — so a single glyph
+   that no Chinese face covers (©, ✎ and ✓ all appear on this site) would
+   pull 2.6 MB every time. Restricting these faces to CJK blocks means the
+   browser can rule them out for Latin and symbol characters from the
+   descriptor alone, and only ever reaches for them on an actual Chinese
+   character the subset happens to be missing. */
+@font-face {
+  font-family: "Xiangcui Chaoxisong Full";
+  src: url("../fonts/XiangcuiChaoxisong-W15.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2E80-2EFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "Xiangcui Chaoxisong Full";
+  src: url("../fonts/XiangcuiChaoxisong-W40.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2E80-2EFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF;
+}
+
 @font-face {
   font-family: "Smiley Sans";
   src: url("../fonts/SmileySans-Oblique.woff2") format("woff2");
