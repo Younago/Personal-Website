@@ -25,11 +25,17 @@
   var INTENSITY = 1;
 
   // How hard the cursor deforms the field. 0 disables the interaction
-  // entirely; 1 is roughly the point where it stops reading as "the page
-  // noticed you" and starts reading as a toy.
-  var POINTER_PUSH = 1;
+  // entirely; past ~3 it stops reading as "the page noticed you" and starts
+  // reading as a toy.
+  var POINTER_PUSH = 2.2;
 
-  var FPS = 30; // half of display refresh — this is wallpaper, not animation
+  // Idle is wallpaper and runs at half refresh; while the cursor is engaged
+  // the loop steps up to full rate. At 30fps the deformation lags the mouse
+  // by a visible ~33ms and the whole thing reads as unresponsive — the frame
+  // rate turned out to matter more to the feel than the size of the effect.
+  var FPS_IDLE = 30;
+  var FPS_ACTIVE = 60;
+  var FPS = FPS_IDLE;
   var canvas, ctx, w, h, dpr;
   var running = false;
   var lastFrame = 0;
@@ -45,7 +51,11 @@
   // pops into or out of existence.
   var ptr = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5, weight: 0, target: 0 };
   var pushRadius = 0;
+  var pushRadius2 = 0;
   var pushStrength = 0;
+  // Pre-baked alpha ramp for the halftone dots — see drawDots.
+  var dotRamp = [];
+  var DOT_STEPS = 16;
 
   // -------------------------------------------------------------------------
   // Palette is read from the live CSS custom properties rather than hardcoded,
@@ -68,6 +78,17 @@
       lineAlpha: (dark ? 0.1 : 0.095) * INTENSITY,
       dotAlpha: (dark ? 0.07 : 0.07) * INTENSITY,
     };
+  }
+
+  // Building an "rgba(...)" string per dot meant a few thousand string
+  // allocations every frame — the single most expensive thing this file did.
+  // The ramp is baked once per palette change and indexed instead.
+  function bakeDotRamp() {
+    var base = palette.dark ? "#ffffff" : palette.accent;
+    dotRamp = [];
+    for (var i = 0; i <= DOT_STEPS; i++) {
+      dotRamp.push(rgba(base, palette.dotAlpha * (1 - (i / DOT_STEPS) * 0.55)));
+    }
   }
 
   function hexToRgb(hex) {
@@ -96,12 +117,13 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // Both scale with the viewport so the cursor's "reach" feels the same on
     // a laptop and on a large monitor.
-    pushRadius = Math.min(w, h) * 0.34;
-    pushStrength = Math.min(w, h) * 0.05 * POINTER_PUSH;
+    pushRadius = Math.min(w, h) * 0.4;
+    pushRadius2 = pushRadius * pushRadius;
+    pushStrength = Math.min(w, h) * 0.055 * POINTER_PUSH;
   }
 
-  // Displace a point away from the cursor with a Gaussian falloff — the same
-  // shape used for both the contour vertices and the halftone dots, so the
+  // Displace a point away from the cursor with a bell-shaped falloff — the
+  // same curve for both the contour vertices and the halftone dots, so the
   // two layers deform as one material instead of two unrelated effects.
   // Returns how far the point moved, which drawDots reuses to thin the dots
   // it pushes (things stretched thin get lighter).
@@ -109,9 +131,14 @@
     if (ptr.weight <= 0.001) return 0;
     var dx = pt.x - ptr.x * w;
     var dy = pt.y - ptr.y * h;
-    var dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist > pushRadius * 2.2 || dist < 0.0001) return 0;
-    var f = Math.exp(-(dist * dist) / (pushRadius * pushRadius));
+    var d2 = dx * dx + dy * dy;
+    if (d2 > pushRadius2 * 4.8 || d2 < 1e-8) return 0;
+    // A rational curve instead of Math.exp: visually indistinguishable at
+    // these amplitudes and appreciably cheaper, which matters because this
+    // runs a few thousand times per frame.
+    var q = d2 / pushRadius2;
+    var f = 1 / (1 + q * q);
+    var dist = Math.sqrt(d2);
     var amount = f * pushStrength * ptr.weight;
     pt.x += (dx / dist) * amount;
     pt.y += (dy / dist) * amount;
@@ -127,8 +154,8 @@
   function drawBlobs(t) {
     var min = Math.min(w, h);
     var blobs = [
-      { hex: palette.accent, r: min * 0.62, x: 0.28 + Math.sin(t * 0.07) * 0.12, y: 0.32 + Math.cos(t * 0.05) * 0.14, a: 1, lean: 0.05 },
-      { hex: palette.warm, r: min * 0.52, x: 0.74 + Math.cos(t * 0.045) * 0.13, y: 0.66 + Math.sin(t * 0.062) * 0.12, a: 0.85, lean: -0.035 },
+      { hex: palette.accent, r: min * 0.62, x: 0.28 + Math.sin(t * 0.07) * 0.12, y: 0.32 + Math.cos(t * 0.05) * 0.14, a: 1, lean: 0.1 },
+      { hex: palette.warm, r: min * 0.52, x: 0.74 + Math.cos(t * 0.045) * 0.13, y: 0.66 + Math.sin(t * 0.062) * 0.12, a: 0.85, lean: -0.07 },
     ];
     blobs.forEach(function (b) {
       // The two fields lean by different amounts, and in opposite directions,
@@ -157,7 +184,7 @@
     var cx = w * (0.34 + Math.sin(t * 0.043) * 0.06);
     var cy = h * (0.52 + Math.cos(t * 0.037) * 0.08);
     var rings = 26;
-    var steps = 90;
+    var steps = 76;
     ctx.lineWidth = 1;
     for (var i = 0; i < rings; i++) {
       var f = i / rings;
@@ -166,7 +193,7 @@
       // Rings fade out at both ends of the family so the group has soft
       // edges instead of a hard first/last line.
       var edge = Math.sin(f * Math.PI);
-      ctx.strokeStyle = rgba(palette.accent, palette.lineAlpha * (0.35 + edge * 0.65));
+      var maxShove = 0;
       ctx.beginPath();
       for (var s = 0; s <= steps; s++) {
         var a = (s / steps) * Math.PI * 2;
@@ -180,11 +207,19 @@
           x: cx + Math.cos(a) * r * 1.18, // slightly wider than tall, as in the clip
           y: cy + Math.sin(a) * r,
         };
-        push(pt);
+        var shove = push(pt);
+        if (shove > maxShove) maxShove = shove;
         if (s === 0) ctx.moveTo(pt.x, pt.y);
         else ctx.lineTo(pt.x, pt.y);
       }
       ctx.closePath();
+      // Rings the cursor is deforming also brighten. Displacement alone is
+      // surprisingly easy to miss on lines this faint — the brightness change
+      // is what actually announces "this is reacting to you". Style is set
+      // after the path is built because the boost depends on how far the
+      // vertices ended up being pushed.
+      ctx.strokeStyle = rgba(palette.accent, palette.lineAlpha * (0.35 + edge * 0.65) * (1 + maxShove * 2.6));
+      ctx.lineWidth = 1 + maxShove * 0.5;
       ctx.stroke();
     }
   }
@@ -196,18 +231,29 @@
     var fx = w * (0.2 + Math.sin(t * 0.05) * 0.16);
     var fy = h * (0.42 + Math.cos(t * 0.041) * 0.2);
     var reach = Math.min(w, h) * 0.72;
-    var base = palette.dark ? "#ffffff" : palette.accent;
+    var reach2 = reach * reach;
+    var pt = { x: 0, y: 0 }; // reused — one object instead of a few thousand
+    var lastBucket = -1;
+    ctx.fillStyle = dotRamp[0];
     for (var x = gap * 0.5; x < w; x += gap) {
+      var ddx = x - fx;
       for (var y = gap * 0.5; y < h; y += gap) {
-        var d = Math.hypot(x - fx, y - fy) / reach;
-        if (d > 1) continue;
-        var r = (1 - d) * 1.7;
+        var ddy = y - fy;
+        var d2 = ddx * ddx + ddy * ddy;
+        if (d2 > reach2) continue;
+        var r = (1 - Math.sqrt(d2) / reach) * 1.7;
         if (r < 0.15) continue;
-        var pt = { x: x, y: y };
+        pt.x = x;
+        pt.y = y;
         var shove = push(pt);
         // Dots the cursor has shoved hardest also fade, so the grid reads as
-        // stretched rather than merely displaced.
-        ctx.fillStyle = rgba(base, palette.dotAlpha * (1 - shove * 0.55));
+        // stretched rather than merely displaced. Quantised to 16 steps so
+        // fillStyle is only reassigned when the bucket actually changes.
+        var bucket = (shove * DOT_STEPS) | 0;
+        if (bucket !== lastBucket) {
+          lastBucket = bucket;
+          ctx.fillStyle = dotRamp[bucket];
+        }
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, r * (1 - shove * 0.3), 0, Math.PI * 2);
         ctx.fill();
@@ -219,14 +265,37 @@
   // position chases quickly enough to feel connected, the weight fades slowly
   // enough that entering and leaving the window is never abrupt.
   function stepPointer() {
-    ptr.x += (ptr.tx - ptr.x) * 0.09;
-    ptr.y += (ptr.ty - ptr.y) * 0.09;
-    ptr.weight += (ptr.target - ptr.weight) * 0.05;
+    // Fast enough to feel attached to the cursor, slow enough to still lag
+    // it by a few frames — that lag is the "soft material" cue.
+    ptr.x += (ptr.tx - ptr.x) * 0.2;
+    ptr.y += (ptr.ty - ptr.y) * 0.2;
+    ptr.weight += (ptr.target - ptr.weight) * 0.12;
+    FPS = ptr.weight > 0.02 ? FPS_ACTIVE : FPS_IDLE;
+  }
+
+  // A soft pool of colour under the cursor. The displacement is a slow,
+  // material response; this is the immediate one — it arrives on the very
+  // first frame of movement, which is what makes the page feel awake rather
+  // than merely animated.
+  function drawCursorGlow() {
+    if (ptr.weight <= 0.01) return;
+    var cx = ptr.x * w;
+    var cy = ptr.y * h;
+    var r = pushRadius * 0.95;
+    var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    g.addColorStop(0, rgba(palette.accent, palette.blobAlpha * 0.85 * ptr.weight));
+    g.addColorStop(0.5, rgba(palette.accent, palette.blobAlpha * 0.3 * ptr.weight));
+    g.addColorStop(1, rgba(palette.accent, 0));
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
   }
 
   function draw(t) {
     ctx.clearRect(0, 0, w, h);
     drawBlobs(t);
+    drawCursorGlow();
     drawDots(t);
     drawContours(t);
   }
@@ -259,6 +328,7 @@
     document.body.insertBefore(canvas, document.body.firstChild);
 
     palette = readPalette();
+    bakeDotRamp();
     resize();
 
     if (reduceMotion) {
@@ -315,6 +385,7 @@
     if (window.MutationObserver) {
       new MutationObserver(function () {
         palette = readPalette();
+        bakeDotRamp();
         if (reduceMotion) draw(12);
       }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     }
