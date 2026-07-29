@@ -13,7 +13,7 @@ const SITE_CONTENT = {
       "experience": "EXPERIENCE",
       "education": "EDUCATION",
       "writing": "BLOG",
-      "beyondWork": "BEYOND WORK",
+      "beyondWork": "BEYOND GAME",
       "aiTool": "AI RELATED",
       "contact": "CONTACT",
       "aboutFull": "ABOUT ME",
@@ -301,8 +301,8 @@ const SITE_CONTENT = {
       "fun": "Placeholder — a couple of light, personal details (hobbies, favorite games, etc.) that show your voice."
     },
     "beyondWorkPage": {
-      "pageTitle": "Young Gou — Beyond Work",
-      "heading": "Beyond Work",
+      "pageTitle": "Young Gou — Beyond Game",
+      "heading": "Beyond Game",
       "lead": "Placeholder — a short introduction to who you are outside of games and work.",
       "galleryHeading": "Photo Wall",
       "galleryNote": "Placeholder — swap these for real photos any time.",
@@ -621,7 +621,7 @@ const SITE_CONTENT = {
         "tagLabel": "PHOTOGRAPHY",
         "heading": "Photography",
         "lead": "Placeholder — a line or two about how you got into shooting and what you look for.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -642,7 +642,7 @@ const SITE_CONTENT = {
         "tagLabel": "ARCHITECTURE",
         "heading": "Architecture",
         "lead": "Placeholder — how an architecture background still shapes the way you read space.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -663,7 +663,7 @@ const SITE_CONTENT = {
         "tagLabel": "TRAVEL",
         "heading": "Travel",
         "lead": "Placeholder — where you've been and what stuck with you.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -684,7 +684,7 @@ const SITE_CONTENT = {
         "tagLabel": "COOKING",
         "heading": "Cooking",
         "lead": "Placeholder — what you cook, and what cooking has in common with production.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -836,7 +836,7 @@ const SITE_CONTENT = {
       "experience": "工作经历",
       "education": "教育背景",
       "writing": "博客",
-      "beyondWork": "工作之外",
+      "beyondWork": "游戏之外",
       "aiTool": "AI 相关",
       "contact": "联系方式",
       "aboutFull": "关于我（详情）",
@@ -1124,8 +1124,8 @@ const SITE_CONTENT = {
       "fun": "占位文字 — 一两个轻松的个人细节（爱好、最喜欢的游戏等），展现你的个性。"
     },
     "beyondWorkPage": {
-      "pageTitle": "苟阳 — 工作之外",
-      "heading": "工作之外",
+      "pageTitle": "苟阳 — 游戏之外",
+      "heading": "游戏之外",
       "lead": "占位文字 — 简短介绍一下工作和游戏之外的你。",
       "galleryHeading": "照片墙",
       "galleryNote": "占位 — 之后随时可以替换成真实照片。",
@@ -1444,7 +1444,7 @@ const SITE_CONTENT = {
         "tagLabel": "摄影",
         "heading": "摄影",
         "lead": "占位文字 — 怎么开始拍照的，以及你在找什么。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1465,7 +1465,7 @@ const SITE_CONTENT = {
         "tagLabel": "建筑",
         "heading": "建筑",
         "lead": "占位文字 — 建筑背景如何影响你阅读空间的方式。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1486,7 +1486,7 @@ const SITE_CONTENT = {
         "tagLabel": "旅行",
         "heading": "旅行",
         "lead": "占位文字 — 去过哪些地方，留下了什么。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1507,7 +1507,7 @@ const SITE_CONTENT = {
         "tagLabel": "厨艺",
         "heading": "厨艺",
         "lead": "占位文字 — 你做什么菜，做饭和做项目有什么共通之处。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
