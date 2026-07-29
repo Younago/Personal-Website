@@ -415,6 +415,9 @@ a.blog-row {
   font-size: 12px;
   color: var(--color-text-muted);
   min-height: 16px;
+  /* Failures now append the server's own message on a second line — without
+     pre-line the newline collapses and the detail runs into the sentence. */
+  white-space: pre-line;
 }
 
 .ai-tool-status.is-error {

@@ -98,13 +98,39 @@
     });
   }
 
+  // The worker originally answered with four fixed buckets
+  // ({bugs, uxIssues, positive, suggestions}); it was later changed to return
+  // an open-ended {categories:[{label, items}]}. A deployment running the old
+  // version therefore hands back data this page finds no `categories` in, and
+  // the result is an empty "nothing to categorise" panel that looks exactly
+  // like the classifier failing. Rather than depend on which revision happens
+  // to be live, accept both shapes and translate the old one.
+  var LEGACY_BUCKETS = [
+    { key: "bugs", en: "Bugs", zh: "Bug" },
+    { key: "uxIssues", en: "UX Issues", zh: "体验问题" },
+    { key: "positive", en: "Positive Feedback", zh: "正面反馈" },
+    { key: "suggestions", en: "Suggestions", zh: "改进建议" },
+  ];
+
+  function toCategories(data) {
+    if (data && Array.isArray(data.categories)) return data.categories;
+    var out = [];
+    LEGACY_BUCKETS.forEach(function (b) {
+      var items = data && data[b.key];
+      if (Array.isArray(items) && items.length) {
+        out.push({ label: lang === "zh" ? b.zh : b.en, items: items });
+      }
+    });
+    return out;
+  }
+
   function showResults(data) {
     var results = document.getElementById("aiToolResults");
     if (!results) return;
     results.style.display = "";
     var summaryEl = document.getElementById("aiToolSummary");
     if (summaryEl) summaryEl.textContent = data.summary || "";
-    renderCategoryCards(data.categories);
+    renderCategoryCards(toCategories(data));
   }
 
   function updateRateLimitNote() {
@@ -152,17 +178,33 @@
       body: JSON.stringify({ feedback: text, lang: lang }),
     })
       .then(function (res) {
-        if (!res.ok) throw new Error("Request failed: " + res.status);
-        return res.json();
+        // Read the body even on a non-2xx: the worker puts its actual
+        // complaint in there, and throwing on status alone discards the one
+        // piece of information worth having.
+        return res.text().then(function (body) {
+          var data = null;
+          try { data = JSON.parse(body); } catch (e) { /* not JSON */ }
+          if (!res.ok) {
+            throw new Error("HTTP " + res.status + ((data && data.error) ? " — " + data.error : (body ? " — " + body.slice(0, 160) : "")));
+          }
+          if (!data) throw new Error("Malformed response: " + body.slice(0, 160));
+          if (data.error) throw new Error(data.error);
+          return data;
+        });
       })
       .then(function (data) {
-        if (data && data.error) throw new Error(data.error);
         incUsage();
         showResults(data);
         updateRateLimitNote();
       })
-      .catch(function () {
-        setStatus(dict.errorRequestFailed, true);
+      .catch(function (err) {
+        // Surfacing the real reason turns "it just stopped working" into
+        // something diagnosable without server logs. Previously every
+        // failure — network, CORS, 500, bad JSON — produced one identical
+        // sentence.
+        var detail = err && err.message ? err.message : "";
+        setStatus(dict.errorRequestFailed + (detail ? "\n(" + detail + ")" : ""), true);
+        if (window.console) console.error("[playtest tool]", err);
       })
       .then(function () {
         submitBtn.disabled = false;
