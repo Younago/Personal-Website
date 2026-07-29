@@ -78,7 +78,10 @@
     other: "#8a8f98",
     positive: "#3f9d6b",
   };
-  var SEVERITY_ORDER = { critical: 0, major: 1, minor: 2 };
+  // "unrated" is what a response from an older worker revision gets: those
+  // shapes carry no severity at all, and labelling every item "minor" would
+  // be inventing data. It sorts last and renders as a dash.
+  var SEVERITY_ORDER = { critical: 0, major: 1, minor: 2, unrated: 3 };
 
   function label(group, key, fallback) {
     var table = dict && dict[group];
@@ -220,7 +223,7 @@
       data.categories.forEach(function (c) {
         var type = guessType(c && c.label);
         (c && c.items ? c.items : []).forEach(function (item) {
-          out.push({ type: type, severity: "minor", note: String(item), playerFix: "", mentions: 1 });
+          out.push({ type: type, severity: "unrated", note: String(item), playerFix: "", mentions: 1 });
         });
       });
       return out;
@@ -229,7 +232,7 @@
       var items = data && data[b.key];
       if (!Array.isArray(items)) return;
       items.forEach(function (item) {
-        out.push({ type: b.type, severity: "minor", note: String(item), playerFix: "", mentions: 1 });
+        out.push({ type: b.type, severity: "unrated", note: String(item), playerFix: "", mentions: 1 });
       });
     });
     return out;

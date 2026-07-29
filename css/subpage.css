@@ -704,6 +704,10 @@ a.blog-row {
 .ai-sev-critical { color: #c9302c; background: rgba(201, 48, 44, 0.08); }
 .ai-sev-major    { color: #b5761c; background: rgba(181, 118, 28, 0.08); }
 .ai-sev-minor    { color: var(--color-text-muted); background: transparent; }
+/* An item that arrived without a severity (older backend revision) is shown
+   as unrated rather than quietly defaulted to "minor" — the display should
+   not assert something the data never said. */
+.ai-sev-unrated  { color: var(--color-text-muted); background: transparent; border-style: dashed; }
 
 .ai-type-tag {
   flex: none;

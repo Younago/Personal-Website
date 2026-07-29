@@ -364,7 +364,7 @@ const SITE_CONTENT = {
       "inputLabel": "Paste playtest feedback",
       "inputPlaceholder": "Paste one or more playtesters' written feedback here…",
       "sampleButton": "Load sample feedback",
-      "sampleText": "The controls felt great once I got used to them, but the tutorial didn't explain the dash move at all so I was stuck for a few minutes. Also the game crashed once when I paused during the boss fight. I really liked the art style and the music in level 2. It would be nice if there was a way to remap the jump button — my pinky kept slipping off.",
+      "sampleText": "Playtest session notes — build 0.4.2, 6 testers, 45 min each.\n\nTwo testers hit a hard crash when they opened the map during the boss fight. One of them lost about 40 minutes of progress because the last checkpoint was before the arena.\nThree people had no idea the dash existed until the second area. Two of them said there should be a prompt at the first gap you can't clear with a normal jump.\nBoss two is a wall — four testers died more than five times on it. One said outright \"boss three felt easier than boss two\".\nThe market scene dropped to slideshow framerate on both laptops, fine on the desktop.\nOne tester read the save icon as a delete button and avoided it for the whole session.\nEveryone liked the art. Three brought up the level 2 music without being asked.\nTwo asked for remappable controls — one said jump on B hurts their hand after 20 minutes; they suggested a key-binding screen in the options menu.\nSubtitle text overlaps the portrait at 1080p, but nobody seemed bothered by it.",
       "submitButton": "Analyze feedback",
       "loadingLabel": "Analyzing…",
       "summaryHeading": "Summary",
@@ -392,7 +392,8 @@ const SITE_CONTENT = {
       "severityLabels": {
         "critical": "Critical",
         "major": "Major",
-        "minor": "Minor"
+        "minor": "Minor",
+        "unrated": "Unrated"
       }
     },
     "skills": {
@@ -1186,7 +1187,7 @@ const SITE_CONTENT = {
       "inputLabel": "粘贴 playtest 反馈",
       "inputPlaceholder": "把一位或多位测试者写的反馈粘贴在这里……",
       "sampleButton": "载入示例反馈",
-      "sampleText": "操作手感习惯了之后感觉很好，但是教程完全没解释冲刺动作是怎么用的，我卡了好几分钟。另外在Boss战暂停的时候游戏崩溃了一次。我很喜欢美术风格和第二关的音乐。如果能重新绑定跳跃键就好了，我的小指老是滑掉。",
+      "sampleText": "Playtest 记录 —— 0.4.2 版本，6 名测试者，每人 45 分钟。\n\n两名测试者在 Boss 战里打开地图时直接崩溃。其中一人因为上一个存档点在竞技场之前，丢了大约 40 分钟的进度。\n三个人到第二个区域才知道有冲刺这个动作。其中两人说，应该在第一个跳不过去的缺口那里给个提示。\nBoss 二是道墙 —— 四名测试者在这里死了五次以上。有人直接说「Boss 三比 Boss 二还简单」。\n集市场景在两台笔记本上掉帧到幻灯片，台式机没问题。\n一名测试者把存档图标看成了删除按钮，整局都不敢点。\n所有人都喜欢美术。有三个人没被问就主动提到了第二关的音乐。\n两个人希望能自定义按键 —— 其中一人说跳跃放在 B 键上，玩 20 分钟手会疼，他建议在设置里加一个按键绑定界面。\n1080p 下字幕会和立绘叠在一起，不过似乎没人在意。",
       "submitButton": "分析反馈",
       "loadingLabel": "分析中…",
       "summaryHeading": "总结",
@@ -1214,7 +1215,8 @@ const SITE_CONTENT = {
       "severityLabels": {
         "critical": "严重",
         "major": "较重",
-        "minor": "轻微"
+        "minor": "轻微",
+        "unrated": "未分级"
       }
     },
     "skills": {
