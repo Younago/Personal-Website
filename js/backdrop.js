@@ -27,7 +27,7 @@
   // How hard the cursor deforms the field. 0 disables the interaction
   // entirely; past ~3 it stops reading as "the page noticed you" and starts
   // reading as a toy.
-  var POINTER_PUSH = 2.2;
+  var POINTER_PUSH = 1.1;
 
   // Idle is wallpaper and runs at half refresh; while the cursor is engaged
   // the loop steps up to full rate. At 30fps the deformation lags the mouse
@@ -53,6 +53,10 @@
   var pushRadius = 0;
   var pushRadius2 = 0;
   var pushStrength = 0;
+  // Scratch buffers reused every frame — see drawContours.
+  var px = [];
+  var py = [];
+  var vtx = { x: 0, y: 0 };
   // Pre-baked alpha ramp for the halftone dots — see drawDots.
   var dotRamp = [];
   var DOT_STEPS = 16;
@@ -184,7 +188,13 @@
     var cx = w * (0.34 + Math.sin(t * 0.043) * 0.06);
     var cy = h * (0.52 + Math.cos(t * 0.037) * 0.08);
     var rings = 26;
-    var steps = 76;
+    // Rings are drawn as curves through their vertices rather than as
+    // polylines. Straight chords were showing wherever the cursor pulled
+    // neighbouring vertices apart; the fix is smoothing, not brute-force
+    // resolution — pushing the step count high enough to hide the corners
+    // cost more per frame than the whole rest of the backdrop combined.
+    // With smoothing in place the count can actually come *down*.
+    var steps = 72;
     ctx.lineWidth = 1;
     for (var i = 0; i < rings; i++) {
       var f = i / rings;
@@ -194,8 +204,7 @@
       // edges instead of a hard first/last line.
       var edge = Math.sin(f * Math.PI);
       var maxShove = 0;
-      ctx.beginPath();
-      for (var s = 0; s <= steps; s++) {
+      for (var s = 0; s < steps; s++) {
         var a = (s / steps) * Math.PI * 2;
         var r = base * (1 + Math.sin(a * 3 + phase) * 0.075 + Math.sin(a * 2 - phase * 0.6) * 0.05);
         // Displacing each vertex individually — rather than scaling or
@@ -203,14 +212,22 @@
         // on the far side of the cursor and spread on the near side. That
         // uneven bunching is the squeeze; a whole-ring transform would just
         // look like the drawing moved.
-        var pt = {
-          x: cx + Math.cos(a) * r * 1.18, // slightly wider than tall, as in the clip
-          y: cy + Math.sin(a) * r,
-        };
-        var shove = push(pt);
+        vtx.x = cx + Math.cos(a) * r * 1.18; // slightly wider than tall, as in the clip
+        vtx.y = cy + Math.sin(a) * r;
+        var shove = push(vtx);
         if (shove > maxShove) maxShove = shove;
-        if (s === 0) ctx.moveTo(pt.x, pt.y);
-        else ctx.lineTo(pt.x, pt.y);
+        px[s] = vtx.x;
+        py[s] = vtx.y;
+      }
+      // Quadratic curves anchored at the midpoints between consecutive
+      // vertices: every vertex becomes a control point, so the line passes
+      // through the midpoints as a continuous curve with no corners at all,
+      // however far apart the cursor has dragged the points.
+      ctx.beginPath();
+      ctx.moveTo((px[steps - 1] + px[0]) / 2, (py[steps - 1] + py[0]) / 2);
+      for (var k = 0; k < steps; k++) {
+        var n = (k + 1) % steps;
+        ctx.quadraticCurveTo(px[k], py[k], (px[k] + px[n]) / 2, (py[k] + py[n]) / 2);
       }
       ctx.closePath();
       // Rings the cursor is deforming also brighten. Displacement alone is
@@ -218,7 +235,7 @@
       // is what actually announces "this is reacting to you". Style is set
       // after the path is built because the boost depends on how far the
       // vertices ended up being pushed.
-      ctx.strokeStyle = rgba(palette.accent, palette.lineAlpha * (0.35 + edge * 0.65) * (1 + maxShove * 2.6));
+      ctx.strokeStyle = rgba(palette.accent, palette.lineAlpha * (0.35 + edge * 0.65) * (1 + maxShove * 2.2));
       ctx.lineWidth = 1 + maxShove * 0.5;
       ctx.stroke();
     }

@@ -24,46 +24,19 @@
 </div>
 
 <main class="resume">
+  <!-- The page is now just the resume itself: the PDF is the document of
+       record, and re-typing it as HTML above the embed only created two
+       copies to keep in sync. Everything that used to live here (summary,
+       skills, experience, education, selected projects) is still in
+       content.js and still rendered on the other pages. -->
   <div class="resume-header">
     <div>
       <h1 class="identity" data-i18n="hero.name"></h1>
       <p class="role-line" data-i18n="resumePage.roleTag"></p>
     </div>
-    <div class="resume-contact">
-      <div id="resumeLocation"></div>
-      <div><a id="resumeEmail" href="#"></a></div>
-      <div id="resumeWebsite"></div>
-    </div>
   </div>
 
-  <section class="resume-section">
-    <h2 data-i18n="resumePage.summaryHeading"></h2>
-    <p class="resume-summary" data-i18n="resumePage.summary"></p>
-  </section>
-
-  <section class="resume-section">
-    <h2 data-i18n="skills.heading"></h2>
-    <div class="resume-skills" id="resumeSkills"></div>
-  </section>
-
-  <section class="resume-section">
-    <h2 data-i18n="resumePage.experienceHeading"></h2>
-    <div id="resumeExperience"></div>
-  </section>
-
-  <section class="resume-section">
-    <h2 data-i18n="resumePage.educationHeading"></h2>
-    <div id="resumeEducation"></div>
-  </section>
-
-  <section class="resume-section">
-    <h2 data-i18n="resumePage.projectsHeading"></h2>
-    <div class="resume-projects" id="resumeProjects"></div>
-  </section>
-
   <section class="resume-section resume-embed-outer">
-    <h2 data-i18n="resumePage.embedHeading"></h2>
-    <p class="resume-summary" id="resumeEmbedNote" style="margin-bottom: 16px;"></p>
     <div class="resume-embed-wide">
       <div id="resumeEmbedWrap"></div>
     </div>

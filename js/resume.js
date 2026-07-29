@@ -26,73 +26,11 @@
       if (typeof value === "string") el.textContent = value;
     });
 
-    document.getElementById("resumeLocation").textContent = dict.contact.location;
-    var emailEl = document.getElementById("resumeEmail");
-    emailEl.textContent = dict.contact.email;
-    emailEl.href = "mailto:" + dict.contact.email;
-    document.getElementById("resumeWebsite").textContent = dict.contact.website;
   }
 
-  function renderSkills(lang) {
-    var wrap = document.getElementById("resumeSkills");
-    wrap.innerHTML = "";
-    content[lang].skills.items.forEach(function (s) {
-      var chip = document.createElement("span");
-      chip.className = "chip";
-      chip.textContent = s;
-      wrap.appendChild(chip);
-    });
-    content[lang].skills.languages.forEach(function (s) {
-      var chip = document.createElement("span");
-      chip.className = "chip";
-      chip.textContent = s;
-      wrap.appendChild(chip);
-    });
-  }
 
-  function renderExperience(lang) {
-    var wrap = document.getElementById("resumeExperience");
-    wrap.innerHTML = "";
-    content[lang].experience.items.forEach(function (item) {
-      var bullets = (item.bullets || []).map(function (b) { return "<li>" + b + "</li>"; }).join("");
-      var row = document.createElement("div");
-      row.className = "resume-entry";
-      row.innerHTML =
-        '<div class="dates">' + item.dates + "</div>" +
-        '<div><p class="title">' + item.title + " — " + item.org + '</p>' +
-        '<p class="org">' + (item.location || "") + '</p>' +
-        '<ul class="detail-list">' + bullets + "</ul></div>";
-      wrap.appendChild(row);
-    });
-  }
 
-  function renderEducation(lang) {
-    var wrap = document.getElementById("resumeEducation");
-    wrap.innerHTML = "";
-    content[lang].education.items.forEach(function (item) {
-      var row = document.createElement("div");
-      row.className = "resume-entry";
-      row.innerHTML =
-        '<div class="dates">' + item.dates + "</div>" +
-        '<div><p class="title">' + item.degree + "</p>" +
-        '<p class="org">' + item.school + (item.location ? " — " + item.location : "") + "</p></div>";
-      wrap.appendChild(row);
-    });
-  }
 
-  function renderProjects(lang) {
-    var wrap = document.getElementById("resumeProjects");
-    wrap.innerHTML = "";
-    content[lang].projects.items.forEach(function (p) {
-      var item = document.createElement("div");
-      item.className = "item";
-      item.innerHTML =
-        "<h3>" + p.title + " <span style=\"font-weight:400;color:var(--color-text-muted);\">(" + p.tag + ")</span></h3>" +
-        '<p class="role">' + p.role + "</p>" +
-        '<p class="summary">' + p.summary + "</p>";
-      wrap.appendChild(item);
-    });
-  }
 
   function renderEmbed() {
     var wrap = document.getElementById("resumeEmbedWrap");
@@ -109,10 +47,6 @@
       btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
     });
     applyStaticText(lang);
-    renderSkills(lang);
-    renderExperience(lang);
-    renderEducation(lang);
-    renderProjects(lang);
     renderEmbed();
     window.SITE_CHROME.renderNav(lang, content, "resume");
   }
