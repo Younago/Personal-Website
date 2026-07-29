@@ -24,6 +24,11 @@
   // turning the backdrop up or down is a one-number change.
   var INTENSITY = 1;
 
+  // How hard the cursor deforms the field. 0 disables the interaction
+  // entirely; 1 is roughly the point where it stops reading as "the page
+  // noticed you" and starts reading as a toy.
+  var POINTER_PUSH = 1;
+
   var FPS = 30; // half of display refresh — this is wallpaper, not animation
   var canvas, ctx, w, h, dpr;
   var running = false;
@@ -31,6 +36,16 @@
   var startedAt = 0;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var palette;
+
+  // Cursor state. `x/y` chase `tx/ty` a frame at a time rather than snapping,
+  // so the field lags slightly behind the pointer — that lag is most of what
+  // makes the deformation feel like a soft material being pushed rather than
+  // a value being assigned. `weight` fades the whole effect in on the first
+  // move and back out when the pointer leaves the window, so nothing ever
+  // pops into or out of existence.
+  var ptr = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5, weight: 0, target: 0 };
+  var pushRadius = 0;
+  var pushStrength = 0;
 
   // -------------------------------------------------------------------------
   // Palette is read from the live CSS custom properties rather than hardcoded,
@@ -79,6 +94,28 @@
     canvas.style.width = w + "px";
     canvas.style.height = h + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // Both scale with the viewport so the cursor's "reach" feels the same on
+    // a laptop and on a large monitor.
+    pushRadius = Math.min(w, h) * 0.34;
+    pushStrength = Math.min(w, h) * 0.05 * POINTER_PUSH;
+  }
+
+  // Displace a point away from the cursor with a Gaussian falloff — the same
+  // shape used for both the contour vertices and the halftone dots, so the
+  // two layers deform as one material instead of two unrelated effects.
+  // Returns how far the point moved, which drawDots reuses to thin the dots
+  // it pushes (things stretched thin get lighter).
+  function push(pt) {
+    if (ptr.weight <= 0.001) return 0;
+    var dx = pt.x - ptr.x * w;
+    var dy = pt.y - ptr.y * h;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist > pushRadius * 2.2 || dist < 0.0001) return 0;
+    var f = Math.exp(-(dist * dist) / (pushRadius * pushRadius));
+    var amount = f * pushStrength * ptr.weight;
+    pt.x += (dx / dist) * amount;
+    pt.y += (dy / dist) * amount;
+    return f * ptr.weight;
   }
 
   // -------------------------------------------------------------------------
@@ -90,12 +127,16 @@
   function drawBlobs(t) {
     var min = Math.min(w, h);
     var blobs = [
-      { hex: palette.accent, r: min * 0.62, x: 0.28 + Math.sin(t * 0.07) * 0.12, y: 0.32 + Math.cos(t * 0.05) * 0.14, a: 1 },
-      { hex: palette.warm, r: min * 0.52, x: 0.74 + Math.cos(t * 0.045) * 0.13, y: 0.66 + Math.sin(t * 0.062) * 0.12, a: 0.85 },
+      { hex: palette.accent, r: min * 0.62, x: 0.28 + Math.sin(t * 0.07) * 0.12, y: 0.32 + Math.cos(t * 0.05) * 0.14, a: 1, lean: 0.05 },
+      { hex: palette.warm, r: min * 0.52, x: 0.74 + Math.cos(t * 0.045) * 0.13, y: 0.66 + Math.sin(t * 0.062) * 0.12, a: 0.85, lean: -0.035 },
     ];
     blobs.forEach(function (b) {
-      var cx = b.x * w;
-      var cy = b.y * h;
+      // The two fields lean by different amounts, and in opposite directions,
+      // so moving the cursor parallaxes them against each other instead of
+      // sliding the whole background around as one sheet.
+      var lean = b.lean * ptr.weight * POINTER_PUSH;
+      var cx = (b.x + (ptr.x - 0.5) * lean * 2) * w;
+      var cy = (b.y + (ptr.y - 0.5) * lean * 2) * h;
       var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, b.r);
       g.addColorStop(0, rgba(b.hex, palette.blobAlpha * b.a));
       g.addColorStop(0.55, rgba(b.hex, palette.blobAlpha * b.a * 0.42));
@@ -130,10 +171,18 @@
       for (var s = 0; s <= steps; s++) {
         var a = (s / steps) * Math.PI * 2;
         var r = base * (1 + Math.sin(a * 3 + phase) * 0.075 + Math.sin(a * 2 - phase * 0.6) * 0.05);
-        var x = cx + Math.cos(a) * r * 1.18; // slightly wider than tall, as in the clip
-        var y = cy + Math.sin(a) * r;
-        if (s === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
+        // Displacing each vertex individually — rather than scaling or
+        // offsetting the ring as a whole — is what makes the family bunch up
+        // on the far side of the cursor and spread on the near side. That
+        // uneven bunching is the squeeze; a whole-ring transform would just
+        // look like the drawing moved.
+        var pt = {
+          x: cx + Math.cos(a) * r * 1.18, // slightly wider than tall, as in the clip
+          y: cy + Math.sin(a) * r,
+        };
+        push(pt);
+        if (s === 0) ctx.moveTo(pt.x, pt.y);
+        else ctx.lineTo(pt.x, pt.y);
       }
       ctx.closePath();
       ctx.stroke();
@@ -147,18 +196,32 @@
     var fx = w * (0.2 + Math.sin(t * 0.05) * 0.16);
     var fy = h * (0.42 + Math.cos(t * 0.041) * 0.2);
     var reach = Math.min(w, h) * 0.72;
-    ctx.fillStyle = rgba(palette.dark ? "#ffffff" : palette.accent, palette.dotAlpha);
+    var base = palette.dark ? "#ffffff" : palette.accent;
     for (var x = gap * 0.5; x < w; x += gap) {
       for (var y = gap * 0.5; y < h; y += gap) {
         var d = Math.hypot(x - fx, y - fy) / reach;
         if (d > 1) continue;
         var r = (1 - d) * 1.7;
         if (r < 0.15) continue;
+        var pt = { x: x, y: y };
+        var shove = push(pt);
+        // Dots the cursor has shoved hardest also fade, so the grid reads as
+        // stretched rather than merely displaced.
+        ctx.fillStyle = rgba(base, palette.dotAlpha * (1 - shove * 0.55));
         ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.arc(pt.x, pt.y, r * (1 - shove * 0.3), 0, Math.PI * 2);
         ctx.fill();
       }
     }
+  }
+
+  // Ease the cursor state one frame forward. Two different rates: the
+  // position chases quickly enough to feel connected, the weight fades slowly
+  // enough that entering and leaving the window is never abrupt.
+  function stepPointer() {
+    ptr.x += (ptr.tx - ptr.x) * 0.09;
+    ptr.y += (ptr.ty - ptr.y) * 0.09;
+    ptr.weight += (ptr.target - ptr.weight) * 0.05;
   }
 
   function draw(t) {
@@ -173,6 +236,7 @@
     requestAnimationFrame(frame);
     if (now - lastFrame < 1000 / FPS) return;
     lastFrame = now;
+    stepPointer();
     draw((now - startedAt) / 1000);
   }
 
@@ -205,6 +269,30 @@
     } else {
       startedAt = performance.now();
       start();
+    }
+
+    // Pointer interaction. Deliberately skipped under reduced-motion (a
+    // "still" background that squirms when you move the mouse is not still)
+    // and on touch devices, where there is no hovering cursor to follow and
+    // the handler would only fire mid-tap.
+    if (!reduceMotion && window.matchMedia && window.matchMedia("(hover: hover)").matches) {
+      window.addEventListener("pointermove", function (e) {
+        if (e.pointerType === "touch") return;
+        ptr.tx = e.clientX / w;
+        ptr.ty = e.clientY / h;
+        if (ptr.target === 0) {
+          // First movement: start the deformation from where the cursor
+          // actually is, otherwise it sweeps in from the centre of the page.
+          ptr.x = ptr.tx;
+          ptr.y = ptr.ty;
+        }
+        ptr.target = 1;
+      }, { passive: true });
+
+      // Pointer left the window (or the tab lost focus mid-move): relax the
+      // field back to its undisturbed shape rather than freezing it mid-dent.
+      document.addEventListener("pointerleave", function () { ptr.target = 0; });
+      window.addEventListener("blur", function () { ptr.target = 0; });
     }
 
     var resizeTimer;
