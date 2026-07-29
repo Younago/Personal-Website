@@ -27,7 +27,7 @@
   // How hard the cursor deforms the field. 0 disables the interaction
   // entirely; past ~3 it stops reading as "the page noticed you" and starts
   // reading as a toy.
-  var POINTER_PUSH = 1.1;
+  var POINTER_PUSH = 0.6;
 
   // Idle is wallpaper and runs at half refresh; while the cursor is engaged
   // the loop steps up to full rate. At 30fps the deformation lags the mouse
@@ -282,11 +282,14 @@
   // position chases quickly enough to feel connected, the weight fades slowly
   // enough that entering and leaving the window is never abrupt.
   function stepPointer() {
-    // Fast enough to feel attached to the cursor, slow enough to still lag
-    // it by a few frames — that lag is the "soft material" cue.
-    ptr.x += (ptr.tx - ptr.x) * 0.2;
-    ptr.y += (ptr.ty - ptr.y) * 0.2;
-    ptr.weight += (ptr.target - ptr.weight) * 0.12;
+    // The chase rate is the "weight" of the material: at 0.2 the field felt
+    // stuck to the cursor, at 0.09 it trails behind by ~a third of a second
+    // and reads as something heavy being dragged rather than something
+    // attached. Low enough amplitude that the lag is the main thing you
+    // notice, which is the point.
+    ptr.x += (ptr.tx - ptr.x) * 0.09;
+    ptr.y += (ptr.ty - ptr.y) * 0.09;
+    ptr.weight += (ptr.target - ptr.weight) * 0.07;
     FPS = ptr.weight > 0.02 ? FPS_ACTIVE : FPS_IDLE;
   }
 
