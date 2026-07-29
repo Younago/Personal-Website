@@ -632,3 +632,123 @@ a.blog-row {
     gap: calc(var(--u) * 6);
   }
 }
+
+/* ==========================================================================
+   AI tool — two-axis findings (type × severity)
+   ========================================================================== */
+.ai-tool-taxonomy {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 68ch;
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+/* The "fix first" block deliberately sits above the type cards: the cards
+   answer "what kind of problems are there", this answers "what do I do on
+   Monday", which is the question a producer actually has. */
+.ai-tool-priority {
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  padding: calc(var(--u) * 2.5) calc(var(--u) * 3);
+  margin-bottom: calc(var(--u) * 4);
+}
+
+.ai-tool-priority h3 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.ai-tool-priority ul,
+.ai-tool-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 1.25);
+}
+
+.ai-tool-priority li,
+.ai-tool-card li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 0;
+}
+
+/* Reset the old bullet marker — rows now lead with a severity chip. */
+.ai-tool-card li::before {
+  content: none;
+}
+
+.ai-sev {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+}
+
+/* Severity is the one thing that should be readable at a glance from across
+   the desk, so it gets the only saturated colour in the row. */
+.ai-sev-critical { color: #c9302c; background: rgba(201, 48, 44, 0.08); }
+.ai-sev-major    { color: #b5761c; background: rgba(181, 118, 28, 0.08); }
+.ai-sev-minor    { color: var(--color-text-muted); background: transparent; }
+
+.ai-type-tag {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ai-note {
+  flex: 1 1 60%;
+  color: var(--color-text);
+}
+
+.ai-mentions {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Player-proposed fixes drop to a full-width second line in a quieter style:
+   they are worth recording, but they are not the finding. */
+.ai-playerfix {
+  flex: 1 1 100%;
+  padding-left: calc(var(--u) * 1.5);
+  border-left: 2px solid var(--color-line);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.ai-count {
+  float: right;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 560px) {
+  .ai-tool-priority {
+    padding: calc(var(--u) * 2);
+  }
+  .ai-note {
+    flex: 1 1 100%;
+  }
+}

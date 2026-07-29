@@ -359,7 +359,7 @@ const SITE_CONTENT = {
       "pageTitle": "Young Gou — AI Playtest Feedback Tool",
       "tagLabel": "AI DEMO",
       "heading": "AI Playtest Feedback Triage",
-      "lead": "A small tool I built to demonstrate hands-on experience applying AI to real production workflows: paste raw playtest feedback and it sorts it into bugs, UX issues, positive notes, and suggestions — the kind of first-pass triage a producer normally does by hand after a playtest session.",
+      "lead": "A small tool I built to show hands-on experience applying AI to a real production workflow: paste raw playtest feedback and it comes back triaged the way a producer would triage it by hand after a session — split into individual findings, each tagged with what kind of work it is and how badly it hurts.",
       "disclaimer": "This calls a small serverless function backed by a language model. Nothing you paste here is stored — it's only used to generate the categorized summary below.",
       "inputLabel": "Paste playtest feedback",
       "inputPlaceholder": "Paste one or more playtesters' written feedback here…",
@@ -374,7 +374,26 @@ const SITE_CONTENT = {
       "errorNotConfigured": "This demo's backend hasn't been deployed yet — check back soon.",
       "errorRequestFailed": "Something went wrong reaching the AI service. Please try again in a moment.",
       "rateLimitNote": "Limited to {limit} analyses per day on this demo to keep hosting costs in check. {remaining} left today.",
-      "rateLimitReached": "You've used all {limit} analyses available today on this demo — please come back tomorrow."
+      "rateLimitReached": "You've used all {limit} analyses available today on this demo — please come back tomorrow.",
+      "taxonomyNote": "Every point is classified on two axes: what kind of work it is (type), and how much it hurts (severity). Type routes the work; severity and how often players raised it decide what gets done first.",
+      "priorityHeading": "Fix first",
+      "mentionsLabel": "raised {n}x",
+      "playerFixLabel": "Player's suggested fix",
+      "typeLabels": {
+        "bug": "Bugs",
+        "performance": "Performance",
+        "usability": "Usability",
+        "balance": "Balance",
+        "content": "Content",
+        "request": "Feature requests",
+        "other": "Other",
+        "positive": "What worked"
+      },
+      "severityLabels": {
+        "critical": "Critical",
+        "major": "Major",
+        "minor": "Minor"
+      }
     },
     "skills": {
       "heading": "Skills",
@@ -1162,7 +1181,7 @@ const SITE_CONTENT = {
       "pageTitle": "苟阳 — AI Playtest 反馈工具",
       "tagLabel": "AI 演示",
       "heading": "AI Playtest 反馈归纳",
-      "lead": "一个用来体现我在实际制作流程里应用 AI 经验的小工具：粘贴一段原始的 playtest 反馈文字，它会自动归类成 bug、体验问题、正向反馈和改进建议——也就是制作人在 playtest 之后通常需要手动做的第一轮分拣工作。",
+      "lead": "一个小工具，用来展示把 AI 用在真实制作流程里的实践经验：粘贴原始的 playtest 反馈，它会按制作人手工分诊的方式返回结果——拆成一条条独立条目，每条标注属于哪类工作、以及对体验的伤害有多大。",
       "disclaimer": "这个功能调用了一个由语言模型驱动的小型 serverless 函数。你粘贴的内容不会被存储，只用于生成下面的归类摘要。",
       "inputLabel": "粘贴 playtest 反馈",
       "inputPlaceholder": "把一位或多位测试者写的反馈粘贴在这里……",
@@ -1177,7 +1196,26 @@ const SITE_CONTENT = {
       "errorNotConfigured": "这个演示的后端还没有部署，请稍后再来看看。",
       "errorRequestFailed": "请求 AI 服务时出了点问题，请稍后再试一次。",
       "rateLimitNote": "为了控制托管成本，这个演示每天限制使用 {limit} 次，今天还剩 {remaining} 次。",
-      "rateLimitReached": "今天这个演示的 {limit} 次额度已经用完了，明天再来试试吧。"
+      "rateLimitReached": "今天这个演示的 {limit} 次额度已经用完了，明天再来试试吧。",
+      "taxonomyNote": "每条反馈按两个维度分类：属于哪类工作（类型），以及对体验的伤害有多大（严重度）。类型决定这活儿归谁做，严重度和被提及的次数决定先做哪一条。",
+      "priorityHeading": "优先处理",
+      "mentionsLabel": "被提到 {n} 次",
+      "playerFixLabel": "玩家提出的方案",
+      "typeLabels": {
+        "bug": "Bug",
+        "performance": "性能",
+        "usability": "易用性",
+        "balance": "数值平衡",
+        "content": "内容",
+        "request": "功能需求",
+        "other": "其他",
+        "positive": "做对了的地方"
+      },
+      "severityLabels": {
+        "critical": "严重",
+        "major": "较重",
+        "minor": "轻微"
+      }
     },
     "skills": {
       "heading": "技能",

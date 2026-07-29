@@ -58,68 +58,179 @@
     el.classList.toggle("is-error", !!isError);
   }
 
-  // The backend no longer forces feedback into a fixed bugs/UX/positive/
-  // suggestions split — it returns however many thematic categories (with
-  // AI-chosen labels) genuinely fit the input. Since the count and labels
-  // are unknown ahead of time, cards are built on the fly and colored by
-  // cycling through this palette instead of relying on fixed CSS classes
-  // keyed to fixed category names.
-  var CATEGORY_COLORS = ["#d9534f", "#e0a233", "#4a9d5f", "#4a7fd9", "#9d6bd9", "#d94a9c"];
+  // ---------------------------------------------------------------------
+  // Rendering
+  // ---------------------------------------------------------------------
+  // Findings are classified on two axes (see the worker for the reasoning):
+  // a closed `type` axis saying what kind of work an item is, and a
+  // `severity` axis which — together with the mention count — says what to
+  // do about it first. Cards group by type because that is how work gets
+  // routed; ordering within and above them is driven by severity, because
+  // that is how work gets prioritised.
+  var TYPE_ORDER = ["bug", "performance", "usability", "balance", "content", "request", "other", "positive"];
+  var TYPE_COLORS = {
+    bug: "#d9534f",
+    performance: "#d97a2b",
+    usability: "#e0a233",
+    balance: "#4a7fd9",
+    content: "#9d6bd9",
+    request: "#4a9d5f",
+    other: "#8a8f98",
+    positive: "#3f9d6b",
+  };
+  var SEVERITY_ORDER = { critical: 0, major: 1, minor: 2 };
 
-  function renderCategoryCards(categories) {
+  function label(group, key, fallback) {
+    var table = dict && dict[group];
+    return (table && table[key]) || fallback || key;
+  }
+
+  function byPriority(a, b) {
+    var d = SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity];
+    return d !== 0 ? d : b.mentions - a.mentions;
+  }
+
+  function findingRow(f) {
+    var li = document.createElement("li");
+
+    var sev = document.createElement("span");
+    sev.className = "ai-sev ai-sev-" + f.severity;
+    sev.textContent = label("severityLabels", f.severity, f.severity);
+    li.appendChild(sev);
+
+    var note = document.createElement("span");
+    note.className = "ai-note";
+    note.textContent = f.note;
+    li.appendChild(note);
+
+    if (f.mentions > 1) {
+      var m = document.createElement("span");
+      m.className = "ai-mentions";
+      m.textContent = fmt(dict.mentionsLabel || "x{n}", { n: f.mentions });
+      li.appendChild(m);
+    }
+    // The player's proposed fix is shown but visibly separated from what
+    // they observed: the observation is evidence, the fix is a suggestion,
+    // and players are far more reliable at the former than the latter.
+    if (f.playerFix) {
+      var fix = document.createElement("span");
+      fix.className = "ai-playerfix";
+      fix.textContent = (dict.playerFixLabel || "Player's fix") + ": " + f.playerFix;
+      li.appendChild(fix);
+    }
+    return li;
+  }
+
+  function renderPriority(findings) {
+    var wrap = document.getElementById("aiToolPriority");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    // Positives are excluded: this list answers "what do I fix first", and
+    // praise is not work.
+    var ranked = findings
+      .filter(function (f) { return f.type !== "positive"; })
+      .sort(byPriority)
+      .slice(0, 3);
+    if (!ranked.length) return;
+
+    var h = document.createElement("h3");
+    h.textContent = dict.priorityHeading || "Fix first";
+    wrap.appendChild(h);
+    var ul = document.createElement("ul");
+    ranked.forEach(function (f) {
+      var li = findingRow(f);
+      var tag = document.createElement("span");
+      tag.className = "ai-type-tag";
+      tag.textContent = label("typeLabels", f.type, f.type);
+      tag.style.color = TYPE_COLORS[f.type];
+      li.insertBefore(tag, li.childNodes[1]);
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+  }
+
+  function renderTypeCards(findings) {
     var grid = document.getElementById("aiToolCategoryGrid");
     if (!grid) return;
     grid.innerHTML = "";
-    if (!categories || !categories.length) {
+    if (!findings.length) {
       var empty = document.createElement("p");
       empty.className = "ai-tool-empty";
       empty.textContent = dict.emptyCategoryNote;
       grid.appendChild(empty);
       return;
     }
-    categories.forEach(function (cat, i) {
+    TYPE_ORDER.forEach(function (type) {
+      var group = findings.filter(function (f) { return f.type === type; });
+      if (!group.length) return; // a type with nothing in it is omitted, not shown empty
+      group.sort(byPriority);
+
       var card = document.createElement("div");
       card.className = "ai-tool-card";
-      card.style.borderLeftColor = CATEGORY_COLORS[i % CATEGORY_COLORS.length];
+      card.style.borderLeftColor = TYPE_COLORS[type];
 
       var h3 = document.createElement("h3");
-      h3.textContent = cat.label || "";
+      h3.textContent = label("typeLabels", type, type);
+      var count = document.createElement("span");
+      count.className = "ai-count";
+      count.textContent = group.length;
+      h3.appendChild(count);
       card.appendChild(h3);
 
       var ul = document.createElement("ul");
-      (cat.items || []).forEach(function (item) {
-        var row = document.createElement("li");
-        row.textContent = item;
-        ul.appendChild(row);
-      });
+      group.forEach(function (f) { ul.appendChild(findingRow(f)); });
       card.appendChild(ul);
-
       grid.appendChild(card);
     });
   }
 
-  // The worker originally answered with four fixed buckets
-  // ({bugs, uxIssues, positive, suggestions}); it was later changed to return
-  // an open-ended {categories:[{label, items}]}. A deployment running the old
-  // version therefore hands back data this page finds no `categories` in, and
-  // the result is an empty "nothing to categorise" panel that looks exactly
-  // like the classifier failing. Rather than depend on which revision happens
-  // to be live, accept both shapes and translate the old one.
+  // ---------------------------------------------------------------------
+  // Response normalisation
+  // ---------------------------------------------------------------------
+  // Three shapes have existed for this endpoint: the current two-axis
+  // {findings:[{type, severity, ...}]}, an intermediate {categories:[{label,
+  // items}]} with model-invented labels, and the original four fixed
+  // buckets. A deployment still running an older revision would otherwise
+  // render as an empty "nothing to categorise" panel — indistinguishable
+  // from the classifier failing — so older shapes are lifted into the
+  // current one instead, minus the severity they never carried.
   var LEGACY_BUCKETS = [
-    { key: "bugs", en: "Bugs", zh: "Bug" },
-    { key: "uxIssues", en: "UX Issues", zh: "体验问题" },
-    { key: "positive", en: "Positive Feedback", zh: "正面反馈" },
-    { key: "suggestions", en: "Suggestions", zh: "改进建议" },
+    { key: "bugs", type: "bug" },
+    { key: "uxIssues", type: "usability" },
+    { key: "positive", type: "positive" },
+    { key: "suggestions", type: "request" },
   ];
 
-  function toCategories(data) {
-    if (data && Array.isArray(data.categories)) return data.categories;
+  function guessType(text) {
+    var v = String(text || "").toLowerCase();
+    if (/bug|crash|broken|错误|崩溃/.test(v)) return "bug";
+    if (/perf|fps|lag|load|性能|帧/.test(v)) return "performance";
+    if (/balanc|difficult|平衡|难度/.test(v)) return "balance";
+    if (/request|feature|suggest|建议|需求/.test(v)) return "request";
+    if (/positive|praise|好评|正面|喜欢/.test(v)) return "positive";
+    if (/art|audio|music|story|level|美术|音|剧情|关卡/.test(v)) return "content";
+    if (/ux|usab|confus|control|体验|操作|困惑/.test(v)) return "usability";
+    return "other";
+  }
+
+  function toFindings(data) {
+    if (data && Array.isArray(data.findings)) return data.findings;
     var out = [];
+    if (data && Array.isArray(data.categories)) {
+      data.categories.forEach(function (c) {
+        var type = guessType(c && c.label);
+        (c && c.items ? c.items : []).forEach(function (item) {
+          out.push({ type: type, severity: "minor", note: String(item), playerFix: "", mentions: 1 });
+        });
+      });
+      return out;
+    }
     LEGACY_BUCKETS.forEach(function (b) {
       var items = data && data[b.key];
-      if (Array.isArray(items) && items.length) {
-        out.push({ label: lang === "zh" ? b.zh : b.en, items: items });
-      }
+      if (!Array.isArray(items)) return;
+      items.forEach(function (item) {
+        out.push({ type: b.type, severity: "minor", note: String(item), playerFix: "", mentions: 1 });
+      });
     });
     return out;
   }
@@ -130,7 +241,9 @@
     results.style.display = "";
     var summaryEl = document.getElementById("aiToolSummary");
     if (summaryEl) summaryEl.textContent = data.summary || "";
-    renderCategoryCards(toCategories(data));
+    var findings = toFindings(data);
+    renderPriority(findings);
+    renderTypeCards(findings);
   }
 
   function updateRateLimitNote() {
