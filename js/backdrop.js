@@ -27,7 +27,7 @@
   // How hard the cursor deforms the field. 0 disables the interaction
   // entirely; past ~3 it stops reading as "the page noticed you" and starts
   // reading as a toy.
-  var POINTER_PUSH = 0.6;
+  var POINTER_PUSH = 0.3;
 
   // Idle is wallpaper and runs at half refresh; while the cursor is engaged
   // the loop steps up to full rate. At 30fps the deformation lags the mouse
@@ -235,8 +235,8 @@
       // is what actually announces "this is reacting to you". Style is set
       // after the path is built because the boost depends on how far the
       // vertices ended up being pushed.
-      ctx.strokeStyle = rgba(palette.accent, palette.lineAlpha * (0.35 + edge * 0.65) * (1 + maxShove * 2.2));
-      ctx.lineWidth = 1 + maxShove * 0.5;
+      ctx.strokeStyle = rgba(palette.accent, palette.lineAlpha * (0.35 + edge * 0.65) * (1 + maxShove * 0.9));
+      ctx.lineWidth = 1 + maxShove * 0.2;
       ctx.stroke();
     }
   }
@@ -303,8 +303,8 @@
     var cy = ptr.y * h;
     var r = pushRadius * 0.95;
     var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-    g.addColorStop(0, rgba(palette.accent, palette.blobAlpha * 0.85 * ptr.weight));
-    g.addColorStop(0.5, rgba(palette.accent, palette.blobAlpha * 0.3 * ptr.weight));
+    g.addColorStop(0, rgba(palette.accent, palette.blobAlpha * 0.3 * ptr.weight));
+    g.addColorStop(0.5, rgba(palette.accent, palette.blobAlpha * 0.11 * ptr.weight));
     g.addColorStop(1, rgba(palette.accent, 0));
     ctx.fillStyle = g;
     ctx.beginPath();
