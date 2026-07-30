@@ -381,9 +381,9 @@ const SITE_CONTENT = {
           "id": "fire",
           "tag": "INDIVIDUAL PROJECT",
           "name": "Heart Arsonist",
-          "blurb": "A 2.5D Hades-like demo from Unity Game Jam 2024, built around a system where grass and fire feed each other.",
+          "blurb": "A 2.5D Hades-like demo from Unity Game Jam 2024, built on a system where grass and fire feed each other.",
           "href": "individual-projects/fire.html",
-          "image": "images/project-placeholder.svg"
+          "image": "images/heart-arsonist/cover.jpg"
         },
         {
           "id": "echo",
@@ -399,7 +399,7 @@ const SITE_CONTENT = {
       "backLink": "← Back to Projects",
       "tagLabel": "INDIVIDUAL PROJECT",
       "projectName": "Heart Arsonist",
-      "image": "../images/project-placeholder.svg",
+      "image": "../images/heart-arsonist/keyart.jpg",
       "roleLabel": "Role",
       "role": "Concept Design · Character & Environment Design · Gameplay Mechanics · Level Design",
       "teamSizeLabel": "Team Size",
@@ -407,21 +407,108 @@ const SITE_CONTENT = {
       "lengthLabel": "Length",
       "length": "Unity Game Jam 2024",
       "synopsisHeading": "Synopsis",
-      "synopsis": "Heart Arsonist is a 2.5D Hades-like game demo built during Unity Game Jam 2024. It starts from a line of classical Chinese poetry — “Wild fires cannot consume it all; spring breezes blow and it grows once more” — and turns that image into a system rather than a backdrop: grass and fire feed each other, so burning a space is also how the space comes back. You play a playful firefighter squirrel who loves setting fires, and the adventure is really about it working out who it actually is.",
+      "synopsis": "A 2.5D Hades-like demo made for Unity Game Jam 2024. It started with a line of classical Chinese poetry — “Wild fires cannot consume it all; spring breezes blow and it grows once more” — and the whole demo is an attempt to make that line playable: grass and fire feed each other, so setting the level on fire is also how you get through it. You play Fang Xin, a squirrel firefighter who loves starting fires.",
       "trailerHeading": "Trailer",
       "trailerNote": "Gameplay trailer from the jam build.",
       "trailerVideoId": "713lnqBMnyk",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
-        "Concept design — set the premise, tone and the grass-and-fire fiction the whole demo hangs on.",
-        "Character and environment design — the firefighter squirrel and the world it burns through.",
-        "Gameplay mechanics — designed the grass/fire interaction system that drives combat and traversal.",
-        "Level design — built the demo's spaces around that system so burning is both the problem and the tool."
+        "Concept design — the premise, the tone, and the grass-and-fire fiction the whole demo hangs on.",
+        "Character and environment design — Fang Xin, her weapon and its second stage, the treehouse hub and the battle maps.",
+        "Gameplay mechanics — the grass/fire interaction system, its two burn stages, and the drop and buff rules.",
+        "Level design — six levels, each isolating one property of the system before the last one combines them."
       ],
-      "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "TODO — add screenshots or key art from the jam build.",
+      "screenshotsHeading": "Design boards",
+      "screenshotsNote": "The demo was documented as a set of A3 boards. They're reproduced in full below — click any of them to open the full-resolution version.",
       "postmortemHeading": "Postmortem",
-      "postmortem": "TODO — a short reflection on the jam: what the grass-and-fire system got right, what you'd cut or rebuild with more than a jam's worth of time."
+      "postmortem": "TODO — a short reflection on the jam: what the grass-and-fire system got right, and what you'd cut or rebuild given more than a jam's worth of time.",
+      "imageCaption": "Key art — Fang Xin, stage 2.",
+      "designHeading": "Design",
+      "design": [
+        {
+          "heading": "Where it came from",
+          "body": "I read the poem, thought “why not build a game out of fire and grass,” and the burning-grass mechanic came before anything else did. The setting grew around it: an island called the Eternal Forest, an ancient tree tall enough to make its own weather, and a squirrel tribe living in treehouses along its branches. A civilisation that has spent millennia next to something extremely flammable is a good place to put an arsonist."
+        },
+        {
+          "heading": "Fang Xin",
+          "body": "The character is built out of contradictions and the story is her working through them: a firefighter who fights with flames, a troublemaker who is doing her job, rebellious on the outside and soft underneath. The art plays the same trick — rounded shapes, big innocent eyes, a fluffy tail, and a flamethrower twice her size. The reference points were Klee's cheerful destructiveness and Graves' bluntness.",
+          "items": [
+            "Identity: firefighter vs. pyromaniac",
+            "Personality: outward sweetness vs. inner madness",
+            "Pursuit: truth-seeking vs. addiction to danger"
+          ]
+        },
+        {
+          "heading": "Grass and fire",
+          "body": "Lighting a patch of grass does three things at once, and every level is built out of those three. Burning grass damages enemies in range, spreads to neighbouring patches within a radius, and buffs the player standing in it with extra movement speed and collision immunity. Fire runs in two stages: a small fire for the first 3 seconds, which damages, spreads and always drops a coin; then a big fire for 15 seconds, which hits harder, occasionally drops a rare pinecone, and is where the player buff lives. The pinecones matter — collect enough and Fang Xin transforms.",
+          "items": [
+            "Damage — continuous, to everything in the patch's range",
+            "Spread — chain reactions through adjacent grass, on a radius and a probability",
+            "Player buff — speed up, pass through obstacles, only while you're standing in the fire"
+          ]
+        },
+        {
+          "heading": "The weapon, and stage 2",
+          "body": "The flamethrower is deliberately too big for her. It started from Graves' double-barrelled shotgun and lost a barrel — one barrel reads better as a flamethrower. At stage 2 it grows energy-focusing wings and magenta patterning, and Fang Xin turns red and grows a second tail. I dropped particle effects in favour of hand-drawn flame animation to keep it consistent with the rest of the art: stage 1 flames look like a flamethrower, stage 2 flames look like a laser."
+        },
+        {
+          "heading": "Scenes",
+          "body": "The treehouse hub is an orthographic scene, borrowed from how Hades handles its non-combat space. I blocked it out in 3D first, then redrew it. The first pass was too rectilinear — boxy buildings sitting in a tree, which looked wrong — so the second pass replaced them with tent-like and curved forms that grow out of the branches instead of resting on them. Combat maps are tile-based in the same cartoon style, kept legible for tactical reading."
+        },
+        {
+          "heading": "Six levels, six lessons",
+          "body": "Each level exists to teach one consequence of the grass-and-fire system, and the last one asks you to use all of them at once.",
+          "items": [
+            "Tutorial — grass in a straight line: press space, light it, walk on",
+            "Fire spread — fences you cannot pass, and grass that carries fire across them",
+            "Dual route — a high road and a low road, so you learn to attack downward from safety",
+            "Stealth exploration — isolated patches spaced beyond spread range, each possibly hiding an enemy",
+            "Strategic crossing — a main path too dense with enemies to walk, cleared remotely from side islands",
+            "Speed challenge — a long route on a 15-second burn timer, where route planning is the skill"
+          ]
+        },
+        {
+          "heading": "Animation and story",
+          "body": "Both forms have their own skeletal rig and animation set — idle, move, run, fire, hit, death, and the stage-change sequence — plus front and back views. The treehouse itself is animated too, down to the wind chimes. The framing story is told at the two ends: the prologue is all fire and appetite, the ending is a quiet homecoming. In between, six squirrels called the Bros are scattered through the levels; each one you find unlocks a memory fragment about your parents' expedition, so the narrative arrives in pieces, in whatever order you explore."
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../images/heart-arsonist/character-en.jpg",
+          "caption": "Concept board — inspiration, world setting and Fang Xin's character design.",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/weapon-en.jpg",
+          "caption": "Weapon board — the flamethrower, and the stage-2 transformation of both weapon and character.",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/gameplay-en.jpg",
+          "caption": "Gameplay board — the grass-and-fire system, with the implementation flowcharts and the Unity coroutines behind it.",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/scene-en.jpg",
+          "caption": "Scene board — the treehouse hub, its iterations, and the tile-based battle maps.",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/level-en.jpg",
+          "caption": "Level board — the six levels and what each one teaches.",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/storyboard-en.jpg",
+          "caption": "Storyboard and UI board — prologue, ending, and the memory-fragment achievement system. Story illustrations by a friend of the project.",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/animation-en.jpg",
+          "caption": "Animation board — skeletal rig, the two forms' animation sets, and the animated treehouse scene.",
+          "full": true
+        }
+      ]
     },
     "aboutPage": {
       "pageTitle": "Young Gou — About Me",
@@ -693,10 +780,10 @@ const SITE_CONTENT = {
         {
           "id": "analysis-1",
           "tag": "ANALYSIS · TEAMFIGHT TACTICS",
-          "name": "Analysis and Practice of the Teamfight Tactics Synergy System",
-          "blurb": "Reverse-engineering TFT's synergies across several seasons into design principles — then using them to build a synergy set for a season that doesn't exist.",
+          "name": "Analysis and Practice of the TFT Synergy System",
+          "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
           "href": "game-analysis/analysis-1.html",
-          "image": "images/project-placeholder.svg"
+          "image": "images/tft/cover.jpg"
         },
         {
           "id": "analysis-2",
@@ -853,27 +940,6 @@ const SITE_CONTENT = {
           }
         ]
       },
-      "analysis-1": {
-        "pageTitle": "Young Gou — Analysis and Practice of the Teamfight Tactics Synergy System",
-        "tagLabel": "ANALYSIS · TEAMFIGHT TACTICS",
-        "heading": "Analysis and Practice of the Teamfight Tactics Synergy System",
-        "lead": "A dedicated TFT player's curiosity plus a designer's instinct: what rules is Riot actually following when it builds a season's synergies — and can I follow them well enough to build one myself?",
-        "backLink": "← Back to Projects",
-        "blocks": [
-          {
-            "heading": "The analysis",
-            "text": "I play a lot of Teamfight Tactics, and at some point curiosity — helped along by the instinct to take systems apart — turned into a proper study of the synergy system. I went season by season, studying and calculating how the synergies were built: how many there are, how they overlap, how breakpoints are spaced, which ones are allowed to be strong. What comes out the other side is a set of design principles the seasons appear to share.",
-            "image": "images/project-placeholder.svg",
-            "caption": "TODO — add a chart or table from the season-by-season analysis."
-          },
-          {
-            "heading": "The practice",
-            "text": "The test of a principle is whether you can build with it. So I used the extracted rules to design a complete, fully simulated synergy system for a hypothetical new season — not a wish list of traits, but a set that holds together under the same constraints the real seasons work within.",
-            "image": "images/project-placeholder.svg",
-            "caption": "TODO — add the simulated synergy set for the hypothetical season."
-          }
-        ]
-      },
       "analysis-2": {
         "pageTitle": "Young Gou — Game Analysis",
         "tagLabel": "ANALYSIS · TBD",
@@ -1023,6 +1089,1582 @@ const SITE_CONTENT = {
       "screenshotsNote": "TODO — add work-in-progress captures once there's a build worth showing.",
       "postmortemHeading": "Where it stands",
       "postmortem": "TODO — Echo is still in development; update this once there's a vertical slice to talk about."
+    },
+    "articles": {
+      "tft": {
+        "pageTitle": "Analysis and Practice of the Teamfight Tactics Synergy System — Young Gou",
+        "tagLabel": "GAME ANALYSIS · TEAMFIGHT TACTICS",
+        "heading": "Analysis and Practice of the Teamfight Tactics Synergy System",
+        "subheading": "Ten seasons of TFT traits, reverse-engineered into a set of design rules — and then used to build a season that doesn't exist.",
+        "backLink": "← Back to Projects",
+        "tocHeading": "Contents",
+        "meta": [
+          {
+            "label": "Scope",
+            "value": "TFT Seasons 1–10"
+          },
+          {
+            "label": "Method",
+            "value": "Trait census, Jaccard similarity, Floyd–Warshall"
+          },
+          {
+            "label": "Output",
+            "value": "Design rules + a full simulated season"
+          }
+        ],
+        "sections": [
+          {
+            "id": "abstract",
+            "num": "00",
+            "title": "Abstract",
+            "blocks": [
+              {
+                "type": "lead",
+                "text": "I counted, classified and cross-referenced every trait in the first ten seasons of Teamfight Tactics, looking for the rules Riot appears to design under. The counts turn out to be remarkably stable — around 23–24 traits a season, split near-evenly between Origins and Classes — and so does the shape of the relationships between them. I then used those numbers as constraints to design a complete synergy system for a season of my own, as a way of checking whether the rules I'd extracted were actually usable."
+              }
+            ]
+          },
+          {
+            "id": "intro",
+            "num": "01",
+            "title": "Why I pulled this apart",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "TFT has been running since 2019 and reworks its trait list every season. That is an unusual thing for a designer to be able to look at: thirteen full redesigns of the same system, by the same team, under the same constraints, with all the data public. If there are rules, ten iterations should be enough to see them."
+              },
+              {
+                "type": "p",
+                "text": "I've played to Master across several seasons, which is where the question came from — after a while you start to notice that new seasons feel different but never feel unfamiliar, and I wanted to know what was actually being held constant. So I worked backwards: gather the trait data, measure it, and see what the designers' decisions look like from the outside."
+              },
+              {
+                "type": "p",
+                "text": "Three questions, in order:"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "How does the number of traits get chosen, and how does it move between seasons?",
+                  "What do traits actually do, and how does that distribution shift over time?",
+                  "How strongly are traits connected to each other, and how is that connection tuned?"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "scale",
+            "num": "02",
+            "title": "How many traits a season has",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "Trait count is the first thing a season commits to, and almost everything else follows from it. Too few and every game plays out the same way; too many and a new player is looking at a wall of icons they can't evaluate. Each trait is a concept somebody has to learn — what activates it, what it's for, when it's worth breaking a board to chase it."
+              },
+              {
+                "type": "p",
+                "text": "TFT builds every champion out of two axes, an Origin and a Class, so the trait pool is really a grid. A handful of champions carry unique single-champion traits — Season 1's Yasuo and Exile, for instance — which don't interact with anything and are excluded here."
+              },
+              {
+                "type": "formula",
+                "text": "α = m / (x · y) × 100%",
+                "note": "x = Origins in season n, y = Classes in season n, m = champions in season n. α is how densely the champion pool fills the Origin × Class grid."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Season",
+                  "Origins (x)",
+                  "Classes (y)",
+                  "Champions (m)",
+                  "α (%)"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "12",
+                    "10",
+                    "57",
+                    "47.5"
+                  ],
+                  [
+                    "2",
+                    "14",
+                    "11",
+                    "56",
+                    "36.4"
+                  ],
+                  [
+                    "3",
+                    "10",
+                    "11",
+                    "52",
+                    "47.3"
+                  ],
+                  [
+                    "4",
+                    "11",
+                    "12",
+                    "58",
+                    "43.9"
+                  ],
+                  [
+                    "5",
+                    "12",
+                    "12",
+                    "57",
+                    "39.6"
+                  ],
+                  [
+                    "6",
+                    "12",
+                    "12",
+                    "59",
+                    "41.0"
+                  ],
+                  [
+                    "7",
+                    "11",
+                    "14",
+                    "58",
+                    "37.7"
+                  ],
+                  [
+                    "8",
+                    "11",
+                    "13",
+                    "59",
+                    "41.3"
+                  ],
+                  [
+                    "9",
+                    "11",
+                    "12",
+                    "59",
+                    "44.7"
+                  ],
+                  [
+                    "10",
+                    "12",
+                    "12",
+                    "60",
+                    "41.7"
+                  ]
+                ],
+                "caption": "Origins, Classes, champions and grid density, Seasons 1–10."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-origins-classes.jpg",
+                "caption": "Origins and Classes per season. After S4 the two lines sit on top of each other."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-champions-alpha.jpg",
+                "caption": "Champion count and α across ten seasons."
+              },
+              {
+                "type": "h3",
+                "text": "What the numbers say"
+              },
+              {
+                "type": "p",
+                "text": "The averages are 11.6 Origins, 11.9 Classes, 23.5 traits and 57.5 champions per season, with α at 42.1%. The ranges are narrow: Origins and Classes both move within 10–14, total traits within 21–25, champions within 52–60."
+              },
+              {
+                "type": "p",
+                "text": "Seasons 1–3 are the noisy ones — S2 in particular runs 14 Origins and 25 traits, the most the game has ever had, and its α drops to 36.4%. From S4 onward everything settles: 23–24 traits, Origins and Classes within one of each other, α parked between 41% and 44%. The champion pool creeps up to 58–60 but the trait count doesn't follow it."
+              },
+              {
+                "type": "p",
+                "text": "Origins and Classes converging is the part I find most telling. Nothing forces them to be equal, and an asymmetric split would be a perfectly reasonable design — but keeping them level means every champion's two halves are worth roughly the same amount of attention, and no player ever learns to read one axis and ignore the other."
+              }
+            ]
+          },
+          {
+            "id": "capacity",
+            "num": "03",
+            "title": "How big a trait is",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "A trait's capacity — how many champions you need on the board to turn it on — is a pacing control disguised as a number. Small traits are power you can have now, in exchange for less of it. Large traits are power you commit to, and they force you to plan an economy around getting there. Which sizes exist, and in what proportion, decides how a season feels to play far more than any individual trait effect does."
+              },
+              {
+                "type": "note",
+                "text": "Capacities aren't strictly comparable across seasons, because some seasons changed what counts as a champion. S4's Chosen mechanic made one champion count twice for a trait; S7's Dragons did the same for their own traits, which is how Jade could reach 12."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-size-distribution.jpg",
+                "caption": "Small, medium and large trait counts by season."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-size-percent.jpg",
+                "caption": "The same data as proportions — small traits fall from 50% to 17% over ten seasons."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-units-required.jpg",
+                "caption": "Average units required per size band. Every band steps up once, around S4–S5, and then holds."
+              },
+              {
+                "type": "h3",
+                "text": "What the numbers say"
+              },
+              {
+                "type": "p",
+                "text": "Totals stay put at 21–25 traits, averaging 23.1. What moves is the mix. Small traits go from half the pool in S1 to 17% in S10; medium traits climb steadily and peak at 54% in S10; large traits grow from 18% in S1 to a 43% high in S7 before settling around 30%."
+              },
+              {
+                "type": "p",
+                "text": "The thresholds moved too, once. Small traits went from 3 units to 4, medium from 5 to 6, large from 7 to 8 — all of it around S4–S5, and all of it stable since. That single step is the clearest deliberate decision in the whole dataset: the same board size, but every trait costs one more slot to turn on, so a board holds fewer complete traits and each one you do complete matters more."
+              },
+              {
+                "type": "p",
+                "text": "Read together, the trend is away from splashing and toward committing. Early TFT let you carry four or five small traits at once; later TFT gives you two or three real ones and asks which."
+              },
+              {
+                "type": "h3",
+                "text": "Season by season"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 4",
+                    "Dragon, Phantom, Pirate, Hextech, Imperial, Ninja, Void, Wild, Elementalist, Guardian, Ranger",
+                    "11"
+                  ],
+                  [
+                    "Medium",
+                    "4 < a ≤ 6",
+                    "Demon, Glacial, Noble, Brawler, Gunslinger, Knight, Shapeshifter",
+                    "7"
+                  ],
+                  [
+                    "Large",
+                    "6 < a",
+                    "Yordle, Assassin, Blademaster, Sorcerer",
+                    "4"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 1."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 4",
+                    "Crystal, Desert, Electric, Lunar, Mountain, Steel, Poison, Wind, Druid, Mystic, Predator, Soulbound",
+                    "12"
+                  ],
+                  [
+                    "Medium",
+                    "4 < a ≤ 6",
+                    "Woodland, Ocean, Shadow, Glacial, Assassin, Berserker, Blademaster, Mage, Summoner, Ranger, Warden",
+                    "11"
+                  ],
+                  [
+                    "Large",
+                    "6 < a",
+                    "Inferno, Light",
+                    "2"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 2."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 4",
+                    "Space Pirate, Mech-pilot, Valkyrie, Void, Blaster, Brawler, Demolitionist, Mystic, Mana-reaver, Sniper, Vanguard",
+                    "11"
+                  ],
+                  [
+                    "Medium",
+                    "4 < a ≤ 6",
+                    "Celestial, Chrono, Cybernetic, Star Guardian, Infiltrator, Protector",
+                    "6"
+                  ],
+                  [
+                    "Large",
+                    "6 < a",
+                    "Dark Star, Rebel, Blademaster, Sorcerer",
+                    "4"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 3."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 4",
+                    "Adept, Dazzler, Shade, Exile, Spirit, Ninja",
+                    "6"
+                  ],
+                  [
+                    "Medium",
+                    "4 < a ≤ 6",
+                    "Assassin, Hunter, Keeper, Mystic, Sharpshooter, Dusk, Enlightened, Fortune, Moonlight",
+                    "9"
+                  ],
+                  [
+                    "Large",
+                    "6 < a",
+                    "Brawler, Duelist, Mage, Vanguard, Cultist, Divine, Elderwood, Warlord",
+                    "8"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 4."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 4",
+                    "Cavalier, Invoker, Ranger, Mystic, Brawler, Coven, Ironclad, Revenant, Verdant",
+                    "9"
+                  ],
+                  [
+                    "Medium",
+                    "4 < a ≤ 6",
+                    "Assassin, Knight, Renewer, Spellweaver, Abomination, Draconic, Dragonslayer",
+                    "7"
+                  ],
+                  [
+                    "Large",
+                    "6 < a",
+                    "Legionnaire, Skirmisher, Dawnbringer, Forgotten, Hellion, Nightbringer, Redeemed",
+                    "7"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 5."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 5",
+                    "Colossus, Enforcer, Enchanter, Protector, Imperial, Mutant, Sister, Socialite",
+                    "8"
+                  ],
+                  [
+                    "Medium",
+                    "5 < a ≤ 7",
+                    "Assassin, Scholar, Sniper, Twinshot, Clockwork, Innovator, Mercenary, Scrap, Syndicate, Yordle",
+                    "10"
+                  ],
+                  [
+                    "Large",
+                    "7 < a",
+                    "Arcanist, Bodyguard, Bruiser, Challenger, Academy, Chemtech",
+                    "6"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 6."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 5",
+                    "Cannoneer, Cavalier, Mystic, Revel, Trainer",
+                    "5"
+                  ],
+                  [
+                    "Medium",
+                    "5 < a ≤ 7",
+                    "Assassin, Evoker, Guardian, Shapeshifter, Swiftshot, Warrior, Guild, Scalescorn",
+                    "8"
+                  ],
+                  [
+                    "Large",
+                    "7 < a",
+                    "Bruiser, Dragonmancer, Mage, Astral, Jade, Mirage, Ragewing, Shimmerscale, Tempest, Whispers",
+                    "10"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 7."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 5",
+                    "Ace, Aegis, Hacker, Prankster, Recon, Sureshot, Super, Civilian, Gadgeteen, MechaPRIM",
+                    "10"
+                  ],
+                  [
+                    "Medium",
+                    "5 < a ≤ 7",
+                    "Defender, Heart, Renegade, ADMIN, Anima Squad, Underground",
+                    "6"
+                  ],
+                  [
+                    "Large",
+                    "7 < a",
+                    "Brawler, Duelist, Mascot, Spellslinger, LaserCorps, Ox Force, Star Guardian",
+                    "7"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 8."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 5",
+                    "Multicaster, Rogue, Strategist, Freljord, Targon, Yordle",
+                    "6"
+                  ],
+                  [
+                    "Medium",
+                    "5 < a ≤ 7",
+                    "Bruiser, Deadeye, Gunner, Invoker, Juggernaut, Slayer, Piltover, Shadow Isles, Zaun",
+                    "9"
+                  ],
+                  [
+                    "Large",
+                    "7 < a",
+                    "Bastion, Challenger, Sorcerer, Demacia, Noxus, Ionia, Shurima, Void",
+                    "8"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 9."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Category",
+                  "Size Range",
+                  "Synergies",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Small",
+                    "0 ≤ a ≤ 5",
+                    "Superfan, EDM, Hyperpop, Jazz",
+                    "4"
+                  ],
+                  [
+                    "Medium",
+                    "5 < a ≤ 7",
+                    "Emo, Bigshot, Bruiser, Crowd Diver, Guardian, Executioner, Edgelord, Dazzler, Rapidfire, 8-bit, Country, Disco, Punk",
+                    "13"
+                  ],
+                  [
+                    "Large",
+                    "7 < a",
+                    "Mosher, Sentinel, Spellweaver, Heartsteel, KDA, Pentakill, True Damage",
+                    "7"
+                  ]
+                ],
+                "caption": "Trait sizes in Season 10."
+              }
+            ]
+          },
+          {
+            "id": "types",
+            "num": "04",
+            "title": "What traits do",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "Capacity says how much a trait costs. This section is about what you get. I sorted every trait in every season into four buckets by its primary effect."
+              },
+              {
+                "type": "h3",
+                "text": "Offensive"
+              },
+              {
+                "type": "p",
+                "text": "Anything whose main job is to make your board hit harder — flat damage and ability power, attack speed and multi-hit, crit chance and crit damage, or armour and magic resist penetration. Assassin, Blademaster, Berserker, Inferno."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-offensive.jpg",
+                "caption": "Offensive effect categories."
+              },
+              {
+                "type": "h3",
+                "text": "Defensive"
+              },
+              {
+                "type": "p",
+                "text": "Survivability, by whichever route: resistances and flat damage reduction, health and regeneration and shields, or the special cases — damage reflection, death prevention, crowd-control immunity. Guardian, Knight, Brawler, Warden, Mystic."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-defensive.jpg",
+                "caption": "Defensive effect categories."
+              },
+              {
+                "type": "h3",
+                "text": "Utility"
+              },
+              {
+                "type": "p",
+                "text": "Effects that don't show up in the damage numbers: gold and item and experience generation, positioning and zone control and movement manipulation, summons and transforms. Pirate, Fortune, Hextech, Glacial, Elementalist."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-utility.jpg",
+                "caption": "Utility effect categories."
+              },
+              {
+                "type": "h3",
+                "text": "Mixed"
+              },
+              {
+                "type": "p",
+                "text": "Traits that deliberately do more than one thing — attack-and-defence hybrids, conditional triggers keyed to health or position or elapsed combat time, and effects that scale with something (fight duration, unit count, a resource). Dragon, Imperial, Ranger, Light."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-mixed.jpg",
+                "caption": "Mixed effect categories."
+              },
+              {
+                "type": "h3",
+                "text": "The distribution, and how it moved"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-type-count.jpg",
+                "caption": "Effect types per season."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-type-trend.jpg",
+                "caption": "The same four series as trends."
+              },
+              {
+                "type": "p",
+                "text": "Mixed traits are the story here. They sit around 5 per season through S1–S5, then jump from S6 onward and reach 12 in S10 — half the season's traits doing two things at once."
+              },
+              {
+                "type": "p",
+                "text": "Offensive traits move the opposite way. They lead the early seasons at 7–8, then drop to 4–5 from S6 and stay there. Defensive and utility traits barely move at all: 3–6 each, every season, for ten seasons. Those two are the floor the game stands on, and the team appears to treat them as fixed cost."
+              },
+              {
+                "type": "p",
+                "text": "So the growth in complexity was funded almost entirely by converting plain damage traits into conditional and hybrid ones. That's a change in what the game asks of a player: not \"can you find damage\" but \"can you tell what this trait is worth in this board state.\""
+              },
+              {
+                "type": "h3",
+                "text": "Season by season"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Demon, Void",
+                    "Assassin, Blademaster, Gunslinger",
+                    "5"
+                  ],
+                  [
+                    "Defensive",
+                    "Noble",
+                    "Knight, Guardian, Brawler",
+                    "4"
+                  ],
+                  [
+                    "Utility",
+                    "Pirate, Phantom, Hextech",
+                    "Elementalist",
+                    "4"
+                  ],
+                  [
+                    "Mixed",
+                    "Dragon, Imperial, Ninja, Wild, Glacial, Yordle",
+                    "Ranger, Shapeshifter, Sorcerer",
+                    "9"
+                  ],
+                  [
+                    "Total",
+                    "22 (Origins: 12, Classes: 10)",
+                    "",
+                    "22"
+                  ]
+                ],
+                "caption": "Effect classification, Season 1."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Poison, Electric",
+                    "Assassin, Berserker, Blademaster",
+                    "5"
+                  ],
+                  [
+                    "Defensive",
+                    "Crystal, Mountain, Steel",
+                    "Warden",
+                    "4"
+                  ],
+                  [
+                    "Utility",
+                    "Desert, Lunar, Wind",
+                    "Mystic, Summoner",
+                    "5"
+                  ],
+                  [
+                    "Mixed",
+                    "Woodland, Ocean, Shadow, Inferno, Light, Glacial",
+                    "Mage, Ranger, Druid, Predator, Soulbound",
+                    "11"
+                  ],
+                  [
+                    "Total",
+                    "25 (Origins: 14, Classes: 11)",
+                    "",
+                    "25"
+                  ]
+                ],
+                "caption": "Effect classification, Season 2."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Dark Star, Rebel",
+                    "Blademaster, Blaster, Demolitionist",
+                    "5"
+                  ],
+                  [
+                    "Defensive",
+                    "Cybernetic",
+                    "Vanguard, Protector, Mystic",
+                    "4"
+                  ],
+                  [
+                    "Utility",
+                    "Space Pirate, Chrono",
+                    "Mana-Reaver, Sniper",
+                    "4"
+                  ],
+                  [
+                    "Mixed",
+                    "Celestial, Void, Mech-Pilot",
+                    "Brawler, Infiltrator, Sorcerer, Starguardian, Valkyrie",
+                    "8"
+                  ],
+                  [
+                    "Total",
+                    "21 (Origins: 10, Classes: 11)",
+                    "",
+                    "21"
+                  ]
+                ],
+                "caption": "Effect classification, Season 3."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Spirit, Shade",
+                    "Assassin, Duelist, Hunter, Sharpshooter",
+                    "6"
+                  ],
+                  [
+                    "Defensive",
+                    "Divine, Cultist",
+                    "Vanguard, Mystic, Keeper",
+                    "5"
+                  ],
+                  [
+                    "Utility",
+                    "Fortune, Moonlight",
+                    "Dazzler",
+                    "3"
+                  ],
+                  [
+                    "Mixed",
+                    "Elderwood, Enlightened, Ninja, Dusk",
+                    "Mage, Brawler, Adept",
+                    "7"
+                  ],
+                  [
+                    "Total",
+                    "23 (Origins: 11, Classes: 12)",
+                    "",
+                    "23"
+                  ]
+                ],
+                "caption": "Effect classification, Season 4."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Dragonslayer",
+                    "Assassin, Legionnaire, Skirmisher",
+                    "4"
+                  ],
+                  [
+                    "Defensive",
+                    "Ironclad, Verdant",
+                    "Knight, Mystic, Brawler",
+                    "5"
+                  ],
+                  [
+                    "Utility",
+                    "Draconic, Revenant",
+                    "Cavalier, Invoker, Renewer",
+                    "5"
+                  ],
+                  [
+                    "Mixed",
+                    "Dawnbringer, Nightbringer, Hellion, Forgotten, Abomination, Coven",
+                    "Ranger, Spellweaver",
+                    "8"
+                  ],
+                  [
+                    "Total",
+                    "24 (Origins: 12, Classes: 12)",
+                    "",
+                    "24"
+                  ]
+                ],
+                "caption": "Effect classification, Season 5."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Chemtech",
+                    "Challenger, Assassin, Twinshot",
+                    "4"
+                  ],
+                  [
+                    "Defensive",
+                    "Imperial",
+                    "Bodyguard, Bruiser, Protector, Enchanter",
+                    "5"
+                  ],
+                  [
+                    "Utility",
+                    "Mercenary, Yordle, Socialite",
+                    "Scholar, Enforcer",
+                    "5"
+                  ],
+                  [
+                    "Mixed",
+                    "Academy, Clockwork, Innovator, Mutant, Scrap, Syndicate, Sister",
+                    "Arcanist, Colossus, Sniper",
+                    "10"
+                  ],
+                  [
+                    "Total",
+                    "24 (Origins: 12, Classes: 12)",
+                    "",
+                    "24"
+                  ]
+                ],
+                "caption": "Effect classification, Season 6."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Ragewing",
+                    "Assassin, Swiftshot, Warrior",
+                    "4"
+                  ],
+                  [
+                    "Defensive",
+                    "Jade, Shimmerscale",
+                    "Guardian, Bruiser, Mystic",
+                    "5"
+                  ],
+                  [
+                    "Utility",
+                    "Astral, Guild, Revel",
+                    "Cavalier, Trainer",
+                    "5"
+                  ],
+                  [
+                    "Mixed",
+                    "Mirage, Tempest, Whispers",
+                    "Cannoneer, Dragonmancer, Mage, Shapeshifter, Evoker",
+                    "8"
+                  ],
+                  [
+                    "Total",
+                    "23 (Origins: 11, Classes: 12)",
+                    "",
+                    "23"
+                  ]
+                ],
+                "caption": "Effect classification, Season 7."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "LaserCorps",
+                    "Brawler, Duelist, Sureshot",
+                    "4"
+                  ],
+                  [
+                    "Defensive",
+                    "ADMIN",
+                    "Aegis, Defender, Heart",
+                    "4"
+                  ],
+                  [
+                    "Utility",
+                    "Underground, Civilian, Gadgeteen",
+                    "Hacker, Prankster, Recon",
+                    "6"
+                  ],
+                  [
+                    "Mixed",
+                    "Anima Squad, Ox Force, MechaPRIM",
+                    "Mascot, Spellslinger, Renegade, Star Guardian, Super, Ace",
+                    "9"
+                  ],
+                  [
+                    "Total",
+                    "23 (Origins: 11, Classes: 12)",
+                    "",
+                    "23"
+                  ]
+                ],
+                "caption": "Effect classification, Season 8."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Noxus, Void",
+                    "Challenger, Deadeye, Slayer",
+                    "5"
+                  ],
+                  [
+                    "Defensive",
+                    "Demacia, Freljord",
+                    "Bastion, Juggernaut",
+                    "4"
+                  ],
+                  [
+                    "Utility",
+                    "Piltover, Targon",
+                    "Multicaster, Rogue, Strategist",
+                    "5"
+                  ],
+                  [
+                    "Mixed",
+                    "Ionia, Shadow Isles, Shurima, Zaun",
+                    "Bruiser, Gunner, Invoker, Sorcerer, Yordle",
+                    "9"
+                  ],
+                  [
+                    "Total",
+                    "23 (Origins: 11, Classes: 12)",
+                    "",
+                    "23"
+                  ]
+                ],
+                "caption": "Effect classification, Season 9."
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Effect Type",
+                  "Origins",
+                  "Classes",
+                  "Count"
+                ],
+                "rows": [
+                  [
+                    "Offensive",
+                    "Pentakill, True Damage",
+                    "Crowd Diver, Edgelord, Mosher",
+                    "5"
+                  ],
+                  [
+                    "Defensive",
+                    "KDA",
+                    "Guardian, Sentinel",
+                    "3"
+                  ],
+                  [
+                    "Utility",
+                    "EDM, Jazz",
+                    "Dazzler, Rapidfire",
+                    "4"
+                  ],
+                  [
+                    "Mixed",
+                    "Heartsteel, Hyperpop, Disco, Punk",
+                    "8-bit, Bigshot, Bruiser, Country, Emo, Executioner, Spellweaver, Superfan",
+                    "12"
+                  ],
+                  [
+                    "Total",
+                    "24 (Origins: 12, Classes: 12)",
+                    "",
+                    "24"
+                  ]
+                ],
+                "caption": "Effect classification, Season 10."
+              }
+            ]
+          },
+          {
+            "id": "type-capacity",
+            "num": "05",
+            "title": "Size and effect, together",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "Neither axis explains much alone. Crossed, they do."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-type-capacity.jpg",
+                "caption": "Effect type against capacity band, aggregated across ten seasons."
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "Offensive traits cluster at medium capacity. Small offensive traits exist as early spikes (Spirit in S4, Poison in S2) and large ones as late-game scaling (True Damage in S10), but the default is medium — damage that scales with commitment, capped by how much commitment is affordable.",
+                  "Defensive traits skew small and medium, because their job is to be splashable. A pure defensive trait at large capacity is rare; when one exists it has usually acquired a second effect and become mixed.",
+                  "Utility traits are overwhelmingly small. Gold generation, item generation and hard control are all things that get out of hand if you can have a lot of them at once, and capping them at small capacity is the cheapest way to prevent that.",
+                  "Mixed traits take the large slots. If a trait is going to cost eight or nine board slots, it has to define the board — and the traits that define a season are the ones doing two things at once. Jade in S7, True Damage in S10."
+                ]
+              },
+              {
+                "type": "p",
+                "text": "The pattern reads like a rule the team is following rather than a coincidence: the more open-ended a trait's effect, the more you have to pay to switch it on."
+              }
+            ]
+          },
+          {
+            "id": "relationships",
+            "num": "06",
+            "title": "How traits relate to each other",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "Individual traits are the easy part. What makes a season is which traits can be played together — and that is decided long before balance patches, by which champions carry which pairs of traits."
+              },
+              {
+                "type": "p",
+                "text": "Two traits are directly related if they share champions. They're indirectly related if you can get from one to the other through a third. To measure both, I needed numbers rather than impressions, so I used two standard tools."
+              },
+              {
+                "type": "h3",
+                "text": "Direct relationships: Jaccard similarity"
+              },
+              {
+                "type": "formula",
+                "text": "J(A,B) = |A ∩ B| / |A ∪ B|",
+                "note": "The share of champions the two traits have in common, out of every champion in either. 1 means identical rosters; 0 means no overlap."
+              },
+              {
+                "type": "p",
+                "text": "Season 3's Celestial and Protector, for example: Celestial is {Ashe, Xin Zhao, Kassadin, Lulu, Soraka}, Protector is {Xin Zhao, Rakan, Karma, Urgot}. One shared champion out of eight distinct ones, so J = 0.125 — a 12.5% relationship. Enough to notice while you're building; not enough to make the pairing mandatory."
+              },
+              {
+                "type": "h3",
+                "text": "Indirect relationships: Floyd–Warshall"
+              },
+              {
+                "type": "p",
+                "text": "Plenty of real strategies never share a champion; they route through a third trait. I convert similarity to distance with d = 1 − J, run Floyd–Warshall over all pairs to find the strongest path between any two traits, and convert back. Path strength multiplies, so an 80% link followed by a 70% link gives 56%, and long chains decay to nothing on their own — which is the behaviour I wanted, since a five-hop connection isn't a strategy."
+              },
+              {
+                "type": "h3",
+                "text": "The tool"
+              },
+              {
+                "type": "p",
+                "text": "I built a small application to do this rather than working in a spreadsheet, because ten seasons is roughly 235 traits and 575 champions and I wanted to be able to re-run it. You enter a season's traits and its champion roster with each champion's two traits; it produces the full relationship matrix, direct and indirect, as a heatmap."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-tool.jpg",
+                "caption": "The trait and champion editor I built to run the analysis."
+              },
+              {
+                "type": "h3",
+                "text": "One season up close: S10"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/matrix-s10.jpg",
+                "caption": "Season 10's relationship matrix. Every cell is the relationship strength between two traits."
+              },
+              {
+                "type": "p",
+                "text": "S10 is the music season, and its traits organise into genre clusters that are legible without being forced. K/DA and Superfan sit at 22.2% — the strongest link in the season, and thematically exactly right: pop stars and the people who follow them. Around it, K/DA holds 7–10% relationships with defensive traits like Guardian, which is what lets the archetype stay flexible instead of collapsing into one board."
+              },
+              {
+                "type": "p",
+                "text": "The rock cluster works the same way. Pentakill runs 18.2% with Edgelord and 16.7% with Mosher, an aggressive triangle with more than one way through it. Heartsteel connects to Edgelord at 20% and to a spread of offensive traits at 8–10%."
+              },
+              {
+                "type": "p",
+                "text": "The ceiling is the interesting part. No direct relationship in S10 exceeds 25%, and the strong ones live at 15–20%. That's low enough that no pairing is compulsory and high enough that choosing one still feels like choosing. Underneath sits a dense field of 5–15% links — Disco in particular has a lot of them — and those are what make mid-game pivots possible."
+              },
+              {
+                "type": "h3",
+                "text": "Ten seasons of matrices"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/matrix-s1.jpg",
+                    "caption": "Season 1."
+                  },
+                  {
+                    "src": "images/tft/matrix-s2.jpg",
+                    "caption": "Season 2."
+                  },
+                  {
+                    "src": "images/tft/matrix-s3.jpg",
+                    "caption": "Season 3."
+                  },
+                  {
+                    "src": "images/tft/matrix-s4.jpg",
+                    "caption": "Season 4."
+                  },
+                  {
+                    "src": "images/tft/matrix-s5.jpg",
+                    "caption": "Season 5."
+                  },
+                  {
+                    "src": "images/tft/matrix-s6.jpg",
+                    "caption": "Season 6."
+                  },
+                  {
+                    "src": "images/tft/matrix-s7.jpg",
+                    "caption": "Season 7."
+                  },
+                  {
+                    "src": "images/tft/matrix-s9.jpg",
+                    "caption": "Season 9."
+                  },
+                  {
+                    "src": "images/tft/matrix-s10.jpg",
+                    "caption": "Season 10."
+                  }
+                ]
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-relationship-dist.jpg",
+                "caption": "Distribution of relationship strengths per season: strong (>15%), moderate (5–15%), weak (0–5%)."
+              },
+              {
+                "type": "p",
+                "text": "Early seasons are blunt. S1 has Pirate–Gunslinger at 37.5% and Demon–Shapeshifter at 18.2%, and relationships that strong don't suggest a composition, they dictate one. By S7–S10 the extreme values are gone and the mass has moved into the middle: more connections, none of them decisive."
+              },
+              {
+                "type": "p",
+                "text": "Across all ten seasons the split lands near 50–55% weak (0–5%), 35–40% moderate (5–15%) and 8–12% strong (>15%). That ratio is stable enough that I treated it as a design target in section 07."
+              },
+              {
+                "type": "p",
+                "text": "The other consistent thing is symmetry between the two axes: Origin-to-Origin and Class-to-Class relationship strengths are distributed about the same way, so neither axis is the one that decides your board."
+              },
+              {
+                "type": "h3",
+                "text": "What this doesn't cover: cost"
+              },
+              {
+                "type": "p",
+                "text": "The framework only knows about traits. It doesn't know that champions have prices, and a relationship map that ignores cost will happily propose a composition nobody can afford."
+              },
+              {
+                "type": "p",
+                "text": "TFT keeps the total cost of a finished board within a fairly narrow band across seasons — an eight-unit endgame board tends to land around 60–70 gold — which acts as an unstated balancing constraint on every strategy the map suggests. Adding cost as a third dimension alongside relationship strength and effect power would make the model able to say which combinations are actually reachable, and when. That's the next thing I'd build."
+              }
+            ]
+          },
+          {
+            "id": "practice",
+            "num": "07",
+            "title": "Designing a season with the rules",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "Extracted principles are worth nothing until you try to build with them. So I designed a season — \"Elements of Power\", themed on natural forces — using the measurements above as hard constraints rather than inspiration."
+              },
+              {
+                "type": "h3",
+                "text": "The targets"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "23 traits total: 11 Origins, 12 Classes (section 02)",
+                  "Size mix weighted to medium, in the S8–S10 proportions (section 03)",
+                  "Effects at roughly 30% offensive / 30% defensive / 20% utility / 20% mixed (section 04)",
+                  "Relationship strengths at 50–55% weak, 35–40% moderate, 8–12% strong (section 06)"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Traits"
+              },
+              {
+                "type": "p",
+                "text": "Origins (11): Pyroclasm, Tidecaller, Stormweaver, Geomancer, Luminary, Shadowbound, Chronoshaper, Voidborn, Naturalist, Astralforged, Techmaturgist."
+              },
+              {
+                "type": "p",
+                "text": "Classes (12): Elementalist, Harbinger, Warrior, Guardian, Mystic, Spellweaver, Aegis, Hunter, Artificer, Channeler, Ravager, Sage."
+              },
+              {
+                "type": "h3",
+                "text": "Sizes"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "Small (3–4 units): Voidborn, Chronoshaper, Techmaturgist · Sage, Artificer, Channeler",
+                  "Medium (5–6 units): Pyroclasm, Tidecaller, Stormweaver, Geomancer · Warrior, Guardian, Mystic, Spellweaver, Hunter",
+                  "Large (7+ units): Luminary, Shadowbound, Naturalist, Astralforged · Elementalist, Harbinger, Aegis, Ravager"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Effects"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "Offensive — Pyroclasm (damage amplification), Stormweaver (attack speed), Warrior (basic attacks), Hunter (crit), Ravager (execute)",
+                  "Defensive — Geomancer (damage reduction), Guardian (shields), Aegis (CC resistance), Mystic (magic resist), Shadowbound (regeneration)",
+                  "Utility — Chronoshaper (cooldowns), Techmaturgist (item enhancement), Artificer (resource generation), Sage (experience)",
+                  "Mixed — Tidecaller (damage/control), Luminary (offence/utility), Naturalist (defence/utility), Elementalist (adaptive), Channeler (resource/damage)"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Relationship structure"
+              },
+              {
+                "type": "p",
+                "text": "Three clusters, each built to a target strength rather than assembled by feel."
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "Elemental cycle — Pyroclasm, Tidecaller, Stormweaver and Geomancer at 15–20% with each other, and 10–15% into Elementalist. The season's main line.",
+                  "Light and shadow — Luminary and Shadowbound at 20%, with moderate links into Harbinger and Sage. Two traits that read as opposites and are mechanically reachable from the same board.",
+                  "Natural order — Naturalist and Astralforged at 18%, with moderate links into Mystic and Channeler. The slow, scaling option."
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Champions and cost curve"
+              },
+              {
+                "type": "p",
+                "text": "56 champions: 13 at one gold, 13 at two, 12 at three, 11 at four, 7 at five. The one- and two-cost tiers carry the basic elemental Origins and the workhorse Classes so that early boards can hit real traits; three-cost is where carries and pivots live; four- and five-cost complete the large traits."
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-new-season-matrix.jpg",
+                "caption": "The full Origin × Class champion matrix for \"Elements of Power\". Circled numbers are champion cost."
+              },
+              {
+                "type": "p",
+                "text": "What the exercise actually tested was whether the constraints fight each other, and mostly they don't — the one place they pull in opposite directions is the large traits, where hitting the effect distribution and the relationship ceiling at the same time means being careful about which champions carry two large traits at once. That's a useful thing to have found out on paper."
+              }
+            ]
+          },
+          {
+            "id": "appendix",
+            "num": "08",
+            "title": "Appendix — season reference",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "The trait lists and Origin × Class champion grids each season was measured from."
+              },
+              {
+                "type": "h3",
+                "text": "Season 1"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s1-1.jpg",
+                    "caption": "Season 1 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s1-2.jpg",
+                    "caption": "Season 1 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s1-3.jpg",
+                    "caption": "Season 1 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 2"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s2-1.jpg",
+                    "caption": "Season 2 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s2-2.jpg",
+                    "caption": "Season 2 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s2-3.jpg",
+                    "caption": "Season 2 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 3"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s3-1.jpg",
+                    "caption": "Season 3 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s3-2.jpg",
+                    "caption": "Season 3 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s3-3.jpg",
+                    "caption": "Season 3 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 4"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s4-1.jpg",
+                    "caption": "Season 4 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s4-2.jpg",
+                    "caption": "Season 4 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s4-3.jpg",
+                    "caption": "Season 4 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 5"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s5-1.jpg",
+                    "caption": "Season 5 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s5-2.jpg",
+                    "caption": "Season 5 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s5-3.jpg",
+                    "caption": "Season 5 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 6"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s6-1.jpg",
+                    "caption": "Season 6 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s6-2.jpg",
+                    "caption": "Season 6 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s6-3.jpg",
+                    "caption": "Season 6 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s6-4.jpg",
+                    "caption": "Season 6 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 7"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s7-1.jpg",
+                    "caption": "Season 7 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s7-2.jpg",
+                    "caption": "Season 7 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s7-3.jpg",
+                    "caption": "Season 7 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s7-4.jpg",
+                    "caption": "Season 7 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s7-5.jpg",
+                    "caption": "Season 7 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 8"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s8-1.jpg",
+                    "caption": "Season 8 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s8-2.jpg",
+                    "caption": "Season 8 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s8-3.jpg",
+                    "caption": "Season 8 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s8-4.jpg",
+                    "caption": "Season 8 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 9"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s9-1.jpg",
+                    "caption": "Season 9 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s9-2.jpg",
+                    "caption": "Season 9 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s9-3.jpg",
+                    "caption": "Season 9 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s9-4.jpg",
+                    "caption": "Season 9 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s9-5.jpg",
+                    "caption": "Season 9 reference sheet."
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "Season 10"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s10-1.jpg",
+                    "caption": "Season 10 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s10-2.jpg",
+                    "caption": "Season 10 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s10-3.jpg",
+                    "caption": "Season 10 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s10-4.jpg",
+                    "caption": "Season 10 reference sheet."
+                  },
+                  {
+                    "src": "images/tft/app-s10-5.jpg",
+                    "caption": "Season 10 reference sheet."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "zh": {
@@ -1403,7 +3045,7 @@ const SITE_CONTENT = {
           "name": "芳心纵火犯",
           "blurb": "Unity Game Jam 2024 的 2.5D 类 Hades Demo，玩法建立在草与火互相供养的系统上。",
           "href": "individual-projects/fire.html",
-          "image": "images/project-placeholder.svg"
+          "image": "images/heart-arsonist/cover.jpg"
         },
         {
           "id": "echo",
@@ -1419,29 +3061,116 @@ const SITE_CONTENT = {
       "backLink": "← 返回项目",
       "tagLabel": "个人项目",
       "projectName": "芳心纵火犯",
-      "image": "../images/project-placeholder.svg",
+      "image": "../images/heart-arsonist/keyart.jpg",
       "roleLabel": "角色",
       "role": "概念设计 · 角色与场景设计 · 玩法机制 · 关卡设计",
       "teamSizeLabel": "团队规模",
-      "teamSize": "待补充 — 确认 Game Jam 团队规模。",
+      "teamSize": "待补充 —— 确认 Game Jam 团队规模。",
       "lengthLabel": "项目周期",
       "length": "Unity Game Jam 2024",
       "synopsisHeading": "项目简介",
-      "synopsis": "《芳心纵火犯》是一款 2.5D 类 Hades 游戏 Demo，在 Unity Game Jam 2024 期间完成。灵感来自「野火烧不尽，春风吹又生」——但它不只是背景设定，而是被做成了系统：草与火互相供养，烧掉一片空间，也正是这片空间重新长出来的方式。玩家扮演一只调皮的消防员松鼠，它热爱点火，而这场冒险真正讲的是它如何逐渐认出自己。",
+      "synopsis": "为 Unity Game Jam 2024 做的 2.5D 类 Hades Demo。起点是「野火烧不尽，春风吹又生」这句诗，整个 Demo 都在试着把它变成可玩的东西：草与火互相供养，所以点燃关卡也正是你通过关卡的方式。你扮演芳心——一只热爱纵火的消防员松鼠。",
       "trailerHeading": "预告片",
       "trailerNote": "Game Jam 版本的玩法预告。",
       "trailerVideoId": "713lnqBMnyk",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
-        "概念设计 —— 确立故事前提、基调，以及支撑整个 Demo 的草与火设定。",
-        "角色与场景设计 —— 消防员松鼠，以及它一路烧过去的世界。",
-        "玩法机制 —— 设计草／火互动系统，驱动战斗与移动。",
-        "关卡设计 —— 围绕该系统搭建关卡空间，让「烧」既是难题也是手段。"
+        "概念设计 —— 故事前提、基调，以及支撑整个 Demo 的草与火设定。",
+        "角色与场景设计 —— 芳心、她的武器与二阶段形态、树屋主城和战斗地图。",
+        "玩法机制 —— 草／火互动系统、两个燃烧阶段，以及掉落与增益规则。",
+        "关卡设计 —— 六个关卡，前五关各自拆解系统的一个特性，最后一关把它们合起来。"
       ],
-      "screenshotsHeading": "项目截图",
-      "screenshotsNote": "待补充 —— 放入 Game Jam 版本的截图或原画。",
+      "screenshotsHeading": "设计板",
+      "screenshotsNote": "这个 Demo 是以一组 A3 设计板的形式记录的，下面完整收录。点击任意一张可以打开高清原图。",
       "postmortemHeading": "项目复盘",
-      "postmortem": "待补充 —— 简短复盘：草火系统里哪些设计成立，如果时间不止一场 Game Jam，你会砍掉或重做什么。"
+      "postmortem": "待补充 —— 简短复盘：草火系统里哪些设计成立，如果时间不止一场 Game Jam，你会砍掉或重做什么。",
+      "imageCaption": "主视觉 —— 二阶段的芳心。",
+      "designHeading": "设计",
+      "design": [
+        {
+          "heading": "从哪来的",
+          "body": "读到那句诗，想着「不如做个关于火和草的游戏」，于是燃烧草的机制比其他任何东西都先出现。设定是围着它长出来的：一座叫「永恒之森」的迷雾岛屿，一棵高到能自己形成小气候的古树，以及沿着树枝住在树屋里的松鼠族群。一个在极易燃物旁边生活了千年的文明，正适合放进一个纵火犯。"
+        },
+        {
+          "heading": "芳心",
+          "body": "这个角色是由矛盾搭起来的，故事就是她与这些矛盾相处的过程：用火战斗的消防员，一边闯祸一边履行职责，外表叛逆内里柔软。美术玩的是同一个把戏——圆润的轮廓、天真的大眼睛、蓬松的尾巴，外加一把有她两个大的火焰喷射器。参考对象是可莉的快乐破坏欲，和格雷福斯的直给。",
+          "items": [
+            "身份：消防员 vs 纵火者",
+            "性格：外表甜美 vs 内心疯狂",
+            "追求：探寻真相 vs 沉迷危险"
+          ]
+        },
+        {
+          "heading": "草与火",
+          "body": "点燃一丛草会同时发生三件事，所有关卡都是从这三件事里长出来的：燃烧的草持续伤害范围内的敌人；在一定半径内引燃相邻草丛；站在火里的玩家获得增益——移速提升与碰撞免疫。燃烧分两个阶段：前 3 秒是小火，造成伤害、蔓延，并必定掉落金币；随后进入 15 秒的大火，伤害更高，偶尔掉落稀有松果，玩家增益也在这个阶段。松果很关键——收集到一定数量，芳心会变身。",
+          "items": [
+            "伤害 —— 对范围内一切持续生效",
+            "蔓延 —— 按半径与概率向相邻草丛连锁",
+            "玩家增益 —— 加速、穿过障碍，且只在你站在火里时生效"
+          ]
+        },
+        {
+          "heading": "武器，与二阶段",
+          "body": "火焰喷射器是故意做得过大的。它最初来自格雷福斯的双管霰弹枪，后来砍掉一管——单管更像火焰喷射器。进入二阶段后，武器两侧展开聚能翼，表面浮现品红色能量纹路；芳心转为红色，并多长出一条尾巴。我放弃了粒子特效，改用手绘火焰动画，以保持和整体美术一致：一阶段的火像火焰喷射器，二阶段的火像激光。"
+        },
+        {
+          "heading": "场景",
+          "body": "树屋主城是正交视角的场景，做法借鉴了 Hades 处理非战斗空间的方式。我先用建模软件搭出体块，再重新绘制。第一版太方正——一堆盒子建筑架在树上，看着不对——于是第二版换成帐篷状和曲面的形体，让建筑从枝干里长出来，而不是摆在上面。战斗地图用同一套卡通风格的瓦片拼接，优先保证战术信息读得清楚。"
+        },
+        {
+          "heading": "六个关卡，六件事",
+          "body": "每个关卡只教草火系统的一个后果，最后一关要求你把它们同时用上。",
+          "items": [
+            "教学关 —— 一条直线上的草：按空格、点火、往前走",
+            "蔓延关 —— 过不去的栅栏，以及能把火带过去的草",
+            "双路线关 —— 一上一下两条路，学会从安全的高处向下打",
+            "潜行探索关 —— 彼此间距超出蔓延范围的孤立草丛，每丛都可能藏着敌人",
+            "战略穿越关 —— 主路敌人密到没法硬闯，得从侧路岛屿远程清场",
+            "速度挑战关 —— 15 秒燃烧计时下的长路线，考的是路径规划"
+          ]
+        },
+        {
+          "heading": "动画与叙事",
+          "body": "两种形态各有一套骨骼绑定和动画——待机、移动、奔跑、开火、受击、死亡，以及变身过场——正面和背面视角也都做了。树屋本身也是动的，连风铃都在晃。故事只在两端交代：序章全是火与冲动，结局是安静的归家。中间散落着六只被我叫作「Bros」的松鼠，每找到一只解锁一块记忆碎片，讲述父母那次远征的一角——叙事因此是碎片化的，顺序取决于你怎么探索。"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../images/heart-arsonist/character-zh.jpg",
+          "caption": "概念板 —— 灵感来源、世界观设定与芳心的角色设计。",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/weapon-zh.jpg",
+          "caption": "武器板 —— 火焰喷射器，以及二阶段中武器与角色的形态变化。",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/gameplay-zh.jpg",
+          "caption": "玩法板 —— 草与火系统，附实现流程图与 Unity 协程代码。",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/scene-zh.jpg",
+          "caption": "场景板 —— 树屋主城的设计与迭代，以及基于瓦片的战斗地图。",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/level-zh.jpg",
+          "caption": "关卡板 —— 六个关卡分别在教什么。",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/storyboard-zh.jpg",
+          "caption": "分镜与 UI 板 —— 序章、结局，以及记忆碎片成就系统。故事插画由朋友绘制。",
+          "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/animation-zh.jpg",
+          "caption": "动画板 —— 骨骼绑定、两种形态的动画集，以及树屋场景的动态元素。",
+          "full": true
+        }
+      ]
     },
     "aboutPage": {
       "pageTitle": "苟阳 — 关于我",
@@ -1714,9 +3443,9 @@ const SITE_CONTENT = {
           "id": "analysis-1",
           "tag": "分析 · 云顶之弈",
           "name": "云顶之弈羁绊关系的分析与实践",
-          "blurb": "把多个赛季的羁绊设计反推成设计原则，再用这些原则搭出一个并不存在的新赛季的羁绊系统。",
+          "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",
           "href": "game-analysis/analysis-1.html",
-          "image": "images/project-placeholder.svg"
+          "image": "images/tft/cover.jpg"
         },
         {
           "id": "analysis-2",
@@ -1873,27 +3602,6 @@ const SITE_CONTENT = {
           }
         ]
       },
-      "analysis-1": {
-        "pageTitle": "苟阳 — 云顶之弈羁绊关系的分析与实践",
-        "tagLabel": "分析 · 云顶之弈",
-        "heading": "云顶之弈羁绊关系的分析与实践",
-        "lead": "一个狂热玩家的好奇心，加上设计师的直觉：拳头在搭一个赛季的羁绊时到底遵循了什么规则——我能不能照着这些规则，自己搭一个出来？",
-        "backLink": "← 返回项目",
-        "blocks": [
-          {
-            "heading": "分析",
-            "text": "作为一名狂热的《云顶之弈》爱好者兼高端玩家（自封的），好奇心加上拆解系统的习惯，让我把羁绊机制做成了一次正经的研究。我按赛季逐个统计和计算羁绊的设计：数量、重叠方式、档位间距、哪些羁绊被允许更强。最后从中提取出这些赛季共同遵循的设计原则。",
-            "image": "images/project-placeholder.svg",
-            "caption": "待补充 —— 放入逐赛季分析的图表或数据表。"
-          },
-          {
-            "heading": "实践",
-            "text": "检验原则的唯一方式是拿它去造东西。于是我用提取出的规则，为一个假想的新赛季设计了一整套完全模拟的羁绊系统——不是罗列想要的羁绊，而是让它在真实赛季所受的同样约束下依然成立。",
-            "image": "images/project-placeholder.svg",
-            "caption": "待补充 —— 放入假想赛季的模拟羁绊体系。"
-          }
-        ]
-      },
       "analysis-2": {
         "pageTitle": "苟阳 — 游戏分析",
         "tagLabel": "分析 · 待定",
@@ -2043,6 +3751,1582 @@ const SITE_CONTENT = {
       "screenshotsNote": "待补充 —— 有可展示的版本后放入开发中截图。",
       "postmortemHeading": "当前进度",
       "postmortem": "待补充 —— Echo 仍在开发中，等做出垂直切片后再更新。"
+    },
+    "articles": {
+      "tft": {
+        "pageTitle": "云顶之弈羁绊关系的分析与实践 — 苟阳",
+        "tagLabel": "游戏分析 · 云顶之弈",
+        "heading": "云顶之弈羁绊关系的分析与实践",
+        "subheading": "把十个赛季的羁绊反推成一套设计规则，再用这套规则搭出一个并不存在的赛季。",
+        "backLink": "← 返回项目",
+        "tocHeading": "目录",
+        "meta": [
+          {
+            "label": "范围",
+            "value": "云顶之弈 S1–S10"
+          },
+          {
+            "label": "方法",
+            "value": "羁绊普查、Jaccard 相似度、Floyd–Warshall"
+          },
+          {
+            "label": "产出",
+            "value": "设计原则 + 一套完整的模拟赛季"
+          }
+        ],
+        "sections": [
+          {
+            "id": "abstract",
+            "num": "00",
+            "title": "摘要",
+            "blocks": [
+              {
+                "type": "lead",
+                "text": "我把云顶之弈前十个赛季的每一个羁绊都数了一遍、分了类、并两两做了关联计算，想找出拳头实际遵循的规则。结果是：数量惊人地稳定——每赛季 23–24 个羁绊，种族与职业几乎持平——羁绊之间的关联强度分布同样稳定。随后我把这些数字当作硬约束，自己设计了一整套赛季羁绊体系，用来检验这些规则是否真的可用。"
+              }
+            ]
+          },
+          {
+            "id": "intro",
+            "num": "01",
+            "title": "为什么要拆它",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "云顶之弈自 2019 年运营至今，每个赛季重做一次羁绊表。对设计师来说这是个少见的观察对象：同一支团队、同一套约束下的十几次完整重设计，而且数据全部公开。如果存在规则，十次迭代应该足够看出来。"
+              },
+              {
+                "type": "p",
+                "text": "我在多个赛季打到过大师，问题也是从那儿来的——玩久了会发现新赛季总是「不一样但不陌生」，我想知道到底是什么被固定住了。所以我反着做：把羁绊数据收集起来、量出来，看看设计决策从外部看是什么形状。"
+              },
+              {
+                "type": "p",
+                "text": "三个问题，按顺序："
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "羁绊数量是怎么定的，赛季之间怎么变？",
+                  "羁绊实际在做什么，这个分布随时间如何移动？",
+                  "羁绊之间的关联有多强，这种关联是怎么被调控的？"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "scale",
+            "num": "02",
+            "title": "一个赛季有多少羁绊",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "羁绊数量是一个赛季最先确定的东西，后面几乎所有设计都跟着它走。太少，每局都长一个样；太多，新玩家面对的是一墙看不懂的图标。每个羁绊都是一个需要被学习的概念——怎么激活、拿来干什么、什么时候值得为它拆掉现有阵容。"
+              },
+              {
+                "type": "p",
+                "text": "云顶的每个英雄都由种族和职业两条轴构成，所以羁绊池本质上是一张网格。少数英雄带有专属的单人羁绊——比如 S1 的亚索与「浪人」——它们不与任何东西互动，本文不计入。"
+              },
+              {
+                "type": "formula",
+                "text": "α = m / (x · y) × 100%",
+                "note": "x 为第 n 赛季的种族数，y 为职业数，m 为英雄数。α 表示英雄池对种族 × 职业网格的填充密度。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "Season",
+                  "Origins (x)",
+                  "Classes (y)",
+                  "Champions (m)",
+                  "α (%)"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "12",
+                    "10",
+                    "57",
+                    "47.5"
+                  ],
+                  [
+                    "2",
+                    "14",
+                    "11",
+                    "56",
+                    "36.4"
+                  ],
+                  [
+                    "3",
+                    "10",
+                    "11",
+                    "52",
+                    "47.3"
+                  ],
+                  [
+                    "4",
+                    "11",
+                    "12",
+                    "58",
+                    "43.9"
+                  ],
+                  [
+                    "5",
+                    "12",
+                    "12",
+                    "57",
+                    "39.6"
+                  ],
+                  [
+                    "6",
+                    "12",
+                    "12",
+                    "59",
+                    "41.0"
+                  ],
+                  [
+                    "7",
+                    "11",
+                    "14",
+                    "58",
+                    "37.7"
+                  ],
+                  [
+                    "8",
+                    "11",
+                    "13",
+                    "59",
+                    "41.3"
+                  ],
+                  [
+                    "9",
+                    "11",
+                    "12",
+                    "59",
+                    "44.7"
+                  ],
+                  [
+                    "10",
+                    "12",
+                    "12",
+                    "60",
+                    "41.7"
+                  ]
+                ],
+                "caption": "S1–S10 的种族、职业、英雄数量与网格密度。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-origins-classes.jpg",
+                "caption": "各赛季的种族与职业数量。S4 之后两条线基本重合。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-champions-alpha.jpg",
+                "caption": "十个赛季的英雄数量与 α 值。"
+              },
+              {
+                "type": "h3",
+                "text": "数据说了什么"
+              },
+              {
+                "type": "p",
+                "text": "平均值是每赛季 11.6 个种族、11.9 个职业、23.5 个羁绊、57.5 个英雄，α 为 42.1%。波动区间很窄：种族与职业都在 10–14 之间，羁绊总数在 21–25，英雄数在 52–60。"
+              },
+              {
+                "type": "p",
+                "text": "S1–S3 是嘈杂的阶段——尤其 S2，14 个种族、25 个羁绊，是史上最多的一次，α 也跌到 36.4%。从 S4 开始一切稳定下来：23–24 个羁绊，种族与职业相差不超过一个，α 稳定在 41%–44%。英雄池慢慢涨到 58–60，但羁绊数量没有跟着涨。"
+              },
+              {
+                "type": "p",
+                "text": "种族与职业收敛到同一数量，是我觉得最说明问题的一点。没有任何机制强制它们相等，做成不对称也完全合理——但保持齐平意味着每个英雄的两半价值大致相当，玩家永远不会学会只看一条轴而忽略另一条。"
+              }
+            ]
+          },
+          {
+            "id": "capacity",
+            "num": "03",
+            "title": "一个羁绊有多大",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "羁绊容量——需要几个英雄才能激活——是一个伪装成数字的节奏控制器。小羁绊是你现在就能拿到的强度，代价是它不高；大羁绊是你要押注的强度，逼你围绕它规划经济。有哪些容量、各占多少比例，比任何单个羁绊效果都更能决定一个赛季的手感。"
+              },
+              {
+                "type": "note",
+                "text": "容量在赛季之间并不严格可比，因为有些赛季改变了「什么算一个英雄」。S4 的天选让一个英雄按两个计算，S7 的龙类对自己的羁绊也是如此——翡翠因此能堆到 12。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-size-distribution.jpg",
+                "caption": "各赛季小型、中型、大型羁绊的数量。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-size-percent.jpg",
+                "caption": "同一组数据的占比：小型羁绊十个赛季里从 50% 掉到 17%。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-units-required.jpg",
+                "caption": "各容量档位的平均需求人数。三档都在 S4–S5 前后各上调一次，之后不动。"
+              },
+              {
+                "type": "h3",
+                "text": "数据说了什么"
+              },
+              {
+                "type": "p",
+                "text": "总数稳定在 21–25 个，平均 23.1。变的是配比。小型羁绊从 S1 的一半掉到 S10 的 17%；中型稳步上升，在 S10 达到 54% 的峰值；大型从 S1 的 18% 涨到 S7 的 43%，之后回落到 30% 附近。"
+              },
+              {
+                "type": "p",
+                "text": "档位阈值也动过一次：小型从 3 人变 4 人，中型从 5 变 6，大型从 7 变 8——全部发生在 S4–S5 前后，之后再没变过。这是整份数据里最清晰的一次主动决策：棋盘大小没变，但每个羁绊都多要一个格子，于是一副棋盘能凑齐的羁绊变少，凑齐的每一个都更重要。"
+              },
+              {
+                "type": "p",
+                "text": "合起来看，趋势是从「兼顾」走向「押注」。早期云顶允许你同时挂四五个小羁绊，后期云顶只给你两三个真正的羁绊，然后问你选哪个。"
+              },
+              {
+                "type": "h3",
+                "text": "逐赛季数据"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 4",
+                    "龙族、幻影、海盗、海克斯科技、帝国、忍者、虚空、狂野、元素使、守护者、游侠",
+                    "11"
+                  ],
+                  [
+                    "中型",
+                    "4 < a ≤ 6",
+                    "恶魔、冰川、贵族、斗士、枪手、骑士、换形师",
+                    "7"
+                  ],
+                  [
+                    "大型",
+                    "6 < a",
+                    "约德尔、刺客、剑士、法师",
+                    "4"
+                  ]
+                ],
+                "caption": "S1 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 4",
+                    "水晶、沙漠、雷霆、月神、山脉、钢铁、剧毒、风、德鲁伊、秘术师、掠食者、灵魂莲华",
+                    "12"
+                  ],
+                  [
+                    "中型",
+                    "4 < a ≤ 6",
+                    "林地、海洋、暗影、冰川、刺客、狂战士、剑士、法师、召唤师、游侠、守护神",
+                    "11"
+                  ],
+                  [
+                    "大型",
+                    "6 < a",
+                    "炼狱、光",
+                    "2"
+                  ]
+                ],
+                "caption": "S2 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 4",
+                    "太空海盗、机甲使、女武神、虚空、爆破专家、斗士、破法者、秘术师、狙神、先锋",
+                    "11"
+                  ],
+                  [
+                    "中型",
+                    "4 < a ≤ 6",
+                    "星神、未来战士、源计划、星之守护者、渗透者、护卫",
+                    "6"
+                  ],
+                  [
+                    "大型",
+                    "6 < a",
+                    "暗星、叛逆者、剑士、法师",
+                    "4"
+                  ]
+                ],
+                "caption": "S3 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 4",
+                    "宗师、耀光使、幽影、浪人、灵魂莲华、忍者",
+                    "6"
+                  ],
+                  [
+                    "中型",
+                    "4 < a ≤ 6",
+                    "刺客、猎人、圣盾使、秘术师、神射手、夜幽、天煞、福星、月神",
+                    "9"
+                  ],
+                  [
+                    "大型",
+                    "6 < a",
+                    "斗士、决斗大师、法师、重装战士、天神、永恒之森、三国猛将",
+                    "8"
+                  ]
+                ],
+                "caption": "S4 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 4",
+                    "重骑兵、神谕者、游侠、秘术师、斗士、女巫、铁甲卫士、复生亡魂、森林",
+                    "9"
+                  ],
+                  [
+                    "中型",
+                    "4 < a ≤ 6",
+                    "刺客、骑士、复苏者、法师、丧尸、龙族、屠龙勇士",
+                    "7"
+                  ],
+                  [
+                    "大型",
+                    "6 < a",
+                    "征服者、光明哨兵、黎明使者、破败军团、小恶魔、黑夜使者、圣光卫士",
+                    "7"
+                  ]
+                ],
+                "caption": "S5 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 5",
+                    "巨像、执法官、白魔法师、保镖、帝国、变异战士、学者、社交名流",
+                    "8"
+                  ],
+                  [
+                    "中型",
+                    "5 < a ≤ 7",
+                    "刺客、学者、狙神、枪手、发明家、赏金猎人、辛迪加、极客、约德尔人",
+                    "10"
+                  ],
+                  [
+                    "大型",
+                    "7 < a",
+                    "黑魔法师、保镖、格斗家、挑战者、学院、炼金科技",
+                    "6"
+                  ]
+                ],
+                "caption": "S6 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 5",
+                    "炮手、重骑兵、秘术师、派对达人、驯龙大师",
+                    "5"
+                  ],
+                  [
+                    "中型",
+                    "5 < a ≤ 7",
+                    "刺客、魔导师、护卫、换形师、迅捷射手、战士、冒险家、幻境龙",
+                    "8"
+                  ],
+                  [
+                    "大型",
+                    "7 < a",
+                    "格斗家、神龙尊者、法师、星界龙、玉龙、幽影龙、怒翼龙、金鳞龙、风暴龙",
+                    "10"
+                  ]
+                ],
+                "caption": "S7 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 5",
+                    "精英、圣盾使、黑客、捣蛋鬼、情报特工、神射手、超级英雄、平民、小天才、机甲",
+                    "10"
+                  ],
+                  [
+                    "中型",
+                    "5 < a ≤ 7",
+                    "护卫、爱心使者、混沌战士、管理员、幻灵战队、地下魔盗团",
+                    "6"
+                  ],
+                  [
+                    "大型",
+                    "7 < a",
+                    "斗士、决斗大师、吉祥物、灵能使、激光特工、爱心使者、星之守护者",
+                    "7"
+                  ]
+                ],
+                "caption": "S8 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 5",
+                    "多重施法、潜行者、战略家、弗雷尔卓德、巨神峰、约德尔人",
+                    "6"
+                  ],
+                  [
+                    "中型",
+                    "5 < a ≤ 7",
+                    "格斗家、神射手、枪手、神谕者、主宰、暗裔、皮城、暗影岛、祖安",
+                    "9"
+                  ],
+                  [
+                    "大型",
+                    "7 < a",
+                    "堡垒、挑战者、法师、德玛西亚、诺克萨斯、艾欧尼亚、恕瑞玛、虚空",
+                    "8"
+                  ]
+                ],
+                "caption": "S9 的羁绊容量分布。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "类别",
+                  "容量范围",
+                  "羁绊名称",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "小型",
+                    "0 ≤ a ≤ 5",
+                    "超级粉丝、电子舞曲、高能流行、爵士乐",
+                    "4"
+                  ],
+                  [
+                    "中型",
+                    "5 < a ≤ 7",
+                    "Emo、大腕射手、格斗家、护卫、音浪刺客、裁决使、刀锋领主、耀光使、疾射枪手、8比特、乡村乐、迪斯科、朋克",
+                    "13"
+                  ],
+                  [
+                    "大型",
+                    "7 < a",
+                    "舞者、秘术师、法师、心之钢、KDA、五杀乐队、真实伤害",
+                    "7"
+                  ]
+                ],
+                "caption": "S10 的羁绊容量分布。"
+              }
+            ]
+          },
+          {
+            "id": "types",
+            "num": "04",
+            "title": "羁绊在做什么",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "容量说的是代价，这一节说的是你换到了什么。我把每个赛季的每个羁绊按主要效果归入四类。"
+              },
+              {
+                "type": "h3",
+                "text": "攻击类"
+              },
+              {
+                "type": "p",
+                "text": "主要工作是让棋盘打得更疼：固定伤害与法强、攻速与多段攻击、暴击率与暴击伤害、护甲与魔抗穿透。刺客、剑士、狂战士、炼狱。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-offensive.jpg",
+                "caption": "攻击类效果的细分。"
+              },
+              {
+                "type": "h3",
+                "text": "防御类"
+              },
+              {
+                "type": "p",
+                "text": "以各种路径提供生存能力：抗性与减伤、生命值与回复与护盾，以及特殊机制——伤害反射、免死、控制免疫。守护者、骑士、斗士、重卫、秘术。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-defensive.jpg",
+                "caption": "防御类效果的细分。"
+              },
+              {
+                "type": "h3",
+                "text": "功能类"
+              },
+              {
+                "type": "p",
+                "text": "不体现在伤害数字上的效果：金币、装备与经验的产出，站位与区域控制与位移操纵，召唤与变形。海盗、福星、海克斯科技、冰川、元素使。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-utility.jpg",
+                "caption": "功能类效果的细分。"
+              },
+              {
+                "type": "h3",
+                "text": "混合类"
+              },
+              {
+                "type": "p",
+                "text": "刻意同时做多件事的羁绊——攻防兼具、以血量／站位／战斗时长为条件触发，以及随某个变量成长（战斗时间、单位数量、某种资源）。龙族、帝国、游侠、光明。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-effect-mixed.jpg",
+                "caption": "混合类效果的细分。"
+              },
+              {
+                "type": "h3",
+                "text": "分布，以及它怎么移动的"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-type-count.jpg",
+                "caption": "各赛季四类效果的数量。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-type-trend.jpg",
+                "caption": "同样四组数据的趋势。"
+              },
+              {
+                "type": "p",
+                "text": "混合类是这里的主角。S1–S5 稳定在 5 个左右，从 S6 起跳，到 S10 达到 12 个——半个赛季的羁绊都在同时做两件事。"
+              },
+              {
+                "type": "p",
+                "text": "攻击类走的是反方向。早期赛季它领先，7–8 个，S6 之后掉到 4–5 并停在那儿。防御类和功能类几乎不动：十个赛季里各自都是 3–6 个。这两类是游戏站立的地面，团队看起来把它们当作固定成本。"
+              },
+              {
+                "type": "p",
+                "text": "也就是说，复杂度的增长几乎完全靠把纯伤害羁绊改写成条件型和混合型换来的。这改变了游戏对玩家的要求：不再是「你能不能找到伤害」，而是「你能不能判断这个羁绊在当前局面下值多少」。"
+              },
+              {
+                "type": "h3",
+                "text": "逐赛季数据"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "恶魔、虚空",
+                    "刺客、剑士、枪手",
+                    "5"
+                  ],
+                  [
+                    "防御类",
+                    "贵族",
+                    "骑士、守护者、斗士",
+                    "4"
+                  ],
+                  [
+                    "功能类",
+                    "海盗、幻影、海克斯",
+                    "元素使",
+                    "4"
+                  ],
+                  [
+                    "混合类",
+                    "龙族、帝国、忍者、狂野、冰川、约德尔",
+                    "游侠、换形师、法师",
+                    "9"
+                  ],
+                  [
+                    "**总计**",
+                    "**22（种族12/职业10）**",
+                    "",
+                    "**22**"
+                  ]
+                ],
+                "caption": "S1 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "剧毒、雷霆",
+                    "刺客、狂战士、剑士",
+                    "5"
+                  ],
+                  [
+                    "防御类",
+                    "水晶、山脉、钢铁",
+                    "守护神",
+                    "4"
+                  ],
+                  [
+                    "功能类",
+                    "沙漠、月神、风",
+                    "秘术师、召唤师",
+                    "5"
+                  ],
+                  [
+                    "混合类",
+                    "林地、海洋、暗影、炼狱、光、冰川",
+                    "法师、游侠、德鲁伊、掠食者、灵魂莲华",
+                    "11"
+                  ],
+                  [
+                    "**总计**",
+                    "**25（种族14/职业11）**",
+                    "",
+                    "**25**"
+                  ]
+                ],
+                "caption": "S2 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "暗星、叛逆者",
+                    "剑士、爆破专家、狙神",
+                    "5"
+                  ],
+                  [
+                    "防御类",
+                    "源计划",
+                    "先锋、护卫、秘术师",
+                    "4"
+                  ],
+                  [
+                    "功能类",
+                    "太空海盗、未来战士",
+                    "破法者、狙神",
+                    "4"
+                  ],
+                  [
+                    "混合类",
+                    "星神、虚空、机甲使",
+                    "斗士、渗透者、法师、星之守护者、女武神",
+                    "8"
+                  ],
+                  [
+                    "**总计**",
+                    "**21（种族10/职业11）**",
+                    "",
+                    "**21"
+                  ]
+                ],
+                "caption": "S3 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "灵魂莲华、幽影",
+                    "刺客、决斗大师、猎人、神射手",
+                    "6"
+                  ],
+                  [
+                    "防御类",
+                    "天神、永恒之森",
+                    "重装战士、秘术师、圣盾使",
+                    "5"
+                  ],
+                  [
+                    "功能类",
+                    "福星、月神",
+                    "耀光使",
+                    "3"
+                  ],
+                  [
+                    "混合类",
+                    "三国猛将、天煞、忍者、夜幽",
+                    "法师、斗士、宗师",
+                    "7"
+                  ],
+                  [
+                    "**总计**",
+                    "**23（种族11/职业12）**",
+                    "",
+                    "**23**"
+                  ]
+                ],
+                "caption": "S4 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "屠龙勇士",
+                    "刺客、征服者、战神",
+                    "4"
+                  ],
+                  [
+                    "防御类",
+                    "铁甲卫士、森林",
+                    "骑士、秘术师、斗士",
+                    "5"
+                  ],
+                  [
+                    "功能类",
+                    "龙族、复生亡魂",
+                    "重骑兵、神谕者、复苏者",
+                    "5"
+                  ],
+                  [
+                    "混合类",
+                    "黎明使者、黑夜使者、小恶魔、破败军团、丧尸、女巫",
+                    "游侠、法师",
+                    "8"
+                  ],
+                  [
+                    "**总计**",
+                    "**24（种族12/职业12）**",
+                    "",
+                    "**24**"
+                  ]
+                ],
+                "caption": "S5 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "炼金科技",
+                    "挑战者、刺客、枪手",
+                    "4"
+                  ],
+                  [
+                    "防御类",
+                    "帝国",
+                    "保镖、格斗家、护卫、白魔法师",
+                    "5"
+                  ],
+                  [
+                    "功能类",
+                    "赏金猎人、约德尔人、社交名流",
+                    "学者、执法官",
+                    "5"
+                  ],
+                  [
+                    "混合类",
+                    "学院、精密发条、发明家、变异战士、极客、辛迪加、姐妹",
+                    "黑魔法师、巨像、狙神",
+                    "10"
+                  ],
+                  [
+                    "**总计**",
+                    "**24（种族12/职业12）**",
+                    "",
+                    "**24**"
+                  ]
+                ],
+                "caption": "S6 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "怒翼龙",
+                    "刺客、迅捷射手、战士",
+                    "4"
+                  ],
+                  [
+                    "防御类",
+                    "玉龙、金鳞龙",
+                    "护卫、格斗家、秘术师",
+                    "5"
+                  ],
+                  [
+                    "功能类",
+                    "星界龙、冒险家、神龙烈焰",
+                    "重骑兵、驯龙大师",
+                    "5"
+                  ],
+                  [
+                    "混合类",
+                    "幻境龙、风暴龙、幽影龙",
+                    "强袭炮手、神龙尊者、法师、换形师、魔导师",
+                    "8"
+                  ],
+                  [
+                    "**总计**",
+                    "**23（种族11/职业12）**",
+                    "",
+                    "**23**"
+                  ]
+                ],
+                "caption": "S7 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "激光特工",
+                    "斗士、决斗大师、枪神",
+                    "4"
+                  ],
+                  [
+                    "防御类",
+                    "管理员",
+                    "圣盾使、护卫、爱心使者",
+                    "4"
+                  ],
+                  [
+                    "功能类",
+                    "地下魔盗团、平民、小天才",
+                    "黑客、捣蛋鬼、情报特工",
+                    "6"
+                  ],
+                  [
+                    "混合类",
+                    "幻灵战队、爱心使者、机甲至尊",
+                    "吉祥物、灵能使、混沌战士、星之守护者、精英",
+                    "9"
+                  ],
+                  [
+                    "**总计**",
+                    "**23（种族11/职业12）**",
+                    "",
+                    "**23**"
+                  ]
+                ],
+                "caption": "S8 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "诺克萨斯、虚空",
+                    "挑战者、神射手、暗裔",
+                    "5"
+                  ],
+                  [
+                    "防御类",
+                    "德玛西亚、弗雷尔卓德",
+                    "堡垒、主宰",
+                    "4"
+                  ],
+                  [
+                    "功能类",
+                    "皮尔特沃夫、巨神峰",
+                    "多重施法者、潜行者、战略家",
+                    "5"
+                  ],
+                  [
+                    "混合类",
+                    "艾欧尼亚、暗影岛、恕瑞玛、祖安",
+                    "格斗家、枪手、神谕者、法师、约德尔人",
+                    "9"
+                  ],
+                  [
+                    "**总计**",
+                    "**23（种族11/职业12）**",
+                    "",
+                    "**23"
+                  ]
+                ],
+                "caption": "S9 的羁绊效果分类。"
+              },
+              {
+                "type": "table",
+                "head": [
+                  "效果类型",
+                  "种族",
+                  "职业",
+                  "数量"
+                ],
+                "rows": [
+                  [
+                    "攻击类",
+                    "五杀乐队、真实伤害",
+                    "舞者、刀锋领主、音浪刺客",
+                    "5"
+                  ],
+                  [
+                    "防御类",
+                    "KDA",
+                    "护卫、秘术师",
+                    "3"
+                  ],
+                  [
+                    "功能类",
+                    "电子舞曲、爵士乐",
+                    "耀光使、疾射枪手",
+                    "4"
+                  ],
+                  [
+                    "混合类",
+                    "心之钢、高能流行、迪斯科、朋克",
+                    "8比特、大腕射手、格斗家、裁决使、Emo、乡村乐、法师、超级粉丝",
+                    "12"
+                  ],
+                  [
+                    "**总计**",
+                    "**24（种族12/职业12）**",
+                    "",
+                    "**24"
+                  ]
+                ],
+                "caption": "S10 的羁绊效果分类。"
+              }
+            ]
+          },
+          {
+            "id": "type-capacity",
+            "num": "05",
+            "title": "容量与效果交叉看",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "两条轴单独看都说明不了太多，交叉起来就清楚了。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-type-capacity.jpg",
+                "caption": "十个赛季汇总后的效果类型 × 容量档位分布。"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "攻击类集中在中型容量。小型攻击羁绊作为前期强度节点存在（S4 的英灵、S2 的剧毒），大型作为后期成长（S10 的真实伤害），但默认档位是中型——伤害随投入成长，上限由「投入得起多少」封住。",
+                  "防御类偏向小型与中型，因为它的职责就是好兼容。纯防御的大型羁绊很罕见；真出现时，它通常已经附带了第二种效果，变成混合类。",
+                  "功能类压倒性地集中在小型。产金、产装备、硬控，这些东西一旦能同时拿很多就会失控，把它们锁在小型容量是最省事的防范。",
+                  "混合类占据大型档位。一个羁绊如果要吃掉八九个格子，它就必须定义这副棋盘——而定义赛季的羁绊，往往正是那些同时做两件事的。S7 的翡翠、S10 的真实伤害。"
+                ]
+              },
+              {
+                "type": "p",
+                "text": "这个规律更像团队在遵守的一条规则，而不是巧合：一个羁绊的效果越开放，激活它要付的价格就越高。"
+              }
+            ]
+          },
+          {
+            "id": "relationships",
+            "num": "06",
+            "title": "羁绊之间的关系",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "单个羁绊是简单的部分。真正构成一个赛季的，是哪些羁绊能被放在一起打——而这件事在平衡性补丁之前很久就决定了，取决于哪些英雄携带哪两个羁绊。"
+              },
+              {
+                "type": "p",
+                "text": "两个羁绊如果共享英雄，就是直接关联；如果要经过第三个羁绊才能连上，就是间接关联。要衡量它们需要数字而不是印象，所以我用了两个标准工具。"
+              },
+              {
+                "type": "h3",
+                "text": "直接关联：Jaccard 相似度"
+              },
+              {
+                "type": "formula",
+                "text": "J(A,B) = |A ∩ B| / |A ∪ B|",
+                "note": "两个羁绊共有的英雄数，除以两者合起来的全部去重英雄数。1 表示阵容完全相同，0 表示毫无重叠。"
+              },
+              {
+                "type": "p",
+                "text": "以 S3 的星神与保护者为例：星神是 {艾希、赵信、卡萨丁、璐璐、索拉卡}，保护者是 {赵信、洛、卡尔玛、厄加特}。共有 1 人，去重后共 8 人，J = 0.125，即 12.5% 的关联。足够让你在拼阵容时注意到，又不足以让这个组合变成必选。"
+              },
+              {
+                "type": "h3",
+                "text": "间接关联：Floyd–Warshall"
+              },
+              {
+                "type": "p",
+                "text": "很多真实存在的思路并不共享英雄，而是绕过第三个羁绊连上的。我用 d = 1 − J 把相似度转成距离，对所有羁绊对跑 Floyd–Warshall 找出最强路径，再转换回来。路径强度是相乘的，所以 80% 接 70% 得到 56%，长链会自然衰减到可以忽略——这正是我想要的行为，毕竟跳五次才连上的关系算不上一种打法。"
+              },
+              {
+                "type": "h3",
+                "text": "工具"
+              },
+              {
+                "type": "p",
+                "text": "我没有用表格手算，而是写了一个小程序，因为十个赛季大约是 235 个羁绊和 575 个英雄，而且我希望能反复重跑。输入一个赛季的羁绊表和英雄名单（含各自的两个羁绊），它会输出完整的直接／间接关联矩阵热力图。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-tool.jpg",
+                "caption": "为这次分析写的羁绊与英雄编辑器。"
+              },
+              {
+                "type": "h3",
+                "text": "看一个赛季：S10"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/matrix-s10.jpg",
+                "caption": "S10 的羁绊关系矩阵，每个格子是两个羁绊之间的关联强度。"
+              },
+              {
+                "type": "p",
+                "text": "S10 是音乐赛季，它的羁绊按曲风聚成一簇一簇，读得出来又不生硬。KDA 与超粉之间是 22.2%，全赛季最强的一条连接，主题上也完全对味：明星和追着他们跑的人。围绕它，KDA 与守护者这类防御羁绊保持 7–10% 的关联，这正是让这套体系保持弹性、而不是坍缩成唯一解的原因。"
+              },
+              {
+                "type": "p",
+                "text": "摇滚那一簇是同样的做法。五杀摇滚与狂徒 18.2%、与硬核 16.7%，一个有多条通路的进攻三角。心之钢与狂徒之间是 20%，与一批攻击羁绊维持 8–10%。"
+              },
+              {
+                "type": "p",
+                "text": "真正有意思的是天花板。S10 没有任何一条直接关联超过 25%，强连接集中在 15–20%。低到不会有必选组合，高到做选择时仍然有分量。底下则铺着一层密集的 5–15% 关联——迪斯科尤其多——中期转型正是靠这一层完成的。"
+              },
+              {
+                "type": "h3",
+                "text": "十个赛季的矩阵"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/matrix-s1.jpg",
+                    "caption": "S1。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s2.jpg",
+                    "caption": "S2。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s3.jpg",
+                    "caption": "S3。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s4.jpg",
+                    "caption": "S4。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s5.jpg",
+                    "caption": "S5。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s6.jpg",
+                    "caption": "S6。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s7.jpg",
+                    "caption": "S7。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s9.jpg",
+                    "caption": "S9。"
+                  },
+                  {
+                    "src": "images/tft/matrix-s10.jpg",
+                    "caption": "S10。"
+                  }
+                ]
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-relationship-dist.jpg",
+                "caption": "各赛季关联强度的分布：强（>15%）、中（5–15%）、弱（0–5%）。"
+              },
+              {
+                "type": "p",
+                "text": "早期赛季很直白。S1 的海盗–枪手是 37.5%，恶魔–换形师是 18.2%，这种强度的关联已经不是「建议」而是「规定」了。到 S7–S10，极端值消失，重量转移到中间：连接更多，但没有一条是决定性的。"
+              },
+              {
+                "type": "p",
+                "text": "十个赛季合起来，比例落在弱（0–5%）50–55%、中（5–15%）35–40%、强（>15%）8–12% 附近。这个比例稳定到我在第 07 节把它直接当成了设计指标。"
+              },
+              {
+                "type": "p",
+                "text": "另一件一致的事是两条轴的对称：种族之间与职业之间的关联强度分布大致相同，所以不存在「哪条轴才是真正决定阵容的那条」。"
+              },
+              {
+                "type": "h3",
+                "text": "这套框架没覆盖的：费用"
+              },
+              {
+                "type": "p",
+                "text": "这套框架只认识羁绊。它不知道英雄有价格，而一张忽略费用的关系图，会很乐意给你推荐一套谁也拿不出来的阵容。"
+              },
+              {
+                "type": "p",
+                "text": "云顶把一副成型棋盘的总费用控制在相当窄的区间里，各赛季都如此——八人口的终局阵容大致落在 60–70 金——这实际上是一条没写出来的约束，压在这张图给出的每一条思路上。把费用作为第三个维度，与关联强度和效果强度并列，模型才能回答「哪些组合真的够得着、什么时候够得着」。这是我接下来想做的东西。"
+              }
+            ]
+          },
+          {
+            "id": "practice",
+            "num": "07",
+            "title": "用这套规则设计一个赛季",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "提取出来的原则，不拿去造东西就等于零。所以我设计了一个赛季——「元素之力」，主题是自然之力——把上面的测量结果当作硬约束，而不是灵感。"
+              },
+              {
+                "type": "h3",
+                "text": "指标"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "羁绊总数 23：11 个种族、12 个职业（第 02 节）",
+                  "容量配比向中型倾斜，按 S8–S10 的比例（第 03 节）",
+                  "效果分布约为 攻击 30% / 防御 30% / 功能 20% / 混合 20%（第 04 节）",
+                  "关联强度为 弱 50–55%、中 35–40%、强 8–12%（第 06 节）"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "羁绊表"
+              },
+              {
+                "type": "p",
+                "text": "种族（11）：熔岩、潮汐、风暴、大地、光耀、暗影、时序、虚空、自然、星铸、机巧。"
+              },
+              {
+                "type": "p",
+                "text": "职业（12）：元素使、先驱、战士、守护者、秘术、编织者、壁垒、猎手、器匠、导引者、掠夺者、贤者。"
+              },
+              {
+                "type": "h3",
+                "text": "容量"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "小型（3–4 人）：虚空、时序、机巧 · 贤者、器匠、导引者",
+                  "中型（5–6 人）：熔岩、潮汐、风暴、大地 · 战士、守护者、秘术、编织者、猎手",
+                  "大型（7 人以上）：光耀、暗影、自然、星铸 · 元素使、先驱、壁垒、掠夺者"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "效果"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "攻击 —— 熔岩（伤害增幅）、风暴（攻速）、战士（普攻强化）、猎手（暴击）、掠夺者（斩杀）",
+                  "防御 —— 大地（减伤）、守护者（护盾）、壁垒（控制抗性）、秘术（魔抗）、暗影（生命回复）",
+                  "功能 —— 时序（冷却缩减）、机巧（装备强化）、器匠（资源产出）、贤者（经验）",
+                  "混合 —— 潮汐（伤害／控制）、光耀（进攻／功能）、自然（防御／功能）、元素使（自适应）、导引者（资源／伤害）"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "关联结构"
+              },
+              {
+                "type": "p",
+                "text": "三个簇，每一个都是照着目标强度搭的，而不是凭手感拼的。"
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "元素循环 —— 熔岩、潮汐、风暴、大地彼此 15–20%，与元素使 10–15%。赛季的主线。",
+                  "光与影 —— 光耀与暗影 20%，与先驱、贤者保持中等关联。两个读起来对立、机制上却能从同一副棋盘够到的羁绊。",
+                  "自然秩序 —— 自然与星铸 18%，与秘术、导引者中等关联。慢速成长的那条路。"
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "英雄与费用曲线"
+              },
+              {
+                "type": "p",
+                "text": "56 个英雄：1 费 13 个、2 费 13 个、3 费 12 个、4 费 11 个、5 费 7 个。1–2 费承载基础元素种族和主力职业，让前期棋盘也能吃到真羁绊；3 费是主 C 和转型点；4–5 费负责补齐大型羁绊。"
+              },
+              {
+                "type": "figure",
+                "src": "images/tft/fig-new-season-matrix.jpg",
+                "caption": "「元素之力」的完整种族 × 职业英雄矩阵，圈内数字为英雄费用。"
+              },
+              {
+                "type": "p",
+                "text": "这次练习真正检验的是这些约束会不会互相打架，结论是基本不会——唯一互相拉扯的地方在大型羁绊：要同时满足效果分布和关联上限，就得小心哪些英雄同时携带两个大型羁绊。能在纸面上先发现这一点，本身就有价值。"
+              }
+            ]
+          },
+          {
+            "id": "appendix",
+            "num": "08",
+            "title": "附录 — 赛季资料",
+            "blocks": [
+              {
+                "type": "p",
+                "text": "各赛季的羁绊表与种族 × 职业英雄网格，本文的统计即来自这些资料。"
+              },
+              {
+                "type": "h3",
+                "text": "S1"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s1-1.jpg",
+                    "caption": "S1 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s1-2.jpg",
+                    "caption": "S1 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s1-3.jpg",
+                    "caption": "S1 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S2"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s2-1.jpg",
+                    "caption": "S2 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s2-2.jpg",
+                    "caption": "S2 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s2-3.jpg",
+                    "caption": "S2 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S3"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s3-1.jpg",
+                    "caption": "S3 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s3-2.jpg",
+                    "caption": "S3 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s3-3.jpg",
+                    "caption": "S3 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S4"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s4-1.jpg",
+                    "caption": "S4 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s4-2.jpg",
+                    "caption": "S4 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s4-3.jpg",
+                    "caption": "S4 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S5"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s5-1.jpg",
+                    "caption": "S5 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s5-2.jpg",
+                    "caption": "S5 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s5-3.jpg",
+                    "caption": "S5 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S6"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s6-1.jpg",
+                    "caption": "S6 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s6-2.jpg",
+                    "caption": "S6 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s6-3.jpg",
+                    "caption": "S6 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s6-4.jpg",
+                    "caption": "S6 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S7"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s7-1.jpg",
+                    "caption": "S7 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s7-2.jpg",
+                    "caption": "S7 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s7-3.jpg",
+                    "caption": "S7 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s7-4.jpg",
+                    "caption": "S7 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s7-5.jpg",
+                    "caption": "S7 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S8"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s8-1.jpg",
+                    "caption": "S8 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s8-2.jpg",
+                    "caption": "S8 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s8-3.jpg",
+                    "caption": "S8 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s8-4.jpg",
+                    "caption": "S8 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S9"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s9-1.jpg",
+                    "caption": "S9 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s9-2.jpg",
+                    "caption": "S9 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s9-3.jpg",
+                    "caption": "S9 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s9-4.jpg",
+                    "caption": "S9 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s9-5.jpg",
+                    "caption": "S9 资料表。"
+                  }
+                ]
+              },
+              {
+                "type": "h3",
+                "text": "S10"
+              },
+              {
+                "type": "gallery",
+                "items": [
+                  {
+                    "src": "images/tft/app-s10-1.jpg",
+                    "caption": "S10 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s10-2.jpg",
+                    "caption": "S10 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s10-3.jpg",
+                    "caption": "S10 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s10-4.jpg",
+                    "caption": "S10 资料表。"
+                  },
+                  {
+                    "src": "images/tft/app-s10-5.jpg",
+                    "caption": "S10 资料表。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 };

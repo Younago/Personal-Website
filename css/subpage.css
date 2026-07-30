@@ -858,3 +858,312 @@ a.blog-row {
   width: 100%;
   background: var(--color-bg-alt);
 }
+
+/* ---------------- Design-board gallery ----------------
+   The Heart Arsonist boards are A3 sheets: 1.41:1, and dense with small
+   type. The default two-column 16/9 crop would both crop away the layout
+   and shrink the text past legibility, so this variant goes one per row at
+   the full content width and keeps the sheet's own proportions. */
+.shots-grid.is-boards {
+  grid-template-columns: 1fr;
+  gap: calc(var(--u) * 4);
+}
+
+.shots-grid.is-boards img {
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: var(--color-bg-alt);
+}
+
+.shot-full {
+  display: block;
+  position: relative;
+}
+
+/* The boards are still too small to read inline on any laptop, so the link
+   out to the full-resolution file has to be discoverable rather than a
+   thing you find by accident. */
+.shot-full::after {
+  content: "↗";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-bg);
+  background: var(--color-text);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.shot-full:hover::after,
+.shot-full:focus-visible::after {
+  opacity: 0.85;
+}
+
+/* An article carries a 200px table of contents and wide data tables that the
+   880px .resume measure was never sized for — with both, the reading column
+   drops to ~460px and the season tables lose a column off the right edge.
+   Widening only this page keeps every other sub-page as it was. */
+.resume.article-page {
+  max-width: 1140px;
+}
+
+/* ---------------- Long-form article pages ----------------
+   Used by js/article.js. Unlike the project pages, an article is mostly
+   running text, so it gets its own measure (~68 characters) and a table of
+   contents that stays on screen — the TFT piece has 20+ headings and is
+   unnavigable without one. */
+.article-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: calc(var(--u) * 6);
+  align-items: start;
+}
+
+.article-toc {
+  position: sticky;
+  top: calc(var(--u) * 10);
+  max-height: calc(100vh - var(--u) * 16);
+  overflow-y: auto;
+  border-right: 1px solid var(--color-line);
+  padding-right: calc(var(--u) * 2);
+}
+
+.article-toc h2 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.article-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.article-toc a {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+  margin-left: -12px;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+
+.article-toc a .mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.6;
+  flex: none;
+}
+
+.article-toc a:hover {
+  color: var(--color-text);
+}
+
+.article-toc a.is-active {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+}
+
+.article-section {
+  /* The global `section { padding: 144px 86.4px 0 }` rule is meant for
+     page-level bands; inside an article it would put a screen of dead space
+     between every heading. */
+  padding: 0;
+  margin: 0 0 calc(var(--u) * 6);
+  scroll-margin-top: calc(var(--u) * 10);
+}
+
+.article-section h2 {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 27px);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: calc(var(--u) * 1.25);
+  margin-bottom: calc(var(--u) * 2.5);
+}
+
+.article-section-num {
+  color: var(--color-accent);
+  font-size: 13px;
+  flex: none;
+}
+
+.article-section h3 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: calc(var(--u) * 3.5) 0 calc(var(--u) * 1.25);
+}
+
+.article-section p {
+  max-width: 68ch;
+  line-height: 1.85;
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.article-lead {
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.75 !important;
+  color: var(--color-text);
+}
+
+.article-list {
+  max-width: 68ch;
+  margin: 0 0 calc(var(--u) * 2);
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.7;
+}
+
+.article-formula {
+  border-left: 2px solid var(--color-accent);
+  padding: calc(var(--u) * 1.5) 0 calc(var(--u) * 1.5) calc(var(--u) * 2);
+  margin: calc(var(--u) * 2) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article-formula code {
+  font-family: var(--font-mono);
+  font-size: 15px;
+}
+
+.article-formula span {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  max-width: 60ch;
+}
+
+.article-note {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  padding: calc(var(--u) * 2);
+  margin: calc(var(--u) * 2.5) 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  max-width: 68ch;
+}
+
+.article-figure,
+.article-gallery figure {
+  margin: calc(var(--u) * 3) 0;
+}
+
+.article-figure img,
+.article-gallery img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-alt);
+}
+
+.article-figure figcaption,
+.article-gallery figcaption,
+.article-table-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  padding-top: 10px;
+  line-height: 1.6;
+}
+
+.article-table-caption {
+  padding: 0 0 10px;
+}
+
+.article-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: calc(var(--u) * 2);
+  margin: calc(var(--u) * 3) 0;
+}
+
+.article-gallery figure {
+  margin: 0;
+}
+
+/* Season tables run to five columns of trait names and are wide by nature;
+   they scroll inside their own box instead of stretching the page. */
+.article-table-wrap {
+  margin: calc(var(--u) * 2.5) 0 calc(var(--u) * 3);
+  overflow-x: auto;
+}
+
+.article-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 520px;
+  font-size: 13px;
+}
+
+.article-table th,
+.article-table td {
+  border: 1px solid var(--color-line);
+  padding: 9px 12px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.article-table th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .article-layout {
+    /* minmax(0, 1fr), not 1fr: a grid track's default min-width is auto, so
+       the 520px min-width on the season tables would widen the whole column
+       and push the page sideways on a phone. */
+    grid-template-columns: minmax(0, 1fr);
+    gap: calc(var(--u) * 3);
+  }
+
+  /* Sticky under a heading that is itself scrolling away reads as broken on
+     a phone, so the TOC becomes a plain block at the top of the article. */
+  .article-toc {
+    position: static;
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0 0 calc(var(--u) * 2);
+  }
+
+  .article-toc ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

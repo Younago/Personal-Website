@@ -181,7 +181,16 @@
                 "</video>" +
                 (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
             }
-            return '<figure class="shot"><img src="' + src + '" alt="' + alt + '" loading="lazy" />' +
+            // `full: true` marks an image that is worth opening at its own
+            // size — the Heart Arsonist design boards are A3 sheets of small
+            // text, unreadable at column width no matter how the grid is laid
+            // out. Everything else stays a plain <img>: wrapping every still
+            // in a link would promise a bigger version that doesn't exist.
+            var img = '<img src="' + src + '" alt="' + alt + '" loading="lazy" />';
+            if (typeof shot === "object" && shot.full) {
+              img = '<a class="shot-full" href="' + src + '" target="_blank" rel="noopener">' + img + "</a>";
+            }
+            return '<figure class="shot">' + img +
               (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
           })
           .join("");

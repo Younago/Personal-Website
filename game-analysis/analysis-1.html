@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
-<title>Young Gou — AI Playtest Feedback Tool</title>
+<title>Analysis and Practice of the Teamfight Tactics Synergy System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -12,27 +12,32 @@
 <link rel="stylesheet" href="../css/profile.css" />
 <link rel="stylesheet" href="../css/subpage.css" />
 </head>
-<body data-page="story" data-root="../" data-story="stories.analysis-1">
+<body data-page="article" data-root="../" data-article="articles.tft">
 
 <div id="chromeTop"></div>
 <nav id="chromeNav"></nav>
 
 <div class="profile-bar">
-  <a class="back-link" id="storyBack" href="../projects.html"></a></div>
+  <a class="back-link" id="articleBack" href="../projects.html"></a></div>
 
-<main class="resume">
+<main class="resume article-page">
   <div class="resume-header" style="border-bottom-color: var(--color-line);">
     <div>
-      <p class="mono detail-tag" id="storyTag"></p>
-      <h1 id="storyHeading"></h1>
+      <p class="mono detail-tag" id="articleTag"></p>
+      <h1 id="articleHeading"></h1>
+      <p class="resume-summary" id="articleSub"></p>
     </div>
   </div>
 
-  <section class="resume-section">
-    <p class="resume-summary" id="storyLead"></p>
-  </section>
+  <div class="detail-meta-grid" id="articleMeta"></div>
 
-  <div class="story-blocks" id="storyBlocks"></div>
+  <div class="article-layout">
+    <nav class="article-toc" aria-label="Contents">
+      <h2 id="tocHeading"></h2>
+      <ol id="articleToc"></ol>
+    </nav>
+    <div id="articleBody"></div>
+  </div>
 
   <div class="page-contact-cta" id="pageContactCta"></div>
 </main>
@@ -41,6 +46,6 @@
 
 <script src="../js/content.js"></script>
 <script src="../js/chrome.js"></script>
-<script src="../js/pages.js"></script>
+<script src="../js/article.js"></script>
 </body>
 </html>
