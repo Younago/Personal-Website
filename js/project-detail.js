@@ -24,6 +24,35 @@
     }, obj);
   }
 
+  // Clips play only while they are on screen. Six autoplaying videos decoding
+  // at once is a real cost on a laptop battery for something the visitor is
+  // not looking at yet — and `autoplay` gives no way to stop once started.
+  function playClipsWhenVisible(grid) {
+    var clips = grid.querySelectorAll("video");
+    if (!clips.length) return;
+    if (!window.IntersectionObserver) {
+      // No observer: fall back to plain autoplay rather than silent stills.
+      Array.prototype.forEach.call(clips, function (v) { v.autoplay = true; v.play().catch(function () {}); });
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) {
+            // play() rejects if the browser blocks it; a paused poster is a
+            // perfectly acceptable outcome, so the rejection is swallowed.
+            v.play().catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    Array.prototype.forEach.call(clips, function (v) { io.observe(v); });
+  }
+
   function render(lang) {
     var d = content[lang][key];
     document.title = d.gameName || d.projectName;
@@ -80,6 +109,43 @@
       trailerSection.style.display = "none";
     }
 
+    // Optional "Design" block: a project with a real design document has more
+    // to say than the fixed synopsis field holds, but the other project pages
+    // have nothing to put here — so both the container and the data are
+    // optional and the section simply doesn't exist without them.
+    var designWrap = document.getElementById("designSections");
+    if (designWrap) {
+      if (d.design && d.design.length) {
+        designWrap.innerHTML =
+          '<section class="resume-section"><h2>' + (d.designHeading || "") + "</h2>" +
+          d.design
+            .map(function (block) {
+              return (
+                '<div class="design-block">' +
+                "<h3>" + (block.heading || "") + "</h3>" +
+                (block.body ? '<p class="resume-summary">' + block.body + "</p>" : "") +
+                (block.items && block.items.length
+                  ? '<ul class="detail-list">' +
+                    block.items.map(function (i) { return "<li>" + i + "</li>"; }).join("") +
+                    "</ul>"
+                  : "") +
+                "</div>"
+              );
+            })
+            .join("") +
+          "</section>";
+      } else {
+        designWrap.innerHTML = "";
+      }
+    }
+
+    // Caption under the hero image, for the same crediting reason.
+    var imgCap = document.getElementById("detailImageCaption");
+    if (imgCap) {
+      imgCap.textContent = d.imageCaption || "";
+      imgCap.style.display = d.imageCaption ? "" : "none";
+    }
+
     document.getElementById("respHeading").textContent = d.responsibilitiesHeading;
     document.getElementById("respList").innerHTML = d.responsibilities.map(function (r) { return "<li>" + r + "</li>"; }).join("");
 
@@ -89,11 +155,37 @@
     if (shotsGrid) {
       if (d.screenshots && d.screenshots.length) {
         shotsGrid.style.display = "";
+        // Entries may be a bare path or { src, caption }. Captions matter here
+        // because the Box Shot images are teammates' concept art and models —
+        // crediting each one next to the image is the point, not decoration.
         shotsGrid.innerHTML = d.screenshots
-          .map(function (src, i) {
-            return '<img src="' + src + '" alt="' + (d.gameName || d.projectName) + " screenshot " + (i + 1) + '" loading="lazy" />';
+          .map(function (shot, i) {
+            var src = typeof shot === "string" ? shot : shot.src;
+            var caption = typeof shot === "string" ? "" : shot.caption || "";
+            var alt = caption || (d.gameName || d.projectName) + " screenshot " + (i + 1);
+            // A .mp4 entry renders as a looping, muted, inline video — these
+            // are gameplay clips converted from the original GIFs, which were
+            // 19 MB together and are 0.8 MB as video. muted + playsinline are
+            // what make autoplay legal on mobile browsers; the poster keeps
+            // the grid from collapsing before the clip loads.
+            if (/\.mp4$/i.test(src)) {
+              var base = src.replace(/\.mp4$/i, "");
+              // Two encodes of the same clip. MP4/H.264 is listed first because
+              // it is the one Safari and shipping Chrome pick fastest; WebM/VP9
+              // is there for Chromium builds compiled without the proprietary
+              // H.264 decoder, which would otherwise show a frozen poster.
+              return '<figure class="shot"><video poster="' + base + '.jpg"' +
+                ' muted loop playsinline preload="metadata" aria-label="' + alt + '">' +
+                '<source src="' + base + '.mp4" type="video/mp4" />' +
+                '<source src="' + base + '.webm" type="video/webm" />' +
+                "</video>" +
+                (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
+            }
+            return '<figure class="shot"><img src="' + src + '" alt="' + alt + '" loading="lazy" />' +
+              (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
           })
           .join("");
+        playClipsWhenVisible(shotsGrid);
       } else {
         shotsGrid.style.display = "none";
       }

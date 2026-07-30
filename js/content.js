@@ -211,41 +211,119 @@ const SITE_CONTENT = {
         "Contributed to the GDD/LDD documentation and helped the art team align on visual direction."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Tutorial, Level 3's diagonal-folding maze, and Level 4's dinosaur encounters.",
+      "screenshotsNote": "Gameplay clips from the levels I built, in the order players meet them, followed by key art.",
       "screenshots": [
-        "../images/detective-folder/shot-2.jpg",
-        "../images/detective-folder/shot-3.jpg",
-        "../images/detective-folder/shot-4.jpg",
-        "../images/detective-folder/shot-1.jpg"
+        { "src": "../images/detective-folder/clip1.mp4", "caption": "Tutorial 1 — two platform heights teach jump and big jump; the single red block lets players fail safely and learn that red means hazard." },
+        { "src": "../images/detective-folder/clip2.mp4", "caption": "Tutorial 2 — the first fold. One fold, one new path, no time pressure." },
+        { "src": "../images/detective-folder/clip3.mp4", "caption": "Tutorial 3 — moving while folding, then moving while unfolding, plus switching fold lines under the one-fold-at-a-time rule." },
+        { "src": "../images/detective-folder/clip4.mp4", "caption": "Tutorial 4 — collect every clue and the Baahd Guy appears. Teaches the goal and reinforces the hardest move in one puzzle." },
+        { "src": "../images/detective-folder/clip5.mp4", "caption": "Level 3, first scene — two horizontal fold lines introduce folding against gravity." },
+        { "src": "../images/detective-folder/clip7.mp4", "caption": "Level 4, first scene — a trap that can only be escaped by moving the dinosaur first." },
+        { "src": "../images/detective-folder/shot-2.jpg", "caption": "Level 3 — the horizontal/vertical maze scene." },
+        { "src": "../images/detective-folder/shot-3.jpg", "caption": "Level 4 — dinosaurs placed as obstacles to fold away." },
+        { "src": "../images/detective-folder/shot-4.jpg", "caption": "Comic-book world key art." },
+        { "src": "../images/detective-folder/shot-1.jpg", "caption": "Comic-book world key art." }
       ],
       "postmortemHeading": "Postmortem",
-      "postmortem": "Owning the folding mechanic from initial concept through four levels taught me to treat failure as data — with no existing reference for this kind of mechanic, I leaned on a \"fail fast\" approach to keep iterating at speed. The biggest lesson was around scope: features like Level 4's dinosaurs were fun but expensive, and without rigorous asset-lock discipline we spent time on spectacle instead of polish. I also learned to bring in playtesters earlier — by the time we saw players struggle with onboarding, it was late enough that we had to scramble to rebuild the tutorial. Above all, this project taught me the value of pre-production technical validation and clear documentation as a single source of truth for a team working through a genuinely novel mechanic."
+      "postmortem": "Owning the folding mechanic from initial concept through four levels taught me to treat failure as data — with no existing reference for this kind of mechanic, I leaned on a \"fail fast\" approach to keep iterating at speed. The biggest lesson was around scope: features like Level 4's dinosaurs were fun but expensive, and without rigorous asset-lock discipline we spent time on spectacle instead of polish. I also learned to bring in playtesters earlier — by the time we saw players struggle with onboarding, it was late enough that we had to scramble to rebuild the tutorial. Above all, this project taught me the value of pre-production technical validation and clear documentation as a single source of truth for a team working through a genuinely novel mechanic.",
+      "designHeading": "Level design",
+      "design": [
+        {
+          "heading": "Teaching a mechanic nobody has played before",
+          "body": "Folding had no reference game to borrow onboarding from, so the tutorial had to build understanding one idea at a time, and each scene had exactly one job.",
+          "items": [
+            "Scene 1 — movement only. Two platform heights so players discover jump and big jump on their own, and one red block positioned so that touching it is cheap: red means hazard is learned by failing once, not by being told.",
+            "Scene 2 — the fold itself. A single fold opens a single new path, with nothing else competing for attention.",
+            "Scene 3 — the two ways folding moves you: moving while folding, then moving while unfolding. Two small puzzles, one per idea, plus switching fold lines — because the paper can only hold one fold at a time, and that limit has to be felt rather than read.",
+            "Scene 4 — the goal. Collecting every clue makes the Baahd Guy appear, so players connect collection to objective, and the exit demands moving while unfolding — the move playtesters found hardest, placed where it can be practised under no threat."
+          ]
+        },
+        {
+          "heading": "Level 3 — folding sideways",
+          "body": "Level 3's Baahd Guy is the mist-weaver, who hides the truth in fog; horizontal folding rearranges how platforms sit above and below each other, which made it the mechanical echo of that fiction. It is also the riskier fold, because gravity is now working across the fold rather than along it — a good reason to introduce it here rather than earlier. The first scene gives two horizontal fold lines and nothing else to worry about; the second adds a vertical line and deliberate visual clutter to build a maze that has to be read before it can be solved."
+        },
+        {
+          "heading": "Level 4 — dinosaurs as level geometry",
+          "body": "The final level adds dinosaurs to match its Baahd Guy's backstory, and treats them as things to be folded rather than fought. The first scene opens with a trap that can only be escaped by moving a dinosaur, so the mechanic is learned under pressure but with an obvious solution; the second asks players to remove three of them one at a time by folding the ground out from under them; the third is a large scene that only resolves if every folding ability and the dinosaur rules are used together."
+        },
+        {
+          "heading": "What the sequencing is doing",
+          "body": "Every scene I built follows the same rule: introduce one idea in isolation, reinforce it under a mild constraint, then combine it with what came before. The tutorial is four scenes and four ideas; Level 3 is introduce-then-complicate; Level 4 is learn-under-pressure, drill, then synthesise. It is the same escalation the whole game runs on, which is why the levels I owned are the first, third and fourth."
+        }
+      ]
     },
     "capstone": {
       "backLink": "← Back to Projects",
-      "tagLabel": "CAPSTONE PROJECT (PLACEHOLDER)",
+      "tagLabel": "CAPSTONE PROJECT · IN PRODUCTION",
       "gameName": "Box Shot",
-      "image": "../images/project-placeholder.svg",
+      "image": "../images/box-shot/hero-characters.jpg",
       "roleLabel": "Role",
       "role": "Producer",
       "teamSizeLabel": "Team Size",
       "teamSize": "Placeholder",
       "lengthLabel": "Length",
-      "length": "Placeholder",
+      "length": "In production — pre-production milestones P1–P3 (2026), full production in the fall",
       "platformLabel": "Platform",
-      "platform": "Placeholder",
+      "platform": "PC — mouse & keyboard primary, controller as a stretch goal",
       "synopsisHeading": "Synopsis",
-      "synopsis": "Placeholder — this project's details are pending. Replace with a real synopsis when ready.",
+      "synopsis": "Box Shot is a first-person shooter set inside the cardboard world of a child's imagination. Colby, ten years old and newly moved into a house he didn't choose, can't find his console — so he builds an adventure out of his dad's toolbox and the moving boxes stacked around him. Players race through short handcrafted levels made of cardboard, garage scrap and household objects, using a modular Tool Gun to fight, traverse and improvise their way through objectives as quickly and cleanly as they can.",
       "trailerHeading": "Trailer",
-      "trailerNote": "Placeholder — embed the game trailer here.",
+      "trailerNote": "No trailer yet — the project is in production. This page will be updated when there is footage worth showing.",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
-        "Placeholder — list your specific responsibilities and contributions."
+        "TODO — replace with your own contributions on Box Shot (this page's design material comes from the team GDD, which does not record individual credit)."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Placeholder — add gameplay screenshots.",
+      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team — credited individually below.",
       "postmortemHeading": "Postmortem",
-      "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned."
+      "postmortem": "Postmortem pending — Box Shot is still in production. It will be written once the project ships.",
+      "imageCaption": "Character concept — Ling",
+      "designHeading": "Design",
+      "design": [
+        {
+          "heading": "Four pillars",
+          "items": [
+            "Colby's Imagination — every level is a handcrafted playground of cardboard and household junk, carrying the story through playful visuals rather than exposition.",
+            "Satisfying Combat — every shot, movement and enemy reaction has to feel responsive and rewarding enough to keep players in motion.",
+            "Creative Improvisation — encounters are built to be solved several ways, by combining Tool Gun abilities, enemies and the environment.",
+            "Cardboard World — the material is not just a look: what is made of cardboard can be bent, broken, stacked and rebuilt, so aesthetics and mechanics support each other."
+          ]
+        },
+        {
+          "heading": "The Tool Gun",
+          "body": "One weapon, two fire modes. Primary Fire is always available and never runs out of ammo, but overheats under sustained use — it defeats standard enemies, breaks supply boxes and bends cardboard structures. The secondary slot holds a swappable utility canister, picked up from defeated enemies and supply boxes, with a fixed number of shots and no reload. Because both modes fire independently, players keep shooting while deciding when a canister is worth spending and when to trade it for a better one.",
+          "items": [
+            "Bungee Shot — an elastic tether that pulls targets together: drag enemies into hazards, separate groups, or reposition objects to open a route.",
+            "Glob Shot — adhesive that sets into a temporary bounce pad, for verticality, momentum and knocking enemies off objectives.",
+            "Staple Shot — pins enemies and light objects in place, interrupts attacks, and strips the foil plating off armoured enemies."
+          ]
+        },
+        {
+          "heading": "Levels and loops",
+          "body": "Levels are short — roughly one to five minutes — and each is built around a single objective, encounter or idea rather than a linear mission. Players see the whole encounter before committing, complete primary objectives to unlock the exit, then choose whether to leave or keep hunting optional sub-objectives and faster routes. A score based on time, objectives and efficiency turns every level into something worth re-running.",
+          "items": [
+            "Core loop — run, jump, slide, primary fire, utility fire, reload.",
+            "Secondary loop — defeat enemies, collect canisters, manage health and ammo, manipulate hazards, complete objectives, earn score.",
+            "Tertiary loop — replay for mastery and higher scores while Colby's story unfolds between levels."
+          ]
+        },
+        {
+          "heading": "Enemies as tools, not targets",
+          "body": "Enemies are designed to be used as much as shot. A Dummy can be pinned to a wall and jumped off; a toppled Turret can be picked up and fired at its own side; a Tall Board knocked flat becomes a bridge across a gap. Tin Foil variants are armoured against Primary Fire specifically to push players toward canisters and hazards, and enemy Combinations — a Turret riding a Tall Board, a Dasher carrying a Party Popper — create new problems out of existing parts instead of raising enemy counts."
+        },
+        {
+          "heading": "Reference point",
+          "body": "The structural reference is I Am Your Beast: short objective-driven levels, fast movement, and replay pressure from scoring rather than length. Box Shot diverges by replacing an arsenal with a single modular Tool Gun, and by making the environment and the enemies part of the solution — the fastest run is usually the most inventive one, not the most accurate."
+        }
+      ],
+      "screenshots": [
+        { "src": "../images/box-shot/level-whitebox.jpg", "caption": "Level whitebox — Will" },
+        { "src": "../images/box-shot/toolgun-concepts.jpg", "caption": "Tool Gun concepts — Dylan" },
+        { "src": "../images/box-shot/enemy-brute.jpg", "caption": "Brute — Bourne" },
+        { "src": "../images/box-shot/env-street.jpg", "caption": "Environment concept — Dylan" },
+        { "src": "../images/box-shot/env-diorama.jpg", "caption": "Environment concept — Ling" },
+        { "src": "../images/box-shot/pillars.jpg", "caption": "The four design pillars" }
+      ]
     },
     "individualProjects": {
       "heading": "Individual Projects & Certifications",
@@ -1054,41 +1132,119 @@ const SITE_CONTENT = {
         "参与 GDD/LDD 文档编写，并协助美术团队统一视觉方向。"
       ],
       "screenshotsHeading": "游戏截图",
-      "screenshotsNote": "教程关卡、第三关的对角线折叠迷宫，以及第四关的恐龙遭遇战。",
+      "screenshotsNote": "我负责的关卡的实机片段，按玩家实际遇到的顺序排列，后面是主视觉。",
       "screenshots": [
-        "../images/detective-folder/shot-2.jpg",
-        "../images/detective-folder/shot-3.jpg",
-        "../images/detective-folder/shot-4.jpg",
-        "../images/detective-folder/shot-1.jpg"
+        { "src": "../images/detective-folder/clip1.mp4", "caption": "教学关 1 —— 两种高度的平台教跳跃和大跳；唯一那块红色让玩家安全地失败一次，学会「红色=危险」。" },
+        { "src": "../images/detective-folder/clip2.mp4", "caption": "教学关 2 —— 第一次折叠。一次折叠、一条新路，不给任何压力。" },
+        { "src": "../images/detective-folder/clip3.mp4", "caption": "教学关 3 —— 先是「折叠中移动」，再是「展开中移动」，外加在一次只能折一条线的限制下切换折线。" },
+        { "src": "../images/detective-folder/clip4.mp4", "caption": "教学关 4 —— 集齐线索，坏蛋才会现身。一个谜题同时教会目标和全游戏最难的那个动作。" },
+        { "src": "../images/detective-folder/clip5.mp4", "caption": "第三关第一场景 —— 两条水平折线，引入「对抗重力」的折叠。" },
+        { "src": "../images/detective-folder/clip7.mp4", "caption": "第四关第一场景 —— 必须先移动恐龙才能脱身的陷阱。" },
+        { "src": "../images/detective-folder/shot-2.jpg", "caption": "第三关 —— 水平与垂直折线交织的迷宫场景。" },
+        { "src": "../images/detective-folder/shot-3.jpg", "caption": "第四关 —— 恐龙作为需要被折走的障碍。" },
+        { "src": "../images/detective-folder/shot-4.jpg", "caption": "漫画世界主视觉。" },
+        { "src": "../images/detective-folder/shot-1.jpg", "caption": "漫画世界主视觉。" }
       ],
       "postmortemHeading": "项目复盘",
-      "postmortem": "从最初的概念构思到贯穿四个关卡的实现，主导折叠机制的过程教会了我把失败当作数据来看待——由于这类机制没有太多现成参考，我采用了「快速失败」的方法保持高速迭代。最大的教训在于范围管理：像第四关的恐龙这样的功能虽然有趣，但成本很高，如果没有严格的资产锁定纪律，我们就会把时间花在制造视觉效果上，而不是打磨核心体验。我也学到了应该更早引入玩家测试——等我们发现玩家在新手引导上遇到困难时，已经太晚了，只能仓促重做教程关卡。归根结底，这个项目让我明白了预生产阶段的技术验证，以及清晰文档作为团队「唯一真相来源」的价值，这对于一个正在摸索全新机制的团队来说尤为重要。"
+      "postmortem": "从最初的概念构思到贯穿四个关卡的实现，主导折叠机制的过程教会了我把失败当作数据来看待——由于这类机制没有太多现成参考，我采用了「快速失败」的方法保持高速迭代。最大的教训在于范围管理：像第四关的恐龙这样的功能虽然有趣，但成本很高，如果没有严格的资产锁定纪律，我们就会把时间花在制造视觉效果上，而不是打磨核心体验。我也学到了应该更早引入玩家测试——等我们发现玩家在新手引导上遇到困难时，已经太晚了，只能仓促重做教程关卡。归根结底，这个项目让我明白了预生产阶段的技术验证，以及清晰文档作为团队「唯一真相来源」的价值，这对于一个正在摸索全新机制的团队来说尤为重要。",
+      "designHeading": "关卡设计",
+      "design": [
+        {
+          "heading": "教一个没人玩过的机制",
+          "body": "折叠没有可以借鉴引导设计的参考作品，所以教学必须一次只建立一个概念，每个场景只承担一件事。",
+          "items": [
+            "场景 1 —— 只教移动。两种高度的平台让玩家自己发现跳跃和大跳；唯一那块红色被放在代价很低的位置：「红色=危险」是靠失败一次学会的，不是被告知的。",
+            "场景 2 —— 折叠本身。一次折叠开出一条新路，没有任何别的东西争夺注意力。",
+            "场景 3 —— 折叠带来的两种位移：先「折叠中移动」，再「展开中移动」。一个概念一个小谜题，外加切换折线——因为纸一次只能折一条线，这个限制必须被玩出来而不是被读出来。",
+            "场景 4 —— 目标。集齐线索坏蛋才现身，让玩家把「收集」和「目标」连起来；而出口需要用「展开中移动」——测试中最难的那个动作，被放在没有威胁的地方练。"
+          ]
+        },
+        {
+          "heading": "第三关 —— 横着折",
+          "body": "第三关的坏蛋是「织雾者」，用雾把真相藏起来；水平折叠改变的正是平台之间的上下关系，机制和这段设定互为呼应。它也是更危险的一种折叠，因为重力此时是横穿折线而不是顺着折线——这正是把它放在第三关而不是更早的理由。第一个场景只给两条水平折线，别的什么都不加；第二个场景加入一条垂直折线和刻意堆叠的视觉复杂度，做成一个必须先看懂、才能解开的迷宫。"
+        },
+        {
+          "heading": "第四关 —— 把恐龙当成关卡结构",
+          "body": "最后一关按这一关坏蛋的背景加入了恐龙，并且把它当成「要被折走的东西」而不是「要被打败的敌人」。第一个场景开局就是一个必须先移动恐龙才能脱身的陷阱——在压力下学，但解法足够明显；第二个场景要求玩家用折叠把地面从三只恐龙脚下抽走，一只一只处理；第三个场景是一个大场景，只有把所有折叠能力和恐龙规则一起用上才能通关。"
+        },
+        {
+          "heading": "这套排序在做什么",
+          "body": "我负责的每个场景都遵循同一条规则：先在隔离状态下引入一个概念，再在轻度约束下强化它，最后和之前学过的东西组合。教学关是四个场景四个概念；第三关是先引入、再复杂化；第四关是压力下学习、专项训练、综合运用。整个游戏跑的是同一套递进，这也是我拿下的是第一、第三和第四关的原因。"
+        }
+      ]
     },
     "capstone": {
       "backLink": "← 返回项目",
-      "tagLabel": "CAPSTONE 毕业项目（占位）",
+      "tagLabel": "毕业项目 · 制作中",
       "gameName": "Box Shot",
-      "image": "../images/project-placeholder.svg",
+      "image": "../images/box-shot/hero-characters.jpg",
       "roleLabel": "角色",
       "role": "制作人",
       "teamSizeLabel": "团队规模",
       "teamSize": "占位",
       "lengthLabel": "项目周期",
-      "length": "占位",
+      "length": "制作中 —— 2026 年完成 P1–P3 预生产里程碑，秋季进入正式生产",
       "platformLabel": "平台",
-      "platform": "占位",
+      "platform": "PC —— 以键鼠为主，手柄作为附加目标",
       "synopsisHeading": "游戏简介",
-      "synopsis": "占位文字 — 该项目详情待补充，准备好后替换为真实简介。",
+      "synopsis": "《Box Shot》是一款第一人称射击游戏，场景设定在一个孩子想象出来的纸板世界里。十岁的 Colby 刚被迫搬进一个不是自己选的新家，又找不到游戏机，于是用爸爸的工具箱和堆在身边的搬家纸箱造出了一场冒险。玩家在一个个由纸板、车库杂物和家居物品手工搭出的短关卡里穿行，用一把模块化的 Tool Gun 战斗、位移、随机应变，尽可能又快又干净地完成目标。",
       "trailerHeading": "预告片",
-      "trailerNote": "占位 — 在此嵌入游戏预告片。",
+      "trailerNote": "暂无预告片 —— 项目仍在制作中，等有值得展示的实机内容再更新。",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
-        "占位文字 — 列出你的具体职责与贡献。"
+        "待补 —— 换成你在 Box Shot 上的具体贡献（本页的设计内容来自团队 GDD，那份文档没有记录个人分工）。"
       ],
       "screenshotsHeading": "游戏截图",
-      "screenshotsNote": "占位 — 添加游戏截图。",
+      "screenshotsNote": "概念设定、白盒与模型由 Box Shot 团队成员完成，下方逐张署名。",
       "postmortemHeading": "项目复盘",
-      "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。"
+      "postmortem": "复盘待写 —— Box Shot 仍在制作中，等项目完成后再补。",
+      "imageCaption": "角色概念 — Ling",
+      "designHeading": "设计",
+      "design": [
+        {
+          "heading": "四条支柱",
+          "items": [
+            "Colby 的想象力 —— 每个关卡都是纸板和家居杂物手工搭出的游乐场，用画面本身讲故事，而不是靠台词交代。",
+            "扎实的射击手感 —— 每一次开火、移动和敌人反馈都要足够跟手、足够爽，让玩家保持在移动状态。",
+            "创造性的临场应变 —— 每场遭遇都留有多种解法，鼓励玩家把 Tool Gun 的能力、敌人和环境组合起来用。",
+            "纸板世界 —— 纸板不只是外观：能弯、能破、能堆、能重组，美术和玩法互为支撑。"
+          ]
+        },
+        {
+          "heading": "Tool Gun",
+          "body": "一把枪，两种开火模式。主射击永远可用、不消耗弹药，但连续开火会过热——它负责击败普通敌人、打破补给箱、弯折和破坏纸板结构。副射击是一个可更换的功能弹匣，从敌人和补给箱里捡取，射击次数固定且无法装填。因为两种模式各自独立开火，玩家可以一边持续输出，一边判断这发功能弹什么时候值得用、什么时候该换一个更合适的。",
+          "items": [
+            "Bungee Shot（弹索）—— 把目标拉到一起：把敌人拖进环境陷阱、拆散敌群，或者移动物件开出一条路。",
+            "Glob Shot（胶球）—— 打出会凝固的粘胶弹跳板，用来获得高度、保持速度，或把敌人从目标点上弹开。",
+            "Staple Shot（订书钉）—— 把敌人和轻物件钉在原地、打断攻击，并剥掉重甲敌人身上的锡箔护甲。"
+          ]
+        },
+        {
+          "heading": "关卡与循环",
+          "body": "关卡很短——大约一到五分钟——每关围绕一个目标、一场遭遇或一个玩法点设计，而不是线性任务。玩家先看清整场遭遇再决定怎么打，完成主要目标解锁出口，然后自己决定是直接离开，还是继续找可选目标和更快的路线。结算按时间、目标完成度和效率给分，让每一关都值得重打。",
+          "items": [
+            "核心循环 —— 跑、跳、滑铲、主射击、功能射击、装填。",
+            "次级循环 —— 击败敌人、收集功能弹匣、管理血量与弹药、利用环境陷阱、完成目标、拿分。",
+            "第三层循环 —— 为熟练度和更高分数重复挑战，同时在关卡之间推进 Colby 的故事。"
+          ]
+        },
+        {
+          "heading": "敌人是工具，不只是靶子",
+          "body": "敌人被设计成可以「用」的而不只是「打」的。Dummy 可以钉在墙上当跳板；被撞倒的 Turret 可以捡起来朝它的同伴开火；Tall Board 被打倒后就是一座跨越缺口的桥。锡箔护甲变体专门免疫主射击，逼玩家去用功能弹和环境；而敌人组合——顶着 Turret 的 Tall Board、抱着 Party Popper 冲锋的 Dasher——是用现有零件造出新问题，而不是单纯堆数量。"
+        },
+        {
+          "heading": "参考与差异",
+          "body": "结构上的参考是《I Am Your Beast》：短小的目标驱动关卡、快速移动，以及靠计分而不是靠时长产生的重复游玩动力。Box Shot 的不同在于用一把模块化 Tool Gun 取代武器库，并且把环境和敌人本身变成解法的一部分——跑得最快的那一遍，通常是最有创意的那一遍，而不是枪法最准的那一遍。"
+        }
+      ],
+      "screenshots": [
+        { "src": "../images/box-shot/level-whitebox.jpg", "caption": "关卡白盒 — Will" },
+        { "src": "../images/box-shot/toolgun-concepts.jpg", "caption": "Tool Gun 概念设计 — Dylan" },
+        { "src": "../images/box-shot/enemy-brute.jpg", "caption": "Brute（重装敌人）— Bourne" },
+        { "src": "../images/box-shot/env-street.jpg", "caption": "场景概念 — Dylan" },
+        { "src": "../images/box-shot/env-diorama.jpg", "caption": "场景概念 — Ling" },
+        { "src": "../images/box-shot/pillars.jpg", "caption": "四条设计支柱" }
+      ]
     },
     "individualProjects": {
       "heading": "个人项目与认证",

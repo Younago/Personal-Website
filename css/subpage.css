@@ -793,3 +793,68 @@ a.blog-row {
     min-height: 480px;
   }
 }
+
+/* ==========================================================================
+   Project detail — design blocks and image credits
+   ========================================================================== */
+.design-block {
+  margin-bottom: calc(var(--u) * 5);
+}
+
+.design-block:last-child {
+  margin-bottom: 0;
+}
+
+.design-block h3 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.design-block .resume-summary {
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.design-block .detail-list {
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Credits sit under the art they belong to rather than in one lump at the
+   bottom of the page — the images are teammates' work, and a single blanket
+   line makes it impossible to tell whose is whose. */
+.shots-grid .shot {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shots-grid .shot img {
+  display: block;
+  width: 100%;
+}
+
+.shots-grid .shot figcaption,
+.detail-credit {
+  padding: calc(var(--u) * 1.25) 0 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.detail-credit {
+  padding-left: 2px;
+}
+
+/* Gameplay clips sit in the same grid as the stills. */
+.shots-grid .shot video {
+  display: block;
+  width: 100%;
+  background: var(--color-bg-alt);
+}
