@@ -213,16 +213,46 @@ const SITE_CONTENT = {
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Gameplay clips from the levels I built, in the order players meet them, followed by key art.",
       "screenshots": [
-        { "src": "../images/detective-folder/clip1.mp4", "caption": "Tutorial 1 — two platform heights teach jump and big jump; the single red block lets players fail safely and learn that red means hazard." },
-        { "src": "../images/detective-folder/clip2.mp4", "caption": "Tutorial 2 — the first fold. One fold, one new path, no time pressure." },
-        { "src": "../images/detective-folder/clip3.mp4", "caption": "Tutorial 3 — moving while folding, then moving while unfolding, plus switching fold lines under the one-fold-at-a-time rule." },
-        { "src": "../images/detective-folder/clip4.mp4", "caption": "Tutorial 4 — collect every clue and the Baahd Guy appears. Teaches the goal and reinforces the hardest move in one puzzle." },
-        { "src": "../images/detective-folder/clip5.mp4", "caption": "Level 3, first scene — two horizontal fold lines introduce folding against gravity." },
-        { "src": "../images/detective-folder/clip7.mp4", "caption": "Level 4, first scene — a trap that can only be escaped by moving the dinosaur first." },
-        { "src": "../images/detective-folder/shot-2.jpg", "caption": "Level 3 — the horizontal/vertical maze scene." },
-        { "src": "../images/detective-folder/shot-3.jpg", "caption": "Level 4 — dinosaurs placed as obstacles to fold away." },
-        { "src": "../images/detective-folder/shot-4.jpg", "caption": "Comic-book world key art." },
-        { "src": "../images/detective-folder/shot-1.jpg", "caption": "Comic-book world key art." }
+        {
+          "src": "../images/detective-folder/clip1.mp4",
+          "caption": "Tutorial 1 — two platform heights teach jump and big jump; the single red block lets players fail safely and learn that red means hazard."
+        },
+        {
+          "src": "../images/detective-folder/clip2.mp4",
+          "caption": "Tutorial 2 — the first fold. One fold, one new path, no time pressure."
+        },
+        {
+          "src": "../images/detective-folder/clip3.mp4",
+          "caption": "Tutorial 3 — moving while folding, then moving while unfolding, plus switching fold lines under the one-fold-at-a-time rule."
+        },
+        {
+          "src": "../images/detective-folder/clip4.mp4",
+          "caption": "Tutorial 4 — collect every clue and the Baahd Guy appears. Teaches the goal and reinforces the hardest move in one puzzle."
+        },
+        {
+          "src": "../images/detective-folder/clip5.mp4",
+          "caption": "Level 3, first scene — two horizontal fold lines introduce folding against gravity."
+        },
+        {
+          "src": "../images/detective-folder/clip7.mp4",
+          "caption": "Level 4, first scene — a trap that can only be escaped by moving the dinosaur first."
+        },
+        {
+          "src": "../images/detective-folder/shot-2.jpg",
+          "caption": "Level 3 — the horizontal/vertical maze scene."
+        },
+        {
+          "src": "../images/detective-folder/shot-3.jpg",
+          "caption": "Level 4 — dinosaurs placed as obstacles to fold away."
+        },
+        {
+          "src": "../images/detective-folder/shot-4.jpg",
+          "caption": "Comic-book world key art."
+        },
+        {
+          "src": "../images/detective-folder/shot-1.jpg",
+          "caption": "Comic-book world key art."
+        }
       ],
       "postmortemHeading": "Postmortem",
       "postmortem": "Owning the folding mechanic from initial concept through four levels taught me to treat failure as data — with no existing reference for this kind of mechanic, I leaned on a \"fail fast\" approach to keep iterating at speed. The biggest lesson was around scope: features like Level 4's dinosaurs were fun but expensive, and without rigorous asset-lock discipline we spent time on spectacle instead of polish. I also learned to bring in playtesters earlier — by the time we saw players struggle with onboarding, it was late enough that we had to scramble to rebuild the tutorial. Above all, this project taught me the value of pre-production technical validation and clear documentation as a single source of truth for a team working through a genuinely novel mechanic.",
@@ -317,12 +347,30 @@ const SITE_CONTENT = {
         }
       ],
       "screenshots": [
-        { "src": "../images/box-shot/level-whitebox.jpg", "caption": "Level whitebox — Will" },
-        { "src": "../images/box-shot/toolgun-concepts.jpg", "caption": "Tool Gun concepts — Dylan" },
-        { "src": "../images/box-shot/enemy-brute.jpg", "caption": "Brute — Bourne" },
-        { "src": "../images/box-shot/env-street.jpg", "caption": "Environment concept — Dylan" },
-        { "src": "../images/box-shot/env-diorama.jpg", "caption": "Environment concept — Ling" },
-        { "src": "../images/box-shot/pillars.jpg", "caption": "The four design pillars" }
+        {
+          "src": "../images/box-shot/level-whitebox.jpg",
+          "caption": "Level whitebox — Will"
+        },
+        {
+          "src": "../images/box-shot/toolgun-concepts.jpg",
+          "caption": "Tool Gun concepts — Dylan"
+        },
+        {
+          "src": "../images/box-shot/enemy-brute.jpg",
+          "caption": "Brute — Bourne"
+        },
+        {
+          "src": "../images/box-shot/env-street.jpg",
+          "caption": "Environment concept — Dylan"
+        },
+        {
+          "src": "../images/box-shot/env-diorama.jpg",
+          "caption": "Environment concept — Ling"
+        },
+        {
+          "src": "../images/box-shot/pillars.jpg",
+          "caption": "The four design pillars"
+        }
       ]
     },
     "individualProjects": {
@@ -333,37 +381,47 @@ const SITE_CONTENT = {
           "id": "fire",
           "tag": "INDIVIDUAL PROJECT",
           "name": "Heart Arsonist",
-          "blurb": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
+          "blurb": "A 2.5D Hades-like demo from Unity Game Jam 2024, built around a system where grass and fire feed each other.",
           "href": "individual-projects/fire.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/project-placeholder.svg"
+        },
+        {
+          "id": "echo",
+          "tag": "INDIVIDUAL PROJECT · IN DEVELOPMENT",
+          "name": "Echo",
+          "blurb": "An in-development platformer where the platforms carry emotions, built on Plutchik's Emotion Wheel.",
+          "href": "individual-projects/echo.html",
+          "image": "images/project-placeholder.svg"
         }
       ]
     },
     "fire": {
       "backLink": "← Back to Projects",
-      "tagLabel": "INDIVIDUAL PROJECT (PLACEHOLDER)",
+      "tagLabel": "INDIVIDUAL PROJECT",
       "projectName": "Heart Arsonist",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "Role",
-      "role": "Producer / Level Designer",
+      "role": "Concept Design · Character & Environment Design · Gameplay Mechanics · Level Design",
       "teamSizeLabel": "Team Size",
-      "teamSize": "Placeholder (e.g. Solo)",
+      "teamSize": "TODO — confirm the size of the jam team.",
       "lengthLabel": "Length",
-      "length": "Placeholder",
+      "length": "Unity Game Jam 2024",
       "synopsisHeading": "Synopsis",
-      "synopsis": "Placeholder — describe the project, even if it's a work in progress.",
+      "synopsis": "Heart Arsonist is a 2.5D Hades-like game demo built during Unity Game Jam 2024. It starts from a line of classical Chinese poetry — “Wild fires cannot consume it all; spring breezes blow and it grows once more” — and turns that image into a system rather than a backdrop: grass and fire feed each other, so burning a space is also how the space comes back. You play a playful firefighter squirrel who loves setting fires, and the adventure is really about it working out who it actually is.",
       "trailerHeading": "Trailer",
-      "trailerNote": "Gameplay trailer.",
+      "trailerNote": "Gameplay trailer from the jam build.",
       "trailerVideoId": "713lnqBMnyk",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
-        "Placeholder — list your specific responsibilities and contributions."
+        "Concept design — set the premise, tone and the grass-and-fire fiction the whole demo hangs on.",
+        "Character and environment design — the firefighter squirrel and the world it burns through.",
+        "Gameplay mechanics — designed the grass/fire interaction system that drives combat and traversal.",
+        "Level design — built the demo's spaces around that system so burning is both the problem and the tool."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Placeholder — add project screenshots.",
+      "screenshotsNote": "TODO — add screenshots or key art from the jam build.",
       "postmortemHeading": "Postmortem",
-      "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned."
+      "postmortem": "TODO — a short reflection on the jam: what the grass-and-fire system got right, what you'd cut or rebuild with more than a jam's worth of time."
     },
     "aboutPage": {
       "pageTitle": "Young Gou — About Me",
@@ -385,12 +443,30 @@ const SITE_CONTENT = {
       "galleryHeading": "Photo Wall",
       "galleryNote": "Placeholder — swap these for real photos any time.",
       "photos": [
-        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
-        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
-        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
-        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
-        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" },
-        { "src": "images/project-placeholder.svg", "caption": "Placeholder caption" }
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "Placeholder caption"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "Placeholder caption"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "Placeholder caption"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "Placeholder caption"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "Placeholder caption"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "Placeholder caption"
+        }
       ],
       "sectionsHeading": "Sections",
       "sectionsIntro": "Four things I spend my time on when I'm not producing games.",
@@ -616,12 +692,11 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "analysis-1",
-          "tag": "ANALYSIS · TBD",
-          "name": "Analysis one — title TBD",
-          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
+          "tag": "ANALYSIS · TEAMFIGHT TACTICS",
+          "name": "Analysis and Practice of the Teamfight Tactics Synergy System",
+          "blurb": "Reverse-engineering TFT's synergies across several seasons into design principles — then using them to build a synergy set for a season that doesn't exist.",
           "href": "game-analysis/analysis-1.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/project-placeholder.svg"
         },
         {
           "id": "analysis-2",
@@ -779,23 +854,23 @@ const SITE_CONTENT = {
         ]
       },
       "analysis-1": {
-        "pageTitle": "Young Gou — Game Analysis",
-        "tagLabel": "ANALYSIS · TBD",
-        "heading": "Analysis one — title TBD",
-        "lead": "Placeholder — which game, and the question you were trying to answer.",
+        "pageTitle": "Young Gou — Analysis and Practice of the Teamfight Tactics Synergy System",
+        "tagLabel": "ANALYSIS · TEAMFIGHT TACTICS",
+        "heading": "Analysis and Practice of the Teamfight Tactics Synergy System",
+        "lead": "A dedicated TFT player's curiosity plus a designer's instinct: what rules is Riot actually following when it builds a season's synergies — and can I follow them well enough to build one myself?",
         "backLink": "← Back to Projects",
         "blocks": [
           {
-            "heading": "Placeholder heading",
-            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "heading": "The analysis",
+            "text": "I play a lot of Teamfight Tactics, and at some point curiosity — helped along by the instinct to take systems apart — turned into a proper study of the synergy system. I went season by season, studying and calculating how the synergies were built: how many there are, how they overlap, how breakpoints are spaced, which ones are allowed to be strong. What comes out the other side is a set of design principles the seasons appear to share.",
             "image": "images/project-placeholder.svg",
-            "caption": "Placeholder caption"
+            "caption": "TODO — add a chart or table from the season-by-season analysis."
           },
           {
-            "heading": "Placeholder heading",
-            "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
+            "heading": "The practice",
+            "text": "The test of a principle is whether you can build with it. So I used the extracted rules to design a complete, fully simulated synergy system for a hypothetical new season — not a wish list of traits, but a set that holds together under the same constraints the real seasons work within.",
             "image": "images/project-placeholder.svg",
-            "caption": "Placeholder caption"
+            "caption": "TODO — add the simulated synergy set for the hypothetical season."
           }
         ]
       },
@@ -924,6 +999,30 @@ const SITE_CONTENT = {
       "embedNote": "The live tool is embedded below. It also runs standalone — use the button above if you'd rather have the full window.",
       "embedUrl": "https://younago.github.io/IEEE-Format-Correct/",
       "repoUrl": "https://github.com/Younago/IEEE-Format-Correct"
+    },
+    "echo": {
+      "backLink": "← Back to Projects",
+      "tagLabel": "INDIVIDUAL PROJECT · IN DEVELOPMENT",
+      "projectName": "Echo",
+      "image": "../images/project-placeholder.svg",
+      "roleLabel": "Role",
+      "role": "TODO — confirm your role and whether Echo is solo or team.",
+      "teamSizeLabel": "Team Size",
+      "teamSize": "TODO",
+      "lengthLabel": "Status",
+      "length": "In development",
+      "synopsisHeading": "Synopsis",
+      "synopsis": "Classic platformers are about precise jumps, clean running and speed you learn to control. Echo goes the other way and builds the platforming out of feeling. The starting observation is an ordinary one about living online: we are surrounded all day by comments, opinions and moods, and those words — each carrying its own emotional weight — keep setting off ripples in us. Echo takes Robert Plutchik's Emotion Wheel, with its classification and blending of emotions, and turns it into a mechanic: the platforms themselves carry emotions, and the player has to read them, feel them, and choose which one to stand on.",
+      "responsibilitiesHeading": "What the project is exploring",
+      "responsibilities": [
+        "Turning an emotion taxonomy — Plutchik's wheel, including how emotions blend — into platform properties the player can read at a glance.",
+        "Making the choice between two platforms an emotional choice rather than a purely spatial one.",
+        "Finding out how much of a platformer's feel survives when reading and feeling, not timing, is the core skill."
+      ],
+      "screenshotsHeading": "Screenshots",
+      "screenshotsNote": "TODO — add work-in-progress captures once there's a build worth showing.",
+      "postmortemHeading": "Where it stands",
+      "postmortem": "TODO — Echo is still in development; update this once there's a vertical slice to talk about."
     }
   },
   "zh": {
@@ -1134,16 +1233,46 @@ const SITE_CONTENT = {
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "我负责的关卡的实机片段，按玩家实际遇到的顺序排列，后面是主视觉。",
       "screenshots": [
-        { "src": "../images/detective-folder/clip1.mp4", "caption": "教学关 1 —— 两种高度的平台教跳跃和大跳；唯一那块红色让玩家安全地失败一次，学会「红色=危险」。" },
-        { "src": "../images/detective-folder/clip2.mp4", "caption": "教学关 2 —— 第一次折叠。一次折叠、一条新路，不给任何压力。" },
-        { "src": "../images/detective-folder/clip3.mp4", "caption": "教学关 3 —— 先是「折叠中移动」，再是「展开中移动」，外加在一次只能折一条线的限制下切换折线。" },
-        { "src": "../images/detective-folder/clip4.mp4", "caption": "教学关 4 —— 集齐线索，坏蛋才会现身。一个谜题同时教会目标和全游戏最难的那个动作。" },
-        { "src": "../images/detective-folder/clip5.mp4", "caption": "第三关第一场景 —— 两条水平折线，引入「对抗重力」的折叠。" },
-        { "src": "../images/detective-folder/clip7.mp4", "caption": "第四关第一场景 —— 必须先移动恐龙才能脱身的陷阱。" },
-        { "src": "../images/detective-folder/shot-2.jpg", "caption": "第三关 —— 水平与垂直折线交织的迷宫场景。" },
-        { "src": "../images/detective-folder/shot-3.jpg", "caption": "第四关 —— 恐龙作为需要被折走的障碍。" },
-        { "src": "../images/detective-folder/shot-4.jpg", "caption": "漫画世界主视觉。" },
-        { "src": "../images/detective-folder/shot-1.jpg", "caption": "漫画世界主视觉。" }
+        {
+          "src": "../images/detective-folder/clip1.mp4",
+          "caption": "教学关 1 —— 两种高度的平台教跳跃和大跳；唯一那块红色让玩家安全地失败一次，学会「红色=危险」。"
+        },
+        {
+          "src": "../images/detective-folder/clip2.mp4",
+          "caption": "教学关 2 —— 第一次折叠。一次折叠、一条新路，不给任何压力。"
+        },
+        {
+          "src": "../images/detective-folder/clip3.mp4",
+          "caption": "教学关 3 —— 先是「折叠中移动」，再是「展开中移动」，外加在一次只能折一条线的限制下切换折线。"
+        },
+        {
+          "src": "../images/detective-folder/clip4.mp4",
+          "caption": "教学关 4 —— 集齐线索，坏蛋才会现身。一个谜题同时教会目标和全游戏最难的那个动作。"
+        },
+        {
+          "src": "../images/detective-folder/clip5.mp4",
+          "caption": "第三关第一场景 —— 两条水平折线，引入「对抗重力」的折叠。"
+        },
+        {
+          "src": "../images/detective-folder/clip7.mp4",
+          "caption": "第四关第一场景 —— 必须先移动恐龙才能脱身的陷阱。"
+        },
+        {
+          "src": "../images/detective-folder/shot-2.jpg",
+          "caption": "第三关 —— 水平与垂直折线交织的迷宫场景。"
+        },
+        {
+          "src": "../images/detective-folder/shot-3.jpg",
+          "caption": "第四关 —— 恐龙作为需要被折走的障碍。"
+        },
+        {
+          "src": "../images/detective-folder/shot-4.jpg",
+          "caption": "漫画世界主视觉。"
+        },
+        {
+          "src": "../images/detective-folder/shot-1.jpg",
+          "caption": "漫画世界主视觉。"
+        }
       ],
       "postmortemHeading": "项目复盘",
       "postmortem": "从最初的概念构思到贯穿四个关卡的实现，主导折叠机制的过程教会了我把失败当作数据来看待——由于这类机制没有太多现成参考，我采用了「快速失败」的方法保持高速迭代。最大的教训在于范围管理：像第四关的恐龙这样的功能虽然有趣，但成本很高，如果没有严格的资产锁定纪律，我们就会把时间花在制造视觉效果上，而不是打磨核心体验。我也学到了应该更早引入玩家测试——等我们发现玩家在新手引导上遇到困难时，已经太晚了，只能仓促重做教程关卡。归根结底，这个项目让我明白了预生产阶段的技术验证，以及清晰文档作为团队「唯一真相来源」的价值，这对于一个正在摸索全新机制的团队来说尤为重要。",
@@ -1238,12 +1367,30 @@ const SITE_CONTENT = {
         }
       ],
       "screenshots": [
-        { "src": "../images/box-shot/level-whitebox.jpg", "caption": "关卡白盒 — Will" },
-        { "src": "../images/box-shot/toolgun-concepts.jpg", "caption": "Tool Gun 概念设计 — Dylan" },
-        { "src": "../images/box-shot/enemy-brute.jpg", "caption": "Brute（重装敌人）— Bourne" },
-        { "src": "../images/box-shot/env-street.jpg", "caption": "场景概念 — Dylan" },
-        { "src": "../images/box-shot/env-diorama.jpg", "caption": "场景概念 — Ling" },
-        { "src": "../images/box-shot/pillars.jpg", "caption": "四条设计支柱" }
+        {
+          "src": "../images/box-shot/level-whitebox.jpg",
+          "caption": "关卡白盒 — Will"
+        },
+        {
+          "src": "../images/box-shot/toolgun-concepts.jpg",
+          "caption": "Tool Gun 概念设计 — Dylan"
+        },
+        {
+          "src": "../images/box-shot/enemy-brute.jpg",
+          "caption": "Brute（重装敌人）— Bourne"
+        },
+        {
+          "src": "../images/box-shot/env-street.jpg",
+          "caption": "场景概念 — Dylan"
+        },
+        {
+          "src": "../images/box-shot/env-diorama.jpg",
+          "caption": "场景概念 — Ling"
+        },
+        {
+          "src": "../images/box-shot/pillars.jpg",
+          "caption": "四条设计支柱"
+        }
       ]
     },
     "individualProjects": {
@@ -1254,37 +1401,47 @@ const SITE_CONTENT = {
           "id": "fire",
           "tag": "个人项目",
           "name": "芳心纵火犯",
-          "blurb": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
+          "blurb": "Unity Game Jam 2024 的 2.5D 类 Hades Demo，玩法建立在草与火互相供养的系统上。",
           "href": "individual-projects/fire.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/project-placeholder.svg"
+        },
+        {
+          "id": "echo",
+          "tag": "个人项目 · 开发中",
+          "name": "Echo",
+          "blurb": "开发中的平台跳跃游戏：平台本身带有情绪，机制建立在普卢奇克情绪轮之上。",
+          "href": "individual-projects/echo.html",
+          "image": "images/project-placeholder.svg"
         }
       ]
     },
     "fire": {
       "backLink": "← 返回项目",
-      "tagLabel": "个人项目（占位）",
+      "tagLabel": "个人项目",
       "projectName": "芳心纵火犯",
       "image": "../images/project-placeholder.svg",
       "roleLabel": "角色",
-      "role": "制作人/关卡策划",
+      "role": "概念设计 · 角色与场景设计 · 玩法机制 · 关卡设计",
       "teamSizeLabel": "团队规模",
-      "teamSize": "占位（如：独立完成）",
+      "teamSize": "待补充 — 确认 Game Jam 团队规模。",
       "lengthLabel": "项目周期",
-      "length": "占位",
+      "length": "Unity Game Jam 2024",
       "synopsisHeading": "项目简介",
-      "synopsis": "占位文字 — 描述这个项目，即使还在进行中也没关系。",
+      "synopsis": "《芳心纵火犯》是一款 2.5D 类 Hades 游戏 Demo，在 Unity Game Jam 2024 期间完成。灵感来自「野火烧不尽，春风吹又生」——但它不只是背景设定，而是被做成了系统：草与火互相供养，烧掉一片空间，也正是这片空间重新长出来的方式。玩家扮演一只调皮的消防员松鼠，它热爱点火，而这场冒险真正讲的是它如何逐渐认出自己。",
       "trailerHeading": "预告片",
-      "trailerNote": "游戏预告片。",
+      "trailerNote": "Game Jam 版本的玩法预告。",
       "trailerVideoId": "713lnqBMnyk",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
-        "占位文字 — 列出你的具体职责与贡献。"
+        "概念设计 —— 确立故事前提、基调，以及支撑整个 Demo 的草与火设定。",
+        "角色与场景设计 —— 消防员松鼠，以及它一路烧过去的世界。",
+        "玩法机制 —— 设计草／火互动系统，驱动战斗与移动。",
+        "关卡设计 —— 围绕该系统搭建关卡空间，让「烧」既是难题也是手段。"
       ],
       "screenshotsHeading": "项目截图",
-      "screenshotsNote": "占位 — 添加项目截图。",
+      "screenshotsNote": "待补充 —— 放入 Game Jam 版本的截图或原画。",
       "postmortemHeading": "项目复盘",
-      "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。"
+      "postmortem": "待补充 —— 简短复盘：草火系统里哪些设计成立，如果时间不止一场 Game Jam，你会砍掉或重做什么。"
     },
     "aboutPage": {
       "pageTitle": "苟阳 — 关于我",
@@ -1306,12 +1463,30 @@ const SITE_CONTENT = {
       "galleryHeading": "照片墙",
       "galleryNote": "占位 — 之后随时可以替换成真实照片。",
       "photos": [
-        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
-        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
-        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
-        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
-        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" },
-        { "src": "images/project-placeholder.svg", "caption": "占位说明文字" }
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "占位说明文字"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "占位说明文字"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "占位说明文字"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "占位说明文字"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "占位说明文字"
+        },
+        {
+          "src": "images/project-placeholder.svg",
+          "caption": "占位说明文字"
+        }
       ],
       "sectionsHeading": "板块",
       "sectionsIntro": "不做游戏的时候，时间大概花在这四件事上。",
@@ -1537,12 +1712,11 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "analysis-1",
-          "tag": "分析 · 待定",
-          "name": "分析一 — 标题待定",
-          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
+          "tag": "分析 · 云顶之弈",
+          "name": "云顶之弈羁绊关系的分析与实践",
+          "blurb": "把多个赛季的羁绊设计反推成设计原则，再用这些原则搭出一个并不存在的新赛季的羁绊系统。",
           "href": "game-analysis/analysis-1.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/project-placeholder.svg"
         },
         {
           "id": "analysis-2",
@@ -1700,23 +1874,23 @@ const SITE_CONTENT = {
         ]
       },
       "analysis-1": {
-        "pageTitle": "苟阳 — 游戏分析",
-        "tagLabel": "分析 · 待定",
-        "heading": "分析一 — 标题待定",
-        "lead": "占位文字 — 拆的是哪款游戏，想回答什么问题。",
+        "pageTitle": "苟阳 — 云顶之弈羁绊关系的分析与实践",
+        "tagLabel": "分析 · 云顶之弈",
+        "heading": "云顶之弈羁绊关系的分析与实践",
+        "lead": "一个狂热玩家的好奇心，加上设计师的直觉：拳头在搭一个赛季的羁绊时到底遵循了什么规则——我能不能照着这些规则，自己搭一个出来？",
         "backLink": "← 返回项目",
         "blocks": [
           {
-            "heading": "占位小标题",
-            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "heading": "分析",
+            "text": "作为一名狂热的《云顶之弈》爱好者兼高端玩家（自封的），好奇心加上拆解系统的习惯，让我把羁绊机制做成了一次正经的研究。我按赛季逐个统计和计算羁绊的设计：数量、重叠方式、档位间距、哪些羁绊被允许更强。最后从中提取出这些赛季共同遵循的设计原则。",
             "image": "images/project-placeholder.svg",
-            "caption": "占位图说"
+            "caption": "待补充 —— 放入逐赛季分析的图表或数据表。"
           },
           {
-            "heading": "占位小标题",
-            "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
+            "heading": "实践",
+            "text": "检验原则的唯一方式是拿它去造东西。于是我用提取出的规则，为一个假想的新赛季设计了一整套完全模拟的羁绊系统——不是罗列想要的羁绊，而是让它在真实赛季所受的同样约束下依然成立。",
             "image": "images/project-placeholder.svg",
-            "caption": "占位图说"
+            "caption": "待补充 —— 放入假想赛季的模拟羁绊体系。"
           }
         ]
       },
@@ -1845,6 +2019,30 @@ const SITE_CONTENT = {
       "embedNote": "下面直接嵌入了真实工具。它也可以独立打开——想要完整窗口就点上面的按钮。",
       "embedUrl": "https://younago.github.io/IEEE-Format-Correct/",
       "repoUrl": "https://github.com/Younago/IEEE-Format-Correct"
+    },
+    "echo": {
+      "backLink": "← 返回项目",
+      "tagLabel": "个人项目 · 开发中",
+      "projectName": "Echo",
+      "image": "../images/project-placeholder.svg",
+      "roleLabel": "角色",
+      "role": "待补充 —— 确认你在 Echo 中的角色，以及是独立开发还是团队项目。",
+      "teamSizeLabel": "团队规模",
+      "teamSize": "待补充",
+      "lengthLabel": "状态",
+      "length": "开发中",
+      "synopsisHeading": "项目简介",
+      "synopsis": "传统横版平台跳跃游戏强调精准跳跃、流畅奔跑和对速度的掌控，而 Echo 走了另一条路：把平台跳跃建立在「情感」之上。灵感来自一个很普通的观察——在数字化时代，我们时刻被评论、观点和情绪包围，这些承载着不同情感权重的言语，像涟漪一样在心里泛开。项目借鉴罗伯特·普卢奇克（Robert Plutchik）的情绪轮理论，把情绪的分类与合成转化为机制：平台本身带有情绪，玩家需要阅读它、感受它，再决定踩上哪一块。",
+      "responsibilitiesHeading": "项目正在探索的问题",
+      "responsibilities": [
+        "把一套情绪分类体系（普卢奇克情绪轮，包括情绪的合成关系）转译成玩家一眼能读懂的平台属性。",
+        "让两块平台之间的取舍成为情感选择，而不只是空间选择。",
+        "当核心技巧从「时机」变成「阅读与感受」，平台跳跃的手感还能留下多少。"
+      ],
+      "screenshotsHeading": "项目截图",
+      "screenshotsNote": "待补充 —— 有可展示的版本后放入开发中截图。",
+      "postmortemHeading": "当前进度",
+      "postmortem": "待补充 —— Echo 仍在开发中，等做出垂直切片后再更新。"
     }
   }
 };
