@@ -389,9 +389,9 @@ const SITE_CONTENT = {
           "id": "echo",
           "tag": "INDIVIDUAL PROJECT · IN DEVELOPMENT",
           "name": "Echo",
-          "blurb": "An in-development platformer where the platforms carry emotions, built on Plutchik's Emotion Wheel.",
+          "blurb": "An in-development platformer where the platforms carry emotions — and you identify them by reading the poetry written on them.",
           "href": "individual-projects/echo.html",
-          "image": "images/project-placeholder.svg"
+          "image": "images/echo/cover.jpg"
         }
       ]
     },
@@ -1070,7 +1070,7 @@ const SITE_CONTENT = {
       "backLink": "← Back to Projects",
       "tagLabel": "INDIVIDUAL PROJECT · IN DEVELOPMENT",
       "projectName": "Echo",
-      "image": "../images/project-placeholder.svg",
+      "image": "../images/echo/keyart.jpg",
       "roleLabel": "Role",
       "role": "TODO — confirm your role and whether Echo is solo or team.",
       "teamSizeLabel": "Team Size",
@@ -1078,17 +1078,97 @@ const SITE_CONTENT = {
       "lengthLabel": "Status",
       "length": "In development",
       "synopsisHeading": "Synopsis",
-      "synopsis": "Classic platformers are about precise jumps, clean running and speed you learn to control. Echo goes the other way and builds the platforming out of feeling. The starting observation is an ordinary one about living online: we are surrounded all day by comments, opinions and moods, and those words — each carrying its own emotional weight — keep setting off ripples in us. Echo takes Robert Plutchik's Emotion Wheel, with its classification and blending of emotions, and turns it into a mechanic: the platforms themselves carry emotions, and the player has to read them, feel them, and choose which one to stand on.",
-      "responsibilitiesHeading": "What the project is exploring",
+      "synopsis": "A platformer where the platforms carry emotions and the player has to read them. It's set slightly in the future, in a world where everything people say online has crystallised out of the network and into physical form: the \"Echo Chamber\", full of floating Emotion Platforms that hum with whatever feeling produced them. You play a phantom who has lost both its emotions and its sense of self, and who rebuilds itself by absorbing the feelings held inside those words.",
+      "responsibilitiesHeading": "What I'm designing",
       "responsibilities": [
-        "Turning an emotion taxonomy — Plutchik's wheel, including how emotions blend — into platform properties the player can read at a glance.",
-        "Making the choice between two platforms an emotional choice rather than a purely spatial one.",
-        "Finding out how much of a platformer's feel survives when reading and feeling, not timing, is the core skill."
+        "Translating Plutchik's emotion taxonomy — including how emotions synthesise — into platform types the player can read at a glance.",
+        "The synthesis system: four base emotions, four combinations, and a state machine that keeps orb-carrying, absorption and ability timeouts legible.",
+        "Selecting the literary fragments each platform carries, and the altered versions used on the return path.",
+        "Level structure — six tutorials that each isolate one emotion or synthesis, and the two-pass path that reuses the same geometry.",
+        "Visual design: the void-bodied phantom, the emotion-coloured garments, and the collage-and-torn-paper look of the Echo Chamber."
       ],
-      "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "TODO — add work-in-progress captures once there's a build worth showing.",
+      "screenshotsHeading": "Design boards",
+      "screenshotsNote": "The project is documented as a set of design boards. Click any of them to open the full-resolution version.",
       "postmortemHeading": "Where it stands",
-      "postmortem": "TODO — Echo is still in development; update this once there's a vertical slice to talk about."
+      "postmortem": "TODO — Echo is still in development; update this once there's a vertical slice to talk about.",
+      "imageCaption": "The player character — a phantom in the Echo Chamber.",
+      "designHeading": "Design",
+      "design": [
+        {
+          "heading": "Where it came from",
+          "body": "The starting point was noticing how much of daily life is spent under the weight of other people's opinions — comments online, judgements offline — and how reliably those words move us. A sentence can make a day or ruin one. That's an odd amount of power for text to have, and it seemed worth building a game around rather than a story about."
+        },
+        {
+          "heading": "The Echo Chamber",
+          "body": "In the near future, human digital footprints stop being data and start being terrain. Evaluative statements crystallise into Emotion Platforms — physical constructs that float through every city, each one pulsing with the feeling that made it: joy, sadness, anger, trust. They hang there silently, reflecting a society's emotional output back at it, and they physically affect anyone who touches them."
+        },
+        {
+          "heading": "The phantom",
+          "body": "The protagonist is an ink-black silhouette — a void where a person's identity should be — wearing garments in violent colour. The clothes are what do the work: they extract and absorb emotional energy, and every feeling the phantom takes in shows up as colour moving through the fabric. The contrast between the empty body and the loud clothing is the character arc, stated visually before a single line of story."
+        },
+        {
+          "heading": "Four emotions, four verbs",
+          "body": "I took Robert Plutchik's Emotion Wheel — which treats emotions as a system with intensities, opposites and combinations rather than a list — and pulled four out of it. Each is a platform type, an orb you can carry, and a movement ability.",
+          "items": [
+            "Joy — speed boost and double jump",
+            "Sadness — slowed movement, sinking platforms, and a glide",
+            "Anger — a dash, and platforms that collapse behind you",
+            "Trust — gravity walking, so surfaces become directions"
+          ]
+        },
+        {
+          "heading": "Synthesis",
+          "body": "The part of Plutchik's model I actually wanted is that emotions combine. Carry an orb of one emotion into a platform of another and the two merge into a new platform with a new ability — which is also the game quietly arguing that feelings can be transformed rather than just endured.",
+          "items": [
+            "Joy + Sadness → Hope — light in darkness, revealing hidden platforms and safe ground",
+            "Trust + Joy → Love — repairs damaged platforms",
+            "Sadness + Anger → Revenge — clears an area",
+            "Anger + Trust → Courage — wall running, a powered dash, mid-air control"
+          ]
+        },
+        {
+          "heading": "Read, then jump",
+          "body": "The text on a platform isn't a label. It's a line of poetry, and you work out what kind of platform you're standing on by reading it. \"Do not go gentle into that good night\" is anger. \"Doubt thou the stars are fire\" is trust. \"My heart is like a singing bird\" is joy. \"Tomorrow, and tomorrow, and tomorrow\" is sadness. Nothing tells you this — you experiment, you observe, and you start to feel the categories before you can name them. It makes exploration and interpretation the same act."
+        },
+        {
+          "heading": "The same path, twice",
+          "body": "The clearest thing the reading mechanic buys is in the level structure: you walk one route out and the same route back, and on the way back the quotes have been altered by a few words. \"If you can trust yourself when all men doubt you\" becomes \"If you can trust yourself, why do others doubt you?\" \"A friend may well be reckoned the masterpiece of nature\" becomes \"A friend may well betray the masterpiece of nature\". \"I hold your hand in mine\" becomes \"I hold your hand, but whose hand do you hold?\" The platforms change with them — stable ground starts sinking, the speed boost collapses, solid support vanishes. Same geometry, opposite experience. It's a level about how the places you trust change when you do."
+        },
+        {
+          "heading": "Six levels",
+          "body": "Each level introduces one emotion or one synthesis, in the order that makes the next one readable.",
+          "items": [
+            "1 — Joy and Trust: collect the first orb, learn double jump and gravity walking",
+            "2 — Sadness and Anger: sinking platforms and collapse timers, so the lesson is timing and quick decisions",
+            "3 — Love (Joy + Trust): the first synthesis, taught through repairing broken platforms",
+            "4 — Revenge (Sadness + Anger): slow and methodical combined with explosive, and how to manage the result",
+            "5 — Hope (Joy + Sadness): set in near-total darkness, where Hope's light is the only way forward",
+            "6 — Courage (Anger + Trust): wall running and powered dashes against obstacles nothing else clears"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../images/echo/concept.jpg",
+          "caption": "Concept board — inspiration, the Echo Chamber setting, character design, and the Plutchik theory behind the mechanics.",
+          "full": true
+        },
+        {
+          "src": "../images/echo/mechanics.jpg",
+          "caption": "Mechanics board — the emotion state machine, the four base platforms and the four syntheses.",
+          "full": true
+        },
+        {
+          "src": "../images/echo/experience.jpg",
+          "caption": "Experience board — the collage visual language, and the read-to-identify platform system.",
+          "full": true
+        },
+        {
+          "src": "../images/echo/levels.jpg",
+          "caption": "Level board — the six tutorial levels, and the two-pass path where the same route is re-read on the way back.",
+          "full": true
+        }
+      ]
     },
     "articles": {
       "tft": {
@@ -3051,9 +3131,9 @@ const SITE_CONTENT = {
           "id": "echo",
           "tag": "个人项目 · 开发中",
           "name": "Echo",
-          "blurb": "开发中的平台跳跃游戏：平台本身带有情绪，机制建立在普卢奇克情绪轮之上。",
+          "blurb": "开发中的平台跳跃游戏：平台本身带有情绪，而你要靠读上面的诗句来辨认它。",
           "href": "individual-projects/echo.html",
-          "image": "images/project-placeholder.svg"
+          "image": "images/echo/cover.jpg"
         }
       ]
     },
@@ -3732,7 +3812,7 @@ const SITE_CONTENT = {
       "backLink": "← 返回项目",
       "tagLabel": "个人项目 · 开发中",
       "projectName": "Echo",
-      "image": "../images/project-placeholder.svg",
+      "image": "../images/echo/keyart.jpg",
       "roleLabel": "角色",
       "role": "待补充 —— 确认你在 Echo 中的角色，以及是独立开发还是团队项目。",
       "teamSizeLabel": "团队规模",
@@ -3740,17 +3820,97 @@ const SITE_CONTENT = {
       "lengthLabel": "状态",
       "length": "开发中",
       "synopsisHeading": "项目简介",
-      "synopsis": "传统横版平台跳跃游戏强调精准跳跃、流畅奔跑和对速度的掌控，而 Echo 走了另一条路：把平台跳跃建立在「情感」之上。灵感来自一个很普通的观察——在数字化时代，我们时刻被评论、观点和情绪包围，这些承载着不同情感权重的言语，像涟漪一样在心里泛开。项目借鉴罗伯特·普卢奇克（Robert Plutchik）的情绪轮理论，把情绪的分类与合成转化为机制：平台本身带有情绪，玩家需要阅读它、感受它，再决定踩上哪一块。",
-      "responsibilitiesHeading": "项目正在探索的问题",
+      "synopsis": "一款平台跳跃游戏，但平台本身带着情绪，而玩家必须去读它。故事设定在不远的未来：人们在网络上说出的一切从数据里结晶出来，变成了实体——「回声室」，城市各处漂浮着情绪平台，每一块都带着造出它的那种情绪在低鸣。你扮演一个同时失去了情感与自我的幽灵，靠吸收那些话语里蕴含的情绪，一点点把自己重新拼起来。",
+      "responsibilitiesHeading": "我在设计的部分",
       "responsibilities": [
-        "把一套情绪分类体系（普卢奇克情绪轮，包括情绪的合成关系）转译成玩家一眼能读懂的平台属性。",
-        "让两块平台之间的取舍成为情感选择，而不只是空间选择。",
-        "当核心技巧从「时机」变成「阅读与感受」，平台跳跃的手感还能留下多少。"
+        "把普卢奇克的情绪分类体系（含情绪合成关系）转译成玩家一眼能读懂的平台类型。",
+        "合成系统：四种基础情绪、四种组合，以及一套让携带、吸收与能力时限都保持清晰的状态机。",
+        "挑选每块平台承载的文学片段，以及回程时被改写的版本。",
+        "关卡结构 —— 六个各自只讲一种情绪或一次合成的教学关，以及复用同一套几何结构的双向路线。",
+        "视觉设计：空洞身体的幽灵、被情绪染色的衣物，以及回声室的拼贴与撕纸质感。"
       ],
-      "screenshotsHeading": "项目截图",
-      "screenshotsNote": "待补充 —— 有可展示的版本后放入开发中截图。",
+      "screenshotsHeading": "设计板",
+      "screenshotsNote": "项目以一组设计板的形式记录。点击任意一张可以打开高清原图。",
       "postmortemHeading": "当前进度",
-      "postmortem": "待补充 —— Echo 仍在开发中，等做出垂直切片后再更新。"
+      "postmortem": "待补充 —— Echo 仍在开发中，等做出垂直切片后再更新。",
+      "imageCaption": "玩家角色 —— 回声室里的幽灵。",
+      "designHeading": "设计",
+      "design": [
+        {
+          "heading": "从哪来的",
+          "body": "起点是注意到：日常生活里有相当大一部分时间，人是活在别人的评价之下的——线上的评论、线下的评判——而这些话真的能推着人走。一句话可以成全一天，也可以毁掉一天。文字拥有这么大的力量，这件事本身值得做成一套玩法，而不只是讲一个故事。"
+        },
+        {
+          "heading": "回声室",
+          "body": "在不远的未来，人类的数字足迹不再是数据，而变成了地形。带有评价意味的言语结晶成「情绪平台」——漂浮在每一座城市里的实体构造，每一块都随着造出它的那种情绪搏动：喜悦、悲伤、愤怒、信任。它们沉默地悬在城市上空，把一个社会的情绪产出反射回它自己，并且会实实在在地作用于任何触碰它们的人。"
+        },
+        {
+          "heading": "幽灵",
+          "body": "主角是一个墨黑色的剪影——本该是「一个人」的地方是一片空洞——身上穿着颜色激烈的衣物。真正在工作的是这身衣服：它能抽取并吸收情绪能量，幽灵每吸收一种情感，就会化作流动的色彩浮现在布料上。空洞的身体与喧闹的服装之间的反差，就是这个角色的成长弧线——在任何一句剧情台词之前，先用视觉说完。"
+        },
+        {
+          "heading": "四种情绪，四个动词",
+          "body": "我借用了罗伯特·普卢奇克的情绪轮——它把情绪当作一个带有强度、对立与合成关系的系统，而不是一张清单——从中抽出四种。每一种同时是一类平台、一颗可携带的情绪球，和一项移动能力。",
+          "items": [
+            "喜悦 —— 加速与二段跳",
+            "悲伤 —— 移动变慢、平台下沉，以及滑翔",
+            "愤怒 —— 冲刺，以及身后随即崩塌的平台",
+            "信任 —— 重力行走，让「表面」变成「方向」"
+          ]
+        },
+        {
+          "heading": "合成",
+          "body": "普卢奇克模型里我真正想要的部分，是情绪可以彼此合成。带着一种情绪的球撞上另一种情绪的平台，两者会融合成一块全新的平台和一项新能力——这同时也是游戏在不出声地主张：情绪是可以被转化的，而不只是被忍受的。",
+          "items": [
+            "喜悦 + 悲伤 → 希望 —— 在黑暗中生成光，显现隐藏平台与安全区",
+            "信任 + 喜悦 → 爱 —— 修复受损的平台",
+            "悲伤 + 愤怒 → 复仇 —— 清空一片区域",
+            "愤怒 + 信任 → 勇气 —— 蹬墙跑、强化冲刺、空中控制"
+          ]
+        },
+        {
+          "heading": "先读，再跳",
+          "body": "平台上的文字不是标签，而是一句诗；你要靠读它来判断自己踩在什么平台上。「Do not go gentle into that good night」是愤怒。「Doubt thou the stars are fire」是信任。「My heart is like a singing bird」是喜悦。「Tomorrow, and tomorrow, and tomorrow」是悲伤。没有任何提示告诉你这些——你去试、去看，然后在能说出名字之前先感觉到了分类。探索和阐释因此变成了同一个动作。"
+        },
+        {
+          "heading": "同一条路，走两遍",
+          "body": "阅读机制带来的最直接的东西体现在关卡结构上：你沿一条路线走出去，再沿同一条路线走回来，而回程时那些引文被改动了几个词。「If you can trust yourself when all men doubt you」变成「If you can trust yourself, why do others doubt you?」；「A friend may well be reckoned the masterpiece of nature」变成「A friend may well betray the masterpiece of nature」；「I hold your hand in mine」变成「I hold your hand, but whose hand do you hold?」。平台也跟着变——稳固的地面开始下沉，加速带崩塌，坚实的支撑消失。同样的几何结构，相反的体验。这是一个关于「当你变了，你信任过的地方也会变」的关卡。"
+        },
+        {
+          "heading": "六个关卡",
+          "body": "每个关卡只引入一种情绪或一次合成，顺序保证下一关读得懂。",
+          "items": [
+            "1 —— 喜悦与信任：拿到第一颗球，学会二段跳与重力行走",
+            "2 —— 悲伤与愤怒：下沉平台与崩塌计时，教的是时机与快速决策",
+            "3 —— 爱（喜悦 + 信任）：第一次合成，用修复损坏平台来教",
+            "4 —— 复仇（悲伤 + 愤怒）：迟缓与爆发的结合，以及如何驾驭它",
+            "5 —— 希望（喜悦 + 悲伤）：几乎全黑的环境，希望的光是唯一的通路",
+            "6 —— 勇气（愤怒 + 信任）：蹬墙跑与强化冲刺，面对其他手段都清不掉的障碍"
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../images/echo/concept.jpg",
+          "caption": "概念板 —— 灵感来源、回声室设定、角色设计，以及机制背后的普卢奇克理论。",
+          "full": true
+        },
+        {
+          "src": "../images/echo/mechanics.jpg",
+          "caption": "机制板 —— 情绪状态机、四种基础平台与四种合成。",
+          "full": true
+        },
+        {
+          "src": "../images/echo/experience.jpg",
+          "caption": "体验板 —— 拼贴视觉语言，以及「读文识别平台」的系统。",
+          "full": true
+        },
+        {
+          "src": "../images/echo/levels.jpg",
+          "caption": "关卡板 —— 六个教学关，以及回程重读同一条路线的双向结构。",
+          "full": true
+        }
+      ]
     },
     "articles": {
       "tft": {
