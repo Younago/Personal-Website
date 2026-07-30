@@ -125,6 +125,32 @@
       if (window.SITE_AI_TOOL) window.SITE_AI_TOOL.setLang(lang, d);
     },
 
+    // RefFix lives in its own repo and is deployed on GitHub Pages; this page
+    // wraps it in the site's chrome, explains the design decisions behind it,
+    // and embeds the live build rather than vendoring a copy that would
+    // immediately start drifting from the original.
+    reffix: function (lang) {
+      var d = content[lang].reffixPage;
+      document.title = d.pageTitle;
+      setText("reffixBack", d.backLink);
+      var open = document.getElementById("reffixOpen");
+      if (open) open.href = d.embedUrl;
+      var repo = document.getElementById("reffixRepo");
+      if (repo) repo.href = d.repoUrl;
+      var frame = document.getElementById("reffixFrame");
+      // Assigned once: re-assigning on a language toggle would reload the
+      // iframe and throw away whatever the visitor had already pasted in.
+      if (frame && !frame.src) frame.src = d.embedUrl;
+      var body = document.getElementById("reffixBody");
+      if (body) {
+        body.innerHTML =
+          secBlock(d.whyHeading, d.why) +
+          secBlock(d.howHeading, d.how) +
+          secBlock(d.principleHeading, d.principle) +
+          secBlock(d.privacyHeading, d.privacy);
+      }
+    },
+
     "ai-hub": function (lang) {
       var d = content[lang].aiHubPage;
       document.title = d.pageTitle;

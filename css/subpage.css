@@ -756,3 +756,40 @@ a.blog-row {
     flex: 1 1 100%;
   }
 }
+
+/* ==========================================================================
+   Embedded third-party tool (ai-tools/reffix.html)
+   ========================================================================== */
+.tool-actions {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+  margin-top: calc(var(--u) * 3);
+  flex-wrap: wrap;
+}
+
+/* The frame gets the same hairline treatment as the site's own panels, so an
+   embedded app reads as part of the page rather than as a pasted-in window. */
+.tool-embed {
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.tool-embed iframe {
+  display: block;
+  width: 100%;
+  /* Tall enough that the embedded tool doesn't scroll inside its own frame
+     on a laptop — nested scrollbars are the thing that makes an embed feel
+     like an embed. */
+  height: 82vh;
+  min-height: 640px;
+  border: 0;
+}
+
+@media (max-width: 560px) {
+  .tool-embed iframe {
+    height: 70vh;
+    min-height: 480px;
+  }
+}

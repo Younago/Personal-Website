@@ -13,7 +13,7 @@ const SITE_CONTENT = {
       "experience": "EXPERIENCE",
       "education": "EDUCATION",
       "writing": "BLOG",
-      "beyondWork": "BEYOND WORK",
+      "beyondWork": "BEYOND GAME",
       "aiTool": "AI RELATED",
       "contact": "CONTACT",
       "aboutFull": "ABOUT ME",
@@ -292,17 +292,17 @@ const SITE_CONTENT = {
       "heading": "About Me",
       "photoAlt": "Professional portrait placeholder",
       "whoHeading": "Who I am & what I'm doing",
-      "who": "Hi, I'm Young Gou — a game producer, and if I'm honest, a pretty hardcore gamer at heart. Before landing here, I worked as an architecture design assistant and later interned as a systems designer, and that mix still shapes how I think about structure, pacing, and the systems players actually feel when they're playing. Right now, Hamsterballin' — one of the projects I've led — is already live on Steam, and Box Shot, another project I'm leading, is on track to launch there in early next year.",
+      "who": "Producer with experience of managing multidisciplinary teams and optimization pipelines. I fuse a background in architecture with expertise in game systems design to bring a unique, structural approach to project logistics, scope management, and cross-departmental communication. Highly skilled at facilitating alignment between creative and design disciplines to deliver polished, mechanically sound projects.",
       "howHeading": "How I got here",
-      "how": "Games have been a constant in my life since I was a kid, long before I ever thought of them as a career. When it came time to pick a major, I chose architecture — drawn less to the finished buildings than to the process behind them: the discipline of design, the problem-solving, and the particular satisfaction of watching an idea move from a blank page to something real that people could actually walk through and experience. Over time I noticed that what excited me most wasn't architecture itself, but that same arc — taking something from zero to a fully realized experience. Once I named that, the next step felt obvious: the same structural, systems-first thinking I'd been applying to buildings could apply just as well to games, only the space people move through became a system they play. I followed that instinct, moved into game production, and grew into the producer role I have today.",
+      "how": "Placeholder — a short narrative connecting your architecture background to your move into game production (e.g. what drew you from buildings to games).",
       "nextHeading": "Where I'm looking to go next",
-      "next": "Right now I'm looking for my next role as a Producer or in a PM/PD capacity at a content-driven studio — a place where the work itself sets the agenda, not the other way around. I want to be part of a team that trusts its people to make good calls, and where that trust runs both ways: leadership backs the team's judgment, and the team earns that trust with thoughtful, well-crafted work. That kind of mutual respect is, to me, what makes a project — and a team — genuinely worth being part of.",
+      "next": "Placeholder — describe the kind of role, studio, or team you're hoping to join next.",
       "funHeading": "A few fun facts",
-      "fun": "Music has been a steady thread outside of work — I spent five years as president of a choir, coordinating a group of people toward the same high-stakes deadline again and again, which turns out to have more in common with production than I expected. And in a short chapter right after graduating, before I fully committed to games, I helped a handful of restaurant businesses navigate the operational chaos of the pre- and post-pandemic period, working on redesigning their processes to keep things running. It's an odd detour to explain at parties, but it left me with a real appreciation for how much good process design can rescue a struggling operation."
+      "fun": "Placeholder — a couple of light, personal details (hobbies, favorite games, etc.) that show your voice."
     },
     "beyondWorkPage": {
-      "pageTitle": "Young Gou — Beyond Work",
-      "heading": "Beyond Work",
+      "pageTitle": "Young Gou — Beyond Game",
+      "heading": "Beyond Game",
       "lead": "Placeholder — a short introduction to who you are outside of games and work.",
       "galleryHeading": "Photo Wall",
       "galleryNote": "Placeholder — swap these for real photos any time.",
@@ -359,12 +359,12 @@ const SITE_CONTENT = {
       "pageTitle": "Young Gou — AI Playtest Feedback Tool",
       "tagLabel": "AI DEMO",
       "heading": "AI Playtest Feedback Triage",
-      "lead": "A small tool I built to demonstrate hands-on experience applying AI to real production workflows: paste raw playtest feedback and it sorts it into bugs, UX issues, positive notes, and suggestions — the kind of first-pass triage a producer normally does by hand after a playtest session.",
+      "lead": "A small tool I built to show hands-on experience applying AI to a real production workflow: paste raw playtest feedback and it comes back triaged the way a producer would triage it by hand after a session — split into individual findings, each tagged with what kind of work it is and how badly it hurts.",
       "disclaimer": "This calls a small serverless function backed by a language model. Nothing you paste here is stored — it's only used to generate the categorized summary below.",
       "inputLabel": "Paste playtest feedback",
       "inputPlaceholder": "Paste one or more playtesters' written feedback here…",
       "sampleButton": "Load sample feedback",
-      "sampleText": "The controls felt great once I got used to them, but the tutorial didn't explain the dash move at all so I was stuck for a few minutes. Also the game crashed once when I paused during the boss fight. I really liked the art style and the music in level 2. It would be nice if there was a way to remap the jump button — my pinky kept slipping off.",
+      "sampleText": "Playtest session notes — build 0.4.2, 6 testers, 45 min each.\n\nTwo testers hit a hard crash when they opened the map during the boss fight. One of them lost about 40 minutes of progress because the last checkpoint was before the arena.\nThree people had no idea the dash existed until the second area. Two of them said there should be a prompt at the first gap you can't clear with a normal jump.\nBoss two is a wall — four testers died more than five times on it. One said outright \"boss three felt easier than boss two\".\nThe market scene dropped to slideshow framerate on both laptops, fine on the desktop.\nOne tester read the save icon as a delete button and avoided it for the whole session.\nEveryone liked the art. Three brought up the level 2 music without being asked.\nTwo asked for remappable controls — one said jump on B hurts their hand after 20 minutes; they suggested a key-binding screen in the options menu.\nSubtitle text overlaps the portrait at 1080p, but nobody seemed bothered by it.",
       "submitButton": "Analyze feedback",
       "loadingLabel": "Analyzing…",
       "summaryHeading": "Summary",
@@ -374,7 +374,27 @@ const SITE_CONTENT = {
       "errorNotConfigured": "This demo's backend hasn't been deployed yet — check back soon.",
       "errorRequestFailed": "Something went wrong reaching the AI service. Please try again in a moment.",
       "rateLimitNote": "Limited to {limit} analyses per day on this demo to keep hosting costs in check. {remaining} left today.",
-      "rateLimitReached": "You've used all {limit} analyses available today on this demo — please come back tomorrow."
+      "rateLimitReached": "You've used all {limit} analyses available today on this demo — please come back tomorrow.",
+      "taxonomyNote": "Every point is classified on two axes: what kind of work it is (type), and how much it hurts (severity). Type routes the work; severity and how often players raised it decide what gets done first.",
+      "priorityHeading": "Fix first",
+      "mentionsLabel": "raised {n}x",
+      "playerFixLabel": "Player's suggested fix",
+      "typeLabels": {
+        "bug": "Bugs",
+        "performance": "Performance",
+        "usability": "Usability",
+        "balance": "Balance",
+        "content": "Content",
+        "request": "Feature requests",
+        "other": "Other",
+        "positive": "What worked"
+      },
+      "severityLabels": {
+        "critical": "Critical",
+        "major": "Major",
+        "minor": "Minor",
+        "unrated": "Unrated"
+      }
     },
     "skills": {
       "heading": "Skills",
@@ -585,13 +605,13 @@ const SITE_CONTENT = {
           "placeholder": false
         },
         {
-          "id": "tool-2",
-          "tag": "TOOL · TBD",
-          "name": "Tool two — title TBD",
-          "blurb": "Placeholder — one line on what this tool will do.",
-          "href": "ai-tools/tool-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "id": "reffix",
+          "tag": "LIVE TOOL",
+          "name": "RefFix — Reference Formatter",
+          "blurb": "Reformats a reference list into IEEE, APA 7 or MLA 9 — rule set first, AI only where the rules run out. Runs entirely in your browser.",
+          "href": "ai-tools/reffix.html",
+          "image": "images/reffix-cover.svg",
+          "placeholder": false
         }
       ]
     },
@@ -601,7 +621,7 @@ const SITE_CONTENT = {
         "tagLabel": "PHOTOGRAPHY",
         "heading": "Photography",
         "lead": "Placeholder — a line or two about how you got into shooting and what you look for.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -622,7 +642,7 @@ const SITE_CONTENT = {
         "tagLabel": "ARCHITECTURE",
         "heading": "Architecture",
         "lead": "Placeholder — how an architecture background still shapes the way you read space.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -643,7 +663,7 @@ const SITE_CONTENT = {
         "tagLabel": "TRAVEL",
         "heading": "Travel",
         "lead": "Placeholder — where you've been and what stuck with you.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -664,7 +684,7 @@ const SITE_CONTENT = {
         "tagLabel": "COOKING",
         "heading": "Cooking",
         "lead": "Placeholder — what you cook, and what cooking has in common with production.",
-        "backLink": "← Back to Beyond Work",
+        "backLink": "← Back to Beyond Game",
         "blocks": [
           {
             "heading": "Placeholder heading",
@@ -806,6 +826,26 @@ const SITE_CONTENT = {
           }
         ]
       }
+    },
+    "reffixPage": {
+      "pageTitle": "Young Gou — RefFix",
+      "tagLabel": "LIVE TOOL · OPEN SOURCE",
+      "heading": "RefFix",
+      "lead": "A tool I built to reformat academic reference lists into IEEE, APA 7 or MLA 9 — and to be honest about what it cannot fix.",
+      "backLink": "← Back to AI",
+      "whyHeading": "Why",
+      "why": "Reference formatting is mechanical work that still eats an evening before every submission, and the errors are the kind a human reader catches instantly but a writer stops seeing after the fourth pass. It is exactly the sort of task worth automating: high volume, low judgement, clearly specified by a published style guide.",
+      "howHeading": "How it works",
+      "how": "A deterministic rule set does the bulk of the job — parsing each entry into fields, then re-rendering them in the target style. AI is used only where the rules genuinely run out: entries that are malformed, ambiguous, or written in a style the parser doesn't recognise. Rules first, model second, because a rule that is wrong is a bug you can fix once, while a model that is wrong is a surprise every time.",
+      "principleHeading": "The one rule it never breaks",
+      "principle": "It never invents facts about a source. If a DOI, page range or publisher is missing, the tool flags the entry instead of filling the gap with something plausible — a fabricated citation is worse than an unformatted one.",
+      "privacyHeading": "Where it runs",
+      "privacy": "The entire Python pipeline runs inside the browser through Pyodide. There is no backend: the document you drop in never leaves your device, which also means the tool costs nothing to host and keeps working if I stop maintaining the server side.",
+      "openLabel": "Open the full tool",
+      "repoLabel": "Source on GitHub",
+      "embedNote": "The live tool is embedded below. It also runs standalone — use the button above if you'd rather have the full window.",
+      "embedUrl": "https://younago.github.io/IEEE-Format-Correct/",
+      "repoUrl": "https://github.com/Younago/IEEE-Format-Correct"
     }
   },
   "zh": {
@@ -816,7 +856,7 @@ const SITE_CONTENT = {
       "experience": "工作经历",
       "education": "教育背景",
       "writing": "博客",
-      "beyondWork": "工作之外",
+      "beyondWork": "游戏之外",
       "aiTool": "AI 相关",
       "contact": "联系方式",
       "aboutFull": "关于我（详情）",
@@ -1095,17 +1135,17 @@ const SITE_CONTENT = {
       "heading": "关于我",
       "photoAlt": "专业形象照占位",
       "whoHeading": "我是谁、我在做什么",
-      "who": "嗨，我是苟仲胤——一名游戏制作人，骨子里也是个\"狂热\"的 gamer。在成为制作人之前，我做过建筑设计助理，也做过系统策划实习生，这段经历至今仍影响着我看待结构和系统设计的方式。目前，由我带领的项目之一 Hamsterballin' 已经上线 Steam，另一个项目 Box Shot 预计将于明年初登陆 Steam。",
+      "who": "我是一名拥有多年跨领域团队管理和流程优化经验的制作人。我将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种独特的结构化方法，擅长促成创意与设计部门之间的协作，交付打磨精良、机制扎实的项目。",
       "howHeading": "我是如何走到这里的",
-      "how": "从小我就喜欢游戏，这份喜欢一直伴随着我，虽然那时候完全没想过它会成为一份事业。选专业的时候，我选择了建筑学——吸引我的与其说是最终建成的建筑本身，不如说是背后的设计过程：那种解决问题的训练感，以及看着一个想法从一张白纸，一步步变成真实、可以被人走进去、感受到的空间时的成就感。慢慢地我意识到，真正让我着迷的其实不是建筑，而是这种从0到1、把一个想法完整落地的过程。想明白这一点之后，接下来的路也就清晰了：同样的结构化、系统性设计思维，完全可以用在游戏上——只是从人们行走的空间，变成了人们玩的系统。我顺着这份热爱，一步步走进了游戏制作这个行业，也逐渐成长为今天的制作人。",
+      "how": "占位文字 — 简短讲讲你从建筑学转向游戏制作的故事（比如是什么吸引你从建筑转向游戏）。",
       "nextHeading": "接下来想去哪里",
-      "next": "目前我在寻找 Producer 或 PM/PD 方向的下一份工作，希望加入一个内容驱动（content-driven）的工作室——一个真正把作品本身放在第一位、而不是本末倒置的地方。我希望能加入一个彼此信任的团队：管理层愿意相信团队的判断，团队也用扎实、用心打磨的成果去赢得这份信任。在我看来，这种双向的信任，才是一个项目、一个团队真正值得投入的地方。",
+      "next": "占位文字 — 描述你希望加入的角色、工作室或团队类型。",
       "funHeading": "一些有趣的小事",
-      "fun": "音乐一直是我工作之外很重要的一部分——我曾担任合唱团团长长达五年，一次次带领一群人朝着同一个高压的截止日期（演出）协同前进，这段经历带来的能力，其实和做制作人有不少相通之处。毕业后不久、还没完全一头扎进游戏行业之前，我也有过一小段插曲：帮助几家受疫情前后冲击的餐饮企业重新梳理运营流程，帮他们渡过那段艰难时期。这段经历说起来有点意外，但也让我实实在在地体会到，好的流程设计能在多大程度上挽救一个陷入困境的团队。"
+      "fun": "占位文字 — 一两个轻松的个人细节（爱好、最喜欢的游戏等），展现你的个性。"
     },
     "beyondWorkPage": {
-      "pageTitle": "苟阳 — 工作之外",
-      "heading": "工作之外",
+      "pageTitle": "苟阳 — 游戏之外",
+      "heading": "游戏之外",
       "lead": "占位文字 — 简短介绍一下工作和游戏之外的你。",
       "galleryHeading": "照片墙",
       "galleryNote": "占位 — 之后随时可以替换成真实照片。",
@@ -1162,12 +1202,12 @@ const SITE_CONTENT = {
       "pageTitle": "苟阳 — AI Playtest 反馈工具",
       "tagLabel": "AI 演示",
       "heading": "AI Playtest 反馈归纳",
-      "lead": "一个用来体现我在实际制作流程里应用 AI 经验的小工具：粘贴一段原始的 playtest 反馈文字，它会自动归类成 bug、体验问题、正向反馈和改进建议——也就是制作人在 playtest 之后通常需要手动做的第一轮分拣工作。",
+      "lead": "一个小工具，用来展示把 AI 用在真实制作流程里的实践经验：粘贴原始的 playtest 反馈，它会按制作人手工分诊的方式返回结果——拆成一条条独立条目，每条标注属于哪类工作、以及对体验的伤害有多大。",
       "disclaimer": "这个功能调用了一个由语言模型驱动的小型 serverless 函数。你粘贴的内容不会被存储，只用于生成下面的归类摘要。",
       "inputLabel": "粘贴 playtest 反馈",
       "inputPlaceholder": "把一位或多位测试者写的反馈粘贴在这里……",
       "sampleButton": "载入示例反馈",
-      "sampleText": "操作手感习惯了之后感觉很好，但是教程完全没解释冲刺动作是怎么用的，我卡了好几分钟。另外在Boss战暂停的时候游戏崩溃了一次。我很喜欢美术风格和第二关的音乐。如果能重新绑定跳跃键就好了，我的小指老是滑掉。",
+      "sampleText": "Playtest 记录 —— 0.4.2 版本，6 名测试者，每人 45 分钟。\n\n两名测试者在 Boss 战里打开地图时直接崩溃。其中一人因为上一个存档点在竞技场之前，丢了大约 40 分钟的进度。\n三个人到第二个区域才知道有冲刺这个动作。其中两人说，应该在第一个跳不过去的缺口那里给个提示。\nBoss 二是道墙 —— 四名测试者在这里死了五次以上。有人直接说「Boss 三比 Boss 二还简单」。\n集市场景在两台笔记本上掉帧到幻灯片，台式机没问题。\n一名测试者把存档图标看成了删除按钮，整局都不敢点。\n所有人都喜欢美术。有三个人没被问就主动提到了第二关的音乐。\n两个人希望能自定义按键 —— 其中一人说跳跃放在 B 键上，玩 20 分钟手会疼，他建议在设置里加一个按键绑定界面。\n1080p 下字幕会和立绘叠在一起，不过似乎没人在意。",
       "submitButton": "分析反馈",
       "loadingLabel": "分析中…",
       "summaryHeading": "总结",
@@ -1177,7 +1217,27 @@ const SITE_CONTENT = {
       "errorNotConfigured": "这个演示的后端还没有部署，请稍后再来看看。",
       "errorRequestFailed": "请求 AI 服务时出了点问题，请稍后再试一次。",
       "rateLimitNote": "为了控制托管成本，这个演示每天限制使用 {limit} 次，今天还剩 {remaining} 次。",
-      "rateLimitReached": "今天这个演示的 {limit} 次额度已经用完了，明天再来试试吧。"
+      "rateLimitReached": "今天这个演示的 {limit} 次额度已经用完了，明天再来试试吧。",
+      "taxonomyNote": "每条反馈按两个维度分类：属于哪类工作（类型），以及对体验的伤害有多大（严重度）。类型决定这活儿归谁做，严重度和被提及的次数决定先做哪一条。",
+      "priorityHeading": "优先处理",
+      "mentionsLabel": "被提到 {n} 次",
+      "playerFixLabel": "玩家提出的方案",
+      "typeLabels": {
+        "bug": "Bug",
+        "performance": "性能",
+        "usability": "易用性",
+        "balance": "数值平衡",
+        "content": "内容",
+        "request": "功能需求",
+        "other": "其他",
+        "positive": "做对了的地方"
+      },
+      "severityLabels": {
+        "critical": "严重",
+        "major": "较重",
+        "minor": "轻微",
+        "unrated": "未分级"
+      }
     },
     "skills": {
       "heading": "技能",
@@ -1388,13 +1448,13 @@ const SITE_CONTENT = {
           "placeholder": false
         },
         {
-          "id": "tool-2",
-          "tag": "工具 · 待定",
-          "name": "工具二 — 标题待定",
-          "blurb": "占位文字 — 一句话说明这个工具将来做什么。",
-          "href": "ai-tools/tool-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "id": "reffix",
+          "tag": "可直接使用",
+          "name": "RefFix — 参考文献格式化",
+          "blurb": "把参考文献列表一键整理成 IEEE / APA 7 / MLA 9 格式。以规则集为主，规则覆盖不到的地方才交给 AI 判断，全程在浏览器本地运行。",
+          "href": "ai-tools/reffix.html",
+          "image": "images/reffix-cover.svg",
+          "placeholder": false
         }
       ]
     },
@@ -1404,7 +1464,7 @@ const SITE_CONTENT = {
         "tagLabel": "摄影",
         "heading": "摄影",
         "lead": "占位文字 — 怎么开始拍照的，以及你在找什么。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1425,7 +1485,7 @@ const SITE_CONTENT = {
         "tagLabel": "建筑",
         "heading": "建筑",
         "lead": "占位文字 — 建筑背景如何影响你阅读空间的方式。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1446,7 +1506,7 @@ const SITE_CONTENT = {
         "tagLabel": "旅行",
         "heading": "旅行",
         "lead": "占位文字 — 去过哪些地方，留下了什么。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1467,7 +1527,7 @@ const SITE_CONTENT = {
         "tagLabel": "厨艺",
         "heading": "厨艺",
         "lead": "占位文字 — 你做什么菜，做饭和做项目有什么共通之处。",
-        "backLink": "← 返回工作之外",
+        "backLink": "← 返回游戏之外",
         "blocks": [
           {
             "heading": "占位小标题",
@@ -1609,6 +1669,26 @@ const SITE_CONTENT = {
           }
         ]
       }
+    },
+    "reffixPage": {
+      "pageTitle": "苟阳 — RefFix",
+      "tagLabel": "可直接使用 · 开源",
+      "heading": "RefFix",
+      "lead": "我做的一个工具，把学术参考文献列表整理成 IEEE / APA 7 / MLA 9 格式——同时如实说明哪些它修不了。",
+      "backLink": "← 返回 AI",
+      "whyHeading": "为什么做",
+      "why": "参考文献格式是纯机械劳动，却总在交稿前吃掉一个晚上；而且这类错误别人一眼就能看出来，写的人改到第四遍反而看不见了。它正好符合值得自动化的特征：量大、判断少、而且有公开的格式规范可依。",
+      "howHeading": "怎么做的",
+      "how": "绝大部分工作由确定性的规则集完成——先把每条文献拆成字段，再按目标格式重新渲染。只有在规则真正覆盖不到的地方才交给 AI：格式残缺、有歧义、或者用了解析器不认识的写法的条目。先规则、后模型，因为规则错了是一个可以一次性修掉的 bug，模型错了则是每次都可能出现的意外。",
+      "principleHeading": "唯一不破的原则",
+      "principle": "绝不编造文献信息。缺 DOI、缺页码、缺出版社时，工具会把这条标记出来，而不是填一个看起来合理的值——一条编造的引用比一条没排好版的引用糟糕得多。",
+      "privacyHeading": "跑在哪里",
+      "privacy": "整条 Python 处理流程通过 Pyodide 跑在浏览器里，没有后端。你拖进去的文档不会离开你的设备；顺带的好处是托管成本为零，即使哪天我不再维护服务端，它也照样能用。",
+      "openLabel": "打开完整版",
+      "repoLabel": "GitHub 源码",
+      "embedNote": "下面直接嵌入了真实工具。它也可以独立打开——想要完整窗口就点上面的按钮。",
+      "embedUrl": "https://younago.github.io/IEEE-Format-Correct/",
+      "repoUrl": "https://github.com/Younago/IEEE-Format-Correct"
     }
   }
 };

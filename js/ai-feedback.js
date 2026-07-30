@@ -83,9 +83,46 @@
   // be inventing data. It sorts last and renders as a dash.
   var SEVERITY_ORDER = { critical: 0, major: 1, minor: 2, unrated: 3 };
 
-  function label(group, key, fallback) {
-    var table = dict && dict[group];
-    return (table && table[key]) || fallback || key;
+  // Built-in label tables. These duplicate what content.js carries, on
+  // purpose: this file and content.js are separate downloads with separate
+  // cache lifetimes, so a browser (or a deploy) can end up with a new
+  // renderer and an older dictionary. Without a local fallback that
+  // mismatch renders raw enum keys — "BUG", "REQUEST" — which looks like the
+  // classifier broke rather than like a stale file. The dictionary still
+  // wins whenever it has the key; this only fills gaps.
+  var FALLBACK_LABELS = {
+    en: {
+      typeLabels: { bug: "Bugs", performance: "Performance", usability: "Usability",
+        balance: "Balance", content: "Content", request: "Feature requests",
+        other: "Other", positive: "What worked" },
+      severityLabels: { critical: "Critical", major: "Major", minor: "Minor", unrated: "Unrated" },
+      priorityHeading: "Fix first",
+      playerFixLabel: "Player's suggested fix",
+      mentionsLabel: "raised {n}x",
+    },
+    zh: {
+      typeLabels: { bug: "Bug", performance: "性能", usability: "易用性",
+        balance: "数值平衡", content: "内容", request: "功能需求",
+        other: "其他", positive: "做对了的地方" },
+      severityLabels: { critical: "严重", major: "较重", minor: "轻微", unrated: "未分级" },
+      priorityHeading: "优先处理",
+      playerFixLabel: "玩家提出的方案",
+      mentionsLabel: "被提到 {n} 次",
+    },
+  };
+
+  function fallback() {
+    return FALLBACK_LABELS[lang] || FALLBACK_LABELS.en;
+  }
+
+  // Look a string up in the live dictionary, then in the built-in table.
+  function text(key) {
+    return (dict && dict[key]) || fallback()[key] || "";
+  }
+
+  function label(group, key) {
+    var table = (dict && dict[group]) || {};
+    return table[key] || fallback()[group][key] || key;
   }
 
   function byPriority(a, b) {
@@ -98,7 +135,7 @@
 
     var sev = document.createElement("span");
     sev.className = "ai-sev ai-sev-" + f.severity;
-    sev.textContent = label("severityLabels", f.severity, f.severity);
+    sev.textContent = label("severityLabels", f.severity);
     li.appendChild(sev);
 
     var note = document.createElement("span");
@@ -109,7 +146,7 @@
     if (f.mentions > 1) {
       var m = document.createElement("span");
       m.className = "ai-mentions";
-      m.textContent = fmt(dict.mentionsLabel || "x{n}", { n: f.mentions });
+      m.textContent = fmt(text("mentionsLabel"), { n: f.mentions });
       li.appendChild(m);
     }
     // The player's proposed fix is shown but visibly separated from what
@@ -118,7 +155,7 @@
     if (f.playerFix) {
       var fix = document.createElement("span");
       fix.className = "ai-playerfix";
-      fix.textContent = (dict.playerFixLabel || "Player's fix") + ": " + f.playerFix;
+      fix.textContent = text("playerFixLabel") + ": " + f.playerFix;
       li.appendChild(fix);
     }
     return li;
@@ -137,14 +174,14 @@
     if (!ranked.length) return;
 
     var h = document.createElement("h3");
-    h.textContent = dict.priorityHeading || "Fix first";
+    h.textContent = text("priorityHeading");
     wrap.appendChild(h);
     var ul = document.createElement("ul");
     ranked.forEach(function (f) {
       var li = findingRow(f);
       var tag = document.createElement("span");
       tag.className = "ai-type-tag";
-      tag.textContent = label("typeLabels", f.type, f.type);
+      tag.textContent = label("typeLabels", f.type);
       tag.style.color = TYPE_COLORS[f.type];
       li.insertBefore(tag, li.childNodes[1]);
       ul.appendChild(li);
@@ -173,7 +210,7 @@
       card.style.borderLeftColor = TYPE_COLORS[type];
 
       var h3 = document.createElement("h3");
-      h3.textContent = label("typeLabels", type, type);
+      h3.textContent = label("typeLabels", type);
       var count = document.createElement("span");
       count.className = "ai-count";
       count.textContent = group.length;
