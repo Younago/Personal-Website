@@ -286,7 +286,7 @@ const SITE_CONTENT = {
       "backLink": "← Back to Projects",
       "tagLabel": "CAPSTONE PROJECT · IN PRODUCTION",
       "gameName": "Box Shot",
-      "image": "../images/box-shot/hero-characters.jpg",
+      "image": "../images/box-shot/characters.jpg",
       "roleLabel": "Role",
       "role": "Producer",
       "teamSizeLabel": "Team Size",
@@ -304,7 +304,7 @@ const SITE_CONTENT = {
         "TODO — replace with your own contributions on Box Shot (this page's design material comes from the team GDD, which does not record individual credit)."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team — credited individually below.",
+      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team. Where the GDD records an individual artist the piece is credited by name; the rest come from the team's shared art depot, which carries no attribution. Click any image to open it full size.",
       "postmortemHeading": "Postmortem",
       "postmortem": "Postmortem pending — Box Shot is still in production. It will be written once the project ships.",
       "imageCaption": "Character concept — Ling",
@@ -348,28 +348,89 @@ const SITE_CONTENT = {
       ],
       "screenshots": [
         {
-          "src": "../images/box-shot/level-whitebox.jpg",
-          "caption": "Level whitebox — Will"
+          "src": "../images/box-shot/toolgun-sheet.jpg",
+          "caption": "Tool Gun — canister types, mag switching and reload — Dylan",
+          "full": true
         },
         {
-          "src": "../images/box-shot/toolgun-concepts.jpg",
-          "caption": "Tool Gun concepts — Dylan"
+          "src": "../images/box-shot/toolgun-canisters.jpg",
+          "caption": "Canister designs: Basic, Heavy, Glue, Blade, Hook — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/toolgun-silhouettes.jpg",
+          "caption": "Tool Gun silhouette exploration — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-brute-flyer.jpg",
+          "caption": "Brute and flyer drones — cardboard, kraft paper and rope; enemies fall apart when defeated — Box Shot team",
+          "full": true
         },
         {
           "src": "../images/box-shot/enemy-brute.jpg",
-          "caption": "Brute — Bourne"
+          "caption": "Brute — Bourne",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-boxform.jpg",
+          "caption": "Construction study: the same enemy built from flat board versus folded boxes — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-sketches.jpg",
+          "caption": "Early enemy silhouettes — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-lineup.jpg",
+          "caption": "Enemy line-up in colour — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/props-sheet.jpg",
+          "caption": "Proxy prop sheet — paper-quilling plants, signposts and platform props, annotated with their mechanics — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/buildings-sketch.jpg",
+          "caption": "Building concepts — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/buildings-props.jpg",
+          "caption": "Structures and set dressing — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/buildings-painted.jpg",
+          "caption": "Building concepts, painted pass — Box Shot team",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/env-forest.jpg",
+          "caption": "Forest environment paint-over — Box Shot team",
+          "full": true
         },
         {
           "src": "../images/box-shot/env-street.jpg",
-          "caption": "Environment concept — Dylan"
+          "caption": "Environment concept — Dylan",
+          "full": true
         },
         {
           "src": "../images/box-shot/env-diorama.jpg",
-          "caption": "Environment concept — Ling"
+          "caption": "Environment concept — Ling",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/level-whitebox.jpg",
+          "caption": "Level whitebox — Will",
+          "full": true
         },
         {
           "src": "../images/box-shot/pillars.jpg",
-          "caption": "The four design pillars"
+          "caption": "The four design pillars",
+          "full": true
         }
       ]
     },
@@ -3028,7 +3089,7 @@ const SITE_CONTENT = {
       "backLink": "← 返回项目",
       "tagLabel": "毕业项目 · 制作中",
       "gameName": "Box Shot",
-      "image": "../images/box-shot/hero-characters.jpg",
+      "image": "../images/box-shot/characters.jpg",
       "roleLabel": "角色",
       "role": "制作人",
       "teamSizeLabel": "团队规模",
@@ -3046,7 +3107,7 @@ const SITE_CONTENT = {
         "待补 —— 换成你在 Box Shot 上的具体贡献（本页的设计内容来自团队 GDD，那份文档没有记录个人分工）。"
       ],
       "screenshotsHeading": "游戏截图",
-      "screenshotsNote": "概念设定、白盒与模型由 Box Shot 团队成员完成，下方逐张署名。",
+      "screenshotsNote": "概念美术、白盒与模型均由 Box Shot 团队完成。GDD 中记录了作者的作品按名字署名；其余来自团队共享的美术库，文件本身没有署名信息。点击任意图片可打开原图。",
       "postmortemHeading": "项目复盘",
       "postmortem": "复盘待写 —— Box Shot 仍在制作中，等项目完成后再补。",
       "imageCaption": "角色概念 — Ling",
@@ -3090,28 +3151,89 @@ const SITE_CONTENT = {
       ],
       "screenshots": [
         {
-          "src": "../images/box-shot/level-whitebox.jpg",
-          "caption": "关卡白盒 — Will"
+          "src": "../images/box-shot/toolgun-sheet.jpg",
+          "caption": "Tool Gun —— 弹匣类型、切换与换弹 — Dylan",
+          "full": true
         },
         {
-          "src": "../images/box-shot/toolgun-concepts.jpg",
-          "caption": "Tool Gun 概念设计 — Dylan"
+          "src": "../images/box-shot/toolgun-canisters.jpg",
+          "caption": "弹匣设计：Basic / Heavy / Glue / Blade / Hook —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/toolgun-silhouettes.jpg",
+          "caption": "Tool Gun 剪影探索 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-brute-flyer.jpg",
+          "caption": "Brute 与飞行无人机 —— 纸箱、牛皮纸与绳子；敌人被击败后会散架 —— Box Shot 团队",
+          "full": true
         },
         {
           "src": "../images/box-shot/enemy-brute.jpg",
-          "caption": "Brute（重装敌人）— Bourne"
+          "caption": "Brute（重装敌人）— Bourne",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-boxform.jpg",
+          "caption": "构造研究：同一个敌人用平板纸与折叠纸箱两种做法 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-sketches.jpg",
+          "caption": "早期敌人剪影 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/enemy-lineup.jpg",
+          "caption": "敌人配色阵容 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/props-sheet.jpg",
+          "caption": "占位道具表 —— 衍纸植物、路牌与平台道具，旁注标出各自的机制 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/buildings-sketch.jpg",
+          "caption": "建筑概念 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/buildings-props.jpg",
+          "caption": "结构与场景陈设 —— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/buildings-painted.jpg",
+          "caption": "建筑概念（上色稿）—— Box Shot 团队",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/env-forest.jpg",
+          "caption": "森林场景概念 —— Box Shot 团队",
+          "full": true
         },
         {
           "src": "../images/box-shot/env-street.jpg",
-          "caption": "场景概念 — Dylan"
+          "caption": "场景概念 — Dylan",
+          "full": true
         },
         {
           "src": "../images/box-shot/env-diorama.jpg",
-          "caption": "场景概念 — Ling"
+          "caption": "场景概念 — Ling",
+          "full": true
+        },
+        {
+          "src": "../images/box-shot/level-whitebox.jpg",
+          "caption": "关卡白盒 — Will",
+          "full": true
         },
         {
           "src": "../images/box-shot/pillars.jpg",
-          "caption": "四条设计支柱"
+          "caption": "四条设计支柱",
+          "full": true
         }
       ]
     },
