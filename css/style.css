@@ -713,21 +713,24 @@ a.section-heading:hover::after {
    the parent's gutter directly and leave zero free space for align-items
    to redistribute, so the banner lands flush and centered regardless of
    the parent's padding or flex alignment. */
-/* Full-bleed 16:9 band. The source photo is 4:3, so 16:9 keeps 75% of its
-   height — the "crop it a little into a widescreen strip" brief.
-   object-position carries the whole burden of *which* 75%: at 50% 35% the
-   window sits at 0.09–0.84 of the image, which clears the subject's head
-   (crown at ~0.30) with headroom to spare, keeps his feet (~0.83) just
-   inside, and discards the foreground laptop that filled the bottom third.
-   Deliberately no max-height: capping the height while the width is fixed at
-   100vw silently widens the effective crop ratio, and past about 2:1 the
-   window closes below the subject's waist. A fixed ratio means the framing
-   is identical at every viewport width instead of drifting with it. */
+/* Full-bleed banner. The source is images/presentation-hero.jpg, the portrait
+   pre-cropped to ~1.96:1 — so the strip starts from a frame that is already
+   widescreen and object-fit only has to make up the difference.
+   2:1 by default, never taller than 70% of the window so it can't eat the
+   fold. When the cap makes the band wider than 2:1 the extra crop is taken
+   mostly off the bottom, and 26% is not a round number — it is the middle of
+   the range that survives the worst case. The subject's head runs 0.21–0.44
+   of the frame; at the most extreme wide-and-short window (about 7:1, where
+   only a quarter of the frame is visible) anything below ~25% opens the
+   window past his chin and anything above ~27% closes it past his crown.
+   26% keeps the whole head in frame at every window size there is, and what
+   gets sacrificed instead is the floor, then his legs. */
 .hero-banner {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
+  max-height: 70vh;
   overflow: hidden;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
@@ -739,7 +742,7 @@ a.section-heading:hover::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 35%;
+  object-position: 50% 26%;
 }
 
 .hero-intro {

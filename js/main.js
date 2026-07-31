@@ -60,8 +60,14 @@
     var blogReadMore = document.getElementById("blogReadMore");
     if (blogReadMore) blogReadMore.textContent = dict.blog.viewAll;
 
+    // The banner has its own file. hero.portrait is the 4:3 original and is
+    // still what the About page and the marquee use; heroBanner is that same
+    // photo pre-cropped to ~2:1, so the widescreen strip starts from a frame
+    // that is already the right shape instead of asking object-fit to throw
+    // away a third of the picture at display time.
     var portraitEl = document.getElementById("heroPortrait");
-    if (portraitEl && dict.hero.portrait) portraitEl.src = dict.hero.portrait;
+    var bannerSrc = dict.hero.heroBanner || dict.hero.portrait;
+    if (portraitEl && bannerSrc) portraitEl.src = bannerSrc;
 
     var nameEl = document.getElementById("heroName");
     if (nameEl) {

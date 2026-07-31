@@ -44,7 +44,8 @@ const SITE_CONTENT = {
       ],
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
-      "scroll": "SCROLL"
+      "scroll": "SCROLL",
+      "heroBanner": "images/presentation-hero.jpg"
     },
     "home": {
       "teamProjectsHeading": "Team Projects",
@@ -2850,7 +2851,8 @@ const SITE_CONTENT = {
       ],
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
-      "scroll": "Scroll"
+      "scroll": "Scroll",
+      "heroBanner": "images/presentation-hero.jpg"
     },
     "home": {
       "teamProjectsHeading": "团队项目",
