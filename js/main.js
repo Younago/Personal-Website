@@ -102,12 +102,18 @@
   // Experience block (job history, duplicate of the résumé) was removed
   // while the strip itself stays as a visual element between Projects and
   // Education.
+  // The strip is photographs of the work happening — presentations, playtests,
+  // studio visits — and deliberately not project artwork. It used to lead with
+  // the images from projects.items, which meant key art and cover images
+  // scrolling past a few hundred pixels below the Projects grid that had just
+  // shown the same pictures at a useful size, plus a placeholder SVG for every
+  // project that doesn't have art yet.
   function renderMarquee(lang) {
     var track = document.getElementById("marqueeTrack");
     if (!track) return;
-    var photos = content[lang].projects.items.map(function (p) { return p.image; });
-    if (content[lang].hero.workPhotos) photos = photos.concat(content[lang].hero.workPhotos);
+    var photos = (content[lang].hero.workPhotos || []).slice();
     if (content[lang].hero.portrait) photos.unshift(content[lang].hero.portrait);
+    if (!photos.length) return;
     var doubled = photos.concat(photos);
     track.innerHTML = doubled
       .map(function (src) { return '<img class="marquee-photo" src="' + src + '" alt="" />'; })

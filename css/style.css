@@ -713,36 +713,33 @@ a.section-heading:hover::after {
    the parent's gutter directly and leave zero free space for align-items
    to redistribute, so the banner lands flush and centered regardless of
    the parent's padding or flex alignment. */
-/* The banner used to be a fixed 2.2:1 band with object-fit: cover, which
-   meant the portrait was cropped top and bottom — and because the crop is
-   centred, at wide viewports it cut the subject's head off. The band now
-   takes its height from the photo instead: the image is never cropped at any
-   viewport size, and the full-bleed strip survives as a frame around it. */
+/* Full-bleed 16:9 band. The source photo is 4:3, so 16:9 keeps 75% of its
+   height — the "crop it a little into a widescreen strip" brief.
+   object-position carries the whole burden of *which* 75%: at 50% 35% the
+   window sits at 0.09–0.84 of the image, which clears the subject's head
+   (crown at ~0.30) with headroom to spare, keeps his feet (~0.83) just
+   inside, and discards the foreground laptop that filled the bottom third.
+   Deliberately no max-height: capping the height while the width is fixed at
+   100vw silently widens the effective crop ratio, and past about 2:1 the
+   window closes below the subject's waist. A fixed ratio means the framing
+   is identical at every viewport width instead of drifting with it. */
 .hero-banner {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  display: flex;
-  justify-content: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
-  /* Transparent, not a filled panel: since the photo no longer spans the
-     full width, a solid fill either side would read as a broken layout.
-     Letting the page's own backdrop show through turns the strip into two
-     hairlines with a photo centred between them. */
-  background: transparent;
+  background: var(--color-bg-alt);
 }
 
 .hero-banner img {
   display: block;
-  /* Height leads, width follows, so the aspect ratio is always the file's
-     own. min() keeps the photo from pushing the first fold off-screen on a
-     short window; max-width stops it overflowing a narrow one. */
-  height: auto;
-  max-height: min(58vh, 560px);
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
 }
 
 .hero-intro {
@@ -1207,9 +1204,6 @@ footer {
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .hero-banner img {
-    max-height: min(52vh, 420px);
-  }
 }
 
 /* ==========================================================================
@@ -1222,9 +1216,6 @@ footer {
   section {
     padding-left: var(--gutter);
     padding-right: var(--gutter);
-  }
-  .hero-banner img {
-    max-height: min(48vh, 340px);
   }
   .stats-row {
     flex-wrap: wrap;

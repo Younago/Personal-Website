@@ -33,7 +33,14 @@ const SITE_CONTENT = {
       "workPhotos": [
         "images/work/work-1.jpg",
         "images/work/work-2.jpg",
-        "images/work/work-3.jpg"
+        "images/work/work-3.jpg",
+        "images/work/conference.jpg",
+        "images/work/expo-booth.jpg",
+        "images/work/studio-visit.jpg",
+        "images/work/presenting.jpg",
+        "images/work/playtest-lab.jpg",
+        "images/work/gearbox.jpg",
+        "images/work/team-presentation.jpg"
       ],
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
@@ -589,31 +596,27 @@ const SITE_CONTENT = {
       "heading": "Beyond Game",
       "lead": "Placeholder — a short introduction to who you are outside of games and work.",
       "galleryHeading": "Photo Wall",
-      "galleryNote": "Placeholder — swap these for real photos any time.",
+      "galleryNote": "Photographs from outside the studio.",
       "photos": [
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "Placeholder caption"
+          "src": "images/life/skydiving.jpg",
+          "caption": "Somewhere over Texas, mid-freefall."
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "Placeholder caption"
+          "src": "images/life/photography.jpg",
+          "caption": "Shooting a ceremony — still the fastest way I know to pay attention to a room."
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "Placeholder caption"
+          "src": "images/life/dinosaur.jpg",
+          "caption": "Made a friend."
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "Placeholder caption"
+          "src": "images/life/friends.jpg",
+          "caption": "The people who make a city feel like somewhere."
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "Placeholder caption"
-        },
-        {
-          "src": "images/project-placeholder.svg",
-          "caption": "Placeholder caption"
+          "src": "images/life/street.jpg",
+          "caption": "Out walking."
         }
       ],
       "sectionsHeading": "Sections",
@@ -2836,7 +2839,14 @@ const SITE_CONTENT = {
       "workPhotos": [
         "images/work/work-1.jpg",
         "images/work/work-2.jpg",
-        "images/work/work-3.jpg"
+        "images/work/work-3.jpg",
+        "images/work/conference.jpg",
+        "images/work/expo-booth.jpg",
+        "images/work/studio-visit.jpg",
+        "images/work/presenting.jpg",
+        "images/work/playtest-lab.jpg",
+        "images/work/gearbox.jpg",
+        "images/work/team-presentation.jpg"
       ],
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
@@ -3392,31 +3402,27 @@ const SITE_CONTENT = {
       "heading": "游戏之外",
       "lead": "占位文字 — 简短介绍一下工作和游戏之外的你。",
       "galleryHeading": "照片墙",
-      "galleryNote": "占位 — 之后随时可以替换成真实照片。",
+      "galleryNote": "工作室之外拍的一些照片。",
       "photos": [
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "占位说明文字"
+          "src": "images/life/skydiving.jpg",
+          "caption": "德州上空，自由落体中。"
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "占位说明文字"
+          "src": "images/life/photography.jpg",
+          "caption": "在典礼上拍照——到现在还是我最快进入一个空间的方式。"
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "占位说明文字"
+          "src": "images/life/dinosaur.jpg",
+          "caption": "交了个朋友。"
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "占位说明文字"
+          "src": "images/life/friends.jpg",
+          "caption": "让一座城市变得像「某个地方」的人。"
         },
         {
-          "src": "images/project-placeholder.svg",
-          "caption": "占位说明文字"
-        },
-        {
-          "src": "images/project-placeholder.svg",
-          "caption": "占位说明文字"
+          "src": "images/life/street.jpg",
+          "caption": "出门走走。"
         }
       ],
       "sectionsHeading": "板块",
