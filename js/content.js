@@ -86,10 +86,10 @@ const SITE_CONTENT = {
           "title": "Box Shot",
           "tag": "GAME PROJECT",
           "role": "Producer",
-          "summary": "Placeholder — one or two sentences on what the game is and what you contributed.",
+          "summary": "A first-person shooter set in a ten-year-old's imagined cardboard world. I produce the 41-person team — schedule, pipeline, Jira automation, and milestone reviews.",
           "href": "team-projects/capstone.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/box-shot/cover.jpg",
+          "placeholder": false
         },
         {
           "title": "Hamsterballin'",
@@ -115,8 +115,8 @@ const SITE_CONTENT = {
           "role": "Producer / Level Designer",
           "summary": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
           "href": "individual-projects/fire.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/heart-arsonist/cover.jpg",
+          "placeholder": false
         }
       ]
     },
@@ -129,12 +129,12 @@ const SITE_CONTENT = {
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
           "role": "Producer",
-          "teamSize": "Placeholder",
-          "length": "Placeholder",
-          "blurb": "Placeholder — one-line description of the game.",
+          "teamSize": "41",
+          "length": "In production",
+          "blurb": "A first-person shooter set in a kid's imagined cardboard world, fought through handcrafted levels with a modular Tool Gun.",
           "href": "team-projects/capstone.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/box-shot/cover.jpg",
+          "placeholder": false
         },
         {
           "id": "tgp2",
@@ -182,10 +182,12 @@ const SITE_CONTENT = {
       "trailerVideoId": "SGqrpin8Yuk",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
-        "Led a 43-person cross-functional team of designers, artists, and programmers through the full development cycle.",
-        "Facilitated Agile/Scrum methodologies for a large-scale student team — sprint planning, daily stand-ups, and retrospectives — to ensure timely milestone deliveries.",
-        "Managed project schedules and task tracking to mitigate scope creep and resolve development bottlenecks across multiple disciplines.",
-        "Coordinated regular playtesting sessions, synthesizing player feedback to guide iterative design improvements and performance optimizations."
+        "Shipped Hamsterballin', a fast-paced racing game built in Unreal Engine 5, to public release on Steam in a single-semester cycle, leading a 43-person cross-functional team of designers, artists, and programmers from concept through launch.",
+        "Delivered every milestone on schedule by establishing a full Agile/Scrum cadence of sprint planning, daily stand-ups, and retrospectives, scaled for a team too large to coordinate ad hoc.",
+        "Turned ad-hoc coordination into a repeatable pipeline by building the team's production infrastructure from scratch: Jira workflow and task taxonomy, bug triage standards, and build submission conventions.",
+        "Held committed scope at every milestone by owning the master schedule, triaging cross-discipline dependencies, and resequencing features at sprint boundaries, then defending each scope decision at milestone review to win stakeholder sign-off.",
+        "Owned the playtest program end to end, from planning and recruiting through running sessions and routing findings back to each discipline, converting player feedback into scheduled design and performance fixes.",
+        "Delivered the full audio package for a team with no dedicated audio staff, coordinating internal contributors and an external composer team from spec and review through integration into the build."
       ],
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Placeholder — add gameplay screenshots.",
@@ -298,7 +300,7 @@ const SITE_CONTENT = {
       "roleLabel": "Role",
       "role": "Producer",
       "teamSizeLabel": "Team Size",
-      "teamSize": "Placeholder",
+      "teamSize": "41",
       "lengthLabel": "Length",
       "length": "In production — pre-production milestones P1–P3 (2026), full production in the fall",
       "platformLabel": "Platform",
@@ -309,7 +311,13 @@ const SITE_CONTENT = {
       "trailerNote": "No trailer yet — the project is in production. This page will be updated when there is footage worth showing.",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
-        "TODO — replace with your own contributions on Box Shot (this page's design material comes from the team GDD, which does not record individual credit)."
+        "Carried Box Shot from concept to a playable prototype demo through full pre-production, standing up the team's operating model from scratch: sprint cadence, ceremonies, shared task board, and team norms.",
+        "Led the milestone presentations that moved Box Shot through each pre-production gate, framing progress, risk, and the production plan for faculty and studio stakeholders.",
+        "Owned Jira setup and automation end to end, building workflows and automated status rules that keep ownership and blockers visible with no manual upkeep, giving every discipline one transparent source of truth they actually use.",
+        "Designed the level-to-art pipeline from requirement to shipped asset, defining the Unreal Engine 5 import workflow and asset naming conventions and wiring the handoff into Jira automation so nothing crosses disciplines undocumented.",
+        "Led the user research plan across the full production cycle, defining what to validate at each phase and how findings route back into the schedule.",
+        "Broke pre-production into the P1–P3 milestones, defining the question each gate must answer and the deliverable that closes it, keeping the project on track to enter full production in the fall.",
+        "Coordinated seating and in-person collaboration across multiple studio rooms, lowering cross-discipline communication cost so dependencies could be resolved face to face."
       ],
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Concept art, whitebox and models by the Box Shot team. Where the GDD records an individual artist the piece is credited by name; the rest come from the team's shared art depot, which carries no attribution. Click any image to open it full size.",
@@ -472,7 +480,7 @@ const SITE_CONTENT = {
       "roleLabel": "Role",
       "role": "Concept Design · Character & Environment Design · Gameplay Mechanics · Level Design",
       "teamSizeLabel": "Team Size",
-      "teamSize": "TODO — confirm the size of the jam team.",
+      "teamSize": "5 (game jam team)",
       "lengthLabel": "Length",
       "length": "Unity Game Jam 2024",
       "synopsisHeading": "Synopsis",
@@ -2893,10 +2901,10 @@ const SITE_CONTENT = {
           "title": "Box Shot",
           "tag": "游戏项目",
           "role": "制作人",
-          "summary": "占位文字 — 一两句话介绍这款游戏和你的具体贡献。",
+          "summary": "一款设定在十岁孩子想象出的纸板世界里的第一人称射击游戏。我担任 41 人团队的制作人，负责排期、管线、Jira 自动化与里程碑评审。",
           "href": "team-projects/capstone.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/box-shot/cover.jpg",
+          "placeholder": false
         },
         {
           "title": "Hamsterballin'",
@@ -2922,8 +2930,8 @@ const SITE_CONTENT = {
           "role": "制作人/关卡策划",
           "summary": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
           "href": "individual-projects/fire.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/heart-arsonist/cover.jpg",
+          "placeholder": false
         }
       ]
     },
@@ -2936,12 +2944,12 @@ const SITE_CONTENT = {
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
           "role": "制作人",
-          "teamSize": "占位",
-          "length": "占位",
-          "blurb": "占位文字 — 一句话介绍这款游戏。",
+          "teamSize": "41",
+          "length": "制作中",
+          "blurb": "设定在孩子想象出的纸板世界里的第一人称射击游戏，用模块化 Tool Gun 闯过一个个手工搭建的短关卡。",
           "href": "team-projects/capstone.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "image": "images/box-shot/cover.jpg",
+          "placeholder": false
         },
         {
           "id": "tgp2",
@@ -2989,10 +2997,12 @@ const SITE_CONTENT = {
       "trailerVideoId": "SGqrpin8Yuk",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
-        "带领一支由设计师、美术和程序员组成的 43 人跨职能团队，完成了完整的开发周期。",
-        "为大规模学生团队推行 Agile/Scrum 方法论——冲刺规划、每日站会与复盘——确保各里程碑按时交付。",
-        "管理项目进度与任务追踪，控制范围蔓延，解决跨多个专业方向的开发瓶颈。",
-        "统筹定期的玩家测试环节，综合玩家反馈以指导迭代设计改进与性能优化。"
+        "跟进 43 人跨职能团队（策划、美术、程序）的日常执行，维护总排期与任务看板，控制各里程碑进度，最终在单学期窗口内将游戏送上 Steam 正式发布。",
+        "从零建立 Sprint 规划、每日站会与复盘回顾机制，逐日跟踪各职能进度，及时暴露风险并将排期变更与范围调整同步至全团队。",
+        "收集开发过程中关键节点的进度与阻塞问题，整理为可追溯的文档反馈至对应职能与主创，推动在 Sprint 边界完成决策与排期调整。",
+        "搭建 Jira 工作流与任务分类体系、Bug 分级标准与版本提交规范，使团队制作流程与交付结果统一可查，新成员可直接按规范上手。",
+        "建立并主持完整 Playtest 流程（测试计划、玩家招募、现场执行、结论分发至各职能），将玩家反馈转化为纳入排期的设计与性能优化项。",
+        "在团队无专职音频人员的情况下补位，对接内部音频成员与外部作曲团队，完成音频从需求确认、评审到最终集成的全流程交付。"
       ],
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "占位 — 添加游戏截图。",
@@ -3105,7 +3115,7 @@ const SITE_CONTENT = {
       "roleLabel": "角色",
       "role": "制作人",
       "teamSizeLabel": "团队规模",
-      "teamSize": "占位",
+      "teamSize": "41 人",
       "lengthLabel": "项目周期",
       "length": "制作中 —— 2026 年完成 P1–P3 预生产里程碑，秋季进入正式生产",
       "platformLabel": "平台",
@@ -3116,7 +3126,13 @@ const SITE_CONTENT = {
       "trailerNote": "暂无预告片 —— 项目仍在制作中，等有值得展示的实机内容再更新。",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
-        "待补 —— 换成你在 Box Shot 上的具体贡献（本页的设计内容来自团队 GDD，那份文档没有记录个人分工）。"
+        "主导项目从概念到可玩原型 Demo 的完整 Pre-production 阶段，为新组建的跨职能团队从零搭建运转方式：Sprint 节奏、会议机制、共享任务看板与团队协作公约。",
+        "主持各阶段里程碑汇报，向学院与工作室 stakeholder 同步进度、风险与制作计划，推动项目通过每一道 Pre-production 评审。",
+        "独立完成 Jira 环境搭建与自动化配置，使任务归属、状态流转与阻塞项无需人工维护即可实时可见，成为全团队共用的唯一信息源。",
+        "设计从关卡需求到美术落地的完整管线，定义 Unreal Engine 5 资产导入流程与命名规范，并将交接节点接入 Jira 自动化，确保跨职能流转全程留痕。",
+        "主导覆盖完整研发周期的 User Research 计划，明确各阶段验证目标、参与者构成以及结论回流排期的路径。",
+        "按 P1–P3 三个预生产里程碑拆分阶段目标与验收标准，明确每个里程碑必须回答的问题与产出物，保证秋季能如期进入正式生产。",
+        "统筹多工作室房间的座位安排与线下协作方式，降低跨职能沟通成本，使依赖问题可当面快速解决。"
       ],
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "概念美术、白盒与模型均由 Box Shot 团队完成。GDD 中记录了作者的作品按名字署名；其余来自团队共享的美术库，文件本身没有署名信息。点击任意图片可打开原图。",
@@ -3279,7 +3295,7 @@ const SITE_CONTENT = {
       "roleLabel": "角色",
       "role": "概念设计 · 角色与场景设计 · 玩法机制 · 关卡设计",
       "teamSizeLabel": "团队规模",
-      "teamSize": "待补充 —— 确认 Game Jam 团队规模。",
+      "teamSize": "5 人（Game Jam 团队）",
       "lengthLabel": "项目周期",
       "length": "Unity Game Jam 2024",
       "synopsisHeading": "项目简介",
