@@ -2823,11 +2823,11 @@ const SITE_CONTENT = {
       "resume": "简历"
     },
     "site": {
-      "name": "苟阳"
+      "name": "苟仲胤"
     },
     "hero": {
       "eyebrow": "",
-      "name": "苟阳",
+      "name": "苟仲胤",
       "nameLines": [
         "YOUNG GOU"
       ],
@@ -3375,7 +3375,7 @@ const SITE_CONTENT = {
       ]
     },
     "aboutPage": {
-      "pageTitle": "苟阳 — 关于我",
+      "pageTitle": "苟仲胤 — 关于我",
       "heading": "关于我",
       "photoAlt": "专业形象照占位",
       "whoHeading": "我是谁、我在做什么",
@@ -3388,7 +3388,7 @@ const SITE_CONTENT = {
       "fun": "占位文字 — 一两个轻松的个人细节（爱好、最喜欢的游戏等），展现你的个性。"
     },
     "beyondWorkPage": {
-      "pageTitle": "苟阳 — 游戏之外",
+      "pageTitle": "苟仲胤 — 游戏之外",
       "heading": "游戏之外",
       "lead": "占位文字 — 简短介绍一下工作和游戏之外的你。",
       "galleryHeading": "照片墙",
@@ -3461,7 +3461,7 @@ const SITE_CONTENT = {
       ]
     },
     "aiToolPage": {
-      "pageTitle": "苟阳 — AI Playtest 反馈工具",
+      "pageTitle": "苟仲胤 — AI Playtest 反馈工具",
       "tagLabel": "AI 演示",
       "heading": "AI Playtest 反馈归纳",
       "lead": "一个小工具，用来展示把 AI 用在真实制作流程里的实践经验：粘贴原始的 playtest 反馈，它会按制作人手工分诊的方式返回结果——拆成一条条独立条目，每条标注属于哪类工作、以及对体验的伤害有多大。",
@@ -3622,7 +3622,7 @@ const SITE_CONTENT = {
       "note": "用心打造，保留所有权利。"
     },
     "resumePage": {
-      "pageTitle": "苟阳 — 简历",
+      "pageTitle": "苟仲胤 — 简历",
       "title": "简历",
       "roleTag": "游戏制作人",
       "downloadPdf": "下载 简历",
@@ -3670,7 +3670,7 @@ const SITE_CONTENT = {
       ]
     },
     "aiHubPage": {
-      "pageTitle": "苟阳 — AI",
+      "pageTitle": "苟仲胤 — AI",
       "tagLabel": "AI",
       "heading": "AI 相关",
       "lead": "用 AI 做的小实验和能直接用的工具——点开任意一个查看。",
@@ -3721,7 +3721,7 @@ const SITE_CONTENT = {
     },
     "stories": {
       "photography": {
-        "pageTitle": "苟阳 — 摄影",
+        "pageTitle": "苟仲胤 — 摄影",
         "tagLabel": "摄影",
         "heading": "摄影",
         "lead": "占位文字 — 怎么开始拍照的，以及你在找什么。",
@@ -3742,7 +3742,7 @@ const SITE_CONTENT = {
         ]
       },
       "architecture": {
-        "pageTitle": "苟阳 — 建筑",
+        "pageTitle": "苟仲胤 — 建筑",
         "tagLabel": "建筑",
         "heading": "建筑",
         "lead": "占位文字 — 建筑背景如何影响你阅读空间的方式。",
@@ -3763,7 +3763,7 @@ const SITE_CONTENT = {
         ]
       },
       "travel": {
-        "pageTitle": "苟阳 — 旅行",
+        "pageTitle": "苟仲胤 — 旅行",
         "tagLabel": "旅行",
         "heading": "旅行",
         "lead": "占位文字 — 去过哪些地方，留下了什么。",
@@ -3784,7 +3784,7 @@ const SITE_CONTENT = {
         ]
       },
       "cooking": {
-        "pageTitle": "苟阳 — 厨艺",
+        "pageTitle": "苟仲胤 — 厨艺",
         "tagLabel": "厨艺",
         "heading": "厨艺",
         "lead": "占位文字 — 你做什么菜，做饭和做项目有什么共通之处。",
@@ -3805,7 +3805,7 @@ const SITE_CONTENT = {
         ]
       },
       "analysis-2": {
-        "pageTitle": "苟阳 — 游戏分析",
+        "pageTitle": "苟仲胤 — 游戏分析",
         "tagLabel": "分析 · 待定",
         "heading": "分析二 — 标题待定",
         "lead": "占位文字 — 拆的是哪款游戏，想回答什么问题。",
@@ -3826,7 +3826,7 @@ const SITE_CONTENT = {
         ]
       },
       "analysis-3": {
-        "pageTitle": "苟阳 — 游戏分析",
+        "pageTitle": "苟仲胤 — 游戏分析",
         "tagLabel": "分析 · 待定",
         "heading": "分析三 — 标题待定",
         "lead": "占位文字 — 拆的是哪款游戏，想回答什么问题。",
@@ -3847,7 +3847,7 @@ const SITE_CONTENT = {
         ]
       },
       "ai-project-1": {
-        "pageTitle": "苟阳 — AI 小项目",
+        "pageTitle": "苟仲胤 — AI 小项目",
         "tagLabel": "小项目 · 待定",
         "heading": "AI 小项目一 — 标题待定",
         "lead": "占位文字 — 你做了什么，为什么做。",
@@ -3868,7 +3868,7 @@ const SITE_CONTENT = {
         ]
       },
       "ai-project-2": {
-        "pageTitle": "苟阳 — AI 小项目",
+        "pageTitle": "苟仲胤 — AI 小项目",
         "tagLabel": "小项目 · 待定",
         "heading": "AI 小项目二 — 标题待定",
         "lead": "占位文字 — 你做了什么，为什么做。",
@@ -3889,7 +3889,7 @@ const SITE_CONTENT = {
         ]
       },
       "tool-2": {
-        "pageTitle": "苟阳 — AI 工具",
+        "pageTitle": "苟仲胤 — AI 工具",
         "tagLabel": "工具 · 待定",
         "heading": "工具二 — 标题待定",
         "lead": "占位文字 — 这个工具建成后会做什么。",
@@ -3911,7 +3911,7 @@ const SITE_CONTENT = {
       }
     },
     "reffixPage": {
-      "pageTitle": "苟阳 — RefFix",
+      "pageTitle": "苟仲胤 — RefFix",
       "tagLabel": "可直接使用 · 开源",
       "heading": "RefFix",
       "lead": "我做的一个工具，把学术参考文献列表整理成 IEEE / APA 7 / MLA 9 格式——同时如实说明哪些它修不了。",
@@ -4036,7 +4036,7 @@ const SITE_CONTENT = {
     },
     "articles": {
       "tft": {
-        "pageTitle": "云顶之弈羁绊关系的分析与实践 — 苟阳",
+        "pageTitle": "云顶之弈羁绊关系的分析与实践 — 苟仲胤",
         "tagLabel": "游戏分析 · 云顶之弈",
         "heading": "云顶之弈羁绊关系的分析与实践",
         "subheading": "把十个赛季的羁绊反推成一套设计规则，再用这套规则搭出一个并不存在的赛季。",
