@@ -576,13 +576,13 @@ const SITE_CONTENT = {
       "heading": "About Me",
       "photoAlt": "Professional portrait placeholder",
       "whoHeading": "Who I am & what I'm doing",
-      "who": "Producer with experience of managing multidisciplinary teams and optimization pipelines. I fuse a background in architecture with expertise in game systems design to bring a unique, structural approach to project logistics, scope management, and cross-departmental communication. Highly skilled at facilitating alignment between creative and design disciplines to deliver polished, mechanically sound projects.",
+      "who": "Hi, I'm Young Gou — a game producer, and if I'm honest, a pretty hardcore gamer at heart. Before landing here, I worked as an architecture design assistant and later interned as a systems designer, and that mix still shapes how I think about structure, pacing, and the systems players actually feel when they're playing. Right now, Hamsterballin' — one of the projects I've led — is already live on Steam, and Box Shot, another project I'm leading, is on track to launch there in early next year.",
       "howHeading": "How I got here",
-      "how": "Placeholder — a short narrative connecting your architecture background to your move into game production (e.g. what drew you from buildings to games).",
+      "how": "Games have been a constant in my life since I was a kid, long before I ever thought of them as a career. When it came time to pick a major, I chose architecture — drawn less to the finished buildings than to the process behind them: the discipline of design, the problem-solving, and the particular satisfaction of watching an idea move from a blank page to something real that people could actually walk through and experience. Over time I noticed that what excited me most wasn't architecture itself, but that same arc — taking something from zero to a fully realized experience. Once I named that, the next step felt obvious: the same structural, systems-first thinking I'd been applying to buildings could apply just as well to games, only the space people move through became a system they play. I followed that instinct, moved into game production, and grew into the producer role I have today.",
       "nextHeading": "Where I'm looking to go next",
-      "next": "Placeholder — describe the kind of role, studio, or team you're hoping to join next.",
+      "next": "Right now I'm looking for my next role as a Producer or in a PM/PD capacity at a content-driven studio — a place where the work itself sets the agenda, not the other way around. I want to be part of a team that trusts its people to make good calls, and where that trust runs both ways: leadership backs the team's judgment, and the team earns that trust with thoughtful, well-crafted work. That kind of mutual respect is, to me, what makes a project — and a team — genuinely worth being part of.",
       "funHeading": "A few fun facts",
-      "fun": "Placeholder — a couple of light, personal details (hobbies, favorite games, etc.) that show your voice."
+      "fun": "Music has been a steady thread outside of work — I spent five years as president of a choir, coordinating a group of people toward the same high-stakes deadline again and again, which turns out to have more in common with production than I expected. And in a short chapter right after graduating, before I fully committed to games, I helped a handful of restaurant businesses navigate the operational chaos of the pre- and post-pandemic period, working on redesigning their processes to keep things running. It's an odd detour to explain at parties, but it left me with a real appreciation for how much good process design can rescue a struggling operation."
     },
     "beyondWorkPage": {
       "pageTitle": "Young Gou — Beyond Game",
@@ -3379,13 +3379,13 @@ const SITE_CONTENT = {
       "heading": "关于我",
       "photoAlt": "专业形象照占位",
       "whoHeading": "我是谁、我在做什么",
-      "who": "我是一名拥有多年跨领域团队管理和流程优化经验的制作人。我将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种独特的结构化方法，擅长促成创意与设计部门之间的协作，交付打磨精良、机制扎实的项目。",
+      "who": "嗨，我是苟仲胤——一名游戏制作人，骨子里也是个\"狂热\"的 gamer。在成为制作人之前，我做过建筑设计助理，也做过系统策划实习生，这段经历至今仍影响着我看待结构和系统设计的方式。目前，由我带领的项目之一 Hamsterballin' 已经上线 Steam，另一个项目 Box Shot 预计将于明年初登陆 Steam。",
       "howHeading": "我是如何走到这里的",
-      "how": "占位文字 — 简短讲讲你从建筑学转向游戏制作的故事（比如是什么吸引你从建筑转向游戏）。",
+      "how": "从小我就喜欢游戏，这份喜欢一直伴随着我，虽然那时候完全没想过它会成为一份事业。选专业的时候，我选择了建筑学——吸引我的与其说是最终建成的建筑本身，不如说是背后的设计过程：那种解决问题的训练感，以及看着一个想法从一张白纸，一步步变成真实、可以被人走进去、感受到的空间时的成就感。慢慢地我意识到，真正让我着迷的其实不是建筑，而是这种从0到1、把一个想法完整落地的过程。想明白这一点之后，接下来的路也就清晰了：同样的结构化、系统性设计思维，完全可以用在游戏上——只是从人们行走的空间，变成了人们玩的系统。我顺着这份热爱，一步步走进了游戏制作这个行业，也逐渐成长为今天的制作人。",
       "nextHeading": "接下来想去哪里",
-      "next": "占位文字 — 描述你希望加入的角色、工作室或团队类型。",
+      "next": "目前我在寻找 Producer 或 PM/PD 方向的下一份工作，希望加入一个内容驱动（content-driven）的工作室——一个真正把作品本身放在第一位、而不是本末倒置的地方。我希望能加入一个彼此信任的团队：管理层愿意相信团队的判断，团队也用扎实、用心打磨的成果去赢得这份信任。在我看来，这种双向的信任，才是一个项目、一个团队真正值得投入的地方。",
       "funHeading": "一些有趣的小事",
-      "fun": "占位文字 — 一两个轻松的个人细节（爱好、最喜欢的游戏等），展现你的个性。"
+      "fun": "音乐一直是我工作之外很重要的一部分——我曾担任合唱团团长长达五年，一次次带领一群人朝着同一个高压的截止日期（演出）协同前进，这段经历带来的能力，其实和做制作人有不少相通之处。毕业后不久、还没完全一头扎进游戏行业之前，我也有过一小段插曲：帮助几家受疫情前后冲击的餐饮企业重新梳理运营流程，帮他们渡过那段艰难时期。这段经历说起来有点意外，但也让我实实在在地体会到，好的流程设计能在多大程度上挽救一个陷入困境的团队。"
     },
     "beyondWorkPage": {
       "pageTitle": "苟仲胤 — 游戏之外",
