@@ -1177,3 +1177,294 @@ a.blog-row {
   object-fit: contain;
   background: var(--color-bg-alt);
 }
+
+/* ---------------- Experience: horizontal timeline ----------------
+   A rail rather than a vertical list because the point is the shape of the
+   run — architecture, then a turn, then games — which reads better as one
+   left-to-right sweep than as a column you scroll past. */
+.timeline-hint {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.timeline {
+  position: relative;
+  /* Full-bleed so the rail can run past the text column on both sides — the
+     cards are the content here, and boxing them into the measure would waste
+     the horizontal room the component exists for. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.timeline-rail {
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--u) * 4) var(--gutter) calc(var(--u) * 3);
+  display: flex;
+  gap: calc(var(--u) * 3);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  /* The rail is the scroll container, so it needs its own touch behaviour:
+     pan-x lets a finger swipe it sideways while vertical swipes still scroll
+     the page underneath. */
+  touch-action: pan-x pan-y;
+  scrollbar-width: thin;
+  cursor: grab;
+}
+
+.timeline-rail.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;      /* snapping mid-drag fights the pointer */
+  user-select: none;
+}
+
+.timeline-rail:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.tl-item {
+  position: relative;
+  flex: 0 0 clamp(240px, 26vw, 320px);
+  scroll-snap-align: center;
+  padding-top: calc(var(--u) * 4);
+}
+
+/* The connecting line is drawn per item rather than as one element behind the
+   rail, so it scrolls with the cards and cannot drift out of alignment. */
+.tl-item::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--u) * 4 + 5px);
+  left: calc(var(--u) * -3);
+  right: 0;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.tl-item:first-child::before { left: 0; }
+
+.tl-year {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.tl-item.is-year-start .tl-year::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 1px;
+  height: calc(var(--u) * 2);
+  background: var(--color-line-strong);
+}
+
+.tl-dot {
+  position: absolute;
+  top: calc(var(--u) * 4);
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-line-strong);
+}
+
+/* Four states, so the shape of a career is legible at a glance: what was
+   study, what was a job, what was a project, what actually shipped. */
+.tl-item.is-work .tl-dot { border-color: var(--color-accent); }
+.tl-item.is-project .tl-dot { border-color: var(--color-accent); background: var(--color-accent); }
+.tl-item.is-ship .tl-dot {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+
+.tl-card { padding: calc(var(--u) * 2.5) 0 0; }
+
+.tl-dates {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.tl-kind {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tl-item.is-ship .tl-kind {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tl-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.9vw, 21px);
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.tl-org {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+
+.tl-note {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.timeline-progress {
+  height: 2px;
+  background: var(--color-line);
+  margin: 0 var(--gutter);
+}
+
+.timeline-progress span {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform-origin: left center;
+  transform: scaleX(0.04);
+  transition: transform 0.12s linear;
+}
+
+/* ---------------- Experience: play log ---------------- */
+.game-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: calc(var(--u) * 2);
+  margin: calc(var(--u) * 3) 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: calc(var(--u) * 3) 0;
+}
+
+.game-stat .value {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.game-stat .label {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.game-stat .note {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.game-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 1.5);
+  align-items: center;
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.game-tabs { display: flex; }
+
+.game-tabs button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.game-tabs button + button { border-left: 0; }
+
+.game-tabs button[aria-pressed="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.game-search {
+  flex: 1 1 180px;
+  min-width: 140px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+
+.game-search:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.game-toggle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.game-toggle:hover { background: var(--color-accent); color: var(--color-on-accent); }
+
+.game-meta {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.game-table th[data-sort] { cursor: pointer; user-select: none; }
+.game-table th[data-sort]:hover { color: var(--color-text); }
+.game-table th.is-active { color: var(--color-accent); }
+
+.game-table th[data-sort]::after {
+  content: " ↕";
+  opacity: 0.4;
+}
+
+.game-table th.is-active[aria-sort="descending"]::after { content: " ↓"; opacity: 1; }
+.game-table th.is-active[aria-sort="ascending"]::after { content: " ↑"; opacity: 1; }
+
+.game-table td.note {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.game-table td.nowrap { white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .tl-item { flex-basis: 76vw; }
+  .game-controls { gap: var(--u); }
+  .game-search { flex-basis: 100%; order: 3; }
+}

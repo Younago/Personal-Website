@@ -205,6 +205,7 @@
         ["home", root + "index.html"],
         ["about", root + "about.html"],
         ["projects", root + "projects.html"],
+        ["experience", root + "experience.html"],
         // Blog is hidden for now — the page, its content and its nav label
         // all still exist, so putting the line below back is the only step
         // needed to bring it back. Deleting them instead would have made
