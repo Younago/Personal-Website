@@ -4,6 +4,11 @@
 // languages, it is a record rather than site copy, and editor.html would
 // otherwise have to round-trip all of it on every save.
 //
+// `anime: true` marks the anime-styled titles — the console JRPGs and the
+// gacha games. It is a display-order and filtering flag, not a genre
+// taxonomy: Pokémon, 王者荣耀, 金铲铲 and AFK Journey are Japanese and/or
+// gacha but are not anime-styled, so they are deliberately not tagged.
+//
 // `hours` (console) and `months` (mobile) are the machine-readable duration
 // used for sorting and for the summary figures. The displayed `time` string
 // is separate because five long-running titles are measured in seasons or
@@ -65,7 +70,8 @@ window.SITE_GAMES = {
         "note": "New Game+ completed"
       },
       "kind": "console",
-      "hours": 46
+      "hours": 46,
+      "anime": true
     },
     {
       "zh": {
@@ -106,7 +112,8 @@ window.SITE_GAMES = {
         "note": "New Game+ and DLC completed"
       },
       "kind": "console",
-      "hours": 127
+      "hours": 127,
+      "anime": true
     },
     {
       "zh": {
@@ -120,7 +127,8 @@ window.SITE_GAMES = {
         "note": "First playthrough completed"
       },
       "kind": "console",
-      "hours": 72
+      "hours": 72,
+      "anime": true
     },
     {
       "zh": {
@@ -134,7 +142,8 @@ window.SITE_GAMES = {
         "note": "First playthrough completed"
       },
       "kind": "console",
-      "hours": 65
+      "hours": 65,
+      "anime": true
     },
     {
       "zh": {
@@ -148,7 +157,8 @@ window.SITE_GAMES = {
         "note": "First playthrough completed"
       },
       "kind": "console",
-      "hours": 52
+      "hours": 52,
+      "anime": true
     },
     {
       "zh": {
@@ -804,7 +814,248 @@ window.SITE_GAMES = {
         "note": "2 years — ¥7k+ spent, level 60, 1003 achievements, took part in closed beta"
       },
       "kind": "mobile",
-      "months": 24
+      "months": 24,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "绝区零",
+        "time": "3 月",
+        "note": "付费 1k，54 级，满星试炼，爬塔 50 层"
+      },
+      "en": {
+        "name": "Zenless Zone Zero",
+        "time": "3 mo",
+        "note": "3 months — ¥1k spent, level 54, all trials starred, floor 50"
+      },
+      "kind": "mobile",
+      "months": 3,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "原神",
+        "time": "3 年",
+        "note": "付费 10k，60 级，成就 1100+，地图探索度 96%"
+      },
+      "en": {
+        "name": "Genshin Impact",
+        "time": "3 yrs",
+        "note": "3 years — ¥10k spent, AR 60, 1100+ achievements, 96% map exploration"
+      },
+      "kind": "mobile",
+      "months": 36,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "崩坏 3",
+        "time": "1 年",
+        "note": "付费 5k，82 级，主线全通"
+      },
+      "en": {
+        "name": "Honkai Impact 3rd",
+        "time": "1 yr",
+        "note": "1 year — ¥5k spent, level 82, full main story"
+      },
+      "kind": "mobile",
+      "months": 12,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "P5X",
+        "time": "1 年",
+        "note": "付费 2k，超我等级 42 级，七等星"
+      },
+      "en": {
+        "name": "Persona 5: The Phantom X",
+        "time": "1 yr",
+        "note": "1 year — ¥2k spent, ego level 42, seven-star"
+      },
+      "kind": "mobile",
+      "months": 12,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "鸣潮",
+        "time": "3 月",
+        "note": "付费 500，74 级，主线全通，支线完成度 80%"
+      },
+      "en": {
+        "name": "Wuthering Waves",
+        "time": "3 mo",
+        "note": "3 months — ¥500 spent, level 74, full main story, 80% side content"
+      },
+      "kind": "mobile",
+      "months": 3,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "明日方舟",
+        "time": "3 年+",
+        "note": "付费 5k+，120 级，肉鸽 15 通关"
+      },
+      "en": {
+        "name": "Arknights",
+        "time": "3+ yrs",
+        "note": "3+ years — ¥5k+ spent, level 120, Integrated Strategies 15 cleared"
+      },
+      "kind": "mobile",
+      "months": 36,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "尘白禁区",
+        "time": "1 年",
+        "note": "付费 1.8k，100 级，全图鉴"
+      },
+      "en": {
+        "name": "Snowbreak: Containment Zone",
+        "time": "1 yr",
+        "note": "1 year — ¥1.8k spent, level 100, full collection"
+      },
+      "kind": "mobile",
+      "months": 12,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "FGO",
+        "time": "6 年",
+        "note": "付费 10k，150 级，主线全通"
+      },
+      "en": {
+        "name": "Fate/Grand Order",
+        "time": "6 yrs",
+        "note": "6 years — ¥10k spent, level 150, full main story"
+      },
+      "kind": "mobile",
+      "months": 72,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "阴阳师",
+        "time": "3 年+",
+        "note": "付费 2k，60 级，全图鉴，斗技 10 星"
+      },
+      "en": {
+        "name": "Onmyoji",
+        "time": "3+ yrs",
+        "note": "3+ years — ¥2k spent, level 60, full collection, 10-star arena"
+      },
+      "kind": "mobile",
+      "months": 36,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "无期迷途",
+        "time": "6 月",
+        "note": "付费 2k+，主线通关，暗域毕业"
+      },
+      "en": {
+        "name": "Path to Nowhere",
+        "time": "6 mo",
+        "note": "6 months — ¥2k+ spent, main story cleared, endgame built"
+      },
+      "kind": "mobile",
+      "months": 6,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "胜利女神：妮姬",
+        "time": "3 月",
+        "note": "付费 500，12 章主线通关，角色 200 级"
+      },
+      "en": {
+        "name": "Goddess of Victory: Nikke",
+        "time": "3 mo",
+        "note": "3 months — ¥500 spent, chapter 12 cleared, characters at level 200"
+      },
+      "kind": "mobile",
+      "months": 3,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "灵魂潮汐",
+        "time": "6 月",
+        "note": "付费 800，88 级，深渊 50 层"
+      },
+      "en": {
+        "name": "Soul Tide",
+        "time": "6 mo",
+        "note": "6 months — ¥800 spent, level 88, abyss floor 50"
+      },
+      "kind": "mobile",
+      "months": 6,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "少女前线：云图计划",
+        "time": "2 年",
+        "note": "付费 200，61 级，主线第九章通关"
+      },
+      "en": {
+        "name": "Girls' Frontline: Neural Cloud",
+        "time": "2 yrs",
+        "note": "2 years — ¥200 spent, level 61, chapter 9 cleared"
+      },
+      "kind": "mobile",
+      "months": 24,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "幻塔",
+        "time": "6 月",
+        "note": "付费 800，76 级，深渊 50 层"
+      },
+      "en": {
+        "name": "Tower of Fantasy",
+        "time": "6 mo",
+        "note": "6 months — ¥800 spent, level 76, abyss floor 50"
+      },
+      "kind": "mobile",
+      "months": 6,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "第五人格",
+        "time": "2 月",
+        "note": "付费 300，41 级，三阶"
+      },
+      "en": {
+        "name": "Identity V",
+        "time": "2 mo",
+        "note": "2 months — ¥300 spent, level 41, tier 3"
+      },
+      "kind": "mobile",
+      "months": 2,
+      "anime": true
+    },
+    {
+      "zh": {
+        "name": "阴阳师：百闻牌",
+        "time": "3 月",
+        "note": "付费 800，37 级，天梯六段"
+      },
+      "en": {
+        "name": "Onmyoji: The Card Game",
+        "time": "3 mo",
+        "note": "3 months — ¥800 spent, level 37, rank 6"
+      },
+      "kind": "mobile",
+      "months": 3,
+      "anime": true
     },
     {
       "zh": {
@@ -822,62 +1073,6 @@ window.SITE_GAMES = {
     },
     {
       "zh": {
-        "name": "绝区零",
-        "time": "3 月",
-        "note": "付费 1k，54 级，满星试炼，爬塔 50 层"
-      },
-      "en": {
-        "name": "Zenless Zone Zero",
-        "time": "3 mo",
-        "note": "3 months — ¥1k spent, level 54, all trials starred, floor 50"
-      },
-      "kind": "mobile",
-      "months": 3
-    },
-    {
-      "zh": {
-        "name": "崩坏 3",
-        "time": "1 年",
-        "note": "付费 5k，82 级，主线全通"
-      },
-      "en": {
-        "name": "Honkai Impact 3rd",
-        "time": "1 yr",
-        "note": "1 year — ¥5k spent, level 82, full main story"
-      },
-      "kind": "mobile",
-      "months": 12
-    },
-    {
-      "zh": {
-        "name": "原神",
-        "time": "3 年",
-        "note": "付费 10k，60 级，成就 1100+，地图探索度 96%"
-      },
-      "en": {
-        "name": "Genshin Impact",
-        "time": "3 yrs",
-        "note": "3 years — ¥10k spent, AR 60, 1100+ achievements, 96% map exploration"
-      },
-      "kind": "mobile",
-      "months": 36
-    },
-    {
-      "zh": {
-        "name": "P5X",
-        "time": "1 年",
-        "note": "付费 2k，超我等级 42 级，七等星"
-      },
-      "en": {
-        "name": "Persona 5: The Phantom X",
-        "time": "1 yr",
-        "note": "1 year — ¥2k spent, ego level 42, seven-star"
-      },
-      "kind": "mobile",
-      "months": 12
-    },
-    {
-      "zh": {
         "name": "金铲铲之战",
         "time": "1 年+",
         "note": "付费 1k+，大师段位"
@@ -889,118 +1084,6 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 12
-    },
-    {
-      "zh": {
-        "name": "明日方舟",
-        "time": "3 年+",
-        "note": "付费 5k+，120 级，肉鸽 15 通关"
-      },
-      "en": {
-        "name": "Arknights",
-        "time": "3+ yrs",
-        "note": "3+ years — ¥5k+ spent, level 120, Integrated Strategies 15 cleared"
-      },
-      "kind": "mobile",
-      "months": 36
-    },
-    {
-      "zh": {
-        "name": "尘白禁区",
-        "time": "1 年",
-        "note": "付费 1.8k，100 级，全图鉴"
-      },
-      "en": {
-        "name": "Snowbreak: Containment Zone",
-        "time": "1 yr",
-        "note": "1 year — ¥1.8k spent, level 100, full collection"
-      },
-      "kind": "mobile",
-      "months": 12
-    },
-    {
-      "zh": {
-        "name": "FGO",
-        "time": "6 年",
-        "note": "付费 10k，150 级，主线全通"
-      },
-      "en": {
-        "name": "Fate/Grand Order",
-        "time": "6 yrs",
-        "note": "6 years — ¥10k spent, level 150, full main story"
-      },
-      "kind": "mobile",
-      "months": 72
-    },
-    {
-      "zh": {
-        "name": "阴阳师",
-        "time": "3 年+",
-        "note": "付费 2k，60 级，全图鉴，斗技 10 星"
-      },
-      "en": {
-        "name": "Onmyoji",
-        "time": "3+ yrs",
-        "note": "3+ years — ¥2k spent, level 60, full collection, 10-star arena"
-      },
-      "kind": "mobile",
-      "months": 36
-    },
-    {
-      "zh": {
-        "name": "无期迷途",
-        "time": "6 月",
-        "note": "付费 2k+，主线通关，暗域毕业"
-      },
-      "en": {
-        "name": "Path to Nowhere",
-        "time": "6 mo",
-        "note": "6 months — ¥2k+ spent, main story cleared, endgame built"
-      },
-      "kind": "mobile",
-      "months": 6
-    },
-    {
-      "zh": {
-        "name": "胜利女神：妮姬",
-        "time": "3 月",
-        "note": "付费 500，12 章主线通关，角色 200 级"
-      },
-      "en": {
-        "name": "Goddess of Victory: Nikke",
-        "time": "3 mo",
-        "note": "3 months — ¥500 spent, chapter 12 cleared, characters at level 200"
-      },
-      "kind": "mobile",
-      "months": 3
-    },
-    {
-      "zh": {
-        "name": "灵魂潮汐",
-        "time": "6 月",
-        "note": "付费 800，88 级，深渊 50 层"
-      },
-      "en": {
-        "name": "Soul Tide",
-        "time": "6 mo",
-        "note": "6 months — ¥800 spent, level 88, abyss floor 50"
-      },
-      "kind": "mobile",
-      "months": 6
-    },
-    {
-      "zh": {
-        "name": "少女前线：云图计划",
-        "time": "2 年",
-        "note": "付费 200，61 级，主线第九章通关"
-      },
-      "en": {
-        "name": "Girls' Frontline: Neural Cloud",
-        "time": "2 yrs",
-        "note": "2 years — ¥200 spent, level 61, chapter 9 cleared"
-      },
-      "kind": "mobile",
-      "months": 24
     },
     {
       "zh": {
@@ -1018,48 +1101,6 @@ window.SITE_GAMES = {
     },
     {
       "zh": {
-        "name": "幻塔",
-        "time": "6 月",
-        "note": "付费 800，76 级，深渊 50 层"
-      },
-      "en": {
-        "name": "Tower of Fantasy",
-        "time": "6 mo",
-        "note": "6 months — ¥800 spent, level 76, abyss floor 50"
-      },
-      "kind": "mobile",
-      "months": 6
-    },
-    {
-      "zh": {
-        "name": "鸣潮",
-        "time": "3 月",
-        "note": "付费 500，74 级，主线全通，支线完成度 80%"
-      },
-      "en": {
-        "name": "Wuthering Waves",
-        "time": "3 mo",
-        "note": "3 months — ¥500 spent, level 74, full main story, 80% side content"
-      },
-      "kind": "mobile",
-      "months": 3
-    },
-    {
-      "zh": {
-        "name": "第五人格",
-        "time": "2 月",
-        "note": "付费 300，41 级，三阶"
-      },
-      "en": {
-        "name": "Identity V",
-        "time": "2 mo",
-        "note": "2 months — ¥300 spent, level 41, tier 3"
-      },
-      "kind": "mobile",
-      "months": 2
-    },
-    {
-      "zh": {
         "name": "哈利波特：魔法觉醒",
         "time": "3 月",
         "note": "付费 1k+，58 级，第三学年任务通关，史诗决斗家"
@@ -1068,20 +1109,6 @@ window.SITE_GAMES = {
         "name": "Harry Potter: Magic Awakened",
         "time": "3 mo",
         "note": "3 months — ¥1k+ spent, level 58, year 3 cleared, Epic Duellist"
-      },
-      "kind": "mobile",
-      "months": 3
-    },
-    {
-      "zh": {
-        "name": "阴阳师：百闻牌",
-        "time": "3 月",
-        "note": "付费 800，37 级，天梯六段"
-      },
-      "en": {
-        "name": "Onmyoji: The Card Game",
-        "time": "3 mo",
-        "note": "3 months — ¥800 spent, level 37, rank 6"
       },
       "kind": "mobile",
       "months": 3

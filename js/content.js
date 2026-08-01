@@ -2925,7 +2925,7 @@ const SITE_CONTENT = {
         }
       ],
       "gamesHeading": "Play history",
-      "gamesLead": "A designer's taste is built out of what they've actually played, so here is the whole log rather than a curated shortlist. Console and PC titles are tracked in hours; long-running live-service games are tracked in years instead, because an hour count for them would be fiction.",
+      "gamesLead": "A designer's taste is built out of what they've actually played, so here is the whole log rather than a curated shortlist — anime-style titles first, since that's where most of the hours and most of the systems study went. Console and PC titles are tracked in hours; long-running live-service games are tracked in years instead, because an hour count for them would be fiction.",
       "statTitles": "Games logged",
       "statHours": "Hours tracked",
       "statTracked": "titles with an hour count",
@@ -2941,7 +2941,11 @@ const SITE_CONTENT = {
       "showAll": "Show the full log",
       "hideAll": "Collapse the log",
       "sortHint": "Sort by title or time",
-      "empty": "Nothing matches that filter."
+      "empty": "Nothing matches that filter.",
+      "tabAnime": "Anime-style",
+      "animeChip": "ANIME",
+      "statAnime": "Anime-style titles",
+      "statAnimeNote": "gacha and JRPG, across both platforms"
     }
   },
   "zh": {
@@ -5864,7 +5868,7 @@ const SITE_CONTENT = {
         }
       ],
       "gamesHeading": "游玩记录",
-      "gamesLead": "一个设计师的口味是由他真正玩过的东西堆出来的，所以这里放的是完整记录，而不是挑好看的列几款。主机和 PC 按小时计，长期在玩的服务型游戏按年计——给它们标一个小时数没有意义。",
+      "gamesLead": "一个设计师的口味是由他真正玩过的东西堆出来的，所以这里放的是完整记录，而不是挑好看的列几款——二次元排在最前面，因为时间和系统研究大多花在这一块。主机和 PC 按小时计，长期在玩的服务型游戏按年计——给它们标一个小时数没有意义。",
       "statTitles": "记录在册的游戏",
       "statHours": "有记录的时长",
       "statTracked": "款按小时统计",
@@ -5880,7 +5884,11 @@ const SITE_CONTENT = {
       "showAll": "展开完整列表",
       "hideAll": "收起列表",
       "sortHint": "可按名称或时长排序",
-      "empty": "没有匹配的结果。"
+      "empty": "没有匹配的结果。",
+      "tabAnime": "二次元",
+      "animeChip": "二次元",
+      "statAnime": "二次元游戏",
+      "statAnimeNote": "手游与 JRPG，跨两个平台"
     }
   }
 };

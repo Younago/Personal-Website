@@ -25,7 +25,7 @@
 
   // View state for the log. Kept outside render() so switching language does
   // not silently reset the visitor's filter, sort or open/closed choice.
-  var view = { group: "console", sort: "default", dir: 1, query: "", open: false };
+  var view = { group: "anime", sort: "default", dir: 1, query: "", open: false };
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -141,7 +141,9 @@
     // "Live-service" here means exactly the rows with no hour count — the
     // seasons-and-years titles — so the two figures can never disagree.
     var live = GAMES.console.length - withHours.length;
+    var anime = all.filter(function (g) { return g.anime; }).length;
     return [
+      { value: anime, label: d.statAnime, note: d.statAnimeNote },
       { value: all.length, label: d.statTitles, note: GAMES.console.length + " / " + GAMES.mobile.length },
       { value: total.toLocaleString("en-US") + "h", label: d.statHours, note: withHours.length + " " + d.statTracked },
       { value: longest ? longest.hours + "h" : "—", label: d.statLongest, note: longest ? longest[lang].name : "" },
@@ -159,6 +161,17 @@
           (s.note ? '<p class="note mono">' + esc(s.note) + "</p>" : "") + "</div>";
       })
       .join("");
+  }
+
+  // "anime" is not a third platform — it selects the tagged rows out of both
+  // groups. Mobile leads, because the gacha titles are the ones this section
+  // exists to put in front; the console JRPGs follow.
+  function groupRows(key) {
+    if (key === "anime") {
+      return GAMES.mobile.filter(function (g) { return g.anime; })
+        .concat(GAMES.console.filter(function (g) { return g.anime; }));
+    }
+    return (GAMES[key] || []).slice();
   }
 
   function sortValue(g) {
@@ -181,12 +194,18 @@
     }
     if (!view.open) return;
 
-    var list = (GAMES[view.group] || []).slice();
+    var list = groupRows(view.group);
     var q = view.query.trim().toLowerCase();
     if (q) {
       list = list.filter(function (g) {
         return (g.en.name + " " + g.zh.name).toLowerCase().indexOf(q) !== -1;
       });
+    }
+    if (view.sort === "default" && view.group !== "anime") {
+      // Stable partition rather than a sort, so the hand-ordered sequence
+      // inside each half is preserved.
+      list = list.filter(function (g) { return g.anime; })
+        .concat(list.filter(function (g) { return !g.anime; }));
     }
     if (view.sort === "name") {
       list.sort(function (a, b) { return a[lang].name.localeCompare(b[lang].name, lang === "zh" ? "zh" : "en") * view.dir; });
@@ -202,14 +221,15 @@
 
     body.innerHTML = list.length
       ? list.map(function (g) {
-          return "<tr><td>" + esc(g[lang].name) + "</td>" +
+          return '<tr' + (g.anime ? ' class="is-anime"' : "") + "><td>" + esc(g[lang].name) +
+            (g.anime && view.group !== "anime" ? ' <span class="game-chip mono">' + esc(d.animeChip) + "</span>" : "") + "</td>" +
             '<td class="mono nowrap">' + esc(g[lang].time) + "</td>" +
             '<td class="note">' + esc(g[lang].note) + "</td></tr>";
         }).join("")
       : '<tr><td colspan="3" class="note">' + esc(d.empty) + "</td></tr>";
 
     var count = document.getElementById("gameCount");
-    if (count) count.textContent = list.length + " / " + (GAMES[view.group] || []).length;
+    if (count) count.textContent = list.length + " / " + groupRows(view.group).length;
   }
 
   function wireLog(getD) {
@@ -272,6 +292,7 @@
     setText("timelineHint", d.timelineHint);
     setText("gamesHeading", d.gamesHeading);
     setText("gamesLead", d.gamesLead);
+    setText("tabAnime", d.tabAnime);
     setText("tabConsole", d.tabConsole);
     setText("tabMobile", d.tabMobile);
     setText("colName", d.colName);

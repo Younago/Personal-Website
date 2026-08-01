@@ -1468,3 +1468,17 @@ a.blog-row {
   .game-controls { gap: var(--u); }
   .game-search { flex-basis: 100%; order: 3; }
 }
+
+/* The tag is only drawn inside the platform tabs — in the anime tab every row
+   carries it, so it would be pure noise. */
+.game-chip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 5px;
+  border: 1px solid var(--color-accent);
+  border-radius: 2px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  vertical-align: 2px;
+}

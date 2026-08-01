@@ -49,7 +49,12 @@
 
     <div class="game-controls">
       <div class="game-tabs">
-        <button type="button" data-group="console" aria-pressed="true" id="tabConsole"></button>
+        <!-- "anime" is a filter across both platform groups rather than a
+             third platform, so a title can appear here and under its own
+             platform tab. It leads because that is where most of the hours
+             are. -->
+        <button type="button" data-group="anime" aria-pressed="true" id="tabAnime"></button>
+        <button type="button" data-group="console" aria-pressed="false" id="tabConsole"></button>
         <button type="button" data-group="mobile" aria-pressed="false" id="tabMobile"></button>
       </div>
       <input type="search" id="gameSearch" class="game-search" />
