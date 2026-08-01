@@ -32,6 +32,17 @@
   </div>
 
   <div id="aboutBody"></div>
+
+  <section class="resume-section">
+    <h2 id="timelineHeading"></h2>
+    <p class="timeline-hint mono" id="timelineHint"></p>
+    <div class="timeline">
+      <!-- tabindex on the rail itself is what makes the arrow keys work
+           without adding a tab stop for every card. -->
+      <ol class="timeline-rail" id="timelineRail" tabindex="0" role="list"></ol>
+    </div>
+  </section>
+
   <div class="page-contact-cta" id="pageContactCta"></div>
 </main>
 
@@ -39,6 +50,7 @@
 
 <script src="js/content.js"></script>
 <script src="js/chrome.js"></script>
+<script src="js/timeline.js"></script>
 <script src="js/pages.js"></script>
 </body>
 </html>

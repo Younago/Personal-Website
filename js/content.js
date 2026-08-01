@@ -17,7 +17,8 @@ const SITE_CONTENT = {
       "aiTool": "AI RELATED",
       "contact": "CONTACT",
       "aboutFull": "ABOUT ME",
-      "resume": "RESUME"
+      "resume": "RESUME",
+      "games": "GAMES"
     },
     "site": {
       "name": "YOUNG GOU"
@@ -2924,8 +2925,8 @@ const SITE_CONTENT = {
           "note": ""
         }
       ],
-      "gamesHeading": "Play history",
-      "gamesLead": "A designer's taste is built out of what they've actually played, so here is the whole log rather than a curated shortlist — anime-style titles first, since that's where most of the hours and most of the systems study went. Console and PC titles are tracked in hours; long-running live-service games are tracked in years instead, because an hour count for them would be fiction.",
+      "gamesHeading": "Play History",
+      "gamesLead": "",
       "statTitles": "Games logged",
       "statHours": "Hours tracked",
       "statTracked": "titles with an hour count",
@@ -2938,14 +2939,22 @@ const SITE_CONTENT = {
       "colTime": "Time",
       "colNote": "Progress",
       "searchPlaceholder": "Filter by title…",
-      "showAll": "Show the full log",
-      "hideAll": "Collapse the log",
+      "showAll": "Open the full log",
+      "hideAll": "Close the full log",
       "sortHint": "Sort by title or time",
       "empty": "Nothing matches that filter.",
       "tabAnime": "Anime-style",
       "animeChip": "ANIME",
       "statAnime": "Anime-style titles",
-      "statAnimeNote": "gacha and JRPG, across both platforms"
+      "statAnimeNote": "gacha and JRPG, across both platforms",
+      "featuredHeading": "Anime-style — where most of the hours went",
+      "barsHeading": "Deepest single runs",
+      "barsNote": "Hours, console and PC",
+      "fullHeading": "Full log",
+      "unitNote": "Console and PC in hours; long-running live-service titles in seasons or years.",
+      "gamesPageTitle": "Young Gou — Play History",
+      "gamesTagLabel": "PLAY HISTORY",
+      "gamesSubtitle": "77 titles logged with hours and completion state — the anime-style games first."
     }
   },
   "zh": {
@@ -2960,7 +2969,8 @@ const SITE_CONTENT = {
       "aiTool": "AI 相关",
       "contact": "联系方式",
       "aboutFull": "关于我（详情）",
-      "resume": "简历"
+      "resume": "简历",
+      "games": "游戏经历"
     },
     "site": {
       "name": "苟仲胤"
@@ -5867,8 +5877,8 @@ const SITE_CONTENT = {
           "note": ""
         }
       ],
-      "gamesHeading": "游玩记录",
-      "gamesLead": "一个设计师的口味是由他真正玩过的东西堆出来的，所以这里放的是完整记录，而不是挑好看的列几款——二次元排在最前面，因为时间和系统研究大多花在这一块。主机和 PC 按小时计，长期在玩的服务型游戏按年计——给它们标一个小时数没有意义。",
+      "gamesHeading": "游戏经历",
+      "gamesLead": "",
       "statTitles": "记录在册的游戏",
       "statHours": "有记录的时长",
       "statTracked": "款按小时统计",
@@ -5881,14 +5891,22 @@ const SITE_CONTENT = {
       "colTime": "时长",
       "colNote": "进度",
       "searchPlaceholder": "按名称筛选…",
-      "showAll": "展开完整列表",
-      "hideAll": "收起列表",
+      "showAll": "展开完整记录",
+      "hideAll": "收起完整记录",
       "sortHint": "可按名称或时长排序",
       "empty": "没有匹配的结果。",
       "tabAnime": "二次元",
       "animeChip": "二次元",
       "statAnime": "二次元游戏",
-      "statAnimeNote": "手游与 JRPG，跨两个平台"
+      "statAnimeNote": "手游与 JRPG，跨两个平台",
+      "featuredHeading": "二次元 —— 时间主要花在这里",
+      "barsHeading": "投入最深的几款",
+      "barsNote": "小时数，主机与 PC",
+      "fullHeading": "完整记录",
+      "unitNote": "主机与 PC 按小时计；长期服务型游戏按赛季或年计。",
+      "gamesPageTitle": "苟仲胤 — 游戏经历",
+      "gamesTagLabel": "游戏经历",
+      "gamesSubtitle": "77 款游戏，附时长与完成度 —— 二次元排在最前。"
     }
   }
 };

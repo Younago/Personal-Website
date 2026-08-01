@@ -50,6 +50,17 @@
         secBlock(d.howHeading, d.how) +
         secBlock(d.nextHeading, d.next) +
         secBlock(d.funHeading, d.fun);
+
+      // The career timeline sits under the About copy — same page, because
+      // "how I got here" and "when" are one story. The component itself lives
+      // in js/timeline.js so the markup and the rail behaviour have one owner.
+      var tl = content[lang].experiencePage;
+      if (window.SITE_TIMELINE && tl) {
+        setText("timelineHeading", tl.timelineHeading);
+        setText("timelineHint", tl.timelineHint);
+        window.SITE_TIMELINE.render(tl);
+        window.SITE_TIMELINE.wire();
+      }
     },
 
     projects: function (lang) {
