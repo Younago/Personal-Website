@@ -127,6 +127,7 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "capstone",
+          "tags": ["fps", "team_of_41", "in_production", "producer"],
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
           "role": "Producer",
@@ -139,6 +140,7 @@ const SITE_CONTENT = {
         },
         {
           "id": "tgp2",
+          "tags": ["unreal_engine_5", "steam", "racing", "team_of_43", "producer"],
           "tag": "GAME PROJECT",
           "name": "Hamsterballin'",
           "role": "Producer",
@@ -151,6 +153,7 @@ const SITE_CONTENT = {
         },
         {
           "id": "tgp1",
+          "tags": ["unity", "2d_puzzle_platformer", "level_design", "team_of_5"],
           "tag": "GAME PROJECT",
           "name": "Detective Folder",
           "role": "Level Designer",
@@ -457,6 +460,7 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "fire",
+          "tags": ["unity", "game_jam_2024", "2.5d", "systems_design"],
           "tag": "INDIVIDUAL PROJECT",
           "name": "Heart Arsonist",
           "blurb": "A 2.5D Hades-like demo from Unity Game Jam 2024, built on a system where grass and fire feed each other.",
@@ -465,6 +469,7 @@ const SITE_CONTENT = {
         },
         {
           "id": "echo",
+          "tags": ["platformer", "in_development", "solo"],
           "tag": "INDIVIDUAL PROJECT · IN DEVELOPMENT",
           "name": "Echo",
           "blurb": "An in-development platformer where the platforms carry emotions — and you identify them by reading the poetry written on them.",
@@ -853,6 +858,7 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "analysis-1",
+          "tags": ["teamfight_tactics", "systems_teardown", "10_seasons"],
           "tag": "ANALYSIS · TEAMFIGHT TACTICS",
           "name": "Analysis and Practice of the TFT Synergy System",
           "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
@@ -3079,6 +3085,7 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "capstone",
+          "tags": ["fps", "team_of_41", "in_production", "producer"],
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
           "role": "制作人",
@@ -3091,6 +3098,7 @@ const SITE_CONTENT = {
         },
         {
           "id": "tgp2",
+          "tags": ["unreal_engine_5", "steam", "racing", "team_of_43", "producer"],
           "tag": "游戏项目",
           "name": "Hamsterballin'",
           "role": "制作人",
@@ -3103,6 +3111,7 @@ const SITE_CONTENT = {
         },
         {
           "id": "tgp1",
+          "tags": ["unity", "2d_puzzle_platformer", "level_design", "team_of_5"],
           "tag": "游戏项目",
           "name": "Detective Folder",
           "role": "关卡策划",
@@ -3409,6 +3418,7 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "fire",
+          "tags": ["unity", "game_jam_2024", "2.5d", "systems_design"],
           "tag": "个人项目",
           "name": "芳心纵火犯",
           "blurb": "Unity Game Jam 2024 的 2.5D 类 Hades Demo，玩法建立在草与火互相供养的系统上。",
@@ -3417,6 +3427,7 @@ const SITE_CONTENT = {
         },
         {
           "id": "echo",
+          "tags": ["platformer", "in_development", "solo"],
           "tag": "个人项目 · 开发中",
           "name": "Echo",
           "blurb": "开发中的平台跳跃游戏：平台本身带有情绪，而你要靠读上面的诗句来辨认它。",
@@ -3805,6 +3816,7 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "analysis-1",
+          "tags": ["teamfight_tactics", "systems_teardown", "10_seasons"],
           "tag": "分析 · 云顶之弈",
           "name": "云顶之弈羁绊关系的分析与实践",
           "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",

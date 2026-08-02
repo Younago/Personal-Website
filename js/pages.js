@@ -247,9 +247,30 @@
         '<div class="project-meta"><span class="index mono">' + p.tag + "</span></div>" +
         "<h3>" + p.name + "</h3>" +
         (p.role ? '<p class="project-role">' + p.role + "</p>" : "") +
-        '<p class="project-summary">' + p.blurb + "</p>";
+        '<p class="project-summary">' + p.blurb + "</p>" +
+        renderTags(p);
       wrap.appendChild(card);
     });
+    // Hand the fresh cards to the entrance animation. This runs on every
+    // render — including a language switch, which replaces the cards entirely.
+    if (window.SITE_MOTION) window.SITE_MOTION.scan(wrap);
+  }
+
+  // The chip row under a card: engine, platform, team size, discipline — the
+  // facts someone scanning the page wants before deciding to click. Chips come
+  // from the item's own `tags` array; a placeholder with nothing to show yet
+  // gets a single dashed "TBD" chip, which reads as "write-up pending" rather
+  // than the greyed-out card it used to be.
+  function renderTags(p) {
+    var tags = p.tags || [];
+    if (!tags.length && !p.placeholder) return "";
+    var chips = tags
+      .map(function (t) {
+        return "<li>" + t + "</li>";
+      })
+      .join("");
+    if (p.placeholder) chips += '<li class="is-todo">TBD</li>';
+    return '<ul class="project-tags">' + chips + "</ul>";
   }
 
   function renderBlog(lang) {
@@ -300,6 +321,10 @@
     if (renderers[page]) renderers[page](lang);
     renderContactCta(lang);
     window.SITE_CHROME.renderNav(lang, content, page);
+    // Last, so it sees the finished page: headings only have their text after
+    // applyStaticText() has run, and a language switch replaces that text (and
+    // the cards) wholesale, so the entrance animation is re-armed here too.
+    if (window.SITE_MOTION) window.SITE_MOTION.scan();
   }
 
   function initLangToggle() {

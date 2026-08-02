@@ -51,6 +51,11 @@
 
 <script src="js/content.js"></script>
 <script src="js/chrome.js"></script>
+<!-- Loaded before pages.js on purpose: pages.js renders the cards inline at
+     parse time and calls SITE_MOTION.scan() as it goes, so the entrance
+     animation is set up in the same task the cards are built in and the first
+     screen never flashes visible-then-hidden. -->
+<script src="js/motion.js"></script>
 <script src="js/pages.js"></script>
 </body>
 </html>

@@ -1576,3 +1576,106 @@ a.blog-row {
      stub next to it. */
   .gb-name { grid-column: 1 / -1; }
 }
+
+/* ==========================================================================
+   Card meta chips (projects.html)
+   ==========================================================================
+   A monospace chip row under each card's summary carrying the facts a
+   recruiter scans for first — engine, platform, team size, discipline — so
+   they are visible without opening the project page.
+
+   Placeholder cards get a dashed "TBD" chip instead of the old greyed-out
+   treatment (`.is-placeholder { opacity: .72 }` read as "this project is
+   deactivated" rather than "this write-up is still coming"). The opacity is
+   reset here for exactly that reason. */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 0.75);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-tags li {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-alt);
+  padding: 4px 9px;
+}
+
+.project-tags li.is-todo {
+  border-style: dashed;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.project-card.is-placeholder {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Scroll-entrance motion (js/motion.js)
+   ==========================================================================
+   Everything below is scoped to html.motion-ready — a class that js/motion.js
+   adds only when the visitor has NOT asked for reduced motion. No class, no
+   hidden start state, so a failed script load or a reduced-motion preference
+   both degrade to the plain static page rather than to blank space.
+
+   Effect 1: staggered word reveal. `.mo-line` is an overflow:hidden mask and
+   the <i> inside it is what translates, so the word wipes in from behind its
+   own baseline instead of just fading. `--i` is the word index, set in JS.
+
+   Effect 2: cascade. Card parts share the card's `.is-in` trigger and offset
+   themselves by `--i`, so thumb → title → summary → chips arrive in reading
+   order rather than all at once. */
+.motion-ready .mo-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.motion-ready .mo-line > i {
+  display: inline-block;
+  font-style: inherit;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.72s cubic-bezier(0.22, 0.8, 0.3, 1), opacity 0.45s ease;
+  transition-delay: calc(var(--i, 0) * 45ms);
+}
+
+.motion-ready .mo-head.is-in .mo-line > i {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.motion-ready .mo-fade,
+.motion-ready .mo-part {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+.motion-ready .mo-fade.is-in,
+.motion-ready .is-in .mo-part {
+  opacity: 1;
+  transform: none;
+}
+
+/* Belt and braces: js/motion.js already bails out on prefers-reduced-motion
+   (so .motion-ready is never added), but if the preference is switched on
+   mid-session the class is still on <html> — this clears the animation
+   without needing a reload. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .mo-line > i,
+  .motion-ready .mo-fade,
+  .motion-ready .mo-part {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
