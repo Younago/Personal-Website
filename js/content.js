@@ -200,6 +200,14 @@ const SITE_CONTENT = {
     },
     "tgp1": {
       "backLink": "← Back to Projects",
+      "linkedDoc": {
+        "heading": "Production coursework built on this game",
+        "tag": "PRODUCTION PLAN · SMU GUILDHALL",
+        "name": "Detective Folder — Demo to Live-Service",
+        "blurb": "A full production plan for converting this demo into a live-service mobile game: MS0–MS6 schedule, an 11-feature Jira-importable breakdown, a 43-role staffing plan and a $9.63M labor budget. It is a coursework deliverable — the game itself shipped as the four-level demo described above, not as the mobile game this plan describes.",
+        "cta": "Read the plan →",
+        "href": "production/detective-folder-live-service.html"
+      },
       "tagLabel": "GAME PROJECT",
       "gameName": "Detective Folder",
       "image": "../images/detective-folder-hero.jpg",
@@ -884,6 +892,240 @@ const SITE_CONTENT = {
           "placeholder": true
         }
       ]
+    },
+    "production": {
+      "heading": "Production Work",
+      "intro": "Producer deliverables — schedules, task breakdowns, staffing and cost plans. Written to be executed by a team, not to be presented once.",
+      "list": [
+        {
+          "id": "df-live-service",
+          "tag": "PRODUCTION PLAN · SMU GUILDHALL",
+          "name": "Detective Folder — Demo to Live-Service",
+          "role": "Producer",
+          "blurb": "A full production plan converting our student demo into a live-service mobile game: MS0–MS6 milestone schedule, an 11-feature Jira-importable breakdown, a 43-role staffing plan and a $9.63M labor budget.",
+          "href": "production/detective-folder-live-service.html",
+          "image": "images/production-plan/cover.jpg",
+          "tags": [
+            "production_plan",
+            "milestone_schedule",
+            "jira_breakdown",
+            "staffing_and_budget",
+            "live_service"
+          ]
+        }
+      ]
+    },
+    "productionPlan": {
+      "pageTitle": "Detective Folder — Production Plan",
+      "backLink": "← Back to Projects",
+      "tagLabel": "PRODUCTION PLAN · SMU GUILDHALL",
+      "heading": "Detective Folder — Demo to Live-Service",
+      "lead": "A producer's plan for taking Detective Folder — the four-level fold-the-page demo my team actually built — and shipping it as a live-service mobile game. It is a coursework deliverable, not a funded project, but every number in it is costed and every milestone has a deliverables list attached.",
+      "statsHeading": "The plan in numbers",
+      "stats": [
+        {
+          "value": "11",
+          "label": "Features broken down"
+        },
+        {
+          "value": "MS0–MS6",
+          "label": "Milestone gates"
+        },
+        {
+          "value": "38.5",
+          "label": "Peak headcount (FTE)"
+        },
+        {
+          "value": "951.5",
+          "label": "Total man-months"
+        },
+        {
+          "value": "$9.63M",
+          "label": "Total labor cost"
+        },
+        {
+          "value": "45 days",
+          "label": "Live content cycle"
+        }
+      ],
+      "scopeHeading": "What we're shipping",
+      "scope": "A narrative-driven detective live-service game. Monetization rests on three pillars — battle pass, monthly card, skin shop — with no gacha and no ads. A UGC/level editor and localization are explicitly deferred beyond this plan, and the staffing plan is costed to match that decision rather than quietly assuming the work away.",
+      "strategyHeading": "The strategic bet",
+      "strategy": "Keep the loop; build a live game around it. Features 1–6 carry over from the demo — the fold mechanic, the four levels, Katie, the interactive objects, the comic narrative and the menus — and stay close to the original design, because the fold is the game's identity and a live-service model works best when it doesn't rewrite the loop players already like. Features 7–11 are new machinery bolted on top: progression, LiveOps, monetization, backend and the compatibility/certification work a shipped mobile game needs.",
+      "deckHeading": "The deck",
+      "deckNote": "15 slides, the version presented in class. Scroll inside the frame, or download it below.",
+      "deckDownload": "Download the deck (PDF)",
+      "milestoneHeading": "Milestone schedule",
+      "milestoneNote": "Seven gates from signing to a repeating live-service template. Each one carries its own deliverables list in the schedule document.",
+      "milestoneCols": [
+        "Gate",
+        "Date",
+        "Milestone"
+      ],
+      "milestones": [
+        {
+          "ms": "MS0",
+          "date": "Oct 30, 2026",
+          "name": "Execution / Pre-Production"
+        },
+        {
+          "ms": "MS1",
+          "date": "Apr 30, 2027",
+          "name": "Feature Complete"
+        },
+        {
+          "ms": "MS2",
+          "date": "Jul 30, 2027",
+          "name": "Alpha"
+        },
+        {
+          "ms": "MS3",
+          "date": "Oct 29, 2027",
+          "name": "Beta"
+        },
+        {
+          "ms": "MS4",
+          "date": "Dec 30, 2027",
+          "name": "Certification & Release"
+        },
+        {
+          "ms": "MS5",
+          "date": "Jan 14, 2028",
+          "name": "Archive"
+        },
+        {
+          "ms": "MS6",
+          "date": "Jan 2028 onward",
+          "name": "Live-service version template — repeating every 45 days"
+        }
+      ],
+      "staffingHeading": "Staffing ramp",
+      "staffingNote": "Headcount in full-time equivalents, tied to the gates above. The team ramps to a runway before launch and then settles into a steady live-ops crew.",
+      "staffingCols": [
+        "Phase",
+        "Timeline",
+        "Team size (FTE)"
+      ],
+      "staffing": [
+        {
+          "phase": "Signing",
+          "timeline": "Jul 2026",
+          "fte": "3"
+        },
+        {
+          "phase": "Pre-Production",
+          "timeline": "Aug – Oct 2026",
+          "fte": "9"
+        },
+        {
+          "phase": "Production",
+          "timeline": "Nov 2026 – Apr 2027",
+          "fte": "23.5"
+        },
+        {
+          "phase": "Alpha",
+          "timeline": "May – Jul 2027",
+          "fte": "28"
+        },
+        {
+          "phase": "Beta",
+          "timeline": "Aug – Oct 2027",
+          "fte": "38.5 (peak)"
+        },
+        {
+          "phase": "RC / Certification",
+          "timeline": "Nov – Dec 2027",
+          "fte": "38"
+        },
+        {
+          "phase": "Release / Live Service",
+          "timeline": "Jan 2028 onward",
+          "fte": "22 – 27 (steady state)"
+        }
+      ],
+      "engineHeading": "The 45-day content engine",
+      "engineNote": "The part that decides whether a live game survives its first year. Roughly eight versions ship per year, and about eight level-equivalents are built before launch so the cadence starts at full speed on day one rather than stalling a month in.",
+      "engineStages": [
+        {
+          "span": "Days 1–15",
+          "stage": "Greybox"
+        },
+        {
+          "span": "Days 15–30",
+          "stage": "Alpha"
+        },
+        {
+          "span": "Days 30–45",
+          "stage": "Shippable"
+        }
+      ],
+      "engineShipsLabel": "Every cycle ships",
+      "engineShips": [
+        "2 levels + case",
+        "1 character",
+        "1 pass + skin",
+        "1 extra skin",
+        "1 event"
+      ],
+      "decisionsHeading": "Decisions and risks",
+      "decisions": [
+        {
+          "kind": "Deliberate",
+          "title": "Protect the core loop",
+          "body": "The fold mechanic and the four-level noir story carry over almost untouched. What gets rebuilt is everything around them — touch controls, a level toolset, store screens — because a live-service conversion that rewrites the loop throws away the only thing already proven to work."
+        },
+        {
+          "kind": "Positioning",
+          "title": "Cosmetic-only revenue",
+          "body": "Battle pass, monthly card and a skin shop. No gacha, no ads. It caps the revenue ceiling on purpose, in exchange for a game whose content pace and player trust aren't fighting the monetization."
+        },
+        {
+          "kind": "Risk → mitigated",
+          "title": "Content pace",
+          "body": "A 45-day cycle is the single hardest commitment in the plan. It's de-risked by building ~8 level-equivalents before launch and running 2–3 versions in flight at different stages rather than strictly one after another."
+        },
+        {
+          "kind": "Watch",
+          "title": "Deferred scope",
+          "body": "UGC/level editor and localization are out of scope here, and the staffing plan is costed accordingly. Both are real demand risks if the game lands well — flagged rather than buried."
+        }
+      ],
+      "filesHeading": "The full pack",
+      "filesNote": "The four deliverables as handed in. The breakdown sheets are laid out one flat sheet per feature so each row imports into Jira as a single ticket.",
+      "files": [
+        {
+          "name": "Production deck",
+          "type": "PDF · 15 slides",
+          "desc": "The presentation version of the plan.",
+          "href": "files/YoungGou_DetectiveFolder_ProductionPlan.pdf"
+        },
+        {
+          "name": "Milestone & resource schedule",
+          "type": "DOCX",
+          "desc": "MS0–MS6 with per-gate deliverables lists, plus the phase-by-phase headcount table.",
+          "href": "files/YoungGou_MilestoneSchedule.docx"
+        },
+        {
+          "name": "Project breakdown",
+          "type": "XLSX · 11 sheets",
+          "desc": "Every feature broken to Feature / Epic / Story / Task, priced by priority and formatted for Jira import.",
+          "href": "files/YoungGou_ProjectBreakdown.xlsx"
+        },
+        {
+          "name": "Staffing plan",
+          "type": "XLSX",
+          "desc": "43 roles across 8 feature teams plus 5 outsourced vendors, month by month. Salaries benchmarked to the 2025 GDC Salary Report.",
+          "href": "files/YoungGou_StaffingPlan.xlsx"
+        },
+        {
+          "name": "Deck source",
+          "type": "PPTX",
+          "desc": "The editable original, if you'd rather have it.",
+          "href": "files/YoungGou_DetectiveFolder.pptx"
+        }
+      ],
+      "relatedHeading": "The game this plan is built on",
+      "relatedLabel": "Detective Folder — the demo →"
     },
     "aiHubPage": {
       "pageTitle": "Young Gou — AI",
@@ -3158,6 +3400,14 @@ const SITE_CONTENT = {
     },
     "tgp1": {
       "backLink": "← 返回项目",
+      "linkedDoc": {
+        "heading": "基于这个游戏写的制作课作业",
+        "tag": "制作计划 · SMU GUILDHALL",
+        "name": "Detective Folder — 从 Demo 到长线运营",
+        "blurb": "一份把这个 demo 改造成长线运营手游的完整制作计划：MS0–MS6 排期、11 个 feature 的可导入 Jira 拆解、43 个角色的人力计划与 963 万美元人力预算。它是课程交付物——这个游戏实际交付的是上面写的四关 demo，不是这份计划里的那款手游。",
+        "cta": "查看这份计划 →",
+        "href": "production/detective-folder-live-service.html"
+      },
       "tagLabel": "游戏项目",
       "gameName": "Detective Folder",
       "image": "../images/detective-folder-hero.jpg",
@@ -3842,6 +4092,240 @@ const SITE_CONTENT = {
           "placeholder": true
         }
       ]
+    },
+    "production": {
+      "heading": "制作管理",
+      "intro": "制作人交付物——排期、任务拆解、人力与成本计划。是写给团队执行的文件，不是讲一次就收起来的展示稿。",
+      "list": [
+        {
+          "id": "df-live-service",
+          "tag": "制作计划 · SMU GUILDHALL",
+          "name": "Detective Folder — 从 Demo 到长线运营",
+          "role": "Producer",
+          "blurb": "把学生 demo 改造成长线运营手游的完整制作计划：MS0–MS6 里程碑排期、11 个 feature 的可导入 Jira 拆解表、43 个角色的人力计划与 963 万美元人力预算。",
+          "href": "production/detective-folder-live-service.html",
+          "image": "images/production-plan/cover.jpg",
+          "tags": [
+            "production_plan",
+            "milestone_schedule",
+            "jira_breakdown",
+            "staffing_and_budget",
+            "live_service"
+          ]
+        }
+      ]
+    },
+    "productionPlan": {
+      "pageTitle": "Detective Folder — 制作计划",
+      "backLink": "← 返回项目",
+      "tagLabel": "制作计划 · SMU GUILDHALL",
+      "heading": "Detective Folder — 从 Demo 到长线运营",
+      "lead": "一份制作人视角的计划：把团队真正做出来的四关「折页」demo，做成一款长线运营手游。它是课程交付物，不是拿到投资的项目，但每一个数字都算过成本，每一个里程碑都挂着自己的交付物清单。",
+      "statsHeading": "计划的关键数字",
+      "stats": [
+        {
+          "value": "11",
+          "label": "拆解的 feature"
+        },
+        {
+          "value": "MS0–MS6",
+          "label": "里程碑节点"
+        },
+        {
+          "value": "38.5",
+          "label": "峰值人力（FTE）"
+        },
+        {
+          "value": "951.5",
+          "label": "总人月"
+        },
+        {
+          "value": "$9.63M",
+          "label": "人力总成本"
+        },
+        {
+          "value": "45 天",
+          "label": "线上内容周期"
+        }
+      ],
+      "scopeHeading": "到底要做什么",
+      "scope": "一款叙事驱动的侦探长线运营游戏。商业化只靠三根柱子——战斗通行证、月卡、皮肤商店，不做抽卡，不接广告。UGC／关卡编辑器与本地化明确移出本次范围，人力计划也按这个决定来算成本，而不是嘴上砍掉、账上不动。",
+      "strategyHeading": "策略上的取舍",
+      "strategy": "保住循环，在它周围搭一整套长线系统。Feature 1–6 从 demo 继承：折页机制、四个关卡、Katie、可交互物件、漫画叙事和菜单，基本维持原设计——折页是这个游戏的身份，而长线运营模型最稳的做法恰恰是不去重写玩家已经喜欢的循环。Feature 7–11 是新加的机器：养成、活动运营、商业化、后端服务，以及一款真正上架的手游必须做的兼容性与过审工作。",
+      "deckHeading": "演示稿",
+      "deckNote": "15 页，课堂上讲的那一版。可以直接在框里翻，也可以在下面下载。",
+      "deckDownload": "下载演示稿（PDF）",
+      "milestoneHeading": "里程碑排期",
+      "milestoneNote": "从签约到可循环的长线版本模板，一共七个节点。每一个在排期文档里都带着自己的交付物清单。",
+      "milestoneCols": [
+        "节点",
+        "日期",
+        "里程碑"
+      ],
+      "milestones": [
+        {
+          "ms": "MS0",
+          "date": "2026-10-30",
+          "name": "立项 / 前期制作"
+        },
+        {
+          "ms": "MS1",
+          "date": "2027-04-30",
+          "name": "功能完成"
+        },
+        {
+          "ms": "MS2",
+          "date": "2027-07-30",
+          "name": "Alpha"
+        },
+        {
+          "ms": "MS3",
+          "date": "2027-10-29",
+          "name": "Beta"
+        },
+        {
+          "ms": "MS4",
+          "date": "2027-12-30",
+          "name": "过审与发行"
+        },
+        {
+          "ms": "MS5",
+          "date": "2028-01-14",
+          "name": "归档"
+        },
+        {
+          "ms": "MS6",
+          "date": "2028-01 起",
+          "name": "长线版本模板——每 45 天循环一次"
+        }
+      ],
+      "staffingHeading": "人力爬坡",
+      "staffingNote": "按全职当量计算，与上面的节点对齐。团队在发售前爬到跑道高度，之后落回一个稳定的运营班底。",
+      "staffingCols": [
+        "阶段",
+        "时间",
+        "团队规模（FTE）"
+      ],
+      "staffing": [
+        {
+          "phase": "签约",
+          "timeline": "2026-07",
+          "fte": "3"
+        },
+        {
+          "phase": "前期制作",
+          "timeline": "2026-08 – 10",
+          "fte": "9"
+        },
+        {
+          "phase": "制作期",
+          "timeline": "2026-11 – 2027-04",
+          "fte": "23.5"
+        },
+        {
+          "phase": "Alpha",
+          "timeline": "2027-05 – 07",
+          "fte": "28"
+        },
+        {
+          "phase": "Beta",
+          "timeline": "2027-08 – 10",
+          "fte": "38.5（峰值）"
+        },
+        {
+          "phase": "RC / 过审",
+          "timeline": "2027-11 – 12",
+          "fte": "38"
+        },
+        {
+          "phase": "发行 / 长线运营",
+          "timeline": "2028-01 起",
+          "fte": "22 – 27（稳态）"
+        }
+      ],
+      "engineHeading": "45 天内容引擎",
+      "engineNote": "决定一款长线游戏能不能活过第一年的地方。一年大约出 8 个版本；发售前预先做出约 8 个关卡当量的内容，让节奏从第一天就是满速，而不是上线一个月后卡住。",
+      "engineStages": [
+        {
+          "span": "第 1–15 天",
+          "stage": "灰盒"
+        },
+        {
+          "span": "第 15–30 天",
+          "stage": "Alpha"
+        },
+        {
+          "span": "第 30–45 天",
+          "stage": "可发布"
+        }
+      ],
+      "engineShipsLabel": "每个周期交付",
+      "engineShips": [
+        "2 个关卡 + 1 个案件",
+        "1 个角色",
+        "1 个通行证 + 皮肤",
+        "1 个额外皮肤",
+        "1 个活动"
+      ],
+      "decisionsHeading": "决策与风险",
+      "decisions": [
+        {
+          "kind": "主动选择",
+          "title": "保护核心循环",
+          "body": "折页机制和四关黑色叙事基本原样继承，重做的是它周围的一切——触屏操作、关卡工具链、商店界面。一次重写核心循环的长线化改造，等于把唯一已经被验证过的东西丢掉。"
+        },
+        {
+          "kind": "定位",
+          "title": "只卖外观",
+          "body": "战斗通行证、月卡、皮肤商店。不抽卡，不接广告。这是主动给收入天花板设限，换来的是内容节奏和玩家信任不跟商业化互相拉扯。"
+        },
+        {
+          "kind": "风险 → 已缓解",
+          "title": "内容产能",
+          "body": "45 天一版是整个计划里最硬的承诺。缓解方式是发售前先做出约 8 个关卡当量的储备，并让 2–3 个版本在不同阶段并行推进，而不是严格串行。"
+        },
+        {
+          "kind": "持续观察",
+          "title": "被推迟的范围",
+          "body": "UGC／关卡编辑器与本地化不在本次范围内，人力计划也照此计价。如果游戏表现好，这两项都会变成真实的需求压力——所以写在明面上，而不是埋掉。"
+        }
+      ],
+      "filesHeading": "完整材料包",
+      "filesNote": "四份交付物的原件。拆解表刻意做成一个 feature 一张平表，这样每一行都能作为单张工单直接导入 Jira。",
+      "files": [
+        {
+          "name": "制作演示稿",
+          "type": "PDF · 15 页",
+          "desc": "计划的演示版本。",
+          "href": "files/YoungGou_DetectiveFolder_ProductionPlan.pdf"
+        },
+        {
+          "name": "里程碑与资源排期",
+          "type": "DOCX",
+          "desc": "MS0–MS6 各节点的交付物清单，以及分阶段人力表。",
+          "href": "files/YoungGou_MilestoneSchedule.docx"
+        },
+        {
+          "name": "项目拆解表",
+          "type": "XLSX · 11 张表",
+          "desc": "每个 feature 拆到 Feature / Epic / Story / Task，按优先级定级，格式适配 Jira 导入。",
+          "href": "files/YoungGou_ProjectBreakdown.xlsx"
+        },
+        {
+          "name": "人力计划表",
+          "type": "XLSX",
+          "desc": "8 个 feature 组共 43 个角色 + 5 家外包供应商，逐月排布。薪资对标 2025 GDC 薪资报告。",
+          "href": "files/YoungGou_StaffingPlan.xlsx"
+        },
+        {
+          "name": "演示稿源文件",
+          "type": "PPTX",
+          "desc": "可编辑的原始文件。",
+          "href": "files/YoungGou_DetectiveFolder.pptx"
+        }
+      ],
+      "relatedHeading": "这份计划所基于的游戏",
+      "relatedLabel": "Detective Folder — 原始 demo →"
     },
     "aiHubPage": {
       "pageTitle": "苟仲胤 — AI",

@@ -69,8 +69,86 @@
       var analysis = content[lang].gameAnalysis;
       document.title = content[lang].nav.projects + " — " + content[lang].site.name;
       renderCardGrid("teamGrid", team.list);
+      var prod = content[lang].production;
+      if (prod) renderCardGrid("productionGrid", prod.list);
       renderCardGrid("individualGrid", indiv.list);
       if (analysis) renderCardGrid("analysisGrid", analysis.list);
+    },
+
+    // Production plan case study (production/detective-folder-live-service.html).
+    // The page is a producer deliverable rather than a game, so it gets its own
+    // shape — numbers, schedule tables, an embedded deck and the source files —
+    // instead of reusing the game-detail or story templates.
+    production: function (lang) {
+      var d = content[lang].productionPlan;
+      if (!d) return;
+      document.title = d.pageTitle;
+
+      setText("prodBack", d.backLink);
+      setText("prodTag", d.tagLabel);
+      setText("prodHeading", d.heading);
+      setText("prodLead", d.lead);
+      setText("prodScopeHeading", d.scopeHeading);
+      setText("prodScope", d.scope);
+      setText("prodStrategyHeading", d.strategyHeading);
+      setText("prodStrategy", d.strategy);
+      setText("prodDeckHeading", d.deckHeading);
+      setText("prodDeckNote", d.deckNote);
+      setText("prodMilestoneHeading", d.milestoneHeading);
+      setText("prodMilestoneNote", d.milestoneNote);
+      setText("prodStaffingHeading", d.staffingHeading);
+      setText("prodStaffingNote", d.staffingNote);
+      setText("prodEngineHeading", d.engineHeading);
+      setText("prodEngineNote", d.engineNote);
+      setText("prodDecisionsHeading", d.decisionsHeading);
+      setText("prodFilesHeading", d.filesHeading);
+      setText("prodFilesNote", d.filesNote);
+      setText("prodRelatedHeading", d.relatedHeading);
+      setText("prodRelated", d.relatedLabel);
+
+      fill("prodStats", (d.stats || []).map(function (s) {
+        return '<div class="prod-stat"><strong>' + s.value + "</strong><span>" + s.label + "</span></div>";
+      }).join(""));
+
+      // The deck is a PDF rather than the original .pptx so it renders in the
+      // browser; the .pptx is still offered in the file list below. Same
+      // iframe-embed approach as resume.html, at a 16:9-ish height since these
+      // are slides, not pages.
+      var deck = (d.files || [])[0];
+      if (deck) {
+        fill("prodDeck",
+          '<iframe src="' + deck.href + '" title="' + d.deckHeading + '" loading="lazy"></iframe>' +
+          '<a class="btn-download" href="' + deck.href + '" download>' + d.deckDownload + "</a>");
+      }
+
+      fill("prodMilestones", table(d.milestoneCols, (d.milestones || []).map(function (m) {
+        return ['<span class="mono prod-gate">' + m.ms + "</span>", '<span class="mono">' + m.date + "</span>", m.name];
+      })));
+
+      fill("prodStaffing", table(d.staffingCols, (d.staffing || []).map(function (r) {
+        return [r.phase, '<span class="mono">' + r.timeline + "</span>", '<span class="mono">' + r.fte + "</span>"];
+      })));
+
+      fill("prodEngine",
+        '<ol class="prod-engine">' +
+        (d.engineStages || []).map(function (s) {
+          return "<li><span class='mono'>" + s.span + "</span><strong>" + s.stage + "</strong></li>";
+        }).join("") +
+        "</ol>" +
+        '<p class="prod-ships"><span class="mono">' + d.engineShipsLabel + "</span>" +
+        (d.engineShips || []).map(function (x) { return "<em>" + x + "</em>"; }).join("") +
+        "</p>");
+
+      fill("prodDecisions", (d.decisions || []).map(function (x) {
+        return '<article class="prod-decision"><p class="mono prod-kind">' + x.kind + "</p>" +
+          "<h3>" + x.title + "</h3><p>" + x.body + "</p></article>";
+      }).join(""));
+
+      fill("prodFiles", (d.files || []).map(function (f) {
+        return '<li><a href="' + f.href + '" download><span class="prod-file-name">' + f.name + "</span>" +
+          '<span class="mono prod-file-type">' + f.type + "</span>" +
+          '<span class="prod-file-desc">' + f.desc + "</span></a></li>";
+      }).join(""));
     },
 
     experience: function (lang) {
@@ -227,6 +305,25 @@
   function setText(id, value) {
     var el = document.getElementById(id);
     if (el && typeof value === "string") el.textContent = value;
+  }
+
+  function fill(id, html) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  }
+
+  // Small helper for the two schedule tables on the production plan page.
+  // Cells are already-escaped strings built by the caller.
+  function table(cols, rows) {
+    return (
+      "<thead><tr>" +
+      (cols || []).map(function (c) { return "<th>" + c + "</th>"; }).join("") +
+      "</tr></thead><tbody>" +
+      (rows || []).map(function (r) {
+        return "<tr>" + r.map(function (c) { return "<td>" + c + "</td>"; }).join("") + "</tr>";
+      }).join("") +
+      "</tbody>"
+    );
   }
 
   // One card renderer for every list on the site's subpages: team projects,

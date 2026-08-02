@@ -1679,3 +1679,324 @@ a.blog-row {
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Production plan case study (production/*.html)
+   ==========================================================================
+   A producer deliverable reads differently from a game page: the evidence is
+   numbers, schedules and source files rather than screenshots, so this page
+   gets stat tiles, two schedule tables, an embedded deck and a download list
+   instead of the shots grid the game-detail pages use. */
+.prod-stats {
+  display: grid;
+  /* Fixed column counts rather than auto-fit: there are six stats, and an
+     auto-fit track count of four or five leaves empty cells that read as
+     missing data against the 1px-gap grid background. Three and two both
+     divide six evenly. */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+  margin: calc(var(--u) * 3) 0 calc(var(--u) * 2);
+}
+
+.prod-stat {
+  background: var(--color-bg);
+  padding: calc(var(--u) * 2.5);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prod-stat strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+}
+
+.prod-stat span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 860px) {
+  .prod-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Slides, not pages — so the embed is sized to a deck's aspect ratio rather
+   than borrowing resume.html's very tall page-scroll height. */
+.prod-embed {
+  margin-top: calc(var(--u) * 2);
+}
+
+.prod-embed iframe {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 420px;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  display: block;
+}
+
+.prod-embed .btn-download {
+  margin-top: calc(var(--u) * 1.5);
+  display: inline-block;
+}
+
+/* Horizontal scroll rather than a squeezed layout: a three-column schedule
+   with dates in it stops being readable below ~420px, and a table that can be
+   swiped is better than one whose columns have collapsed into each other. */
+.prod-table-wrap {
+  overflow-x: auto;
+  margin-top: calc(var(--u) * 2);
+  border: 1px solid var(--color-line);
+}
+
+.prod-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 460px;
+}
+
+.prod-table th,
+.prod-table td {
+  text-align: left;
+  padding: calc(var(--u) * 1.5) calc(var(--u) * 2);
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+}
+
+.prod-table th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+}
+
+.prod-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.prod-gate {
+  color: var(--color-accent);
+}
+
+.prod-engine {
+  display: grid;
+  /* Three stages, so three columns or one — same reason as .prod-stats: an
+     auto-fit two-column layout would leave a visibly empty third cell. */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+  list-style: none;
+  margin: calc(var(--u) * 2) 0 0;
+  padding: 0;
+  counter-reset: none;
+}
+
+.prod-engine li {
+  background: var(--color-bg);
+  padding: calc(var(--u) * 2.5);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prod-engine li span {
+  font-size: 11px;
+  color: var(--color-accent);
+}
+
+.prod-engine li strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.prod-ships {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--u) * 1);
+  margin-top: calc(var(--u) * 2);
+}
+
+.prod-ships > span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-right: calc(var(--u) * 0.5);
+}
+
+.prod-ships em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg-alt);
+  padding: 5px 10px;
+}
+
+.prod-decisions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+  margin-top: calc(var(--u) * 2);
+}
+
+.prod-decision {
+  background: var(--color-bg);
+  padding: calc(var(--u) * 3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prod-decision .prod-kind {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin: 0;
+}
+
+.prod-decision h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.prod-decision p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.prod-files {
+  list-style: none;
+  margin: calc(var(--u) * 2) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.prod-files li {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.prod-files a {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.1fr) minmax(110px, 0.5fr) 2fr;
+  gap: calc(var(--u) * 2);
+  align-items: baseline;
+  padding: calc(var(--u) * 2) calc(var(--u) * 1);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.prod-files a:hover {
+  background: var(--color-surface);
+  padding-left: calc(var(--u) * 2);
+}
+
+.prod-file-name {
+  font-weight: 600;
+}
+
+.prod-file-type {
+  font-size: 11px;
+  color: var(--color-accent);
+}
+
+.prod-file-desc {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .prod-engine {
+    grid-template-columns: 1fr;
+  }
+  .prod-files a {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .prod-embed iframe {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prod-files a:hover {
+    padding-left: calc(var(--u) * 1);
+  }
+}
+
+/* Companion-document callout on a project detail page (js/project-detail.js).
+   Sized like a related-project card but wider and with a summary, because the
+   whole point is that a visitor should know what the document is — and what it
+   is not — before deciding to click through. */
+.linked-doc {
+  display: block;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg);
+  padding: calc(var(--u) * 3);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s ease;
+}
+
+.linked-doc:hover {
+  background: var(--color-surface);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+}
+
+.linked-doc-tag {
+  display: block;
+  font-size: 11px;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+
+.linked-doc h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 26px);
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.linked-doc p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  max-width: 72ch;
+  margin: 0 0 14px;
+}
+
+.linked-doc-cta {
+  font-size: 12px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linked-doc:hover {
+    transform: none;
+  }
+}

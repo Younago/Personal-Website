@@ -200,6 +200,26 @@
       }
     }
 
+    // Optional companion document (e.g. the production plan built on top of
+    // this game). Kept generic and optional rather than hard-coded to one
+    // project, and deliberately worded by the content so the page can say what
+    // the document is and isn't — a coursework plan is not a shipped roadmap.
+    var linked = document.getElementById("linkedDoc");
+    if (linked) {
+      if (d.linkedDoc) {
+        linked.innerHTML =
+          '<section class="resume-section"><h2>' + d.linkedDoc.heading + "</h2>" +
+          '<a class="linked-doc" href="' + root + d.linkedDoc.href + '">' +
+          '<span class="linked-doc-tag mono">' + d.linkedDoc.tag + "</span>" +
+          "<h3>" + d.linkedDoc.name + "</h3>" +
+          "<p>" + d.linkedDoc.blurb + "</p>" +
+          '<span class="linked-doc-cta mono">' + d.linkedDoc.cta + "</span>" +
+          "</a></section>";
+      } else {
+        linked.innerHTML = "";
+      }
+    }
+
     document.getElementById("postHeading").textContent = d.postmortemHeading;
     document.getElementById("postBody").textContent = d.postmortem;
 

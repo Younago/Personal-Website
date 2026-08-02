@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Detective Folder — Production Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/profile.css" />
+<link rel="stylesheet" href="../css/subpage.css" />
+</head>
+<!-- Everything below the header is rendered by the `production` renderer in
+     js/pages.js from content.productionPlan, so the page exists once in both
+     languages instead of twice in markup. -->
+<body data-page="production" data-root="../">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" id="prodBack" href="../projects.html"></a></div>
+
+<main class="resume">
+  <div class="resume-header" style="border-bottom-color: var(--color-line);">
+    <div>
+      <p class="mono detail-tag" id="prodTag"></p>
+      <h1 id="prodHeading"></h1>
+    </div>
+  </div>
+
+  <p class="resume-summary" id="prodLead"></p>
+
+  <div class="prod-stats" id="prodStats"></div>
+
+  <section class="resume-section">
+    <h2 id="prodScopeHeading"></h2>
+    <p class="resume-summary" id="prodScope"></p>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodStrategyHeading"></h2>
+    <p class="resume-summary" id="prodStrategy"></p>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodDeckHeading"></h2>
+    <p class="resume-summary" id="prodDeckNote"></p>
+    <div class="prod-embed" id="prodDeck"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodMilestoneHeading"></h2>
+    <p class="resume-summary" id="prodMilestoneNote"></p>
+    <div class="prod-table-wrap"><table class="prod-table" id="prodMilestones"></table></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodEngineHeading"></h2>
+    <p class="resume-summary" id="prodEngineNote"></p>
+    <div id="prodEngine"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodStaffingHeading"></h2>
+    <p class="resume-summary" id="prodStaffingNote"></p>
+    <div class="prod-table-wrap"><table class="prod-table" id="prodStaffing"></table></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodDecisionsHeading"></h2>
+    <div class="prod-decisions" id="prodDecisions"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodFilesHeading"></h2>
+    <p class="resume-summary" id="prodFilesNote"></p>
+    <ul class="prod-files" id="prodFiles"></ul>
+  </section>
+
+  <div class="related-projects">
+    <p class="related-heading mono" id="prodRelatedHeading"></p>
+    <div class="related-row"><a class="related-card" id="prodRelated" href="../team-projects/tgp1.html"></a></div>
+  </div>
+
+  <div class="page-contact-cta" id="pageContactCta"></div>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="../js/content.js"></script>
+<script src="../js/chrome.js"></script>
+<script src="../js/motion.js"></script>
+<script src="../js/pages.js"></script>
+</body>
+</html>
