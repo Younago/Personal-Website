@@ -57,6 +57,15 @@
     <div class="prod-table-wrap"><table class="prod-table" id="prodMilestones"></table></div>
   </section>
 
+  <!-- The schedule document and both workbooks are rendered in the page, not
+       just linked: an interviewer should be able to read the actual sheets
+       without downloading anything. The originals stay in the file list. -->
+  <section class="resume-section">
+    <h2 id="prodScheduleHeading"></h2>
+    <p class="resume-summary" id="prodScheduleNote"></p>
+    <div class="prod-embed" id="prodScheduleDoc"></div>
+  </section>
+
   <section class="resume-section">
     <h2 id="prodEngineHeading"></h2>
     <p class="resume-summary" id="prodEngineNote"></p>
@@ -67,6 +76,18 @@
     <h2 id="prodStaffingHeading"></h2>
     <p class="resume-summary" id="prodStaffingNote"></p>
     <div class="prod-table-wrap"><table class="prod-table" id="prodStaffing"></table></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodStaffSheetHeading"></h2>
+    <p class="resume-summary" id="prodStaffSheetNote"></p>
+    <div id="prodStaffSheet"></div>
+  </section>
+
+  <section class="resume-section">
+    <h2 id="prodBreakdownHeading"></h2>
+    <p class="resume-summary" id="prodBreakdownNote"></p>
+    <div id="prodBreakdownSheet"></div>
   </section>
 
   <section class="resume-section">
@@ -92,6 +113,7 @@
 
 <script src="../js/content.js"></script>
 <script src="../js/chrome.js"></script>
+<script src="../js/sheet-viewer.js"></script>
 <script src="../js/motion.js"></script>
 <script src="../js/pages.js"></script>
 </body>

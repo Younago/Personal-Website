@@ -2000,3 +2000,159 @@ a.blog-row {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   In-page spreadsheet viewer (js/sheet-viewer.js)
+   ==========================================================================
+   The workbooks are readable in the page rather than download-only, because a
+   file an interviewer has to download and open is a file most of them won't.
+   The tables are wide by nature (the staffing sheet is 57 columns of months),
+   so the pattern is: scroll the table horizontally inside its own box, keep
+   the header row and the identifying left-hand columns pinned, and never let
+   the page itself scroll sideways. */
+.sheet-viewer {
+  margin-top: calc(var(--u) * 2);
+}
+
+.sheet-status {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.sheet-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: calc(var(--u) * 1.5);
+}
+
+.sheet-tabs button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.sheet-tabs button:hover {
+  color: var(--color-text);
+}
+
+.sheet-tabs button[aria-selected="true"] {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.sheet-scroll {
+  overflow: auto;
+  max-height: 70vh;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg);
+  /* Momentum scrolling on iOS, and a hint that this box scrolls at all. */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.sheet-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.sheet-table th,
+.sheet-table td {
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+  background: var(--color-bg);
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Marked in the exported data, not guessed from column position: the prose
+   columns wrap and get room; every other column stays one line. */
+.sheet-table .is-wrap {
+  white-space: normal;
+  min-width: 260px;
+}
+
+.sheet-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.sheet-table .is-frozen {
+  position: sticky;
+  z-index: 2;
+  box-shadow: 1px 0 0 var(--color-line);
+}
+
+.sheet-table thead .is-frozen {
+  z-index: 4;
+}
+
+.sheet-table tbody tr:hover td:not(.is-label) {
+  background: var(--color-surface);
+}
+
+/* A row with content only in its first cell is a section label in these
+   workbooks, not a data row — spanning it beats a row of empty cells. */
+/* Sticky so the section name ("NARRATIVE TEAM", "CONTENT TEAM …") is still
+   readable after scrolling right into the month columns — otherwise the label
+   scrolls away and the rows below it lose their heading. */
+.sheet-table tr.is-label td {
+  /* overflow:hidden (inherited from the generic cell rule) would make this cell
+     the sticky span's own scroll container, pinning it to a box that never
+     scrolls — i.e. no stickiness at all. */
+  overflow: visible;
+  background: var(--color-bg-alt);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.sheet-table tr.is-label span {
+  position: sticky;
+  left: 10px;
+  display: inline-block;
+}
+
+.sheet-table td.is-blank {
+  background: var(--color-bg);
+}
+
+.sheet-empty {
+  padding: calc(var(--u) * 2);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .sheet-scroll {
+    max-height: 60vh;
+  }
+  .sheet-table th,
+  .sheet-table td {
+    max-width: 260px;
+  }
+}

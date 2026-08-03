@@ -922,6 +922,15 @@ const SITE_CONTENT = {
       "heading": "Detective Folder — Demo to Live-Service",
       "lead": "A producer's plan for taking Detective Folder — the four-level fold-the-page demo my team actually built — and shipping it as a live-service mobile game. It is a coursework deliverable, not a funded project, but every number in it is costed and every milestone has a deliverables list attached.",
       "statsHeading": "The plan in numbers",
+      "scheduleDocHeading": "The schedule document, in full",
+      "scheduleDocNote": "The milestone schedule as handed in — every gate with its complete deliverables list, plus the resource schedule. Five pages; scroll inside the frame.",
+      "scheduleDocHref": "files/YoungGou_MilestoneSchedule.pdf",
+      "staffingSheetHeading": "The staffing sheet itself",
+      "staffingSheetNote": "The actual worksheet: 43 roles by department, in-house or outsourced, with monthly cost and headcount from Jul 2026 through the live-service years. Scroll sideways for later months — department, role and cost stay pinned.",
+      "breakdownSheetHeading": "The breakdown sheets themselves",
+      "breakdownSheetNote": "All 11 features plus the index, one tab each. Every row is a Jira ticket: Feature / Epic / Story / Task with its area, component, priority and parent link.",
+      "sheetLoading": "Loading the sheets…",
+      "sheetError": "The sheets could not be loaded — the original workbook is downloadable below.",
       "stats": [
         {
           "value": "11",
@@ -4122,6 +4131,15 @@ const SITE_CONTENT = {
       "heading": "Detective Folder — 从 Demo 到长线运营",
       "lead": "一份制作人视角的计划：把团队真正做出来的四关「折页」demo，做成一款长线运营手游。它是课程交付物，不是拿到投资的项目，但每一个数字都算过成本，每一个里程碑都挂着自己的交付物清单。",
       "statsHeading": "计划的关键数字",
+      "scheduleDocHeading": "排期文档全文",
+      "scheduleDocNote": "交上去的那份里程碑排期原件——每个节点的完整交付物清单，以及资源排期表。共 5 页，可以在框里直接翻。",
+      "scheduleDocHref": "files/YoungGou_MilestoneSchedule.pdf",
+      "staffingSheetHeading": "人力表原表",
+      "staffingSheetNote": "真正的那张工作表：43 个角色按部门排布，标注内部或外包，逐月列出人力成本与人头，从 2026 年 7 月一直排到长线运营年份。向右滑看后面的月份——部门、角色和成本三列会固定不动。",
+      "breakdownSheetHeading": "拆解表原表",
+      "breakdownSheetNote": "11 个 feature 加索引页，每个一个标签页。每一行就是一张 Jira 工单：Feature / Epic / Story / Task，带所属领域、组件、优先级和父级链接。",
+      "sheetLoading": "正在加载表格…",
+      "sheetError": "表格加载失败——下面可以直接下载原始文件。",
       "stats": [
         {
           "value": "11",

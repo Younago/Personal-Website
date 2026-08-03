@@ -121,6 +121,24 @@
           '<a class="btn-download" href="' + deck.href + '" download>' + d.deckDownload + "</a>");
       }
 
+      setText("prodScheduleHeading", d.scheduleDocHeading);
+      setText("prodScheduleNote", d.scheduleDocNote);
+      setText("prodStaffSheetHeading", d.staffingSheetHeading);
+      setText("prodStaffSheetNote", d.staffingSheetNote);
+      setText("prodBreakdownHeading", d.breakdownSheetHeading);
+      setText("prodBreakdownNote", d.breakdownSheetNote);
+
+      // The .docx converted to PDF so it renders in the browser; the editable
+      // original is still in the file list below.
+      if (d.scheduleDocHref) {
+        fill("prodScheduleDoc",
+          '<iframe src="' + d.scheduleDocHref + '" title="' + d.scheduleDocHeading + '" loading="lazy"></iframe>');
+      }
+
+      fill("prodStaffSheet", sheetViewer("staffing", d));
+      fill("prodBreakdownSheet", sheetViewer("breakdown", d));
+      if (window.SITE_SHEETS) window.SITE_SHEETS.scan(document);
+
       fill("prodMilestones", table(d.milestoneCols, (d.milestones || []).map(function (m) {
         return ['<span class="mono prod-gate">' + m.ms + "</span>", '<span class="mono">' + m.date + "</span>", m.name];
       })));
@@ -310,6 +328,18 @@
   function fill(id, html) {
     var el = document.getElementById(id);
     if (el) el.innerHTML = html;
+  }
+
+  // Markup for one in-page spreadsheet viewer. js/sheet-viewer.js takes over
+  // from here: it loads production/data/<key>.js on demand and replaces the
+  // status line with tabs and a scrollable table.
+  function sheetViewer(key, d) {
+    return (
+      '<div class="sheet-viewer" data-sheets="' + key + '" data-root="' + root + '"' +
+      ' data-error="' + (d.sheetError || "") + '">' +
+      '<p class="sheet-status">' + (d.sheetLoading || "") + "</p>" +
+      '<div class="sheet-body"></div></div>'
+    );
   }
 
   // Small helper for the two schedule tables on the production plan page.
