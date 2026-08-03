@@ -82,6 +82,18 @@
       })
       .join("");
 
+    // Optional external links (store page, itch, press kit). Absent on every
+    // other project, so the container stays empty rather than rendering an
+    // empty row.
+    var linksWrap = document.getElementById("projectLinks");
+    if (linksWrap) {
+      linksWrap.innerHTML = (d.links || [])
+        .map(function (l) {
+          return '<a class="btn-download" href="' + l.href + '" target="_blank" rel="noopener">' + l.label + "</a>";
+        })
+        .join("");
+    }
+
     document.getElementById("synopsisHeading").textContent = d.synopsisHeading;
     document.getElementById("synopsisBody").textContent = d.synopsis;
 

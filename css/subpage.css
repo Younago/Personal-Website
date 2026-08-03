@@ -2156,3 +2156,73 @@ a.blog-row {
     max-width: 260px;
   }
 }
+
+/* ==========================================================================
+   External (store) link on a project card
+   ==========================================================================
+   The card itself is one big <a> to the project's page, so a second link
+   cannot be nested inside it. The card is wrapped instead and the store link
+   sits alongside it, positioned over the thumbnail — visibly a separate target
+   rather than part of the card's click area. */
+.project-card-wrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.project-card-wrap .project-card {
+  width: 100%;
+}
+
+.card-external {
+  position: absolute;
+  top: calc(var(--u) * 5.5);
+  right: calc(var(--u) * 5.5);
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-line-strong, var(--color-line));
+  padding: 7px 12px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.card-external:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+  transform: translateY(-1px);
+}
+
+.card-external:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .card-external {
+    top: calc(var(--u) * 3.5);
+    right: calc(var(--u) * 3.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-external:hover {
+    transform: none;
+  }
+}
+
+/* Store links on a project detail page, under the meta grid. Empty on every
+   project without a `links` array, so it collapses instead of leaving a gap. */
+.detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 1.5);
+}
+
+.detail-links:not(:empty) {
+  margin-top: calc(var(--u) * 3);
+  margin-bottom: calc(var(--u) * 2);
+}

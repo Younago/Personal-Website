@@ -127,7 +127,12 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "capstone",
-          "tags": ["fps", "team_of_41", "in_production", "producer"],
+          "tags": [
+            "fps",
+            "team_of_41",
+            "in_production",
+            "producer"
+          ],
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
           "role": "Producer",
@@ -140,7 +145,13 @@ const SITE_CONTENT = {
         },
         {
           "id": "tgp2",
-          "tags": ["unreal_engine_5", "steam", "racing", "team_of_43", "producer"],
+          "tags": [
+            "unreal_engine_5",
+            "steam",
+            "racing",
+            "team_of_43",
+            "producer"
+          ],
           "tag": "GAME PROJECT",
           "name": "Hamsterballin'",
           "role": "Producer",
@@ -149,11 +160,20 @@ const SITE_CONTENT = {
           "blurb": "A Mario Kart-style racing game built in Unreal Engine 5, on Steam.",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "Steam ↗",
+            "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+          }
         },
         {
           "id": "tgp1",
-          "tags": ["unity", "2d_puzzle_platformer", "level_design", "team_of_5"],
+          "tags": [
+            "unity",
+            "2d_puzzle_platformer",
+            "level_design",
+            "team_of_5"
+          ],
           "tag": "GAME PROJECT",
           "name": "Detective Folder",
           "role": "Level Designer",
@@ -196,7 +216,13 @@ const SITE_CONTENT = {
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Placeholder — add gameplay screenshots.",
       "postmortemHeading": "Postmortem",
-      "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned."
+      "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned.",
+      "links": [
+        {
+          "label": "View on Steam ↗",
+          "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+        }
+      ]
     },
     "tgp1": {
       "backLink": "← Back to Projects",
@@ -3336,7 +3362,12 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "capstone",
-          "tags": ["fps", "team_of_41", "in_production", "producer"],
+          "tags": [
+            "fps",
+            "team_of_41",
+            "in_production",
+            "producer"
+          ],
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
           "role": "制作人",
@@ -3349,7 +3380,13 @@ const SITE_CONTENT = {
         },
         {
           "id": "tgp2",
-          "tags": ["unreal_engine_5", "steam", "racing", "team_of_43", "producer"],
+          "tags": [
+            "unreal_engine_5",
+            "steam",
+            "racing",
+            "team_of_43",
+            "producer"
+          ],
           "tag": "游戏项目",
           "name": "Hamsterballin'",
           "role": "制作人",
@@ -3358,11 +3395,20 @@ const SITE_CONTENT = {
           "blurb": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "Steam ↗",
+            "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+          }
         },
         {
           "id": "tgp1",
-          "tags": ["unity", "2d_puzzle_platformer", "level_design", "team_of_5"],
+          "tags": [
+            "unity",
+            "2d_puzzle_platformer",
+            "level_design",
+            "team_of_5"
+          ],
           "tag": "游戏项目",
           "name": "Detective Folder",
           "role": "关卡策划",
@@ -3405,7 +3451,13 @@ const SITE_CONTENT = {
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "占位 — 添加游戏截图。",
       "postmortemHeading": "项目复盘",
-      "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。"
+      "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。",
+      "links": [
+        {
+          "label": "在 Steam 上查看 ↗",
+          "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+        }
+      ]
     },
     "tgp1": {
       "backLink": "← 返回项目",

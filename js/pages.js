@@ -366,6 +366,16 @@
     items.forEach(function (p) {
       // Entries without an href render as a plain <div>: an <a href="#">
       // would look clickable and then just jump to the top of the page.
+      // An item with an `external` link (e.g. a store page) needs a second,
+      // separate link inside the card. A nested <a> is invalid, so the card is
+      // wrapped and the external link sits alongside it, pinned over the
+      // thumbnail rather than inside the card's own click target.
+      var host = wrap;
+      if (p.external && p.href) {
+        host = document.createElement("div");
+        host.className = "project-card-wrap";
+        wrap.appendChild(host);
+      }
       var card = document.createElement(p.href ? "a" : "div");
       card.className = "project-card" + (p.placeholder ? " is-placeholder" : "");
       if (p.href) card.href = root + p.href;
@@ -376,7 +386,17 @@
         (p.role ? '<p class="project-role">' + p.role + "</p>" : "") +
         '<p class="project-summary">' + p.blurb + "</p>" +
         renderTags(p);
-      wrap.appendChild(card);
+      host.appendChild(card);
+      if (host !== wrap) {
+        var ext = document.createElement("a");
+        ext.className = "card-external mono";
+        ext.href = p.external.href;
+        ext.target = "_blank";
+        ext.rel = "noopener";
+        ext.textContent = p.external.label;
+        ext.setAttribute("aria-label", p.name + " — " + p.external.label);
+        host.appendChild(ext);
+      }
     });
     // Hand the fresh cards to the entrance animation. This runs on every
     // render — including a language switch, which replaces the cards entirely.
