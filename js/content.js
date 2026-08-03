@@ -895,14 +895,14 @@ const SITE_CONTENT = {
     },
     "production": {
       "heading": "Production Work",
-      "intro": "Producer deliverables — schedules, task breakdowns, staffing and cost plans. Written to be executed by a team, not to be presented once.",
+      "intro": "Producer deliverables: scope definition, milestone schedules, work breakdowns, staffing and cost planning.",
       "list": [
         {
           "id": "df-live-service",
           "tag": "PRODUCTION PLAN · SMU GUILDHALL",
           "name": "Detective Folder — Demo to Live-Service",
           "role": "Producer",
-          "blurb": "A full production plan converting our student demo into a live-service mobile game: MS0–MS6 milestone schedule, an 11-feature Jira-importable breakdown, a 43-role staffing plan and a $9.63M labor budget.",
+          "blurb": "Production plan for converting a four-level student demo into a live-service mobile title. Covers MS0–MS6 milestone schedule, an 11-feature work breakdown formatted for Jira import, a 43-role staffing plan and a $9.63M labor budget. Coursework, SMU Guildhall.",
           "href": "production/detective-folder-live-service.html",
           "image": "images/production-plan/cover.jpg",
           "tags": [
@@ -920,17 +920,17 @@ const SITE_CONTENT = {
       "backLink": "← Back to Projects",
       "tagLabel": "PRODUCTION PLAN · SMU GUILDHALL",
       "heading": "Detective Folder — Demo to Live-Service",
-      "lead": "A producer's plan for taking Detective Folder — the four-level fold-the-page demo my team actually built — and shipping it as a live-service mobile game. It is a coursework deliverable, not a funded project, but every number in it is costed and every milestone has a deliverables list attached.",
-      "statsHeading": "The plan in numbers",
-      "scheduleDocHeading": "The schedule document, in full",
-      "scheduleDocNote": "The milestone schedule as handed in — every gate with its complete deliverables list, plus the resource schedule. Five pages; scroll inside the frame.",
+      "lead": "A plan for converting Detective Folder — the four-level demo my team built — into a live-service mobile title. Prepared as coursework at SMU Guildhall; the title was not put into production. The plan covers product definition, conversion approach, milestone schedule, work breakdown, staffing and labor cost.",
+      "statsHeading": "Plan at a glance",
+      "scheduleDocHeading": "Schedule document",
+      "scheduleDocNote": "The milestone schedule as submitted, including per-gate deliverables and the resource schedule. 5 pages.",
       "scheduleDocHref": "files/YoungGou_MilestoneSchedule.pdf",
-      "staffingSheetHeading": "The staffing sheet itself",
-      "staffingSheetNote": "The actual worksheet: 43 roles by department, in-house or outsourced, with monthly cost and headcount from Jul 2026 through the live-service years. Scroll sideways for later months — department, role and cost stay pinned.",
-      "breakdownSheetHeading": "The breakdown sheets themselves",
-      "breakdownSheetNote": "All 11 features plus the index, one tab each. Every row is a Jira ticket: Feature / Epic / Story / Task with its area, component, priority and parent link.",
-      "sheetLoading": "Loading the sheets…",
-      "sheetError": "The sheets could not be loaded — the original workbook is downloadable below.",
+      "staffingSheetHeading": "Staffing worksheet",
+      "staffingSheetNote": "43 roles by department, in-house and outsourced, with monthly cost and headcount from July 2026 through the live-service period. Scroll horizontally for later months; the identifying columns stay fixed.",
+      "breakdownSheetHeading": "Work breakdown",
+      "breakdownSheetNote": "Eleven features plus the index, one tab each. Each row is a Jira ticket — Feature, Epic, Story or Task — with its area, component, priority and parent link.",
+      "sheetLoading": "Loading sheets…",
+      "sheetError": "The sheets could not be loaded. The original workbook is available below.",
       "stats": [
         {
           "value": "11",
@@ -957,15 +957,15 @@ const SITE_CONTENT = {
           "label": "Live content cycle"
         }
       ],
-      "scopeHeading": "What we're shipping",
-      "scope": "A narrative-driven detective live-service game. Monetization rests on three pillars — battle pass, monthly card, skin shop — with no gacha and no ads. A UGC/level editor and localization are explicitly deferred beyond this plan, and the staffing plan is costed to match that decision rather than quietly assuming the work away.",
-      "strategyHeading": "The strategic bet",
-      "strategy": "Keep the loop; build a live game around it. Features 1–6 carry over from the demo — the fold mechanic, the four levels, Katie, the interactive objects, the comic narrative and the menus — and stay close to the original design, because the fold is the game's identity and a live-service model works best when it doesn't rewrite the loop players already like. Features 7–11 are new machinery bolted on top: progression, LiveOps, monetization, backend and the compatibility/certification work a shipped mobile game needs.",
-      "deckHeading": "The deck",
-      "deckNote": "15 slides, the version presented in class. Scroll inside the frame, or download it below.",
-      "deckDownload": "Download the deck (PDF)",
+      "scopeHeading": "Product definition",
+      "scope": "A narrative-driven detective live-service title. Monetization rests on three pillars: battle pass, monthly card and cosmetic shop, with no gacha and no advertising. A UGC/level editor and localization are out of scope for this plan, and the staffing model is costed on that basis.",
+      "strategyHeading": "Conversion approach",
+      "strategy": "Features 1–6 carry over from the demo — the fold mechanic, the four levels, the player character, interactive objects, the comic narrative and the menus — with rework limited to what mobile requires: touch input, a level authoring toolset and store-facing UI. The core loop is retained because it is the element with the most validation behind it. Features 7–11 are new systems required to operate the title live: progression, LiveOps, monetization, backend services, and device compatibility and certification.",
+      "deckHeading": "Presentation deck",
+      "deckNote": "15 slides. Scroll within the frame, or download below.",
+      "deckDownload": "Download deck (PDF)",
       "milestoneHeading": "Milestone schedule",
-      "milestoneNote": "Seven gates from signing to a repeating live-service template. Each one carries its own deliverables list in the schedule document.",
+      "milestoneNote": "Seven gates from signing through a repeating live-service cycle. Deliverables for each gate are listed in the schedule document below.",
       "milestoneCols": [
         "Gate",
         "Date",
@@ -1008,8 +1008,8 @@ const SITE_CONTENT = {
           "name": "Live-service version template — repeating every 45 days"
         }
       ],
-      "staffingHeading": "Staffing ramp",
-      "staffingNote": "Headcount in full-time equivalents, tied to the gates above. The team ramps to a runway before launch and then settles into a steady live-ops crew.",
+      "staffingHeading": "Staffing by phase",
+      "staffingNote": "Headcount in full-time equivalents against the milestone gates above: a ramp to peak through Beta, then a steady live-operations team.",
       "staffingCols": [
         "Phase",
         "Timeline",
@@ -1052,8 +1052,8 @@ const SITE_CONTENT = {
           "fte": "22 – 27 (steady state)"
         }
       ],
-      "engineHeading": "The 45-day content engine",
-      "engineNote": "The part that decides whether a live game survives its first year. Roughly eight versions ship per year, and about eight level-equivalents are built before launch so the cadence starts at full speed on day one rather than stalling a month in.",
+      "engineHeading": "Live content cycle",
+      "engineNote": "Each version is produced on a 45-day cycle, approximately eight versions per year. Around eight level-equivalents are completed before launch, and two to three versions run concurrently at different stages.",
       "engineStages": [
         {
           "span": "Days 1–15",
@@ -1068,7 +1068,7 @@ const SITE_CONTENT = {
           "stage": "Shippable"
         }
       ],
-      "engineShipsLabel": "Every cycle ships",
+      "engineShipsLabel": "Per cycle",
       "engineShips": [
         "2 levels + case",
         "1 character",
@@ -1076,31 +1076,31 @@ const SITE_CONTENT = {
         "1 extra skin",
         "1 event"
       ],
-      "decisionsHeading": "Decisions and risks",
+      "decisionsHeading": "Key decisions and risks",
       "decisions": [
         {
-          "kind": "Deliberate",
-          "title": "Protect the core loop",
-          "body": "The fold mechanic and the four-level noir story carry over almost untouched. What gets rebuilt is everything around them — touch controls, a level toolset, store screens — because a live-service conversion that rewrites the loop throws away the only thing already proven to work."
+          "kind": "Decision",
+          "title": "Retain the core loop",
+          "body": "The fold mechanic and the four-level narrative carry over with minimal change; rework is confined to touch controls, level tooling and store UI. Rebuilding the loop would discard the part of the product with the most player validation behind it."
         },
         {
           "kind": "Positioning",
-          "title": "Cosmetic-only revenue",
-          "body": "Battle pass, monthly card and a skin shop. No gacha, no ads. It caps the revenue ceiling on purpose, in exchange for a game whose content pace and player trust aren't fighting the monetization."
+          "title": "Cosmetic-only monetization",
+          "body": "Battle pass, monthly card and cosmetic shop; no gacha, no advertising. This caps revenue per user in exchange for reduced tension between monetization and content cadence."
         },
         {
-          "kind": "Risk → mitigated",
-          "title": "Content pace",
-          "body": "A 45-day cycle is the single hardest commitment in the plan. It's de-risked by building ~8 level-equivalents before launch and running 2–3 versions in flight at different stages rather than strictly one after another."
+          "kind": "Risk · mitigated",
+          "title": "Content throughput",
+          "body": "The 45-day cycle is the highest-risk commitment in the plan. Mitigation: approximately eight level-equivalents completed before launch, and two to three versions in progress concurrently rather than sequentially."
         },
         {
-          "kind": "Watch",
+          "kind": "Risk · open",
           "title": "Deferred scope",
-          "body": "UGC/level editor and localization are out of scope here, and the staffing plan is costed accordingly. Both are real demand risks if the game lands well — flagged rather than buried."
+          "body": "The UGC/level editor and localization are excluded from this plan and from the staffing cost. Both become demand risks if the title performs above forecast, and would require a scope and budget revision."
         }
       ],
-      "filesHeading": "The full pack",
-      "filesNote": "The four deliverables as handed in. The breakdown sheets are laid out one flat sheet per feature so each row imports into Jira as a single ticket.",
+      "filesHeading": "Source files",
+      "filesNote": "The four deliverables as submitted. The breakdown uses one flat sheet per feature so that each row imports into Jira as a single ticket.",
       "files": [
         {
           "name": "Production deck",
@@ -1111,30 +1111,30 @@ const SITE_CONTENT = {
         {
           "name": "Milestone & resource schedule",
           "type": "DOCX",
-          "desc": "MS0–MS6 with per-gate deliverables lists, plus the phase-by-phase headcount table.",
+          "desc": "MS0–MS6 with per-gate deliverables and the phase headcount table.",
           "href": "files/YoungGou_MilestoneSchedule.docx"
         },
         {
           "name": "Project breakdown",
           "type": "XLSX · 11 sheets",
-          "desc": "Every feature broken to Feature / Epic / Story / Task, priced by priority and formatted for Jira import.",
+          "desc": "Each feature broken to Feature / Epic / Story / Task with priority, formatted for Jira import.",
           "href": "files/YoungGou_ProjectBreakdown.xlsx"
         },
         {
           "name": "Staffing plan",
           "type": "XLSX",
-          "desc": "43 roles across 8 feature teams plus 5 outsourced vendors, month by month. Salaries benchmarked to the 2025 GDC Salary Report.",
+          "desc": "43 roles across 8 feature teams and 5 outsourced vendors, month by month. Salaries benchmarked to the 2025 GDC Salary Report.",
           "href": "files/YoungGou_StaffingPlan.xlsx"
         },
         {
           "name": "Deck source",
           "type": "PPTX",
-          "desc": "The editable original, if you'd rather have it.",
+          "desc": "The editable original.",
           "href": "files/YoungGou_DetectiveFolder.pptx"
         }
       ],
-      "relatedHeading": "The game this plan is built on",
-      "relatedLabel": "Detective Folder — the demo →"
+      "relatedHeading": "Source project",
+      "relatedLabel": "Detective Folder — the original demo →"
     },
     "aiHubPage": {
       "pageTitle": "Young Gou — AI",
@@ -4104,14 +4104,14 @@ const SITE_CONTENT = {
     },
     "production": {
       "heading": "制作管理",
-      "intro": "制作人交付物——排期、任务拆解、人力与成本计划。是写给团队执行的文件，不是讲一次就收起来的展示稿。",
+      "intro": "制作人交付物：范围定义、里程碑排期、任务拆解、人力与成本规划。",
       "list": [
         {
           "id": "df-live-service",
           "tag": "制作计划 · SMU GUILDHALL",
           "name": "Detective Folder — 从 Demo 到长线运营",
           "role": "Producer",
-          "blurb": "把学生 demo 改造成长线运营手游的完整制作计划：MS0–MS6 里程碑排期、11 个 feature 的可导入 Jira 拆解表、43 个角色的人力计划与 963 万美元人力预算。",
+          "blurb": "将一个四关学生 demo 转为长线运营手游的制作计划，涵盖 MS0–MS6 里程碑排期、11 个 feature 的可导入 Jira 任务拆解、43 个角色的人力计划与 963 万美元人力预算。SMU Guildhall 课程作业。",
           "href": "production/detective-folder-live-service.html",
           "image": "images/production-plan/cover.jpg",
           "tags": [
@@ -4129,17 +4129,17 @@ const SITE_CONTENT = {
       "backLink": "← 返回项目",
       "tagLabel": "制作计划 · SMU GUILDHALL",
       "heading": "Detective Folder — 从 Demo 到长线运营",
-      "lead": "一份制作人视角的计划：把团队真正做出来的四关「折页」demo，做成一款长线运营手游。它是课程交付物，不是拿到投资的项目，但每一个数字都算过成本，每一个里程碑都挂着自己的交付物清单。",
-      "statsHeading": "计划的关键数字",
-      "scheduleDocHeading": "排期文档全文",
-      "scheduleDocNote": "交上去的那份里程碑排期原件——每个节点的完整交付物清单，以及资源排期表。共 5 页，可以在框里直接翻。",
+      "lead": "一份将 Detective Folder（团队完成的四关 demo）转为长线运营手游的制作计划。本计划为 SMU Guildhall 课程作业，项目未进入实际立项。内容涵盖产品定义、转化路径、里程碑排期、任务拆解、人力配置与人力成本。",
+      "statsHeading": "计划概览",
+      "scheduleDocHeading": "排期文档",
+      "scheduleDocNote": "提交版本的里程碑排期，含各节点交付物清单与资源排期表，共 5 页。",
       "scheduleDocHref": "files/YoungGou_MilestoneSchedule.pdf",
-      "staffingSheetHeading": "人力表原表",
-      "staffingSheetNote": "真正的那张工作表：43 个角色按部门排布，标注内部或外包，逐月列出人力成本与人头，从 2026 年 7 月一直排到长线运营年份。向右滑看后面的月份——部门、角色和成本三列会固定不动。",
-      "breakdownSheetHeading": "拆解表原表",
-      "breakdownSheetNote": "11 个 feature 加索引页，每个一个标签页。每一行就是一张 Jira 工单：Feature / Epic / Story / Task，带所属领域、组件、优先级和父级链接。",
+      "staffingSheetHeading": "人力工作表",
+      "staffingSheetNote": "43 个角色按部门排布，区分内部与外包，逐月列出人力成本与人头，自 2026 年 7 月起覆盖至长线运营期。向右滑动查看后续月份，左侧标识列保持固定。",
+      "breakdownSheetHeading": "任务拆解",
+      "breakdownSheetNote": "11 个 feature 加索引页，各占一个标签页。每一行为一张 Jira 工单——Feature、Epic、Story 或 Task——含所属领域、组件、优先级与父级链接。",
       "sheetLoading": "正在加载表格…",
-      "sheetError": "表格加载失败——下面可以直接下载原始文件。",
+      "sheetError": "表格加载失败，可在下方获取原始文件。",
       "stats": [
         {
           "value": "11",
@@ -4166,15 +4166,15 @@ const SITE_CONTENT = {
           "label": "线上内容周期"
         }
       ],
-      "scopeHeading": "到底要做什么",
-      "scope": "一款叙事驱动的侦探长线运营游戏。商业化只靠三根柱子——战斗通行证、月卡、皮肤商店，不做抽卡，不接广告。UGC／关卡编辑器与本地化明确移出本次范围，人力计划也按这个决定来算成本，而不是嘴上砍掉、账上不动。",
-      "strategyHeading": "策略上的取舍",
-      "strategy": "保住循环，在它周围搭一整套长线系统。Feature 1–6 从 demo 继承：折页机制、四个关卡、Katie、可交互物件、漫画叙事和菜单，基本维持原设计——折页是这个游戏的身份，而长线运营模型最稳的做法恰恰是不去重写玩家已经喜欢的循环。Feature 7–11 是新加的机器：养成、活动运营、商业化、后端服务，以及一款真正上架的手游必须做的兼容性与过审工作。",
+      "scopeHeading": "产品定义",
+      "scope": "一款叙事驱动的侦探长线运营手游。商业化由三部分构成：战斗通行证、月卡与外观商店，不设抽卡，不接广告。UGC／关卡编辑器与本地化不在本计划范围内，人力模型按此口径计价。",
+      "strategyHeading": "转化路径",
+      "strategy": "Feature 1–6 自 demo 继承——折页机制、四个关卡、主角、可交互物件、漫画叙事与菜单——改动仅限于移动端所必需的部分：触屏输入、关卡搭建工具链与商店相关界面。保留核心循环，是因为它是整个产品中验证程度最高的部分。Feature 7–11 为长线运营所需的新增系统：养成、活动运营、商业化、后端服务，以及设备兼容与过审。",
       "deckHeading": "演示稿",
-      "deckNote": "15 页，课堂上讲的那一版。可以直接在框里翻，也可以在下面下载。",
+      "deckNote": "共 15 页，可在框内翻阅，或在下方下载。",
       "deckDownload": "下载演示稿（PDF）",
       "milestoneHeading": "里程碑排期",
-      "milestoneNote": "从签约到可循环的长线版本模板，一共七个节点。每一个在排期文档里都带着自己的交付物清单。",
+      "milestoneNote": "从签约到可循环的长线版本模板，共七个节点。各节点的交付物清单见下方排期文档。",
       "milestoneCols": [
         "节点",
         "日期",
@@ -4217,8 +4217,8 @@ const SITE_CONTENT = {
           "name": "长线版本模板——每 45 天循环一次"
         }
       ],
-      "staffingHeading": "人力爬坡",
-      "staffingNote": "按全职当量计算，与上面的节点对齐。团队在发售前爬到跑道高度，之后落回一个稳定的运营班底。",
+      "staffingHeading": "分阶段人力",
+      "staffingNote": "按全职当量计算，对应上方里程碑节点：Beta 阶段达到峰值，随后转入稳定的运营团队规模。",
       "staffingCols": [
         "阶段",
         "时间",
@@ -4261,8 +4261,8 @@ const SITE_CONTENT = {
           "fte": "22 – 27（稳态）"
         }
       ],
-      "engineHeading": "45 天内容引擎",
-      "engineNote": "决定一款长线游戏能不能活过第一年的地方。一年大约出 8 个版本；发售前预先做出约 8 个关卡当量的内容，让节奏从第一天就是满速，而不是上线一个月后卡住。",
+      "engineHeading": "线上内容周期",
+      "engineNote": "每个版本按 45 天周期制作，一年约 8 个版本。发售前完成约 8 个关卡当量的内容储备，并保持 2–3 个版本在不同阶段并行推进。",
       "engineStages": [
         {
           "span": "第 1–15 天",
@@ -4277,7 +4277,7 @@ const SITE_CONTENT = {
           "stage": "可发布"
         }
       ],
-      "engineShipsLabel": "每个周期交付",
+      "engineShipsLabel": "每周期交付",
       "engineShips": [
         "2 个关卡 + 1 个案件",
         "1 个角色",
@@ -4285,31 +4285,31 @@ const SITE_CONTENT = {
         "1 个额外皮肤",
         "1 个活动"
       ],
-      "decisionsHeading": "决策与风险",
+      "decisionsHeading": "关键决策与风险",
       "decisions": [
         {
-          "kind": "主动选择",
-          "title": "保护核心循环",
-          "body": "折页机制和四关黑色叙事基本原样继承，重做的是它周围的一切——触屏操作、关卡工具链、商店界面。一次重写核心循环的长线化改造，等于把唯一已经被验证过的东西丢掉。"
+          "kind": "决策",
+          "title": "保留核心循环",
+          "body": "折页机制与四关叙事基本原样继承，改动限于触屏操作、关卡工具链与商店界面。重写核心循环意味着放弃产品中玩家验证程度最高的部分。"
         },
         {
           "kind": "定位",
-          "title": "只卖外观",
-          "body": "战斗通行证、月卡、皮肤商店。不抽卡，不接广告。这是主动给收入天花板设限，换来的是内容节奏和玩家信任不跟商业化互相拉扯。"
+          "title": "仅外观类商业化",
+          "body": "战斗通行证、月卡与外观商店，不设抽卡，不接广告。此举限制了单用户收入上限，换取商业化与内容节奏之间更低的冲突。"
         },
         {
-          "kind": "风险 → 已缓解",
+          "kind": "风险 · 已缓解",
           "title": "内容产能",
-          "body": "45 天一版是整个计划里最硬的承诺。缓解方式是发售前先做出约 8 个关卡当量的储备，并让 2–3 个版本在不同阶段并行推进，而不是严格串行。"
+          "body": "45 天周期是本计划中风险最高的承诺。缓解措施：发售前完成约 8 个关卡当量的储备，并保持 2–3 个版本并行推进而非串行。"
         },
         {
-          "kind": "持续观察",
-          "title": "被推迟的范围",
-          "body": "UGC／关卡编辑器与本地化不在本次范围内，人力计划也照此计价。如果游戏表现好，这两项都会变成真实的需求压力——所以写在明面上，而不是埋掉。"
+          "kind": "风险 · 未决",
+          "title": "推迟的范围",
+          "body": "UGC／关卡编辑器与本地化不在本计划及人力成本内。若产品表现超出预期，两者都将成为需求风险，需要相应调整范围与预算。"
         }
       ],
-      "filesHeading": "完整材料包",
-      "filesNote": "四份交付物的原件。拆解表刻意做成一个 feature 一张平表，这样每一行都能作为单张工单直接导入 Jira。",
+      "filesHeading": "原始文件",
+      "filesNote": "四份提交版交付物。拆解表按一个 feature 一张平表组织，以便每一行作为单张工单直接导入 Jira。",
       "files": [
         {
           "name": "制作演示稿",
@@ -4320,19 +4320,19 @@ const SITE_CONTENT = {
         {
           "name": "里程碑与资源排期",
           "type": "DOCX",
-          "desc": "MS0–MS6 各节点的交付物清单，以及分阶段人力表。",
+          "desc": "MS0–MS6 各节点交付物清单与分阶段人力表。",
           "href": "files/YoungGou_MilestoneSchedule.docx"
         },
         {
           "name": "项目拆解表",
           "type": "XLSX · 11 张表",
-          "desc": "每个 feature 拆到 Feature / Epic / Story / Task，按优先级定级，格式适配 Jira 导入。",
+          "desc": "每个 feature 拆至 Feature / Epic / Story / Task 并标注优先级，格式适配 Jira 导入。",
           "href": "files/YoungGou_ProjectBreakdown.xlsx"
         },
         {
           "name": "人力计划表",
           "type": "XLSX",
-          "desc": "8 个 feature 组共 43 个角色 + 5 家外包供应商，逐月排布。薪资对标 2025 GDC 薪资报告。",
+          "desc": "8 个 feature 组共 43 个角色与 5 家外包供应商，逐月排布。薪资对标 2025 GDC 薪资报告。",
           "href": "files/YoungGou_StaffingPlan.xlsx"
         },
         {
@@ -4342,7 +4342,7 @@ const SITE_CONTENT = {
           "href": "files/YoungGou_DetectiveFolder.pptx"
         }
       ],
-      "relatedHeading": "这份计划所基于的游戏",
+      "relatedHeading": "对应项目",
       "relatedLabel": "Detective Folder — 原始 demo →"
     },
     "aiHubPage": {
