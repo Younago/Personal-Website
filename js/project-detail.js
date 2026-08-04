@@ -91,11 +91,16 @@
     // empty row.
     var linksWrap = document.getElementById("projectLinks");
     if (linksWrap) {
-      linksWrap.innerHTML = (d.links || [])
-        .map(function (l) {
-          return '<a class="btn-download" href="' + l.href + '" target="_blank" rel="noopener">' + l.label + "</a>";
-        })
-        .join("");
+      // An optional note under the buttons — for a build that needs a word of
+      // context before someone downloads it. It sits here rather than in the
+      // synopsis so the caveat is read at the moment the decision is made.
+      linksWrap.innerHTML =
+        (d.links || [])
+          .map(function (l) {
+            return '<a class="btn-download" href="' + l.href + '" target="_blank" rel="noopener">' + l.label + "</a>";
+          })
+          .join("") +
+        (d.linksNote ? '<p class="detail-links-note">' + d.linksNote + "</p>" : "");
     }
 
     document.getElementById("synopsisHeading").textContent = d.synopsisHeading;

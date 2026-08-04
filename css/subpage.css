@@ -2233,7 +2233,12 @@ a.blog-row {
 .detail-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: calc(var(--u) * 1.5);
+}
+
+.detail-links .btn-download {
+  flex: 0 0 auto;
 }
 
 .detail-links:not(:empty) {
@@ -2252,4 +2257,17 @@ a.blog-row {
   object-fit: cover;
   display: block;
   border: 0;
+}
+
+/* A note under a project's external-link buttons — expectation-setting that
+   belongs next to the download button rather than buried in the synopsis. */
+.detail-links-note {
+  /* flex: 0 0 100% rather than flex-basis alone — with only a basis the note
+     still shrinks and sits beside the button, squeezing it into a sliver. */
+  flex: 0 0 100%;
+  margin: calc(var(--u) * 0.5) 0 0;
+  max-width: 72ch;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
 }

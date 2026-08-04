@@ -741,7 +741,8 @@ const SITE_CONTENT = {
         }
       ],
       "awardLabel": "Award",
-      "award": "Bronze"
+      "award": "Bronze",
+      "linksNote": "Before you play: this was my first time working to a hard seven-day deadline, and the build shows it. There are bugs — collision handling in particular can shove the character out of position. Please read it as a record of what five people produced in a week rather than as a finished game. The centre of the work was the art: concept, characters, environments and effects for six levels, produced, managed and integrated inside the jam window."
     },
     "aboutPage": {
       "pageTitle": "Young Gou — About Me",
@@ -4098,7 +4099,8 @@ const SITE_CONTENT = {
         }
       ],
       "awardLabel": "获奖",
-      "award": "铜奖"
+      "award": "铜奖",
+      "linksNote": "玩之前请先看这里：这是我第一次做这种极限开发，成品也确实能看得出来。游戏里存在不少 bug，尤其是碰撞逻辑导致的位移问题。请把它当作五个人在一周内产出了什么的记录，而不是一个完整的游戏。这次的重心在美术：六个关卡的概念、角色、场景与特效，全部在 Jam 窗口内完成产出、管理与整合。"
     },
     "aboutPage": {
       "pageTitle": "苟仲胤 — 关于我",
