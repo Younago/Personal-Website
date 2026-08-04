@@ -87,6 +87,16 @@
     wrap.innerHTML = "";
     var items = content[lang].projects.items;
     items.forEach(function (p, i) {
+      // An item with an `external` link (store page, playable build) needs a
+      // second link inside the card. A nested <a> is invalid, so the card is
+      // wrapped and the external link sits alongside it, pinned over the
+      // thumbnail — same pattern as the Projects page grid in js/pages.js.
+      var host = wrap;
+      if (p.external) {
+        host = document.createElement("div");
+        host.className = "project-card-wrap";
+        wrap.appendChild(host);
+      }
       var card = document.createElement("a");
       card.className = "project-card" + (p.placeholder ? " is-placeholder" : "");
       card.href = p.href;
@@ -99,7 +109,17 @@
         '<h3>' + p.title + '</h3>' +
         '<p class="project-role">' + p.role + '</p>' +
         '<p class="project-summary">' + p.summary + '</p>';
-      wrap.appendChild(card);
+      host.appendChild(card);
+      if (host !== wrap) {
+        var ext = document.createElement("a");
+        ext.className = "card-external mono";
+        ext.href = p.external.href;
+        ext.target = "_blank";
+        ext.rel = "noopener";
+        ext.textContent = p.external.label;
+        ext.setAttribute("aria-label", p.title + " — " + p.external.label);
+        host.appendChild(ext);
+      }
     });
   }
 

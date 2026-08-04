@@ -99,7 +99,11 @@ const SITE_CONTENT = {
           "summary": "A Mario Kart-style racing game built in Unreal Engine 5, on Steam.",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "Steam ↗",
+            "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+          }
         },
         {
           "title": "Detective Folder",
@@ -108,7 +112,11 @@ const SITE_CONTENT = {
           "summary": "A 2D puzzle-platformer where a detective folds a living comic-book world to gather clues and catch the \"Baahd Guys.\"",
           "href": "team-projects/tgp1.html",
           "image": "images/detective-folder-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "Download ↗",
+            "href": "https://github.com/Younago/Personal-Website/releases/download/detective-folder-demo/DetectiveFolder_Windows.zip"
+          }
         },
         {
           "title": "Heart Arsonist",
@@ -117,7 +125,11 @@ const SITE_CONTENT = {
           "summary": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
           "href": "individual-projects/fire.html",
           "image": "images/heart-arsonist/cover.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "itch.io ↗",
+            "href": "https://younago920.itch.io/heartarsonist"
+          }
         }
       ]
     },
@@ -182,7 +194,11 @@ const SITE_CONTENT = {
           "blurb": "A 2D puzzle-platformer built in Unity where a detective folds a living comic-book world to catch the \"Baahd Guys.\"",
           "href": "team-projects/tgp1.html",
           "image": "images/detective-folder-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "Download ↗",
+            "href": "https://github.com/Younago/Personal-Website/releases/download/detective-folder-demo/DetectiveFolder_Windows.zip"
+          }
         }
       ]
     },
@@ -373,6 +389,12 @@ const SITE_CONTENT = {
         {
           "heading": "What the sequencing is doing",
           "body": "Every scene I built follows the same rule: introduce one idea in isolation, reinforce it under a mild constraint, then combine it with what came before. The tutorial is four scenes and four ideas; Level 3 is introduce-then-complicate; Level 4 is learn-under-pressure, drill, then synthesise. It is the same escalation the whole game runs on, which is why the levels I owned are the first, third and fourth."
+        }
+      ],
+      "links": [
+        {
+          "label": "Download the build ↗",
+          "href": "https://github.com/Younago/Personal-Website/releases/download/detective-folder-demo/DetectiveFolder_Windows.zip"
         }
       ]
     },
@@ -3419,7 +3441,11 @@ const SITE_CONTENT = {
           "summary": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "Steam ↗",
+            "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+          }
         },
         {
           "title": "Detective Folder",
@@ -3428,7 +3454,11 @@ const SITE_CONTENT = {
           "summary": "一款 2D 解谜平台游戏，玩家扮演侦探折叠一个活生生的漫画世界，收集线索并抓捕「坏蛋」。",
           "href": "team-projects/tgp1.html",
           "image": "images/detective-folder-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "下载 ↗",
+            "href": "https://github.com/Younago/Personal-Website/releases/download/detective-folder-demo/DetectiveFolder_Windows.zip"
+          }
         },
         {
           "title": "芳心纵火犯",
@@ -3437,7 +3467,11 @@ const SITE_CONTENT = {
           "summary": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
           "href": "individual-projects/fire.html",
           "image": "images/heart-arsonist/cover.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "itch.io ↗",
+            "href": "https://younago920.itch.io/heartarsonist"
+          }
         }
       ]
     },
@@ -3502,7 +3536,11 @@ const SITE_CONTENT = {
           "blurb": "一款用 Unity 制作的 2D 解谜平台游戏，玩家折叠漫画世界来抓捕「Baahd Guys」。",
           "href": "team-projects/tgp1.html",
           "image": "images/detective-folder-card.jpg",
-          "placeholder": false
+          "placeholder": false,
+          "external": {
+            "label": "下载 ↗",
+            "href": "https://github.com/Younago/Personal-Website/releases/download/detective-folder-demo/DetectiveFolder_Windows.zip"
+          }
         }
       ]
     },
@@ -3693,6 +3731,12 @@ const SITE_CONTENT = {
         {
           "heading": "这套排序在做什么",
           "body": "我负责的每个场景都遵循同一条规则：先在隔离状态下引入一个概念，再在轻度约束下强化它，最后和之前学过的东西组合。教学关是四个场景四个概念；第三关是先引入、再复杂化；第四关是压力下学习、专项训练、综合运用。整个游戏跑的是同一套递进，这也是我拿下的是第一、第三和第四关的原因。"
+        }
+      ],
+      "links": [
+        {
+          "label": "下载 Windows 版 ↗",
+          "href": "https://github.com/Younago/Personal-Website/releases/download/detective-folder-demo/DetectiveFolder_Windows.zip"
         }
       ]
     },
