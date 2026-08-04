@@ -214,13 +214,59 @@ const SITE_CONTENT = {
         "Delivered the full audio package for a team with no dedicated audio staff, coordinating internal contributors and an external composer team from spec and review through integration into the build."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Placeholder — add gameplay screenshots.",
+      "screenshotsNote": "Screenshots from the Steam release.",
       "postmortemHeading": "Postmortem",
       "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned.",
       "links": [
         {
           "label": "View on Steam ↗",
           "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../images/hamsterballin/01-menu.jpg",
+          "caption": "Main menu."
+        },
+        {
+          "src": "../images/hamsterballin/02-track-select.jpg",
+          "caption": "Track select — Gacha Galaxy."
+        },
+        {
+          "src": "../images/hamsterballin/03-character-select.jpg",
+          "caption": "Character select."
+        },
+        {
+          "src": "../images/hamsterballin/04-character-roster.jpg",
+          "caption": "The playable roster."
+        },
+        {
+          "src": "../images/hamsterballin/05-arena.jpg",
+          "caption": "Gumball machine track."
+        },
+        {
+          "src": "../images/hamsterballin/06-countdown.jpg",
+          "caption": "Race start."
+        },
+        {
+          "src": "../images/hamsterballin/07-race-city.jpg",
+          "caption": "Racing through the city section."
+        },
+        {
+          "src": "../images/hamsterballin/08-race-arcade.jpg",
+          "caption": "The arcade section."
+        },
+        {
+          "src": "../images/hamsterballin/09-race-factory.jpg",
+          "caption": "The factory section."
+        },
+        {
+          "src": "../images/hamsterballin/10-race-tunnel.jpg",
+          "caption": "Tunnel run."
+        },
+        {
+          "src": "../images/hamsterballin/11-race-topspeed.jpg",
+          "caption": "Top speed on the final stretch."
         }
       ]
     },
@@ -3449,13 +3495,59 @@ const SITE_CONTENT = {
         "在团队无专职音频人员的情况下补位，对接内部音频成员与外部作曲团队，完成音频从需求确认、评审到最终集成的全流程交付。"
       ],
       "screenshotsHeading": "游戏截图",
-      "screenshotsNote": "占位 — 添加游戏截图。",
+      "screenshotsNote": "截图取自 Steam 发行版本。",
       "postmortemHeading": "项目复盘",
       "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。",
       "links": [
         {
           "label": "在 Steam 上查看 ↗",
           "href": "https://store.steampowered.com/app/4319370/Hamsterballin/"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "../images/hamsterballin/01-menu.jpg",
+          "caption": "主菜单。"
+        },
+        {
+          "src": "../images/hamsterballin/02-track-select.jpg",
+          "caption": "赛道选择 —— Gacha Galaxy。"
+        },
+        {
+          "src": "../images/hamsterballin/03-character-select.jpg",
+          "caption": "角色选择。"
+        },
+        {
+          "src": "../images/hamsterballin/04-character-roster.jpg",
+          "caption": "可选角色一览。"
+        },
+        {
+          "src": "../images/hamsterballin/05-arena.jpg",
+          "caption": "扭蛋机赛道。"
+        },
+        {
+          "src": "../images/hamsterballin/06-countdown.jpg",
+          "caption": "起跑倒计时。"
+        },
+        {
+          "src": "../images/hamsterballin/07-race-city.jpg",
+          "caption": "城市赛段。"
+        },
+        {
+          "src": "../images/hamsterballin/08-race-arcade.jpg",
+          "caption": "街机赛段。"
+        },
+        {
+          "src": "../images/hamsterballin/09-race-factory.jpg",
+          "caption": "工厂赛段。"
+        },
+        {
+          "src": "../images/hamsterballin/10-race-tunnel.jpg",
+          "caption": "隧道段。"
+        },
+        {
+          "src": "../images/hamsterballin/11-race-topspeed.jpg",
+          "caption": "最后直道的极速。"
         }
       ]
     },
