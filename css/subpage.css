@@ -2167,10 +2167,24 @@ a.blog-row {
 .project-card-wrap {
   position: relative;
   display: flex;
-  width: 100%;
+  /* The wrapper takes the card's place as a flex item of .projects-grid, so it
+     has to claim the same track width the card would have claimed. Without
+     this it falls back to auto sizing and a card with a store link drops out
+     of the homepage's two-column layout and spans the whole row. */
+  flex: 1 1 calc(50% - 1px);
+  min-width: 280px;
 }
 
 .project-card-wrap .project-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+/* The stacked variant (projects.html) is one card per row — the wrapper
+   follows the same override the card itself gets. */
+.projects-grid.is-stacked .project-card-wrap {
+  flex: 1 1 auto;
   width: 100%;
 }
 
