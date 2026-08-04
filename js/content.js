@@ -540,16 +540,29 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "fire",
-          "tags": ["unity", "game_jam_2024", "2.5d", "systems_design"],
+          "tags": [
+            "unity",
+            "game_jam_2024",
+            "2.5d",
+            "systems_design"
+          ],
           "tag": "INDIVIDUAL PROJECT",
           "name": "Heart Arsonist",
           "blurb": "A 2.5D Hades-like demo from Unity Game Jam 2024, built on a system where grass and fire feed each other.",
           "href": "individual-projects/fire.html",
-          "image": "images/heart-arsonist/cover.jpg"
+          "image": "images/heart-arsonist/cover.jpg",
+          "external": {
+            "label": "itch.io ↗",
+            "href": "https://younago920.itch.io/heartarsonist"
+          }
         },
         {
           "id": "echo",
-          "tags": ["platformer", "in_development", "solo"],
+          "tags": [
+            "platformer",
+            "in_development",
+            "solo"
+          ],
           "tag": "INDIVIDUAL PROJECT · IN DEVELOPMENT",
           "name": "Echo",
           "blurb": "An in-development platformer where the platforms carry emotions — and you identify them by reading the poetry written on them.",
@@ -691,7 +704,13 @@ const SITE_CONTENT = {
           "caption": "Memory Fragments — the collectibles that carry the backstory."
         }
       ],
-      "clip": "../images/heart-arsonist/gameplay"
+      "clip": "../images/heart-arsonist/gameplay",
+      "links": [
+        {
+          "label": "Download the demo ↗",
+          "href": "https://younago920.itch.io/heartarsonist"
+        }
+      ]
     },
     "aboutPage": {
       "pageTitle": "Young Gou — About Me",
@@ -3841,16 +3860,29 @@ const SITE_CONTENT = {
       "list": [
         {
           "id": "fire",
-          "tags": ["unity", "game_jam_2024", "2.5d", "systems_design"],
+          "tags": [
+            "unity",
+            "game_jam_2024",
+            "2.5d",
+            "systems_design"
+          ],
           "tag": "个人项目",
           "name": "芳心纵火犯",
           "blurb": "Unity Game Jam 2024 的 2.5D 类 Hades Demo，玩法建立在草与火互相供养的系统上。",
           "href": "individual-projects/fire.html",
-          "image": "images/heart-arsonist/cover.jpg"
+          "image": "images/heart-arsonist/cover.jpg",
+          "external": {
+            "label": "itch.io ↗",
+            "href": "https://younago920.itch.io/heartarsonist"
+          }
         },
         {
           "id": "echo",
-          "tags": ["platformer", "in_development", "solo"],
+          "tags": [
+            "platformer",
+            "in_development",
+            "solo"
+          ],
           "tag": "个人项目 · 开发中",
           "name": "Echo",
           "blurb": "开发中的平台跳跃游戏：平台本身带有情绪，而你要靠读上面的诗句来辨认它。",
@@ -3992,7 +4024,13 @@ const SITE_CONTENT = {
           "caption": "记忆碎片 —— 承载背景故事的收集物。"
         }
       ],
-      "clip": "../images/heart-arsonist/gameplay"
+      "clip": "../images/heart-arsonist/gameplay",
+      "links": [
+        {
+          "label": "下载试玩版 ↗",
+          "href": "https://younago920.itch.io/heartarsonist"
+        }
+      ]
     },
     "aboutPage": {
       "pageTitle": "苟仲胤 — 关于我",
