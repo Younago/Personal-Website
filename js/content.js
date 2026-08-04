@@ -121,7 +121,7 @@ const SITE_CONTENT = {
         {
           "title": "Heart Arsonist",
           "tag": "GAME PROJECT",
-          "role": "Producer / Level Designer",
+          "role": "Designer",
           "summary": "A 2.5D game demo built with the Tuanjie Engine — a Unity Game Jam entry that took bronze.",
           "href": "individual-projects/fire.html",
           "image": "images/heart-arsonist/cover.jpg",
@@ -222,12 +222,13 @@ const SITE_CONTENT = {
       "trailerVideoId": "SGqrpin8Yuk",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
-        "Shipped Hamsterballin', a fast-paced racing game built in Unreal Engine 5, to public release on Steam in a single-semester cycle, leading a 43-person cross-functional team of designers, artists, and programmers from concept through launch.",
-        "Delivered every milestone on schedule by establishing a full Agile/Scrum cadence of sprint planning, daily stand-ups, and retrospectives, scaled for a team too large to coordinate ad hoc.",
-        "Turned ad-hoc coordination into a repeatable pipeline by building the team's production infrastructure from scratch: Jira workflow and task taxonomy, bug triage standards, and build submission conventions.",
-        "Held committed scope at every milestone by owning the master schedule, triaging cross-discipline dependencies, and resequencing features at sprint boundaries, then defending each scope decision at milestone review to win stakeholder sign-off.",
-        "Owned the playtest program end to end, from planning and recruiting through running sessions and routing findings back to each discipline, converting player feedback into scheduled design and performance fixes.",
-        "Delivered the full audio package for a team with no dedicated audio staff, coordinating internal contributors and an external composer team from spec and review through integration into the build."
+        "Shipped Hamsterballin' to public release on Steam within a single-semester window, leading a 43-person cross-functional team of designers, artists and programmers from concept through launch, with every production milestone delivered on schedule.",
+        "Directed the gameplay and level pipeline end to end — concept, greybox iteration, finished levels — shipping three large tracks, seven pickups and four mechanics, plus five playable characters and the environment art for three of the levels.",
+        "Built the team's production infrastructure from scratch: a Jira board and workflow, a task taxonomy, and a four-tier bug severity standard (Showstopper first, then player impact, fix cost and dependency). Every sprint reserved two days for an early code freeze, so schedule changes and blockers surfaced at the sprint boundary instead of at the deadline.",
+        "Led development of an in-house PCG track-generation tool and phased its adoption deliberately: Unreal's native tools for the Vertical Slice, a mixed workflow next, then a full switch to PCG from Alpha — so every phase could keep shipping levels without waiting on the tool to be finished.",
+        "Drove cross-discipline triage on the two bugs that threatened the schedule: material rendering artifacts under different lighting, traced with art and engineering to a missing lighting pipeline; and severe frame drops on several Beta tracks, traced to modeling defects and overlapping meshes loading the physics system, then resolved by rebuilding the key models with the art team.",
+        "Owned the playtest program end to end — test plan, questionnaire design, recruiting, running sessions, and routing findings back to each discipline. Recruited 30 external testers for Alpha and took notes live; when the usable-response rate skewed, built an AI-assisted board that auto-classified feedback, turning it into scheduled fixes.",
+        "Filled the roles the team had no staff for: delivered the complete audio package against agreed scope and deadlines, and ran Simplified Chinese and Spanish localization — translation, backfill and QA, fixing text overflow and missing glyphs so the localized builds shipped alongside the main version."
       ],
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Screenshots from the Steam release.",
@@ -315,6 +316,8 @@ const SITE_CONTENT = {
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
         "Designed the Tutorial level, the second half of Level 1, and all of Level 3 and Level 4, systematically introducing and reinforcing the game's core folding mechanic.",
+        "Arranged Levels 3 and 4 as a difficulty ramp, adding one increment at a time so a single mechanic keeps producing new solutions.",
+        "Built the tutorial to teach without text prompts — the level layout and the order in which its puzzles resolve carry the instruction on their own.",
         "Proposed and took ownership of the \"folding\" mechanic during initial brainstorming, exploring its use for both spatial navigation and puzzle depth across the game.",
         "Worked directly with the team's programmer to establish technical constraints before committing to level layouts, and helped troubleshoot implementation issues.",
         "Facilitated open, honest communication within the team to resolve early interpersonal friction, adapting my approach to each teammate's working style.",
@@ -418,6 +421,8 @@ const SITE_CONTENT = {
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
         "Carried Box Shot from concept to a playable prototype demo through full pre-production, standing up the team's operating model from scratch: sprint cadence, ceremonies, shared task board, and team norms.",
+        "Flagged a copyright risk early — a game already on the market was close to the project's initial art direction — and drove a management-level conversation that set an explicit baseline: art style and level content must not resemble it. Kept the team informed of the situation as it developed and adjusted both the art direction and the antagonist design accordingly.",
+        "Ran concept selection as a structured process rather than a debate: four groups produced eight concept prototypes, then a multi-dimensional vote decided direction by score rather than by argument, so a top-to-bottom consensus on the three evaluation criteria produced genuine buy-in and lowered downstream communication cost.",
         "Led the milestone presentations that moved Box Shot through each pre-production gate, framing progress, risk, and the production plan for faculty and studio stakeholders.",
         "Owned Jira setup and automation end to end, building workflows and automated status rules that keep ownership and blockers visible with no manual upkeep, giving every discipline one transparent source of truth they actually use.",
         "Designed the level-to-art pipeline from requirement to shipped asset, defining the Unreal Engine 5 import workflow and asset naming conventions and wiring the handoff into Jira automation so nothing crosses disciplines undocumented.",
@@ -566,7 +571,8 @@ const SITE_CONTENT = {
             "unity",
             "game_jam_2024",
             "2.5d",
-            "systems_design"
+            "systems_design",
+            "gamejam_bronze"
           ],
           "tag": "INDIVIDUAL PROJECT",
           "name": "Heart Arsonist",
@@ -603,7 +609,7 @@ const SITE_CONTENT = {
       "teamSizeLabel": "Team Size",
       "teamSize": "5 (game jam team)",
       "lengthLabel": "Length",
-      "length": "Unity Game Jam 2024",
+      "length": "7 days (Unity Game Jam 2024)",
       "synopsisHeading": "Synopsis",
       "synopsis": "A 2.5D Hades-like demo made for Unity Game Jam 2024. It started with a line of classical Chinese poetry — “Wild fires cannot consume it all; spring breezes blow and it grows once more” — and the whole demo is an attempt to make that line playable: grass and fire feed each other, so setting the level on fire is also how you get through it. You play Fang Xin, a squirrel firefighter who loves starting fires.",
       "trailerHeading": "Gameplay",
@@ -613,7 +619,8 @@ const SITE_CONTENT = {
         "Concept design — the premise, the tone, and the grass-and-fire fiction the whole demo hangs on.",
         "Character and environment design — Fang Xin, her weapon and its second stage, the treehouse hub and the battle maps.",
         "Gameplay mechanics — the grass/fire interaction system, its two burn stages, and the drop and buff rules.",
-        "Level design — six levels, each isolating one property of the system before the last one combines them."
+        "Level design — six levels, each isolating one property of the system before the last one combines them.",
+        "AI asset pipeline — set up an AI-assisted generation workflow to speed concept-to-art production, easing the art bottleneck inside a seven-day jam window."
       ],
       "screenshotsHeading": "Design boards",
       "screenshotsNote": "The demo was documented as a set of A3 boards, reproduced in full below, followed by hub art from concept through to the finished scene. Click any board to open the full-resolution version.",
@@ -732,7 +739,9 @@ const SITE_CONTENT = {
           "label": "Download the demo ↗",
           "href": "https://younago920.itch.io/heartarsonist"
         }
-      ]
+      ],
+      "awardLabel": "Award",
+      "award": "Bronze"
     },
     "aboutPage": {
       "pageTitle": "Young Gou — About Me",
@@ -860,32 +869,38 @@ const SITE_CONTENT = {
     "skills": {
       "heading": "Skills",
       "items": [
-        "Project Management",
+        "Agile / Scrum",
+        "Playtest & User Research",
         "Jira",
-        "Agile",
-        "Lark",
-        "Excel",
-        "PowerPoint",
-        "Unreal Engine 5 (UE5)",
-        "Unity"
+        "Confluence",
+        "Perforce (P4V)",
+        "Unreal Engine 5",
+        "Unity",
+        "3ds Max",
+        "Blender",
+        "Photoshop",
+        "Illustrator",
+        "ComfyUI workflows",
+        "LoRA training"
       ],
       "languagesLabel": "Languages",
       "languages": [
-        "English",
-        "Chinese (Mandarin)"
+        "Chinese (native)",
+        "English (professional working)"
       ]
     },
     "experience": {
       "heading": "Experience",
       "items": [
         {
-          "title": "Systems Designer Intern",
+          "title": "Systems Design Intern",
           "org": "Lilith Games",
           "location": "Shanghai, China",
           "dates": "04/2025 — 08/2025",
           "bullets": [
-            "Designed systems for the AFK Arena project, working with multidiscipline teams, enhancing large-scale, in-game SLG mechanics for improved player engagement.",
-            "Developed and balanced a new PvP ranking system by communicating with leads and others to meet their goals, aiming to elevate the competitive gameplay experience."
+            "Designed the honor system for the Expedition (\"Gold Rush\") mode — an alliance prosperity leaderboard, a three-tier individual ladder of power, kills and medals, and the awards-ceremony display logic — raising visibility for both high-activity and high-power players. Defined the award rules and the season-end reward tiers so recognition followed the \"alliance prosperity, then season contribution\" order.",
+            "Rebuilt the power-score formula for the large SLG mode then in the pipeline, where combat power is especially sensitive. The original formula double-counted: alliance leaders and vanguard seats (only the top five per alliance are fielded) carried the same weight as regular members and block rankings. Splitting gear, pets and other inputs by weight exposed that pets sold for real money were distorting scores for ordinary players — a commercial risk — and the formula was redesigned with the combat design and engineering teams. Shipped in 1.167 (Apr 2025) and 1.173 (Jul 2025), setting the numeric baseline for the Expedition season two weeks later.",
+            "Analyzed early-retention funnel data and identified sharp drop-off at the end of the tutorial and at first entry to the gacha screen, flagged both as UX problems, and helped scope an A/B test that gave the next iteration a data basis for its retention work."
           ]
         },
         {
@@ -906,13 +921,13 @@ const SITE_CONTENT = {
           "degree": "Master's: Interactive Technology, Digital Game Development — Production Track",
           "school": "Southern Methodist University (SMU) Guildhall",
           "location": "Dallas, TX, USA",
-          "dates": "Expected 06/2027"
+          "dates": "08/2025 — 05/2027 (expected)"
         },
         {
           "degree": "Bachelor of Architecture",
           "school": "Tianjin University",
           "location": "Tianjin, China",
-          "dates": "06/2023"
+          "dates": "09/2017 — 06/2023"
         }
       ]
     },
@@ -3407,7 +3422,7 @@ const SITE_CONTENT = {
     "about": {
       "heading": "关于我",
       "lead": "我的热情在于游戏制作，带领多元的跨领域团队打造出色的游戏。",
-      "body": "我是一名拥有多年跨领域团队管理和流程优化经验的制作人。我将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种结构化的方法。",
+      "body": "我做游戏项目管理，有多年跨领域团队管理与流程优化经验。我将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种结构化的方法。",
       "readMore": "查看完整介绍",
       "readMoreHref": "about.html",
       "skills": [
@@ -3428,8 +3443,8 @@ const SITE_CONTENT = {
         {
           "title": "Box Shot",
           "tag": "游戏项目",
-          "role": "制作人",
-          "summary": "一款设定在十岁孩子想象出的纸板世界里的第一人称射击游戏。我担任 41 人团队的制作人，负责排期、管线、Jira 自动化与里程碑评审。",
+          "role": "项目管理",
+          "summary": "一款设定在十岁孩子想象出的纸板世界里的第一人称射击游戏。我负责这个 41 人团队的项目管理：排期、管线、Jira 自动化与里程碑评审。",
           "href": "team-projects/capstone.html",
           "image": "images/box-shot/cover.jpg",
           "placeholder": false
@@ -3437,7 +3452,7 @@ const SITE_CONTENT = {
         {
           "title": "Hamsterballin'",
           "tag": "游戏项目",
-          "role": "制作人",
+          "role": "项目管理",
           "summary": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
           "href": "team-projects/tgp2.html",
           "image": "images/hamsterballin-card.jpg",
@@ -3463,7 +3478,7 @@ const SITE_CONTENT = {
         {
           "title": "芳心纵火犯",
           "tag": "游戏项目",
-          "role": "制作人/关卡策划",
+          "role": "策划",
           "summary": "一款用团结引擎制作的 2.5D 游戏 demo，参加 Unity Game Jam 并获铜奖。",
           "href": "individual-projects/fire.html",
           "image": "images/heart-arsonist/cover.jpg",
@@ -3489,7 +3504,7 @@ const SITE_CONTENT = {
           ],
           "tag": "CAPSTONE GAME PROJECT",
           "name": "Box Shot",
-          "role": "制作人",
+          "role": "项目管理",
           "teamSize": "41",
           "length": "制作中",
           "blurb": "设定在孩子想象出的纸板世界里的第一人称射击游戏，用模块化 Tool Gun 闯过一个个手工搭建的短关卡。",
@@ -3508,7 +3523,7 @@ const SITE_CONTENT = {
           ],
           "tag": "游戏项目",
           "name": "Hamsterballin'",
-          "role": "制作人",
+          "role": "项目管理",
           "teamSize": "43",
           "length": "1 学期",
           "blurb": "一款用 Unreal Engine 5 制作的类马里奥赛车竞速游戏，已上线 Steam。",
@@ -3550,7 +3565,7 @@ const SITE_CONTENT = {
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
       "roleLabel": "角色",
-      "role": "制作人",
+      "role": "项目管理",
       "teamSizeLabel": "团队规模",
       "teamSize": "43 人",
       "lengthLabel": "项目周期",
@@ -3564,12 +3579,13 @@ const SITE_CONTENT = {
       "trailerVideoId": "SGqrpin8Yuk",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
-        "跟进 43 人跨职能团队（策划、美术、程序）的日常执行，维护总排期与任务看板，控制各里程碑进度，最终在单学期窗口内将游戏送上 Steam 正式发布。",
-        "从零建立 Sprint 规划、每日站会与复盘回顾机制，逐日跟踪各职能进度，及时暴露风险并将排期变更与范围调整同步至全团队。",
-        "收集开发过程中关键节点的进度与阻塞问题，整理为可追溯的文档反馈至对应职能与主创，推动在 Sprint 边界完成决策与排期调整。",
-        "搭建 Jira 工作流与任务分类体系、Bug 分级标准与版本提交规范，使团队制作流程与交付结果统一可查，新成员可直接按规范上手。",
-        "建立并主持完整 Playtest 流程（测试计划、玩家招募、现场执行、结论分发至各职能），将玩家反馈转化为纳入排期的设计与性能优化项。",
-        "在团队无专职音频人员的情况下补位，对接内部音频成员与外部作曲团队，完成音频从需求确认、评审到最终集成的全流程交付。"
+        "在单学期窗口内统筹 43 人团队完成从概念、研发到 Steam 发行上线的完整周期，所有制作里程碑按期交付。",
+        "主导玩法与关卡的完整制作流程 —— 从概念原型、白模迭代到完整关卡，交付 3 条大型赛道、7 种拾取物与 4 套机制；并统筹美术完成概念原画、建模、绑定动画、材质灯光全流程，交付 5 个可玩角色与 3 个关卡的环境资产。",
+        "从零搭建团队的制作基础设施：Jira 看板与工作流、任务分类，以及四级 Bug 分级标准（先按是否 Showstopper 判定 Highest，再按影响程度、修复难度与依赖关系分级）。每个 Sprint 预留 2 天提前封版，使排期变更与阻塞项在边界暴露，而不是拖到截止日。",
+        "主导内部 PCG 赛道生成工具的开发与迭代，并按阶段规划使用策略：Vertical Slice 前由关卡策划用 UE 原生工具搭建，其后改为混合使用，Alpha 起全量切换到 PCG —— 使各阶段都能在不等工具完工的前提下持续交付关卡。",
+        "牵头处理两个威胁排期的跨职能问题：材质在不同光照下引发的渲染异常，组织美术与程序定位到灯光管线缺失并推动疏通；Beta 阶段部分赛道严重掉帧，与主程序共同定位到建模缺陷与模型重叠致使物理系统占用大量性能，协同美术重建关键模型后解决。",
+        "建立并主持完整 Playtest 流程 —— 测试计划、问卷设计、玩家招募、现场执行、结论分发。Alpha 阶段招募 30 名外部测试者并实时记录；针对反馈利用率偏低的问题，用 AI 搭建反馈看板自动归类填充结论，把反馈转化为排期内优化项。",
+        "补位承担团队缺失的职能：对接内外部作曲团队，按界定的交付内容与时间节点完成全部游戏内音频入库；并统筹简中与西语的翻译、回填与校验，修复文本溢出 UI 与缺字问题，使本地化版本随正式版同步上线。"
       ],
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "截图取自 Steam 发行版本。",
@@ -3657,6 +3673,8 @@ const SITE_CONTENT = {
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
         "设计了教程关卡、第一关的后半部分，以及整个第三关和第四关，循序渐进地引入并强化游戏的核心折叠机制。",
+        "第三、四关按难度增量递进排布，使同一机制持续产生新解法。",
+        "教程关不使用任何文字提示 —— 仅以关卡布局与解法顺序引导玩家自行发现「折叠」规则。",
         "在初期头脑风暴阶段提出并主导了「折叠」这一核心机制，探索其在空间移动和解谜深度上的多种应用。",
         "与团队程序员密切合作，在确定关卡布局前明确技术限制，并协助排查实现过程中的问题。",
         "在团队出现早期人际摩擦时主动促成坦诚沟通，根据每位队友的沟通风格调整自己的方式。",
@@ -3746,7 +3764,7 @@ const SITE_CONTENT = {
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
       "roleLabel": "角色",
-      "role": "制作人",
+      "role": "项目管理",
       "teamSizeLabel": "团队规模",
       "teamSize": "41 人",
       "lengthLabel": "项目周期",
@@ -3760,6 +3778,8 @@ const SITE_CONTENT = {
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
         "主导项目从概念到可玩原型 Demo 的完整 Pre-production 阶段，为新组建的跨职能团队从零搭建运转方式：Sprint 节奏、会议机制、共享任务看板与团队协作公约。",
+        "提前识别版权风险 —— 市面上一款游戏与项目初始风格高度相似 —— 并组织管理层内部沟通，确立「美术风格与关卡内容不可雷同」的基准线；向团队同步情况确保信息透明，据此调整美术方向并修改部分敌人设计。",
+        "把概念选型做成流程而不是辩论：组织团队分为 4 组，经两轮头脑风暴产出 8 个概念原型，再以多维度投票、按计票胜出的方式确定方向，使争议最小、上下意见一致地锁定三项标准，实现全员 buy-in，降低后续沟通成本。",
         "主持各阶段里程碑汇报，向学院与工作室 stakeholder 同步进度、风险与制作计划，推动项目通过每一道 Pre-production 评审。",
         "独立完成 Jira 环境搭建与自动化配置，使任务归属、状态流转与阻塞项无需人工维护即可实时可见，成为全团队共用的唯一信息源。",
         "设计从关卡需求到美术落地的完整管线，定义 Unreal Engine 5 资产导入流程与命名规范，并将交接节点接入 Jira 自动化，确保跨职能流转全程留痕。",
@@ -3908,7 +3928,8 @@ const SITE_CONTENT = {
             "unity",
             "game_jam_2024",
             "2.5d",
-            "systems_design"
+            "systems_design",
+            "gamejam_bronze"
           ],
           "tag": "个人项目",
           "name": "芳心纵火犯",
@@ -3945,7 +3966,7 @@ const SITE_CONTENT = {
       "teamSizeLabel": "团队规模",
       "teamSize": "5 人（Game Jam 团队）",
       "lengthLabel": "项目周期",
-      "length": "Unity Game Jam 2024",
+      "length": "7 天限时开发（Unity Game Jam 2024）",
       "synopsisHeading": "项目简介",
       "synopsis": "为 Unity Game Jam 2024 做的 2.5D 类 Hades Demo。起点是「野火烧不尽，春风吹又生」这句诗，整个 Demo 都在试着把它变成可玩的东西：草与火互相供养，所以点燃关卡也正是你通过关卡的方式。你扮演芳心——一只热爱纵火的消防员松鼠。",
       "trailerHeading": "实机画面",
@@ -3955,7 +3976,8 @@ const SITE_CONTENT = {
         "概念设计 —— 故事前提、基调，以及支撑整个 Demo 的草与火设定。",
         "角色与场景设计 —— 芳心、她的武器与二阶段形态、树屋主城和战斗地图。",
         "玩法机制 —— 草／火互动系统、两个燃烧阶段，以及掉落与增益规则。",
-        "关卡设计 —— 六个关卡，前五关各自拆解系统的一个特性，最后一关把它们合起来。"
+        "关卡设计 —— 六个关卡，前五关各自拆解系统的一个特性，最后一关把它们合起来。",
+        "AI 素材管线 —— 搭建 AI 辅助的素材生成流程，加速概念到美术资源的产出，缓解 7 天窗口内的美术产能瓶颈。"
       ],
       "screenshotsHeading": "设计板",
       "screenshotsNote": "这个 demo 的设计文档是一组 A3 展板，下面全部收录，后面接主城场景从概念到成稿的过程图。点击任意展板可以打开全分辨率版本。",
@@ -4074,20 +4096,22 @@ const SITE_CONTENT = {
           "label": "下载试玩版 ↗",
           "href": "https://younago920.itch.io/heartarsonist"
         }
-      ]
+      ],
+      "awardLabel": "获奖",
+      "award": "铜奖"
     },
     "aboutPage": {
       "pageTitle": "苟仲胤 — 关于我",
       "heading": "关于我",
       "photoAlt": "专业形象照占位",
       "whoHeading": "我是谁、我在做什么",
-      "who": "嗨，我是苟仲胤——一名游戏制作人，骨子里也是个\"狂热\"的 gamer。在成为制作人之前，我做过建筑设计助理，也做过系统策划实习生，这段经历至今仍影响着我看待结构和系统设计的方式。目前，由我带领的项目之一 Hamsterballin' 已经上线 Steam，另一个项目 Box Shot 预计将于明年初登陆 Steam。",
+      "who": "嗨，我是苟仲胤——做游戏项目管理，骨子里也是个\"狂热\"的 gamer。在进入项目管理岗之前，我做过建筑设计助理，也做过系统策划实习生，这段经历至今仍影响着我看待结构和系统设计的方式。目前，由我带领的项目之一 Hamsterballin' 已经上线 Steam，另一个项目 Box Shot 预计将于明年初登陆 Steam。",
       "howHeading": "我是如何走到这里的",
-      "how": "从小我就喜欢游戏，这份喜欢一直伴随着我，虽然那时候完全没想过它会成为一份事业。选专业的时候，我选择了建筑学——吸引我的与其说是最终建成的建筑本身，不如说是背后的设计过程：那种解决问题的训练感，以及看着一个想法从一张白纸，一步步变成真实、可以被人走进去、感受到的空间时的成就感。慢慢地我意识到，真正让我着迷的其实不是建筑，而是这种从0到1、把一个想法完整落地的过程。想明白这一点之后，接下来的路也就清晰了：同样的结构化、系统性设计思维，完全可以用在游戏上——只是从人们行走的空间，变成了人们玩的系统。我顺着这份热爱，一步步走进了游戏制作这个行业，也逐渐成长为今天的制作人。",
+      "how": "从小我就喜欢游戏，这份喜欢一直伴随着我，虽然那时候完全没想过它会成为一份事业。选专业的时候，我选择了建筑学——吸引我的与其说是最终建成的建筑本身，不如说是背后的设计过程：那种解决问题的训练感，以及看着一个想法从一张白纸，一步步变成真实、可以被人走进去、感受到的空间时的成就感。慢慢地我意识到，真正让我着迷的其实不是建筑，而是这种从0到1、把一个想法完整落地的过程。想明白这一点之后，接下来的路也就清晰了：同样的结构化、系统性设计思维，完全可以用在游戏上——只是从人们行走的空间，变成了人们玩的系统。我顺着这份热爱，一步步走进了游戏制作这个行业，也逐渐走到今天的项目管理岗位。",
       "nextHeading": "接下来想去哪里",
       "next": "目前我在寻找 Producer 或 PM/PD 方向的下一份工作，希望加入一个内容驱动（content-driven）的工作室——一个真正把作品本身放在第一位、而不是本末倒置的地方。我希望能加入一个彼此信任的团队：管理层愿意相信团队的判断，团队也用扎实、用心打磨的成果去赢得这份信任。在我看来，这种双向的信任，才是一个项目、一个团队真正值得投入的地方。",
       "funHeading": "一些有趣的小事",
-      "fun": "音乐一直是我工作之外很重要的一部分——我曾担任合唱团团长长达五年，一次次带领一群人朝着同一个高压的截止日期（演出）协同前进，这段经历带来的能力，其实和做制作人有不少相通之处。毕业后不久、还没完全一头扎进游戏行业之前，我也有过一小段插曲：帮助几家受疫情前后冲击的餐饮企业重新梳理运营流程，帮他们渡过那段艰难时期。这段经历说起来有点意外，但也让我实实在在地体会到，好的流程设计能在多大程度上挽救一个陷入困境的团队。"
+      "fun": "音乐一直是我工作之外很重要的一部分——我曾担任合唱团团长长达五年，一次次带领一群人朝着同一个高压的截止日期（演出）协同前进，这段经历带来的能力，其实和做项目管理有不少相通之处。毕业后不久、还没完全一头扎进游戏行业之前，我也有过一小段插曲：帮助几家受疫情前后冲击的餐饮企业重新梳理运营流程，帮他们渡过那段艰难时期。这段经历说起来有点意外，但也让我实实在在地体会到，好的流程设计能在多大程度上挽救一个陷入困境的团队。"
     },
     "beyondWorkPage": {
       "pageTitle": "苟仲胤 — 游戏之外",
@@ -4162,7 +4186,7 @@ const SITE_CONTENT = {
       "pageTitle": "苟仲胤 — AI Playtest 反馈工具",
       "tagLabel": "AI 演示",
       "heading": "AI Playtest 反馈归纳",
-      "lead": "一个小工具，用来展示把 AI 用在真实制作流程里的实践经验：粘贴原始的 playtest 反馈，它会按制作人手工分诊的方式返回结果——拆成一条条独立条目，每条标注属于哪类工作、以及对体验的伤害有多大。",
+      "lead": "一个小工具，用来展示把 AI 用在真实制作流程里的实践经验：粘贴原始的 playtest 反馈，它会按项目管理日常分诊的方式返回结果——拆成一条条独立条目，每条标注属于哪类工作、以及对体验的伤害有多大。",
       "disclaimer": "这个功能调用了一个由语言模型驱动的小型 serverless 函数。你粘贴的内容不会被存储，只用于生成下面的归类摘要。",
       "inputLabel": "粘贴 playtest 反馈",
       "inputPlaceholder": "把一位或多位测试者写的反馈粘贴在这里……",
@@ -4202,32 +4226,38 @@ const SITE_CONTENT = {
     "skills": {
       "heading": "技能",
       "items": [
-        "项目管理",
+        "敏捷开发 Agile / Scrum",
+        "Playtest 与用户研究",
         "Jira",
-        "敏捷开发",
-        "Lark 飞书",
-        "Excel",
-        "PowerPoint",
-        "Unreal Engine 5 (UE5)",
-        "Unity"
+        "Confluence",
+        "Perforce (P4V)",
+        "Unreal Engine 5",
+        "Unity",
+        "3ds Max",
+        "Blender",
+        "Photoshop",
+        "Illustrator",
+        "ComfyUI 工作流",
+        "LoRA 模型训练"
       ],
       "languagesLabel": "语言",
       "languages": [
-        "英语",
-        "中文（普通话）"
+        "中文（母语）",
+        "英语（专业工作）"
       ]
     },
     "experience": {
       "heading": "工作经历",
       "items": [
         {
-          "title": "系统设计实习生",
-          "org": "莉莉丝游戏 (Lilith Games)",
-          "location": "中国上海",
+          "title": "系统策划实习生",
+          "org": "莉莉丝游戏 Lilith Games",
+          "location": "中国 上海",
           "dates": "2025.04 — 2025.08",
           "bullets": [
-            "为《AFK Arena（剑与远征）》项目设计系统，与多专业团队协作，优化大型 SLG 玩法机制以提升玩家参与度。",
-            "开发并平衡新的 PvP 排位系统，与负责人及相关方沟通目标，提升竞技玩法体验。"
+            "设计「远征（异域夺金）」玩法荣誉体系：通过联盟繁荣榜与个人战力／杀敌／勋章三档、以及表彰大会的展示逻辑，提升高活跃、高战力成员的曝光；定义表彰规则与赛季积分段位奖励结构，使荣誉按「联盟繁荣 + 成员贡献」的顺序落位。",
+            "主导战力数值计算规则重构。原规则口径混乱，无法反映玩家真实养成进度；而当时即将推出的大型 SLG 玩法对战力尤为敏感 —— 盟主级、先锋级资格（每联盟仅战力前 5 名出战）与成员、区块排序均以其为准。梳理装备、等级、宠物等系统对战力的贡献以定位失真根因，其间发现当期在售的 SP 宠物战力值于普通宠物这一商业化风险，联合战斗策划与程序重新设计规则，随 2025 年 4 月（1.167）、7 月（1.173）上线，为两周后的远征新赛季打下数值基础。",
+            "分析新手期留存数据定位流失节点，识别出玩家在初始关卡结束、进入主菜单抽卡界面时出现大幅流失，判断为潜在 UX 问题；协助设计并推进前期留存 A/B test，为版本迭代提供数据依据。"
           ]
         },
         {
@@ -4245,16 +4275,16 @@ const SITE_CONTENT = {
       "heading": "教育背景",
       "items": [
         {
-          "degree": "硕士：交互技术 · 数字游戏开发 — 制作方向",
+          "degree": "硕士：交互技术 · 数字游戏开发 — 制作管理方向（Production）",
           "school": "南卫理公会大学 (SMU) Guildhall",
           "location": "美国德克萨斯州达拉斯",
-          "dates": "预计 2027.06 毕业"
+          "dates": "2025.08 — 2027.05（预计）"
         },
         {
           "degree": "建筑学学士",
           "school": "天津大学",
           "location": "中国天津",
-          "dates": "2023.06"
+          "dates": "2017.09 — 2023.06"
         }
       ]
     },
@@ -4269,7 +4299,7 @@ const SITE_CONTENT = {
           "title": "Gearbox 拜访笔记",
           "date": "日期待定",
           "category": "职业发展",
-          "excerpt": "一次 Gearbox 工作室拜访的笔记——聊反馈、沟通，以及制作人工作的本质。",
+          "excerpt": "一次 Gearbox 工作室拜访的笔记——聊反馈、沟通，以及项目管理工作的本质。",
           "pullQuote": "友谊铸就上线——但这不代表什么都要替他们做。",
           "body": [
             "上周我们见了 Gearbox 的执行制作人 J. Low，以及制作助理总监 Lou。",
@@ -4322,13 +4352,13 @@ const SITE_CONTENT = {
     "resumePage": {
       "pageTitle": "苟仲胤 — 简历",
       "title": "简历",
-      "roleTag": "游戏制作人",
+      "roleTag": "项目管理（游戏方向）",
       "downloadPdf": "下载 简历",
       "backHome": "← 返回主页",
       "embedHeading": "简历内嵌预览（PDF）",
       "embedNote": "已根据你的简历草稿生成。之后若有新版本，直接替换项目里的 ZhongyinGou_resume.pdf 文件即可自动更新这里的预览。",
       "summaryHeading": "简介",
-      "summary": "拥有多年跨领域团队管理和流程优化经验的制作人。将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种独特的结构化方法。",
+      "summary": "多年跨领域团队管理与流程优化经验，专注游戏项目管理。将建筑学背景与游戏系统设计专长相结合，为项目统筹、范围管理和跨部门沟通带来一种独特的结构化方法。",
       "contactHeading": "联系方式",
       "experienceHeading": "工作经历",
       "educationHeading": "教育背景",
@@ -4370,7 +4400,7 @@ const SITE_CONTENT = {
     },
     "production": {
       "heading": "制作管理",
-      "intro": "制作人交付物：范围定义、里程碑排期、任务拆解、人力与成本规划。",
+      "intro": "项目管理交付物：范围定义、里程碑排期、任务拆解、人力与成本规划。",
       "list": [
         {
           "id": "df-live-service",
@@ -6635,7 +6665,7 @@ const SITE_CONTENT = {
           "kind": "ship",
           "dates": "TGP2 · 一学期",
           "title": "Hamsterballin'",
-          "org": "制作人 · 已上线 Steam",
+          "org": "项目管理 · 已上线 Steam",
           "note": "43 人团队用 UE5 做的马里奥赛车式竞速游戏，是我第一次带这个规模的团队。"
         },
         {
@@ -6644,7 +6674,7 @@ const SITE_CONTENT = {
           "kind": "project",
           "dates": "2026 —",
           "title": "Box Shot",
-          "org": "制作人 · 毕业设计",
+          "org": "项目管理 · 毕业设计",
           "note": "41 人团队的第一人称射击，纸箱世界。已走完 P1–P3 预生产，秋季进入完整生产。"
         },
         {

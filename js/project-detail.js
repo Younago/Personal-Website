@@ -76,14 +76,18 @@
       [d.lengthLabel, d.length],
     ];
     if (d.platformLabel) rows.push([d.platformLabel, d.platform]);
+    // An award is a fact about the project worth showing next to team size and
+    // length, not buried in prose — but only Heart Arsonist has one, so the row
+    // is optional like the platform row above it.
+    if (d.awardLabel) rows.push([d.awardLabel, d.award]);
     metaWrap.innerHTML = rows
       .map(function (r) {
         return '<div><p class="label mono">' + r[0] + '</p><p class="value">' + r[1] + "</p></div>";
       })
       .join("");
 
-    // Optional external links (store page, itch, press kit). Absent on every
-    // other project, so the container stays empty rather than rendering an
+    // Optional external links (store page, playable build, press kit). Absent on
+    // every other project, so the container stays empty rather than rendering an
     // empty row.
     var linksWrap = document.getElementById("projectLinks");
     if (linksWrap) {
