@@ -2226,3 +2226,16 @@ a.blog-row {
   margin-top: calc(var(--u) * 3);
   margin-bottom: calc(var(--u) * 2);
 }
+
+/* A local looping clip in the trailer slot. `.video-embed` is sized for a
+   16:9 YouTube iframe; a <video> inside it needs the same box but must not
+   inherit the iframe's absolute-fill positioning assumptions. */
+.video-embed.is-clip video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 0;
+}

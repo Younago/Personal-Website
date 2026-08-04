@@ -571,9 +571,8 @@ const SITE_CONTENT = {
       "length": "Unity Game Jam 2024",
       "synopsisHeading": "Synopsis",
       "synopsis": "A 2.5D Hades-like demo made for Unity Game Jam 2024. It started with a line of classical Chinese poetry — “Wild fires cannot consume it all; spring breezes blow and it grows once more” — and the whole demo is an attempt to make that line playable: grass and fire feed each other, so setting the level on fire is also how you get through it. You play Fang Xin, a squirrel firefighter who loves starting fires.",
-      "trailerHeading": "Trailer",
-      "trailerNote": "Gameplay trailer from the jam build.",
-      "trailerVideoId": "713lnqBMnyk",
+      "trailerHeading": "Gameplay",
+      "trailerNote": "A short loop from the jam build — the treehouse hub.",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
         "Concept design — the premise, the tone, and the grass-and-fire fiction the whole demo hangs on.",
@@ -582,7 +581,7 @@ const SITE_CONTENT = {
         "Level design — six levels, each isolating one property of the system before the last one combines them."
       ],
       "screenshotsHeading": "Design boards",
-      "screenshotsNote": "The demo was documented as a set of A3 boards. They're reproduced in full below — click any of them to open the full-resolution version.",
+      "screenshotsNote": "The demo was documented as a set of A3 boards, reproduced in full below, followed by hub art from concept through to the finished scene. Click any board to open the full-resolution version.",
       "postmortemHeading": "Postmortem",
       "postmortem": "TODO — a short reflection on the jam: what the grass-and-fire system got right, and what you'd cut or rebuild given more than a jam's worth of time.",
       "imageCaption": "Key art — Fang Xin, stage 2.",
@@ -670,8 +669,29 @@ const SITE_CONTENT = {
           "src": "../images/heart-arsonist/animation-en.jpg",
           "caption": "Animation board — skeletal rig, the two forms' animation sets, and the animated treehouse scene.",
           "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/hub-blockout.jpg",
+          "caption": "Treehouse hub — layout pass, with the traversal routes drawn over the sketch."
+        },
+        {
+          "src": "../images/heart-arsonist/hub-lineart.jpg",
+          "caption": "Treehouse hub — line art, once the layout was settled."
+        },
+        {
+          "src": "../images/heart-arsonist/hub-final.jpg",
+          "caption": "Treehouse hub — the finished hub art."
+        },
+        {
+          "src": "../images/heart-arsonist/hub-night.jpg",
+          "caption": "The hub at night."
+        },
+        {
+          "src": "../images/heart-arsonist/memory-fragments.jpg",
+          "caption": "Memory Fragments — the collectibles that carry the backstory."
         }
-      ]
+      ],
+      "clip": "../images/heart-arsonist/gameplay"
     },
     "aboutPage": {
       "pageTitle": "Young Gou — About Me",
@@ -3852,9 +3872,8 @@ const SITE_CONTENT = {
       "length": "Unity Game Jam 2024",
       "synopsisHeading": "项目简介",
       "synopsis": "为 Unity Game Jam 2024 做的 2.5D 类 Hades Demo。起点是「野火烧不尽，春风吹又生」这句诗，整个 Demo 都在试着把它变成可玩的东西：草与火互相供养，所以点燃关卡也正是你通过关卡的方式。你扮演芳心——一只热爱纵火的消防员松鼠。",
-      "trailerHeading": "预告片",
-      "trailerNote": "Game Jam 版本的玩法预告。",
-      "trailerVideoId": "713lnqBMnyk",
+      "trailerHeading": "实机画面",
+      "trailerNote": "Game Jam 版本的一小段循环画面 —— 树屋主城。",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
         "概念设计 —— 故事前提、基调，以及支撑整个 Demo 的草与火设定。",
@@ -3863,7 +3882,7 @@ const SITE_CONTENT = {
         "关卡设计 —— 六个关卡，前五关各自拆解系统的一个特性，最后一关把它们合起来。"
       ],
       "screenshotsHeading": "设计板",
-      "screenshotsNote": "这个 Demo 是以一组 A3 设计板的形式记录的，下面完整收录。点击任意一张可以打开高清原图。",
+      "screenshotsNote": "这个 demo 的设计文档是一组 A3 展板，下面全部收录，后面接主城场景从概念到成稿的过程图。点击任意展板可以打开全分辨率版本。",
       "postmortemHeading": "项目复盘",
       "postmortem": "待补充 —— 简短复盘：草火系统里哪些设计成立，如果时间不止一场 Game Jam，你会砍掉或重做什么。",
       "imageCaption": "主视觉 —— 二阶段的芳心。",
@@ -3951,8 +3970,29 @@ const SITE_CONTENT = {
           "src": "../images/heart-arsonist/animation-zh.jpg",
           "caption": "动画板 —— 骨骼绑定、两种形态的动画集，以及树屋场景的动态元素。",
           "full": true
+        },
+        {
+          "src": "../images/heart-arsonist/hub-blockout.jpg",
+          "caption": "树屋主城 —— 布局阶段，动线直接画在草图上。"
+        },
+        {
+          "src": "../images/heart-arsonist/hub-lineart.jpg",
+          "caption": "树屋主城 —— 布局定下来之后的线稿。"
+        },
+        {
+          "src": "../images/heart-arsonist/hub-final.jpg",
+          "caption": "树屋主城 —— 完成稿。"
+        },
+        {
+          "src": "../images/heart-arsonist/hub-night.jpg",
+          "caption": "夜晚的树屋主城。"
+        },
+        {
+          "src": "../images/heart-arsonist/memory-fragments.jpg",
+          "caption": "记忆碎片 —— 承载背景故事的收集物。"
         }
-      ]
+      ],
+      "clip": "../images/heart-arsonist/gameplay"
     },
     "aboutPage": {
       "pageTitle": "苟仲胤 — 关于我",

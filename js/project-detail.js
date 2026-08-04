@@ -104,7 +104,22 @@
       document.getElementById("trailerBody").textContent = d.trailerNote;
       var trailerEmbed = document.getElementById("trailerEmbed");
       if (trailerEmbed) {
-        if (d.trailerVideoId) {
+        // A project can show either a YouTube trailer or a local looping clip.
+        // The clip is an .mp4/.webm pair with a poster — same encoding as the
+        // gameplay clips in the shots grid, and the same reason: a GIF of this
+        // footage is several times the size for worse colour and no seek bar.
+        // It is muted, looping and inline, so it reads exactly like a GIF.
+        if (d.clip) {
+          trailerEmbed.style.display = "";
+          trailerEmbed.classList.add("is-clip");
+          trailerEmbed.innerHTML =
+            '<video poster="' + d.clip + '.jpg" muted loop playsinline preload="metadata"' +
+            ' aria-label="' + (d.gameName || d.projectName) + ' gameplay clip">' +
+            '<source src="' + d.clip + '.mp4" type="video/mp4" />' +
+            '<source src="' + d.clip + '.webm" type="video/webm" />' +
+            "</video>";
+          playClipsWhenVisible(trailerEmbed);
+        } else if (d.trailerVideoId) {
           trailerEmbed.style.display = "";
           trailerEmbed.innerHTML =
             '<iframe src="https://www.youtube.com/embed/' +
@@ -116,6 +131,7 @@
           trailerEmbed.style.display = "none";
           trailerEmbed.innerHTML = "";
         }
+        if (!d.clip) trailerEmbed.classList.remove("is-clip");
       }
     } else {
       trailerSection.style.display = "none";
