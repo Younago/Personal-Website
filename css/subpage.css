@@ -1350,6 +1350,47 @@ a.blog-row {
   transition: transform 0.12s linear;
 }
 
+/* ---------------- Play history: page art ----------------
+   A character illustration anchored to the right edge, behind the content.
+   It sits at z-index -1 so it paints above the backdrop canvas and below
+   everything in <body>, and it is double-masked — fading out toward the text
+   column on the left and toward the nav at the top — so it reads as part of
+   the page's own atmosphere rather than a picture pasted onto it. The white
+   page background was keyed out of the source, so it works on both themes. */
+.games-art {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: min(30vw, 440px);
+  aspect-ratio: 640 / 1137;
+  background: url(../images/games/astra.webp) right bottom / contain no-repeat;
+  /* Held well back, and desaturated a little: the illustration's neons are
+     several steps hotter than anything else on the site, and at full chroma it
+     reads as a sticker rather than as the page's own atmosphere. */
+  opacity: 0.24;
+  filter: saturate(0.8);
+  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(to left, #000 18%, rgba(0, 0, 0, 0) 90%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 2%, #000 30%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to left, #000 18%, rgba(0, 0, 0, 0) 90%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 2%, #000 30%);
+  mask-composite: intersect;
+}
+
+/* On the dark theme the illustration's saturation reads much hotter against
+   the background, so it is held back further. */
+[data-theme="dark"] .games-art { opacity: 0.22; filter: saturate(0.9); }
+
+/* Below this the text column reaches the right edge and the art would sit
+   under the cards instead of beside them. */
+@media (max-width: 1100px) {
+  .games-art { display: none; }
+}
+
 /* ---------------- Play history: tag cloud + tag sections ----------------
    The page used to open with five big derived numbers and then a
    playtime-ranked table. Both were the wrong index: the numbers said how much,
