@@ -52,11 +52,16 @@
     return ALL.filter(function (g) { return (g.tags || []).indexOf(key) !== -1; });
   }
 
+  // Platform is not a genre. It stays on the cards as a label, but it is kept
+  // out of the cloud and out of the sections — two words for "PC" and "mobile"
+  // would be the two biggest things on screen and say nothing about taste.
+  var PLATFORM = { duanyou: 1, shouyou: 1 };
+
   // Tags by weight, heaviest first: the shape of the play history should be
   // legible before anything is clicked.
   var ORDER = TAGS.map(function (t) {
     return { key: t.key, count: gamesFor(t.key).length };
-  }).filter(function (t) { return t.count > 0; })
+  }).filter(function (t) { return t.count > 0 && !PLATFORM[t.key]; })
     .sort(function (a, b) { return b.count - a.count; });
 
   var MAX = ORDER.length ? ORDER[0].count : 1;
@@ -71,26 +76,135 @@
   }
 
   // ------------------------------------------------------------- cloud
+  //
+  // A real packed cloud, not a wrapped line of text. Words are measured on a
+  // canvas at their final size, then placed largest-first along an Archimedean
+  // spiral out from the centre, rejecting any position that overlaps a word
+  // already placed. That is what produces the interlocking silhouette a word
+  // cloud is supposed to have — CSS flex wrapping cannot, because it reserves
+  // a full line-box for every word regardless of size.
+  //
+  // Layout runs against measured pixel widths, so it has to re-run whenever the
+  // container resizes or the display webfont finishes loading.
+
+  var measureCtx = null;
+  // canvas measureText knows nothing about CSS text-transform or
+  // letter-spacing, and the cloud uses both — measuring the raw string gives a
+  // width several percent short, which is exactly enough for placed words to
+  // collide. So the transform is applied first and the tracking added back.
+  function measure(text, size, family, wgt, upper, ls) {
+    if (!measureCtx) measureCtx = document.createElement("canvas").getContext("2d");
+    measureCtx.font = wgt + " " + size + "px " + family;
+    var s = upper ? text.toUpperCase() : text;
+    return measureCtx.measureText(s).width + ls * size * s.length;
+  }
+
+  function overlaps(a, b) {
+    return !(a.x + a.w <= b.x || b.x + b.w <= a.x || a.y + a.h <= b.y || b.y + b.h <= a.y);
+  }
+
+  function layoutCloud() {
+    var wrap = document.getElementById("tagCloud");
+    if (!wrap) return;
+    var nodes = Array.prototype.slice.call(wrap.querySelectorAll(".tag-chip"));
+    if (!nodes.length) return;
+    var W = wrap.clientWidth;
+    if (!W) return;
+
+    // The font family has to come from the live element — the stack differs
+    // between the Latin and CJK builds of the page.
+    var probe = window.getComputedStyle(nodes[0]);
+    var family = probe.fontFamily;
+    var wgt = probe.fontWeight;
+    var upper = probe.textTransform === "uppercase";
+    // letter-spacing comes back in px against the probe's own font-size; the
+    // cloud sets it in em, so it is normalised back to a per-em ratio here.
+    var ls = (parseFloat(probe.letterSpacing) || 0) / (parseFloat(probe.fontSize) || 1);
+
+    var GAP = 5;
+    var boxes = [];
+    var minY = 0, maxY = 0;
+
+    nodes.forEach(function (el) {
+      var size = parseFloat(el.getAttribute("data-size"));
+      var rot = el.getAttribute("data-rot") === "1";
+      var tw = measure(el.textContent, size, family, wgt, upper, ls);
+      // On a narrow column the heaviest words are wider than the container and
+      // would never find a spiral position at all. Scale them down to fit
+      // rather than letting them fall out of the cloud.
+      if (!rot && tw + GAP * 2 > W) {
+        size = Math.max(12, Math.floor(size * (W - GAP * 2) / tw));
+        tw = measure(el.textContent, size, family, wgt, upper, ls);
+      }
+      el.style.fontSize = size + "px";
+      var th = size * 1.02;
+      // The bounding box of a quarter-turned word is its own box transposed.
+      var w = (rot ? th : tw) + GAP * 2;
+      var h = (rot ? tw : th) + GAP * 2;
+
+      var placed = null;
+      // Vertical radius is squashed so the cloud grows wide before it grows
+      // tall, which is the shape that fits a page column.
+      for (var t = 0; t < 900; t += 0.12) {
+        var r = t * 2.6;
+        var x = W / 2 + r * Math.cos(t) - w / 2;
+        var y = r * Math.sin(t) * 0.42 - h / 2;
+        if (x < 0 || x + w > W) continue;
+        var box = { x: x, y: y, w: w, h: h };
+        var hit = false;
+        for (var i = 0; i < boxes.length; i++) {
+          if (overlaps(box, boxes[i])) { hit = true; break; }
+        }
+        if (!hit) { placed = box; break; }
+      }
+      // Nothing fit on the spiral (very narrow container): drop it below the
+      // stack rather than losing it.
+      if (!placed) placed = { x: Math.max(0, (W - w) / 2), y: maxY + GAP, w: w, h: h };
+
+      boxes.push(placed);
+      minY = Math.min(minY, placed.y);
+      maxY = Math.max(maxY, placed.y + placed.h);
+      el.style.left = (placed.x + placed.w / 2) + "px";
+      el.style.top = (placed.y + placed.h / 2) + "px";
+      // Sideways Latin is rotated a quarter turn, which is the convention.
+      // Sideways Chinese is set with writing-mode instead: a rotated CJK word
+      // is genuinely hard to read, whereas a vertical column of upright
+      // characters is how Chinese has always run sideways.
+      if (rot && /[一-鿿]/.test(el.textContent)) {
+        el.style.writingMode = "vertical-rl";
+        el.style.transform = "translate(-50%, -50%)";
+      } else {
+        el.style.writingMode = "";
+        el.style.transform = "translate(-50%, -50%)" + (rot ? " rotate(-90deg)" : "");
+      }
+    });
+
+    // Shift the whole cloud so its topmost word sits at 0 and give the
+    // container the height it actually needs.
+    nodes.forEach(function (el) {
+      el.style.top = (parseFloat(el.style.top) - minY) + "px";
+    });
+    wrap.style.height = (maxY - minY) + "px";
+  }
+
   function renderCloud(lang) {
     var wrap = document.getElementById("tagCloud");
     if (!wrap) return;
-    // The visual order is deliberately off the count order — a strictly
-    // descending run reads as a bar chart, not a cloud — but it is a fixed
-    // interleave rather than random, so the layout is identical on every load.
-    var laid = [];
-    ORDER.forEach(function (t, i) {
-      if (i % 2 === 0) laid.push(t);
-      else laid.unshift(t);
-    });
-    wrap.innerHTML = laid.map(function (t, i) {
+    // Placed largest-first: the spiral fills the middle with the heavy words
+    // and lets the light ones settle into the gaps around them.
+    wrap.innerHTML = ORDER.map(function (t, i) {
       var w = weight(t.count);
+      var size = Math.round(15 + w * 41);
+      // Every third word past the first few turns on its side. Deterministic,
+      // so the cloud is identical on every load rather than shuffling.
+      var rot = i > 3 && i % 3 === 1 ? 1 : 0;
       return '<button type="button" class="tag-chip" data-tag="' + t.key + '"' +
-        ' style="--w:' + w.toFixed(3) + ';--i:' + i + '"' +
-        ' aria-pressed="false">' +
-        '<span class="tc-name">' + esc(TAG_BY_KEY[t.key][lang]) + "</span>" +
-        '<span class="tc-count mono">' + t.count + "</span>" +
-        "</button>";
+        ' data-size="' + size + '" data-rot="' + rot + '"' +
+        ' style="font-size:' + size + 'px;--w:' + w.toFixed(3) + ';--i:' + i + '"' +
+        ' aria-pressed="false" title="' + t.count + '">' +
+        esc(TAG_BY_KEY[t.key][lang]) + "</button>";
     }).join("");
+    layoutCloud();
   }
 
   // ------------------------------------------------------------- sections
@@ -100,16 +214,22 @@
   }
 
   function card(lang, g, sectionKey) {
-    var tags = (g.tags || []).map(function (k) {
+    var all = g.tags || [];
+    // Platform first and inert — it has no section to jump to.
+    var tags = all.filter(function (k) { return PLATFORM[k]; }).map(function (k) {
+      return '<span class="tg-chip is-platform">' + esc(TAG_BY_KEY[k][lang]) + "</span>";
+    }).concat(all.filter(function (k) { return !PLATFORM[k]; }).map(function (k) {
       return chip(lang, k, k === sectionKey);
-    }).join("");
+    })).join("");
     return '<article class="tg-card" data-name="' +
       esc((g.en.name + " " + g.zh.name).toLowerCase()) + '">' +
+      '<header class="tg-head">' +
       "<h4>" + esc(g[lang].name) + "</h4>" +
       '<p class="tg-time mono">' + esc(g[lang].time) + "</p>" +
+      "</header>" +
       // A few titles are logged with hours but no completion state. The line is
       // dropped rather than rendered empty, which would leave a phantom gap.
-      (g[lang].note ? '<p class="tg-note">' + esc(g[lang].note) + "</p>" : '<div class="tg-note"></div>') +
+      (g[lang].note ? '<p class="tg-note">' + esc(g[lang].note) + "</p>" : "") +
       '<div class="tg-tags">' + tags + "</div>" +
       "</article>";
   }
@@ -259,5 +379,15 @@
       btn.addEventListener("click", function () { setLang(btn.getAttribute("data-lang")); });
     });
     setLang(currentLang);
+
+    // The first layout runs against whatever font is available at that moment;
+    // once the display webfont lands the measurements change, so it is redone.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutCloud);
+
+    var t = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(t);
+      t = setTimeout(layoutCloud, 150);
+    });
   });
 })();
