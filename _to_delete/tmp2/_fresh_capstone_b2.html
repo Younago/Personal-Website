@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
-<title>Hamsterballin' — Team Game Project 2</title>
+<title>Box Shot — Capstone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../css/profile.css" />
 <link rel="stylesheet" href="../css/subpage.css" />
 </head>
-<body data-project="tgp2" data-root="../">
+<body data-project="capstone" data-root="../">
 
 <div id="chromeTop"></div>
 <nav id="chromeNav"></nav>
@@ -28,13 +28,12 @@
     </div>
   </div>
 
-  <div class="detail-thumb"><img id="detailImage" src="../images/project-placeholder.svg" alt="Hamsterballin' marketing image placeholder" /></div>
+  <figure class="detail-thumb">
+    <img id="detailImage" src="../images/box-shot/characters.jpg" alt="Box Shot character concept art" />
+    <figcaption id="detailImageCaption" class="detail-credit"></figcaption>
+  </figure>
 
   <div class="detail-meta-grid" id="projectMeta"></div>
-
-  <!-- Store / external links for this project, rendered by project-detail.js
-       from the project's optional `links` array. -->
-  <div class="detail-links" id="projectLinks"></div>
 
   <section class="resume-section">
     <h2 id="synopsisHeading"></h2>
@@ -46,22 +45,18 @@
     <ul class="detail-list" id="respList" style="padding-left: 1.1em; display:flex; flex-direction:column; gap:8px;"></ul>
   </section>
 
-  <!-- Optional callout for a companion write-up that isn't part of the game
-       itself (here: the retrospective on this project). Rendered by
-       project-detail.js only when the project's content has a `linkedDoc`,
-       so the other detail pages can share this template untouched. -->
-  <div id="linkedDoc"></div>
-
   <section class="resume-section" id="trailerSection">
     <h2 id="trailerHeading"></h2>
     <p class="resume-summary" id="trailerBody"></p>
     <div class="video-embed" id="trailerEmbed" style="display:none;"></div>
   </section>
 
+  <div id="designSections"></div>
+
   <section class="resume-section">
     <h2 id="shotsHeading"></h2>
     <p class="resume-summary" id="shotsBody"></p>
-    <div class="shots-grid" id="shotsGrid" style="display:none;"></div>
+    <div class="shots-grid is-sheets" id="shotsGrid" style="display:none;"></div>
   </section>
 
   <section class="resume-section">

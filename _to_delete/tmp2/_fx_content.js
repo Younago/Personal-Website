@@ -204,14 +204,6 @@ const SITE_CONTENT = {
     },
     "tgp2": {
       "backLink": "← Back to Projects",
-      "linkedDoc": {
-        "heading": "Retrospective on this project",
-        "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
-        "name": "Hamsterballin' — Project Retrospective",
-        "blurb": "Placeholder — a producer's retrospective on running a 43-person team through one semester to a Steam release: what held, what broke, and what I would do differently.",
-        "cta": "Read the retrospective →",
-        "href": "game-analysis/retro-hamsterballin.html"
-      },
       "tagLabel": "GAME PROJECT",
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
@@ -411,14 +403,6 @@ const SITE_CONTENT = {
     },
     "capstone": {
       "backLink": "← Back to Projects",
-      "linkedDoc": {
-        "heading": "Retrospective on this project",
-        "tag": "RETROSPECTIVE · BOX SHOT",
-        "name": "Box Shot — Pre-Production Retrospective",
-        "blurb": "Placeholder — a producer's retrospective on the P1–P3 pre-production gates: what each gate was meant to prove, what it actually proved, and what I would scope differently going into full production.",
-        "cta": "Read the retrospective →",
-        "href": "game-analysis/retro-box-shot.html"
-      },
       "tagLabel": "CAPSTONE PROJECT · IN PRODUCTION",
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
@@ -1026,49 +1010,17 @@ const SITE_CONTENT = {
       "projectsHeading": "Selected Projects"
     },
     "gameAnalysis": {
-      "heading": "Game Analysis & Project Retrospectives",
-      "intro": "Teardowns of the systems, economies and level flow behind games I keep coming back to — and retrospectives on the projects I ran.",
+      "heading": "Game Analysis",
+      "intro": "Teardowns of the systems, economies and level flow behind games I keep coming back to.",
       "list": [
         {
           "id": "analysis-1",
-          "tags": [
-            "teamfight_tactics",
-            "systems_teardown",
-            "10_seasons"
-          ],
+          "tags": ["teamfight_tactics", "systems_teardown", "10_seasons"],
           "tag": "ANALYSIS · TEAMFIGHT TACTICS",
           "name": "Analysis and Practice of the TFT Synergy System",
           "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
           "href": "game-analysis/analysis-1.html",
           "image": "images/tft/cover.jpg"
-        },
-        {
-          "id": "retro-box-shot",
-          "tags": [
-            "retrospective",
-            "pre_production",
-            "team_of_41"
-          ],
-          "tag": "RETROSPECTIVE · BOX SHOT",
-          "name": "Box Shot — Pre-Production Retrospective",
-          "blurb": "Placeholder — what the P1–P3 pre-production gates cost, what the 41-person team learned, and what I would scope differently going into full production.",
-          "href": "game-analysis/retro-box-shot.html",
-          "image": "images/box-shot/cover.jpg",
-          "placeholder": true
-        },
-        {
-          "id": "retro-hamsterballin",
-          "tags": [
-            "retrospective",
-            "shipped_on_steam",
-            "team_of_43"
-          ],
-          "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
-          "name": "Hamsterballin' — Project Retrospective",
-          "blurb": "Placeholder — running a 43-person team through one semester to a Steam release: what held, what broke, and what I would do differently.",
-          "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": true
         },
         {
           "id": "analysis-2",
@@ -1627,64 +1579,6 @@ const SITE_CONTENT = {
             "heading": "Placeholder heading",
             "text": "Placeholder — swap this paragraph for the real story. Two or three sentences works best next to an image.",
             "image": "images/project-placeholder.svg",
-            "caption": "Placeholder caption"
-          }
-        ]
-      },
-      "retro-box-shot": {
-        "pageTitle": "Young Gou — Box Shot Retrospective",
-        "tagLabel": "RETROSPECTIVE · BOX SHOT",
-        "heading": "Box Shot — Pre-Production Retrospective",
-        "lead": "Placeholder — a retrospective on the P1–P3 pre-production gates of Box Shot, the 41-person capstone I produce. Written from the producer's seat: scope, schedule, staffing and the decisions that turned out to matter.",
-        "backLink": "← Back to Projects",
-        "relatedHeading": "The project this looks back on",
-        "related": {
-          "tag": "CAPSTONE GAME PROJECT",
-          "name": "Box Shot",
-          "blurb": "A first-person shooter set in a kid's imagined cardboard world, built by a team of 41. Through the P1–P3 pre-production gates and entering full production.",
-          "cta": "Open the project →",
-          "href": "team-projects/capstone.html"
-        },
-        "blocks": [
-          {
-            "heading": "What we set out to prove",
-            "text": "Placeholder — the question each pre-production gate was supposed to answer, and whether it actually did.",
-            "image": "images/box-shot/level-whitebox.jpg",
-            "caption": "Placeholder caption"
-          },
-          {
-            "heading": "What I would scope differently",
-            "text": "Placeholder — the calls worth revisiting before full production, and the reasoning behind each.",
-            "image": "images/box-shot/enemy-lineup.jpg",
-            "caption": "Placeholder caption"
-          }
-        ]
-      },
-      "retro-hamsterballin": {
-        "pageTitle": "Young Gou — Hamsterballin' Retrospective",
-        "tagLabel": "RETROSPECTIVE · HAMSTERBALLIN'",
-        "heading": "Hamsterballin' — Project Retrospective",
-        "lead": "Placeholder — a retrospective on Hamsterballin', a Mario Kart-style racer built in UE5 by a team of 43 in one semester and shipped on Steam. The first team of that size I ran.",
-        "backLink": "← Back to Projects",
-        "relatedHeading": "The project this looks back on",
-        "related": {
-          "tag": "GAME PROJECT",
-          "name": "Hamsterballin'",
-          "blurb": "A Mario Kart-style racing game built in Unreal Engine 5 by a team of 43 in one semester, shipped on Steam.",
-          "cta": "Open the project →",
-          "href": "team-projects/tgp2.html"
-        },
-        "blocks": [
-          {
-            "heading": "What held",
-            "text": "Placeholder — the processes that survived contact with a 43-person team, and why.",
-            "image": "images/hamsterballin/01-menu.jpg",
-            "caption": "Placeholder caption"
-          },
-          {
-            "heading": "What broke",
-            "text": "Placeholder — where the plan came apart, what it cost, and what I changed mid-project.",
-            "image": "images/hamsterballin/07-race-city.jpg",
             "caption": "Placeholder caption"
           }
         ]
@@ -3702,14 +3596,6 @@ const SITE_CONTENT = {
     },
     "tgp2": {
       "backLink": "← 返回项目",
-      "linkedDoc": {
-        "heading": "本项目的复盘",
-        "tag": "复盘 · HAMSTERBALLIN'",
-        "name": "Hamsterballin' — 项目复盘",
-        "blurb": "占位文字 —— 从项目管理视角复盘一个学期带 43 人团队做到 Steam 发售的过程：哪些做法立住了、哪些崩了、重来一次会怎么做。",
-        "cta": "阅读复盘 →",
-        "href": "game-analysis/retro-hamsterballin.html"
-      },
       "tagLabel": "游戏项目",
       "gameName": "Hamsterballin'",
       "image": "../images/hamsterballin-hero.jpg",
@@ -3909,14 +3795,6 @@ const SITE_CONTENT = {
     },
     "capstone": {
       "backLink": "← 返回项目",
-      "linkedDoc": {
-        "heading": "本项目的复盘",
-        "tag": "复盘 · BOX SHOT",
-        "name": "Box Shot — 前期制作复盘",
-        "blurb": "占位文字 —— 从项目管理视角对 P1–P3 前期制作阶段的复盘：每个节点原本要验证什么、实际验证了什么，以及进入正式制作前我会如何调整范围。",
-        "cta": "阅读复盘 →",
-        "href": "game-analysis/retro-box-shot.html"
-      },
       "tagLabel": "毕业项目 · 制作中",
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
@@ -4524,49 +4402,17 @@ const SITE_CONTENT = {
       "projectsHeading": "代表项目"
     },
     "gameAnalysis": {
-      "heading": "游戏分析与项目复盘",
-      "intro": "拆解那些我反复回去玩的游戏——系统、经济与关卡节奏；以及我带过的项目的复盘。",
+      "heading": "游戏分析",
+      "intro": "拆解那些我反复回去玩的游戏——系统、经济与关卡节奏。",
       "list": [
         {
           "id": "analysis-1",
-          "tags": [
-            "teamfight_tactics",
-            "systems_teardown",
-            "10_seasons"
-          ],
+          "tags": ["teamfight_tactics", "systems_teardown", "10_seasons"],
           "tag": "分析 · 云顶之弈",
           "name": "云顶之弈羁绊关系的分析与实践",
           "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",
           "href": "game-analysis/analysis-1.html",
           "image": "images/tft/cover.jpg"
-        },
-        {
-          "id": "retro-box-shot",
-          "tags": [
-            "retrospective",
-            "pre_production",
-            "team_of_41"
-          ],
-          "tag": "复盘 · BOX SHOT",
-          "name": "Box Shot — 前期制作复盘",
-          "blurb": "占位文字 —— P1–P3 前期制作节点各自的代价、41 人团队的收获，以及进入正式制作前我会如何调整范围。",
-          "href": "game-analysis/retro-box-shot.html",
-          "image": "images/box-shot/cover.jpg",
-          "placeholder": true
-        },
-        {
-          "id": "retro-hamsterballin",
-          "tags": [
-            "retrospective",
-            "shipped_on_steam",
-            "team_of_43"
-          ],
-          "tag": "复盘 · HAMSTERBALLIN'",
-          "name": "Hamsterballin' — 项目复盘",
-          "blurb": "占位文字 —— 一个学期带 43 人团队做到 Steam 发售：哪些做法立住了、哪些崩了、重来一次我会怎么做。",
-          "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": true
         },
         {
           "id": "analysis-2",
@@ -5126,64 +4972,6 @@ const SITE_CONTENT = {
             "text": "占位文字 — 换成真实内容。配图旁边写两三句话最合适。",
             "image": "images/project-placeholder.svg",
             "caption": "占位图说"
-          }
-        ]
-      },
-      "retro-box-shot": {
-        "pageTitle": "苟仲胤 — Box Shot 复盘",
-        "tagLabel": "复盘 · BOX SHOT",
-        "heading": "Box Shot — 前期制作复盘",
-        "lead": "占位文字 —— 对 Box Shot（我担任 Producer 的 41 人毕业项目）P1–P3 前期制作阶段的复盘。从项目管理视角出发：范围、排期、人力配置，以及事后看真正起作用的那些决策。",
-        "backLink": "← 返回项目",
-        "relatedHeading": "对应项目",
-        "related": {
-          "tag": "毕业项目",
-          "name": "Box Shot",
-          "blurb": "41 人团队开发的第一人称射击游戏，设定在孩子想象中的纸箱世界。已通过 P1–P3 前期制作节点，正进入正式制作。",
-          "cta": "查看项目 →",
-          "href": "team-projects/capstone.html"
-        },
-        "blocks": [
-          {
-            "heading": "占位标题",
-            "text": "占位文字 —— 每个前期制作节点原本要回答的问题，以及它是否真的回答了。",
-            "image": "images/box-shot/level-whitebox.jpg",
-            "caption": "占位说明"
-          },
-          {
-            "heading": "占位标题",
-            "text": "占位文字 —— 进入正式制作前值得重新考虑的决定，以及各自的理由。",
-            "image": "images/box-shot/enemy-lineup.jpg",
-            "caption": "占位说明"
-          }
-        ]
-      },
-      "retro-hamsterballin": {
-        "pageTitle": "苟仲胤 — Hamsterballin' 复盘",
-        "tagLabel": "复盘 · HAMSTERBALLIN'",
-        "heading": "Hamsterballin' — 项目复盘",
-        "lead": "占位文字 —— 对 Hamsterballin' 的复盘：43 人团队用一个学期在 UE5 上做完并在 Steam 发售的卡丁车竞速游戏，也是我带过的第一个这个规模的团队。",
-        "backLink": "← 返回项目",
-        "relatedHeading": "对应项目",
-        "related": {
-          "tag": "团队项目",
-          "name": "Hamsterballin'",
-          "blurb": "43 人团队用一个学期在 Unreal Engine 5 上完成并在 Steam 发售的卡丁车竞速游戏。",
-          "cta": "查看项目 →",
-          "href": "team-projects/tgp2.html"
-        },
-        "blocks": [
-          {
-            "heading": "占位标题",
-            "text": "占位文字 —— 在 43 人规模下真正站住了的流程，以及为什么。",
-            "image": "images/hamsterballin/01-menu.jpg",
-            "caption": "占位说明"
-          },
-          {
-            "heading": "占位标题",
-            "text": "占位文字 —— 计划在哪里失效、代价是什么、项目中途我改了什么。",
-            "image": "images/hamsterballin/07-race-city.jpg",
-            "caption": "占位说明"
           }
         ]
       }

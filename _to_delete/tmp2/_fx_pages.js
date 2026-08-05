@@ -301,22 +301,6 @@
           "<p>" + b.text + "</p></div>";
         wrap.appendChild(row);
       });
-
-      // Optional reverse link back to the project a retrospective is about.
-      // Same markup as the project pages' companion-document callout, so the
-      // pair reads as one link in both directions.
-      var rel = document.getElementById("storyRelated");
-      if (rel) {
-        rel.innerHTML = d.related
-          ? '<section class="resume-section"><h2>' + d.relatedHeading + "</h2>" +
-            '<a class="linked-doc" href="' + root + d.related.href + '">' +
-            '<span class="linked-doc-tag mono">' + d.related.tag + "</span>" +
-            "<h3>" + d.related.name + "</h3>" +
-            "<p>" + d.related.blurb + "</p>" +
-            '<span class="linked-doc-cta mono">' + d.related.cta + "</span>" +
-            "</a></section>"
-          : "";
-      }
     },
 
     // Self-contained browser demos that live in this repo (ai-projects/demos/*).
