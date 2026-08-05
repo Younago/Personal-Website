@@ -228,7 +228,6 @@ window.SITE_GAMES = {
       "rank": 23,
       "tags": [
         "duanyou",
-        "erciyuan",
         "dongzuo",
         "rpg",
         "xushi"
@@ -1298,7 +1297,6 @@ window.SITE_GAMES = {
       "rank": 77,
       "tags": [
         "duanyou",
-        "erciyuan",
         "huihe",
         "jingji",
         "changxian"
@@ -1446,7 +1444,6 @@ window.SITE_GAMES = {
       "hours": 100,
       "tags": [
         "duanyou",
-        "erciyuan",
         "jiemi",
         "xushi"
       ],

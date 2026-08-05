@@ -696,7 +696,9 @@ a.blog-row {
   text-transform: uppercase;
   padding: 2px 6px;
   border-radius: 2px;
-  border: 1px solid currentColor;
+  /* The frame is a container for the word, not a competitor to it — held well
+     back from the text colour so the cloud still reads as type. */
+  border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
 }
 
 /* Severity is the one thing that should be readable at a glance from across
@@ -1365,7 +1367,7 @@ a.blog-row {
   position: relative;
   /* Height is written by the layout pass; this is only what it occupies before
      the first pass runs, so the page does not jump. */
-  min-height: 180px;
+  min-height: 220px;
   margin: calc(var(--u) * 2) 0 calc(var(--u) * 1.5);
   padding: calc(var(--u) * 2) 0 calc(var(--u) * 3);
 }
@@ -1383,6 +1385,14 @@ a.blog-row {
   line-height: 1;
   letter-spacing: 0.005em;
   text-transform: uppercase;
+  /* Boxed. The em-relative padding keeps the frame proportional to the word
+     rather than hugging the small ones and swimming on the big ones — the JS
+     packer adds the same figures to its collision boxes. */
+  padding: 0.16em 0.34em;
+  /* The frame is a container for the word, not a competitor to it — held well
+     back from the text colour so the cloud still reads as type. */
+  border: 1px solid color-mix(in srgb, currentColor 38%, transparent);
+  border-radius: 3px;
   /* --w is 0..1 by tag weight. The heavy words are near-black and read as the
      subject; the light ones fade back toward the page so the cloud has depth
      instead of being 25 words all shouting at once. */
@@ -1415,9 +1425,12 @@ a.blog-row {
   .tag-chip { animation: none; transition: none; }
 }
 
+/* The lead tag is always accent — it is the point of the cloud. */
+.tag-chip.is-lead { color: var(--color-accent); }
+
 /* Every fourth word in accent, so the cloud has two tones rather than one
    ramp — this is what stops it reading as a grey block. */
-.tag-chip:nth-child(4n + 1) {
+.tag-chip:nth-child(4n + 2) {
   color: color-mix(in srgb, var(--color-accent) calc(45% + var(--w) * 55%), transparent);
 }
 
@@ -1426,6 +1439,8 @@ a.blog-row {
 .tag-chip[aria-pressed="true"] {
   outline: none;
   color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 
 /* Dimmed rather than removed while a search is filtering: the cloud is the
@@ -1492,12 +1507,6 @@ a.blog-row {
   border-bottom: 1px solid var(--color-line);
   padding-bottom: 12px;
   margin-bottom: calc(var(--u) * 2.5);
-}
-
-.tag-title .tag-n {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-muted);
 }
 
 .tag-section.is-active .tag-title { border-bottom-color: var(--color-accent); }

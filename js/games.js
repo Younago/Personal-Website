@@ -52,28 +52,43 @@
     return ALL.filter(function (g) { return (g.tags || []).indexOf(key) !== -1; });
   }
 
-  // Platform is not a genre. It stays on the cards as a label, but it is kept
-  // out of the cloud and out of the sections — two words for "PC" and "mobile"
-  // would be the two biggest things on screen and say nothing about taste.
-  var PLATFORM = { duanyou: 1, shouyou: 1 };
+  // Not genres. These stay on the cards as labels but are kept out of the
+  // cloud and out of the sections: "PC", "mobile" and "live service" would be
+  // three of the biggest words on screen and none of them says anything about
+  // taste.
+  var LABEL_ONLY = { duanyou: 1, shouyou: 1, changxian: 1 };
 
-  // Tags by weight, heaviest first: the shape of the play history should be
-  // legible before anything is clicked.
-  var ORDER = TAGS.map(function (t) {
+  // The tag this play history is actually about. It leads the sections and is
+  // placed first — therefore dead centre — in the cloud.
+  var LEAD = "erciyuan";
+
+  // Tags whose size is raised above what their raw count would give them,
+  // because they are the ones worth noticing. The cloud is a statement about
+  // what the play history is, not a bar chart of it.
+  var EMPHASIS = { erciyuan: 1, zizouqi: 0.72, rougu: 0.72, xushi: 0.72, hezuo: 0.72 };
+
+  var COUNTS = TAGS.map(function (t) {
     return { key: t.key, count: gamesFor(t.key).length };
-  }).filter(function (t) { return t.count > 0 && !PLATFORM[t.key]; })
-    .sort(function (a, b) { return b.count - a.count; });
+  }).filter(function (t) { return t.count > 0 && !LABEL_ONLY[t.key]; });
 
-  var MAX = ORDER.length ? ORDER[0].count : 1;
-  var MIN = ORDER.length ? ORDER[ORDER.length - 1].count : 1;
+  var MAX = COUNTS.reduce(function (m, t) { return Math.max(m, t.count); }, 1);
+  var MIN = COUNTS.reduce(function (m, t) { return Math.min(m, t.count); }, MAX);
 
   // Square-root scaling: a tag with four times the titles reads as roughly
   // twice the size rather than four times, which keeps the biggest entries
   // from swallowing the rest of the cloud.
-  function weight(count) {
-    if (MAX === MIN) return 0.5;
-    return (Math.sqrt(count) - Math.sqrt(MIN)) / (Math.sqrt(MAX) - Math.sqrt(MIN));
+  function weight(t) {
+    var w = MAX === MIN ? 0.5
+      : (Math.sqrt(t.count) - Math.sqrt(MIN)) / (Math.sqrt(MAX) - Math.sqrt(MIN));
+    return Math.max(w, EMPHASIS[t.key] || 0);
   }
+
+  // Sections read 二次元 first, then by weight.
+  var ORDER = COUNTS.slice().sort(function (a, b) {
+    if (a.key === LEAD) return -1;
+    if (b.key === LEAD) return 1;
+    return weight(b) - weight(a) || b.count - a.count;
+  });
 
   // ------------------------------------------------------------- cloud
   //
@@ -121,6 +136,10 @@
     // cloud sets it in em, so it is normalised back to a per-em ratio here.
     var ls = (parseFloat(probe.letterSpacing) || 0) / (parseFloat(probe.fontSize) || 1);
 
+    // The words are boxed now, so the measured glyph run is not the footprint:
+    // the padding and the 1px rule on each side go into the packing box too,
+    // or the boxes overlap even though the text does not.
+    var PADX = 0.34, PADY = 0.16, BORDER = 2;
     var GAP = 5;
     var boxes = [];
     var minY = 0, maxY = 0;
@@ -128,16 +147,21 @@
     nodes.forEach(function (el) {
       var size = parseFloat(el.getAttribute("data-size"));
       var rot = el.getAttribute("data-rot") === "1";
-      var tw = measure(el.textContent, size, family, wgt, upper, ls);
+      // Full footprint of the boxed word, not just its glyph run.
+      function boxW(px) {
+        return measure(el.textContent, px, family, wgt, upper, ls) + px * PADX * 2 + BORDER;
+      }
       // On a narrow column the heaviest words are wider than the container and
       // would never find a spiral position at all. Scale them down to fit
       // rather than letting them fall out of the cloud.
-      if (!rot && tw + GAP * 2 > W) {
-        size = Math.max(12, Math.floor(size * (W - GAP * 2) / tw));
-        tw = measure(el.textContent, size, family, wgt, upper, ls);
+      if (!rot) {
+        var avail = W - GAP * 2;
+        var guard = 0;
+        while (boxW(size) > avail && size > 11 && guard++ < 40) size -= 1;
       }
       el.style.fontSize = size + "px";
-      var th = size * 1.02;
+      var tw = boxW(size);
+      var th = size * (1.02 + PADY * 2) + BORDER;
       // The bounding box of a quarter-turned word is its own box transposed.
       var w = (rot ? th : tw) + GAP * 2;
       var h = (rot ? tw : th) + GAP * 2;
@@ -146,9 +170,9 @@
       // Vertical radius is squashed so the cloud grows wide before it grows
       // tall, which is the shape that fits a page column.
       for (var t = 0; t < 900; t += 0.12) {
-        var r = t * 2.6;
+        var r = t * 2.2;
         var x = W / 2 + r * Math.cos(t) - w / 2;
-        var y = r * Math.sin(t) * 0.42 - h / 2;
+        var y = r * Math.sin(t) * 0.36 - h / 2;
         if (x < 0 || x + w > W) continue;
         var box = { x: x, y: y, w: w, h: h };
         var hit = false;
@@ -193,15 +217,18 @@
     // Placed largest-first: the spiral fills the middle with the heavy words
     // and lets the light ones settle into the gaps around them.
     wrap.innerHTML = ORDER.map(function (t, i) {
-      var w = weight(t.count);
-      var size = Math.round(15 + w * 41);
+      var w = weight(t);
+      // The lead tag gets a further bump on top of its weight: at equal font
+      // size a long word like AUTO BATTLER out-shouts a short one like ANIME,
+      // and this word is meant to be the unmistakable centre of the cloud.
+      var size = Math.round((14 + w * 30) * (t.key === LEAD ? 1.5 : 1));
       // Every third word past the first few turns on its side. Deterministic,
       // so the cloud is identical on every load rather than shuffling.
       var rot = i > 3 && i % 3 === 1 ? 1 : 0;
-      return '<button type="button" class="tag-chip" data-tag="' + t.key + '"' +
+      return '<button type="button" class="tag-chip' + (t.key === LEAD ? " is-lead" : "") + '" data-tag="' + t.key + '"' +
         ' data-size="' + size + '" data-rot="' + rot + '"' +
         ' style="font-size:' + size + 'px;--w:' + w.toFixed(3) + ';--i:' + i + '"' +
-        ' aria-pressed="false" title="' + t.count + '">' +
+        ' aria-pressed="false">' +
         esc(TAG_BY_KEY[t.key][lang]) + "</button>";
     }).join("");
     layoutCloud();
@@ -216,9 +243,9 @@
   function card(lang, g, sectionKey) {
     var all = g.tags || [];
     // Platform first and inert — it has no section to jump to.
-    var tags = all.filter(function (k) { return PLATFORM[k]; }).map(function (k) {
+    var tags = all.filter(function (k) { return LABEL_ONLY[k]; }).map(function (k) {
       return '<span class="tg-chip is-platform">' + esc(TAG_BY_KEY[k][lang]) + "</span>";
-    }).concat(all.filter(function (k) { return !PLATFORM[k]; }).map(function (k) {
+    }).concat(all.filter(function (k) { return !LABEL_ONLY[k]; }).map(function (k) {
       return chip(lang, k, k === sectionKey);
     })).join("");
     return '<article class="tg-card" data-name="' +
@@ -240,8 +267,7 @@
     wrap.innerHTML = ORDER.map(function (t) {
       var list = gamesFor(t.key);
       return '<section class="tag-section" id="tag-' + t.key + '" data-tag="' + t.key + '">' +
-        '<h3 class="tag-title"><span>' + esc(TAG_BY_KEY[t.key][lang]) + "</span>" +
-        '<span class="tag-n mono">' + list.length + "</span></h3>" +
+        '<h3 class="tag-title"><span>' + esc(TAG_BY_KEY[t.key][lang]) + "</span></h3>" +
         '<div class="tg-grid">' + list.map(function (g) { return card(lang, g, t.key); }).join("") +
         "</div></section>";
     }).join("");
@@ -260,8 +286,6 @@
         if (hit) shown++;
       });
       sec.hidden = shown === 0;
-      var n = sec.querySelector(".tag-n");
-      if (n) n.textContent = shown;
       total += shown;
     });
     var empty = document.getElementById("gamesEmpty");
