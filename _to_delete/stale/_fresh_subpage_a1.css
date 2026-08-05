@@ -1348,102 +1348,34 @@ a.blog-row {
   transition: transform 0.12s linear;
 }
 
-/* ---------------- Play history: tag cloud + tag sections ----------------
-   The page used to open with five big derived numbers and then a
-   playtime-ranked table. Both were the wrong index: the numbers said how much,
-   and the reader wants to know what kind. So the opening is now a tag cloud —
-   every entry sized by how many titles carry that tag — and the body below is
-   one section per tag, ordered inside by how well-known the title is rather
-   than by hours. A title carries several tags and therefore appears in several
-   sections; that overlap is the shape of the taste being described. */
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: center;
-  gap: 6px calc(var(--u) * 1.5);
-  /* No top rule: the page header already draws one directly above, and two
-     hairlines with only margin between them read as an empty container. */
-  margin: calc(var(--u) * 1.5) 0;
+/* ---------------- Experience: play log ---------------- */
+.game-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: calc(var(--u) * 2);
+  margin: calc(var(--u) * 3) 0;
+  border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
-  padding: calc(var(--u) * 3) calc(var(--u) * 1.5) calc(var(--u) * 4);
+  padding: calc(var(--u) * 3) 0;
 }
 
-/* --w is 0..1 by tag weight (square-rooted in JS so the heaviest tag does not
-   swallow the cloud). Everything visual keys off it: size, weight and how far
-   the colour has travelled from muted to accent. */
-.tag-chip {
-  --size: calc(15px + var(--w) * 30px);
-  display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
-  border: 0;
-  padding: 2px 4px;
-  background: transparent;
-  cursor: pointer;
+.game-stat .value {
   font-family: var(--font-display);
-  font-size: var(--size);
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  color: color-mix(in srgb, var(--color-accent) calc(30% + var(--w) * 70%), var(--color-text-muted));
-  transition: transform 0.18s ease, color 0.18s ease;
-  animation: tag-drift 7s ease-in-out infinite;
-  animation-delay: calc(var(--i) * -0.37s);
-}
-
-/* Older browsers without color-mix() still need a readable colour. */
-@supports not (color: color-mix(in srgb, red 50%, blue)) {
-  .tag-chip { color: var(--color-accent); }
-}
-
-.tag-chip .tc-count {
-  font-family: var(--font-mono);
-  font-size: max(10px, calc(var(--size) * 0.32));
-  color: var(--color-text-muted);
-}
-
-.tag-chip:hover,
-.tag-chip:focus-visible {
-  outline: none;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1;
   color: var(--color-accent);
-  transform: translateY(-2px) scale(1.06);
 }
 
-.tag-chip[aria-pressed="true"] {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 5px;
+.game-stat .label {
+  font-size: 13px;
+  margin-top: 8px;
 }
 
-/* Dimmed rather than removed while a search is filtering: the cloud is the
-   page's map, and a map that reflows under the cursor is hard to use. */
-.tag-chip.is-dim {
-  opacity: 0.25;
-  pointer-events: none;
-}
-
-/* The drift stops the moment a pointer enters the cloud: a click target that
-   is still moving under the cursor is a bad one, and the motion has already
-   done its job by then. */
-.tag-cloud:hover .tag-chip,
-.tag-cloud:focus-within .tag-chip { animation-play-state: paused; }
-
-@keyframes tag-drift {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tag-chip { animation: none; transition: none; }
-  .tag-chip:hover, .tag-chip:focus-visible { transform: none; }
-}
-
-.tag-hint {
+.game-stat .note {
   font-size: 11px;
-  letter-spacing: 0.06em;
-  text-align: center;
   color: var(--color-text-muted);
-  margin: 0 0 calc(var(--u) * 3);
+  margin-top: 2px;
+  line-height: 1.5;
 }
 
 .game-controls {
@@ -1452,6 +1384,28 @@ a.blog-row {
   gap: calc(var(--u) * 1.5);
   align-items: center;
   margin-bottom: calc(var(--u) * 2);
+}
+
+.game-tabs { display: flex; }
+
+.game-tabs button {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.game-tabs button + button { border-left: 0; }
+
+.game-tabs button[aria-pressed="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .game-search {
@@ -1470,53 +1424,89 @@ a.blog-row {
   border-color: var(--color-accent);
 }
 
+.game-toggle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.game-toggle:hover { background: var(--color-accent); color: var(--color-on-accent); }
+
 .game-meta {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-muted);
   margin-bottom: 10px;
 }
 
-.tag-section {
-  margin: calc(var(--u) * 5) 0 0;
-  /* Cleared under the sticky site nav so a scroll-to lands the heading below
-     it rather than behind it. */
-  scroll-margin-top: 84px;
+.game-table th[data-sort] { cursor: pointer; user-select: none; }
+.game-table th[data-sort]:hover { color: var(--color-text); }
+.game-table th.is-active { color: var(--color-accent); }
+
+.game-table th[data-sort]::after {
+  content: " ↕";
+  opacity: 0.4;
 }
 
-.tag-section[hidden] { display: none; }
+.game-table th.is-active[aria-sort="descending"]::after { content: " ↓"; opacity: 1; }
+.game-table th.is-active[aria-sort="ascending"]::after { content: " ↑"; opacity: 1; }
 
-.tag-title {
-  display: flex;
-  align-items: baseline;
-  gap: calc(var(--u) * 1.5);
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.6vw, 30px);
-  line-height: 1.1;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--color-line);
-  padding-bottom: 10px;
-  margin-bottom: calc(var(--u) * 2);
+.game-table td.note {
+  color: var(--color-text-muted);
+  font-size: 12px;
 }
 
-.tag-title .tag-n {
+.game-table td.nowrap { white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .tl-item { flex-basis: 76vw; }
+  .game-controls { gap: var(--u); }
+  .game-search { flex-basis: 100%; order: 3; }
+}
+
+/* The tag is only drawn inside the platform tabs — in the anime tab every row
+   carries it, so it would be pure noise. */
+.game-chip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 5px;
+  border: 1px solid var(--color-accent);
+  border-radius: 2px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  vertical-align: 2px;
+}
+
+/* ---------------- Play history: featured tiles + hours chart ----------------
+   The log used to be one collapsed table, which buried the thing this page
+   exists for. Tiles and bars are on screen from the first paint; the table is
+   the appendix behind them. */
+.games-sub {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: calc(var(--u) * 5) 0 calc(var(--u) * 1.5);
 }
 
-.tag-section.is-active .tag-title { border-bottom-color: var(--color-accent); }
-.tag-section.is-active .tag-title span:first-child { color: var(--color-accent); }
-
-.tg-grid {
+.game-featured {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   gap: calc(var(--u) * 1.5);
 }
 
-/* Each card carries its own border rather than relying on grid hairlines: the
-   card count never divides evenly into the column count, and the gap trick
-   paints the empty cells of the last row as a grey block. */
-.tg-card {
+/* Each tile carries its own border rather than the grid showing hairlines
+   through 1px gaps: 22 tiles never divide evenly into the column count, and
+   the gap trick leaves the empty cells of the last row painted in as a grey
+   block. */
+.gf-card {
   border: 1px solid var(--color-line);
   padding: calc(var(--u) * 2);
   display: flex;
@@ -1524,69 +1514,67 @@ a.blog-row {
   gap: 6px;
 }
 
-.tg-card[hidden] { display: none; }
+.gf-time {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
 
-.tg-card h4 {
+.gf-card h4 {
   font-family: var(--font-display);
   font-size: 17px;
   line-height: 1.2;
   text-transform: uppercase;
 }
 
-.tg-time {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--color-accent);
-}
-
-.tg-note {
+.gf-note {
   font-size: 12px;
   line-height: 1.65;
   color: var(--color-text-muted);
-  flex: 1 1 auto;
 }
 
-.tg-tags {
+.game-bars {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 4px;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: calc(var(--u) * 2);
 }
 
-.tg-chip {
+.gb-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) 1fr 52px;
+  align-items: center;
+  gap: calc(var(--u) * 1.5);
+}
+
+.gb-name {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.gb-track {
+  height: 10px;
+  background: var(--color-bg-alt);
   border: 1px solid var(--color-line);
-  border-radius: 2px;
-  background: transparent;
-  padding: 2px 6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.04em;
+}
+
+.gb-fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+}
+
+.gb-value {
+  font-size: 12px;
   color: var(--color-text-muted);
-  cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  text-align: right;
 }
 
-.tg-chip:hover,
-.tg-chip:focus-visible {
-  outline: none;
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-/* The chip for the section the card is currently sitting in — kept visible so
-   the card reads the same everywhere it appears, but it is not a way out of
-   the section you are already in. */
-.tg-chip.is-self {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-@media (max-width: 640px) {
-  .tag-cloud { padding: calc(var(--u) * 3) 0; gap: 4px var(--u); }
-  .tag-chip { --size: calc(14px + var(--w) * 18px); }
-  .game-controls { gap: var(--u); }
-  .game-search { flex-basis: 100%; }
-  .tg-grid { grid-template-columns: 1fr; }
+@media (max-width: 560px) {
+  .gb-row { grid-template-columns: 1fr 44px; }
+  /* The bar drops to its own row under the name rather than shrinking to a
+     stub next to it. */
+  .gb-name { grid-column: 1 / -1; }
 }
 
 /* ==========================================================================

@@ -1,11 +1,14 @@
 // ---------------------------------------------------------------------------
-// The Games page: the play-history log.
+// The Games page: the play-history log, organised by tag.
 //
-// Driven entirely by window.SITE_GAMES (js/games-data.js) — adding a game is a
-// data edit, and every summary figure on the page is derived from the rows
-// rather than typed in, so a number here can never drift from the list under
-// it. The career timeline used to share this file and now lives on the About
-// page via js/timeline.js.
+// Everything on the page is derived from window.SITE_GAMES and
+// window.SITE_GAME_TAGS (js/games-data.js). The tag cloud at the top is built
+// from the tag counts, so a cloud entry can never disagree with the section
+// under it, and the sections are the tags — a title with four tags appears in
+// four sections on purpose.
+//
+// Order inside a section is the hand-set `rank` (how well-known and how
+// relevant the title is), never playtime.
 // ---------------------------------------------------------------------------
 (function () {
   "use strict";
@@ -13,6 +16,7 @@
   var STORAGE_KEY = "site-lang";
   var content = window.SITE_CONTENT;
   var GAMES = window.SITE_GAMES || { console: [], mobile: [] };
+  var TAGS = window.SITE_GAME_TAGS || [];
   var root = document.body.getAttribute("data-root") || "";
 
   var currentLang = (function () {
@@ -23,9 +27,15 @@
     return "en";
   })();
 
-  // View state for the log. Kept outside render() so switching language does
-  // not silently reset the visitor's filter, sort or open/closed choice.
-  var view = { group: "anime", sort: "default", dir: 1, query: "", open: false };
+  // Kept outside render() so switching language does not reset the filter.
+  var view = { query: "", active: "" };
+
+  var ALL = GAMES.console.concat(GAMES.mobile).slice().sort(function (a, b) {
+    return (a.rank || 999) - (b.rank || 999);
+  });
+
+  var TAG_BY_KEY = {};
+  TAGS.forEach(function (t) { TAG_BY_KEY[t.key] = t; });
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -38,185 +48,146 @@
     }, obj);
   }
 
-  // ------------------------------------------------------------- play log
-  function stats(lang, d) {
-    var all = GAMES.console.concat(GAMES.mobile);
-    var withHours = GAMES.console.filter(function (g) { return typeof g.hours === "number"; });
-    var total = withHours.reduce(function (s, g) { return s + g.hours; }, 0);
-    var longest = withHours.slice().sort(function (a, b) { return b.hours - a.hours; })[0];
-    // "Live-service" here means exactly the rows with no hour count — the
-    // seasons-and-years titles — so the two figures can never disagree.
-    var live = GAMES.console.length - withHours.length;
-    var anime = all.filter(function (g) { return g.anime; }).length;
-    return [
-      { value: anime, label: d.statAnime, note: d.statAnimeNote },
-      { value: all.length, label: d.statTitles, note: GAMES.console.length + " / " + GAMES.mobile.length },
-      { value: total.toLocaleString("en-US") + "h", label: d.statHours, note: withHours.length + " " + d.statTracked },
-      { value: longest ? longest.hours + "h" : "—", label: d.statLongest, note: longest ? longest[lang].name : "" },
-      { value: live, label: d.statLive, note: d.statLiveNote },
-    ];
+  function gamesFor(key) {
+    return ALL.filter(function (g) { return (g.tags || []).indexOf(key) !== -1; });
   }
 
-  // The tagged titles, always on screen. This is the part a hiring reader is
-  // meant to see without clicking anything.
-  function renderFeatured(lang, d) {
-    var wrap = document.getElementById("gameFeatured");
+  // Tags by weight, heaviest first: the shape of the play history should be
+  // legible before anything is clicked.
+  var ORDER = TAGS.map(function (t) {
+    return { key: t.key, count: gamesFor(t.key).length };
+  }).filter(function (t) { return t.count > 0; })
+    .sort(function (a, b) { return b.count - a.count; });
+
+  var MAX = ORDER.length ? ORDER[0].count : 1;
+  var MIN = ORDER.length ? ORDER[ORDER.length - 1].count : 1;
+
+  // Square-root scaling: a tag with four times the titles reads as roughly
+  // twice the size rather than four times, which keeps the biggest entries
+  // from swallowing the rest of the cloud.
+  function weight(count) {
+    if (MAX === MIN) return 0.5;
+    return (Math.sqrt(count) - Math.sqrt(MIN)) / (Math.sqrt(MAX) - Math.sqrt(MIN));
+  }
+
+  // ------------------------------------------------------------- cloud
+  function renderCloud(lang) {
+    var wrap = document.getElementById("tagCloud");
     if (!wrap) return;
-    var list = groupRows("anime");
-    wrap.innerHTML = list
-      .map(function (g) {
-        return '<article class="gf-card">' +
-          '<p class="gf-time mono">' + esc(g[lang].time) + "</p>" +
-          "<h4>" + esc(g[lang].name) + "</h4>" +
-          '<p class="gf-note">' + esc(g[lang].note) + "</p>" +
-          "</article>";
-      })
-      .join("");
+    // The visual order is deliberately off the count order — a strictly
+    // descending run reads as a bar chart, not a cloud — but it is a fixed
+    // interleave rather than random, so the layout is identical on every load.
+    var laid = [];
+    ORDER.forEach(function (t, i) {
+      if (i % 2 === 0) laid.push(t);
+      else laid.unshift(t);
+    });
+    wrap.innerHTML = laid.map(function (t, i) {
+      var w = weight(t.count);
+      return '<button type="button" class="tag-chip" data-tag="' + t.key + '"' +
+        ' style="--w:' + w.toFixed(3) + ';--i:' + i + '"' +
+        ' aria-pressed="false">' +
+        '<span class="tc-name">' + esc(TAG_BY_KEY[t.key][lang]) + "</span>" +
+        '<span class="tc-count mono">' + t.count + "</span>" +
+        "</button>";
+    }).join("");
   }
 
-  // Hours as bars: the one part of the log that reads instantly at a glance.
-  // Console only, because the mobile rows have no hour count to scale against.
-  function renderBars(lang) {
-    var wrap = document.getElementById("gameBars");
+  // ------------------------------------------------------------- sections
+  function chip(lang, key, self) {
+    return '<button type="button" class="tg-chip' + (self ? " is-self" : "") +
+      '" data-tag="' + key + '">' + esc(TAG_BY_KEY[key][lang]) + "</button>";
+  }
+
+  function card(lang, g, sectionKey) {
+    var tags = (g.tags || []).map(function (k) {
+      return chip(lang, k, k === sectionKey);
+    }).join("");
+    return '<article class="tg-card" data-name="' +
+      esc((g.en.name + " " + g.zh.name).toLowerCase()) + '">' +
+      "<h4>" + esc(g[lang].name) + "</h4>" +
+      '<p class="tg-time mono">' + esc(g[lang].time) + "</p>" +
+      // A few titles are logged with hours but no completion state. The line is
+      // dropped rather than rendered empty, which would leave a phantom gap.
+      (g[lang].note ? '<p class="tg-note">' + esc(g[lang].note) + "</p>" : '<div class="tg-note"></div>') +
+      '<div class="tg-tags">' + tags + "</div>" +
+      "</article>";
+  }
+
+  function renderSections(lang) {
+    var wrap = document.getElementById("tagSections");
     if (!wrap) return;
-    var top = GAMES.console
-      .filter(function (g) { return typeof g.hours === "number"; })
-      .sort(function (a, b) { return b.hours - a.hours; })
-      .slice(0, 10);
-    if (!top.length) return;
-    var max = top[0].hours;
-    wrap.innerHTML = top
-      .map(function (g) {
-        var pct = Math.round((g.hours / max) * 100);
-        return '<div class="gb-row">' +
-          '<span class="gb-name">' + esc(g[lang].name) + "</span>" +
-          '<span class="gb-track"><span class="gb-fill" style="width:' + pct + '%"></span></span>' +
-          '<span class="gb-value mono">' + g.hours + "h</span>" +
-          "</div>";
-      })
-      .join("");
+    wrap.innerHTML = ORDER.map(function (t) {
+      var list = gamesFor(t.key);
+      return '<section class="tag-section" id="tag-' + t.key + '" data-tag="' + t.key + '">' +
+        '<h3 class="tag-title"><span>' + esc(TAG_BY_KEY[t.key][lang]) + "</span>" +
+        '<span class="tag-n mono">' + list.length + "</span></h3>" +
+        '<div class="tg-grid">' + list.map(function (g) { return card(lang, g, t.key); }).join("") +
+        "</div></section>";
+    }).join("");
   }
 
-  function renderStats(lang, d) {
-    var wrap = document.getElementById("gameStats");
-    if (!wrap) return;
-    wrap.innerHTML = stats(lang, d)
-      .map(function (s) {
-        return '<div class="game-stat"><p class="value">' + esc(s.value) + "</p>" +
-          '<p class="label">' + esc(s.label) + "</p>" +
-          (s.note ? '<p class="note mono">' + esc(s.note) + "</p>" : "") + "</div>";
-      })
-      .join("");
-  }
-
-  // "anime" is not a third platform — it selects the tagged rows out of both
-  // groups. Mobile leads, because the gacha titles are the ones this section
-  // exists to put in front; the console JRPGs follow.
-  function groupRows(key) {
-    if (key === "anime") {
-      return GAMES.mobile.filter(function (g) { return g.anime; })
-        .concat(GAMES.console.filter(function (g) { return g.anime; }));
-    }
-    return (GAMES[key] || []).slice();
-  }
-
-  function sortValue(g) {
-    // One comparable number across both groups: console rows sort by hours,
-    // mobile rows by months. They are never sorted against each other because
-    // only one group is on screen at a time.
-    return typeof g.hours === "number" ? g.hours : (typeof g.months === "number" ? g.months : -1);
-  }
-
-  function renderTable(lang, d) {
-    var body = document.getElementById("gameRows");
-    var wrap = document.getElementById("gameTableWrap");
-    if (!body || !wrap) return;
-
-    wrap.hidden = !view.open;
-    var toggle = document.getElementById("gamesToggle");
-    if (toggle) {
-      toggle.textContent = view.open ? d.hideAll : d.showAll;
-      toggle.setAttribute("aria-expanded", view.open ? "true" : "false");
-    }
-    if (!view.open) return;
-
-    var list = groupRows(view.group);
+  // A single filter pass over the rendered cards: hide non-matching cards, and
+  // hide a whole section once nothing in it is left.
+  function applyFilter(d) {
     var q = view.query.trim().toLowerCase();
-    if (q) {
-      list = list.filter(function (g) {
-        return (g.en.name + " " + g.zh.name).toLowerCase().indexOf(q) !== -1;
+    var total = 0;
+    document.querySelectorAll(".tag-section").forEach(function (sec) {
+      var shown = 0;
+      sec.querySelectorAll(".tg-card").forEach(function (c) {
+        var hit = !q || c.getAttribute("data-name").indexOf(q) !== -1;
+        c.hidden = !hit;
+        if (hit) shown++;
       });
-    }
-    if (view.sort === "default" && view.group !== "anime") {
-      // Stable partition rather than a sort, so the hand-ordered sequence
-      // inside each half is preserved.
-      list = list.filter(function (g) { return g.anime; })
-        .concat(list.filter(function (g) { return !g.anime; }));
-    }
-    if (view.sort === "name") {
-      list.sort(function (a, b) { return a[lang].name.localeCompare(b[lang].name, lang === "zh" ? "zh" : "en") * view.dir; });
-    } else if (view.sort === "time") {
-      list.sort(function (a, b) { return (sortValue(b) - sortValue(a)) * view.dir; });
-    }
-
-    document.querySelectorAll("[data-sort]").forEach(function (th) {
-      var active = th.getAttribute("data-sort") === view.sort;
-      th.setAttribute("aria-sort", active ? (view.dir === 1 ? "descending" : "ascending") : "none");
-      th.classList.toggle("is-active", active);
+      sec.hidden = shown === 0;
+      var n = sec.querySelector(".tag-n");
+      if (n) n.textContent = shown;
+      total += shown;
     });
-
-    body.innerHTML = list.length
-      ? list.map(function (g) {
-          return '<tr' + (g.anime ? ' class="is-anime"' : "") + "><td>" + esc(g[lang].name) +
-            (g.anime && view.group !== "anime" ? ' <span class="game-chip mono">' + esc(d.animeChip) + "</span>" : "") + "</td>" +
-            '<td class="mono nowrap">' + esc(g[lang].time) + "</td>" +
-            '<td class="note">' + esc(g[lang].note) + "</td></tr>";
-        }).join("")
-      : '<tr><td colspan="3" class="note">' + esc(d.empty) + "</td></tr>";
-
-    var count = document.getElementById("gameCount");
-    if (count) count.textContent = list.length + " / " + groupRows(view.group).length;
+    var empty = document.getElementById("gamesEmpty");
+    if (empty) {
+      empty.hidden = total > 0;
+      empty.textContent = d.empty;
+    }
+    document.querySelectorAll(".tag-chip").forEach(function (btn) {
+      var sec = document.getElementById("tag-" + btn.getAttribute("data-tag"));
+      btn.classList.toggle("is-dim", !!(sec && sec.hidden));
+    });
   }
 
-  function wireLog(getD) {
-    var toggle = document.getElementById("gamesToggle");
-    if (toggle && !toggle.dataset.wired) {
-      toggle.dataset.wired = "1";
-      toggle.addEventListener("click", function () {
-        view.open = !view.open;
-        renderTable(currentLang, getD());
+  function goToTag(key) {
+    var sec = document.getElementById("tag-" + key);
+    if (!sec || sec.hidden) return;
+    view.active = key;
+    document.querySelectorAll(".tag-chip").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-tag") === key ? "true" : "false");
+    });
+    document.querySelectorAll(".tag-section").forEach(function (s) {
+      s.classList.toggle("is-active", s === sec);
+    });
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    sec.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+
+  // One delegated listener on the page rather than a listener per chip: the
+  // cards are re-rendered on every language switch, and the cloud chips and
+  // the per-card chips want identical behaviour.
+  function wire(getD) {
+    var page = document.getElementById("gamesMain");
+    if (page && !page.dataset.wired) {
+      page.dataset.wired = "1";
+      page.addEventListener("click", function (e) {
+        var btn = e.target.closest("button[data-tag]");
+        if (!btn) return;
+        goToTag(btn.getAttribute("data-tag"));
       });
     }
-    document.querySelectorAll("[data-group]").forEach(function (btn) {
-      if (btn.dataset.wired) return;
-      btn.dataset.wired = "1";
-      btn.addEventListener("click", function () {
-        view.group = btn.getAttribute("data-group");
-        document.querySelectorAll("[data-group]").forEach(function (b) {
-          b.setAttribute("aria-pressed", b === btn ? "true" : "false");
-        });
-        renderTable(currentLang, getD());
-      });
-    });
-    document.querySelectorAll("[data-sort]").forEach(function (th) {
-      if (th.dataset.wired) return;
-      th.dataset.wired = "1";
-      th.addEventListener("click", function () {
-        var key = th.getAttribute("data-sort");
-        if (view.sort === key) view.dir = -view.dir;
-        else { view.sort = key; view.dir = key === "name" ? -1 : 1; }
-        renderTable(currentLang, getD());
-      });
-    });
     var search = document.getElementById("gameSearch");
     if (search && !search.dataset.wired) {
       search.dataset.wired = "1";
       search.addEventListener("input", function () {
         view.query = search.value;
-        // Typing a filter with the log collapsed should show the results
-        // rather than filtering something nobody can see.
-        if (!view.open && view.query) view.open = true;
-        renderTable(currentLang, getD());
+        applyFilter(getD());
       });
     }
   }
@@ -233,30 +204,23 @@
     document.title = d.gamesPageTitle;
     setText("gamesTag", d.gamesTagLabel);
     setText("gamesTitle", d.gamesHeading);
-    setText("gamesSubtitle", d.gamesSubtitle);
-    setText("gamesHeading", d.gamesHeading);
-    setText("featuredHeading", d.featuredHeading);
-    setText("barsHeading", d.barsHeading);
-    setText("barsNote", d.barsNote);
-    setText("fullHeading", d.fullHeading);
-    setText("unitNote", d.unitNote);
-    setText("tabAnime", d.tabAnime);
-    setText("tabConsole", d.tabConsole);
-    setText("tabMobile", d.tabMobile);
-    setText("colName", d.colName);
-    setText("colTime", d.colTime);
-    setText("colNote", d.colNote);
-    setText("sortHint", d.sortHint);
+    setText("cloudHint", d.cloudHint);
     var back = document.getElementById("gamesBack");
     if (back) back.textContent = content[lang].resumePage.backHome || "←";
     var search = document.getElementById("gameSearch");
     if (search) search.setAttribute("placeholder", d.searchPlaceholder);
 
-    renderStats(lang, d);
-    renderFeatured(lang, d);
-    renderBars(lang);
-    renderTable(lang, d);
-    wireLog(function () { return content[currentLang].experiencePage; });
+    renderCloud(lang);
+    renderSections(lang);
+    applyFilter(d);
+    if (view.active) {
+      document.querySelectorAll(".tag-chip").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.getAttribute("data-tag") === view.active ? "true" : "false");
+      });
+      var sec = document.getElementById("tag-" + view.active);
+      if (sec) sec.classList.add("is-active");
+    }
+    wire(function () { return content[currentLang].experiencePage; });
   }
 
   function applyStaticText(lang) {

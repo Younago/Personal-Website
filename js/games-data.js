@@ -1,19 +1,153 @@
 // ---------------------------------------------------------------------------
-// The games log, transcribed from the source document. Kept out of
-// content.js and loaded only by experience.html: it is ~75 rows in two
+// The games log, transcribed from the source document (简历 · 游戏经历).
+// Kept out of content.js and loaded only by games.html: it is ~85 rows in two
 // languages, it is a record rather than site copy, and editor.html would
 // otherwise have to round-trip all of it on every save.
 //
-// `anime: true` marks the anime-styled titles — the console JRPGs and the
-// gacha games. It is a display-order and filtering flag, not a genre
-// taxonomy: Pokémon, 王者荣耀, 金铲铲 and AFK Journey are Japanese and/or
-// gacha but are not anime-styled, so they are deliberately not tagged.
+// `tags` are the taxonomy the page is organised around — the tag cloud at the
+// top is built from these counts and every section below is one tag. A title
+// carries as many tags as apply, so it appears in several sections; that
+// overlap is the point, not a duplication bug.
 //
-// `hours` (console) and `months` (mobile) are the machine-readable duration
-// used for sorting and for the summary figures. The displayed `time` string
-// is separate because five long-running titles are measured in seasons or
-// years and have no meaningful hour count.
+// `rank` is a single hand-ordered list across both platforms, by how
+// well-known and how relevant the title is — NOT by playtime. It decides the
+// order inside every tag section. 1 is the top of the list, and the miHoYo
+// titles hold the top of it deliberately.
+//
+// `hours` (console) and `months` (mobile) are kept as the machine-readable
+// duration behind the displayed `time` string, which is separate because the
+// long-running titles are measured in seasons or years. A blank `note` means
+// the source document records hours but no completion state for that title —
+// the card simply omits the line.
 // ---------------------------------------------------------------------------
+window.SITE_GAME_TAGS = [
+  {
+    "key": "erciyuan",
+    "zh": "二次元",
+    "en": "Anime"
+  },
+  {
+    "key": "duanyou",
+    "zh": "端游",
+    "en": "PC / Console"
+  },
+  {
+    "key": "shouyou",
+    "zh": "手游",
+    "en": "Mobile"
+  },
+  {
+    "key": "changxian",
+    "zh": "长线运营",
+    "en": "Live Service"
+  },
+  {
+    "key": "choka",
+    "zh": "抽卡",
+    "en": "Gacha"
+  },
+  {
+    "key": "dongzuo",
+    "zh": "动作",
+    "en": "Action"
+  },
+  {
+    "key": "rpg",
+    "zh": "角色扮演",
+    "en": "RPG"
+  },
+  {
+    "key": "huihe",
+    "zh": "回合制",
+    "en": "Turn-Based"
+  },
+  {
+    "key": "daishijie",
+    "zh": "大世界",
+    "en": "Open World"
+  },
+  {
+    "key": "xushi",
+    "zh": "叙事",
+    "en": "Narrative"
+  },
+  {
+    "key": "hezuo",
+    "zh": "合作",
+    "en": "Co-op"
+  },
+  {
+    "key": "jingji",
+    "zh": "竞技",
+    "en": "Competitive"
+  },
+  {
+    "key": "kapai",
+    "zh": "卡牌",
+    "en": "Card"
+  },
+  {
+    "key": "rougu",
+    "zh": "肉鸽",
+    "en": "Roguelike"
+  },
+  {
+    "key": "celue",
+    "zh": "策略",
+    "en": "Strategy"
+  },
+  {
+    "key": "shooter",
+    "zh": "射击",
+    "en": "Shooter"
+  },
+  {
+    "key": "jiemi",
+    "zh": "解密",
+    "en": "Puzzle"
+  },
+  {
+    "key": "moni",
+    "zh": "模拟经营",
+    "en": "Simulation"
+  },
+  {
+    "key": "pingtai",
+    "zh": "平台跳跃",
+    "en": "Platformer"
+  },
+  {
+    "key": "paidui",
+    "zh": "派对",
+    "en": "Party"
+  },
+  {
+    "key": "duli",
+    "zh": "独立游戏",
+    "en": "Indie"
+  },
+  {
+    "key": "jingsu",
+    "zh": "竞速",
+    "en": "Racing"
+  },
+  {
+    "key": "gedou",
+    "zh": "格斗",
+    "en": "Fighting"
+  },
+  {
+    "key": "zizouqi",
+    "zh": "自走棋",
+    "en": "Auto Battler"
+  },
+  {
+    "key": "jiezou",
+    "zh": "节奏",
+    "en": "Rhythm"
+  }
+];
+
 window.SITE_GAMES = {
   "console": [
     {
@@ -28,7 +162,14 @@ window.SITE_GAMES = {
         "note": "Main story + DLC, all shrines and every Korok seed"
       },
       "kind": "console",
-      "hours": 182
+      "hours": 182,
+      "rank": 7,
+      "tags": [
+        "duanyou",
+        "daishijie",
+        "dongzuo",
+        "jiemi"
+      ]
     },
     {
       "zh": {
@@ -42,7 +183,14 @@ window.SITE_GAMES = {
         "note": "Map fully revealed, every boss cleared"
       },
       "kind": "console",
-      "hours": 124
+      "hours": 124,
+      "rank": 11,
+      "tags": [
+        "duanyou",
+        "daishijie",
+        "dongzuo",
+        "jiemi"
+      ]
     },
     {
       "zh": {
@@ -56,7 +204,13 @@ window.SITE_GAMES = {
         "note": "New Game+ completed"
       },
       "kind": "console",
-      "hours": 66
+      "hours": 66,
+      "rank": 13,
+      "tags": [
+        "duanyou",
+        "dongzuo",
+        "rpg"
+      ]
     },
     {
       "zh": {
@@ -71,7 +225,14 @@ window.SITE_GAMES = {
       },
       "kind": "console",
       "hours": 46,
-      "anime": true
+      "rank": 23,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "dongzuo",
+        "rpg",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -84,7 +245,14 @@ window.SITE_GAMES = {
         "time": "4+ yrs",
         "note": "4+ years, ¥3k+ spent, several classes at level 100"
       },
-      "kind": "console"
+      "kind": "console",
+      "rank": 54,
+      "tags": [
+        "duanyou",
+        "dongzuo",
+        "rpg",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -98,7 +266,15 @@ window.SITE_GAMES = {
         "note": "Multiple routes completed, including a Dark Urge run"
       },
       "kind": "console",
-      "hours": 165
+      "hours": 165,
+      "rank": 15,
+      "tags": [
+        "duanyou",
+        "rpg",
+        "huihe",
+        "xushi",
+        "hezuo"
+      ]
     },
     {
       "zh": {
@@ -113,7 +289,14 @@ window.SITE_GAMES = {
       },
       "kind": "console",
       "hours": 127,
-      "anime": true
+      "rank": 16,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "huihe",
+        "rpg",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -128,7 +311,13 @@ window.SITE_GAMES = {
       },
       "kind": "console",
       "hours": 72,
-      "anime": true
+      "rank": 49,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "huihe",
+        "rpg"
+      ]
     },
     {
       "zh": {
@@ -143,7 +332,14 @@ window.SITE_GAMES = {
       },
       "kind": "console",
       "hours": 65,
-      "anime": true
+      "rank": 48,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "huihe",
+        "rpg",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -158,7 +354,14 @@ window.SITE_GAMES = {
       },
       "kind": "console",
       "hours": 52,
-      "anime": true
+      "rank": 29,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "dongzuo",
+        "rpg",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -172,7 +375,14 @@ window.SITE_GAMES = {
         "note": "Main story and all DLC completed"
       },
       "kind": "console",
-      "hours": 95
+      "hours": 95,
+      "rank": 19,
+      "tags": [
+        "duanyou",
+        "huihe",
+        "rpg",
+        "daishijie"
+      ]
     },
     {
       "zh": {
@@ -186,7 +396,13 @@ window.SITE_GAMES = {
         "note": "Cleared the main entries"
       },
       "kind": "console",
-      "hours": 200
+      "hours": 200,
+      "rank": 18,
+      "tags": [
+        "duanyou",
+        "huihe",
+        "rpg"
+      ]
     },
     {
       "zh": {
@@ -200,7 +416,14 @@ window.SITE_GAMES = {
         "note": "All cards collected, 28 Steam achievements"
       },
       "kind": "console",
-      "hours": 45
+      "hours": 45,
+      "rank": 42,
+      "tags": [
+        "duanyou",
+        "kapai",
+        "rougu",
+        "duli"
+      ]
     },
     {
       "zh": {
@@ -214,7 +437,16 @@ window.SITE_GAMES = {
         "note": "Cleared with every character"
       },
       "kind": "console",
-      "hours": 54
+      "hours": 54,
+      "rank": 40,
+      "tags": [
+        "duanyou",
+        "kapai",
+        "rougu",
+        "huihe",
+        "celue",
+        "duli"
+      ]
     },
     {
       "zh": {
@@ -227,7 +459,16 @@ window.SITE_GAMES = {
         "time": "8 mo",
         "note": "8 months, ¥1k+ spent, Legend rank"
       },
-      "kind": "console"
+      "kind": "console",
+      "rank": 27,
+      "tags": [
+        "duanyou",
+        "kapai",
+        "huihe",
+        "celue",
+        "changxian",
+        "jingji"
+      ]
     },
     {
       "zh": {
@@ -240,7 +481,15 @@ window.SITE_GAMES = {
         "time": "5+ yrs",
         "note": "5+ years, ¥2k+ spent, level 170 on the 10th-anniversary server"
       },
-      "kind": "console"
+      "kind": "console",
+      "rank": 55,
+      "tags": [
+        "duanyou",
+        "kapai",
+        "huihe",
+        "celue",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -253,7 +502,15 @@ window.SITE_GAMES = {
         "time": "since S1",
         "note": "Since Season 1 — Master rank across several seasons"
       },
-      "kind": "console"
+      "kind": "console",
+      "rank": 28,
+      "tags": [
+        "duanyou",
+        "zizouqi",
+        "celue",
+        "jingji",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -267,7 +524,14 @@ window.SITE_GAMES = {
         "note": "Main campaign and all DLC completed"
       },
       "kind": "console",
-      "hours": 35
+      "hours": 35,
+      "rank": 56,
+      "tags": [
+        "duanyou",
+        "moni",
+        "celue",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -281,7 +545,13 @@ window.SITE_GAMES = {
         "note": "Campaign completed, 12/18 Steam achievements"
       },
       "kind": "console",
-      "hours": 15
+      "hours": 15,
+      "rank": 66,
+      "tags": [
+        "duanyou",
+        "moni",
+        "celue"
+      ]
     },
     {
       "zh": {
@@ -295,7 +565,13 @@ window.SITE_GAMES = {
         "note": "Cleared on multiple routes"
       },
       "kind": "console",
-      "hours": 14
+      "hours": 14,
+      "rank": 67,
+      "tags": [
+        "duanyou",
+        "moni",
+        "celue"
+      ]
     },
     {
       "zh": {
@@ -309,21 +585,33 @@ window.SITE_GAMES = {
         "note": "Built out a large city"
       },
       "kind": "console",
-      "hours": 35
+      "hours": 35,
+      "rank": 43,
+      "tags": [
+        "duanyou",
+        "moni"
+      ]
     },
     {
       "zh": {
-        "name": "超级马里奥奥德赛",
+        "name": "超级马里奥惊奇",
         "time": "28h",
         "note": "全关卡满星"
       },
       "en": {
-        "name": "Super Mario Odyssey",
+        "name": "Super Mario Bros. Wonder",
         "time": "28h",
         "note": "Every level fully starred"
       },
       "kind": "console",
-      "hours": 28
+      "hours": 28,
+      "rank": 38,
+      "tags": [
+        "duanyou",
+        "pingtai",
+        "hezuo",
+        "paidui"
+      ]
     },
     {
       "zh": {
@@ -337,21 +625,34 @@ window.SITE_GAMES = {
         "note": "All areas unlocked, main story completed"
       },
       "kind": "console",
-      "hours": 63
+      "hours": 63,
+      "rank": 24,
+      "tags": [
+        "duanyou",
+        "pingtai",
+        "dongzuo",
+        "duli"
+      ]
     },
     {
       "zh": {
-        "name": "马里奥赛车",
+        "name": "超级马里奥奥德赛",
         "time": "22h",
         "note": "主线通关，收集度 90%"
       },
       "en": {
-        "name": "Mario Kart",
+        "name": "Super Mario Odyssey",
         "time": "22h",
-        "note": "Main cups cleared, 90% collection"
+        "note": "Main story completed, 90% collection"
       },
       "kind": "console",
-      "hours": 22
+      "hours": 22,
+      "rank": 20,
+      "tags": [
+        "duanyou",
+        "pingtai",
+        "daishijie"
+      ]
     },
     {
       "zh": {
@@ -365,7 +666,14 @@ window.SITE_GAMES = {
         "note": "Main story, side content and DLC completed"
       },
       "kind": "console",
-      "hours": 112
+      "hours": 112,
+      "rank": 22,
+      "tags": [
+        "duanyou",
+        "daishijie",
+        "xushi",
+        "dongzuo"
+      ]
     },
     {
       "zh": {
@@ -379,7 +687,13 @@ window.SITE_GAMES = {
         "note": "First playthrough completed"
       },
       "kind": "console",
-      "hours": 45
+      "hours": 45,
+      "rank": 72,
+      "tags": [
+        "duanyou",
+        "dongzuo",
+        "jiezou"
+      ]
     },
     {
       "zh": {
@@ -393,7 +707,12 @@ window.SITE_GAMES = {
         "note": "First playthrough completed"
       },
       "kind": "console",
-      "hours": 48
+      "hours": 48,
+      "rank": 17,
+      "tags": [
+        "duanyou",
+        "dongzuo"
+      ]
     },
     {
       "zh": {
@@ -407,7 +726,12 @@ window.SITE_GAMES = {
         "note": "Main story completed"
       },
       "kind": "console",
-      "hours": 38
+      "hours": 38,
+      "rank": 73,
+      "tags": [
+        "duanyou",
+        "dongzuo"
+      ]
     },
     {
       "zh": {
@@ -421,7 +745,12 @@ window.SITE_GAMES = {
         "note": "First playthrough completed"
       },
       "kind": "console",
-      "hours": 45
+      "hours": 45,
+      "rank": 37,
+      "tags": [
+        "duanyou",
+        "dongzuo"
+      ]
     },
     {
       "zh": {
@@ -435,7 +764,14 @@ window.SITE_GAMES = {
         "note": "Completed several times"
       },
       "kind": "console",
-      "hours": 32
+      "hours": 32,
+      "rank": 32,
+      "tags": [
+        "duanyou",
+        "hezuo",
+        "pingtai",
+        "jiemi"
+      ]
     },
     {
       "zh": {
@@ -449,7 +785,14 @@ window.SITE_GAMES = {
         "note": "Completed on one side"
       },
       "kind": "console",
-      "hours": 14
+      "hours": 14,
+      "rank": 71,
+      "tags": [
+        "duanyou",
+        "hezuo",
+        "dongzuo",
+        "pingtai"
+      ]
     },
     {
       "zh": {
@@ -463,7 +806,13 @@ window.SITE_GAMES = {
         "note": "Completed on one side"
       },
       "kind": "console",
-      "hours": 14
+      "hours": 14,
+      "rank": 70,
+      "tags": [
+        "duanyou",
+        "hezuo",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -477,7 +826,14 @@ window.SITE_GAMES = {
         "note": "Cleared at 32 heat"
       },
       "kind": "console",
-      "hours": 104
+      "hours": 104,
+      "rank": 25,
+      "tags": [
+        "duanyou",
+        "rougu",
+        "dongzuo",
+        "duli"
+      ]
     },
     {
       "zh": {
@@ -491,7 +847,14 @@ window.SITE_GAMES = {
         "note": "Cleared at 16 heat"
       },
       "kind": "console",
-      "hours": 54
+      "hours": 54,
+      "rank": 65,
+      "tags": [
+        "duanyou",
+        "rougu",
+        "dongzuo",
+        "duli"
+      ]
     },
     {
       "zh": {
@@ -505,7 +868,14 @@ window.SITE_GAMES = {
         "note": "Cleared with several characters"
       },
       "kind": "console",
-      "hours": 30
+      "hours": 30,
+      "rank": 75,
+      "tags": [
+        "duanyou",
+        "rougu",
+        "shooter",
+        "duli"
+      ]
     },
     {
       "zh": {
@@ -519,7 +889,15 @@ window.SITE_GAMES = {
         "note": "All branch routes cleared, 68 Steam achievements"
       },
       "kind": "console",
-      "hours": 46
+      "hours": 46,
+      "rank": 45,
+      "tags": [
+        "duanyou",
+        "rougu",
+        "dongzuo",
+        "pingtai",
+        "duli"
+      ]
     },
     {
       "zh": {
@@ -533,7 +911,14 @@ window.SITE_GAMES = {
         "note": "Cleared on multiple stages, 57 Steam achievements"
       },
       "kind": "console",
-      "hours": 25
+      "hours": 25,
+      "rank": 63,
+      "tags": [
+        "duanyou",
+        "rougu",
+        "shooter",
+        "hezuo"
+      ]
     },
     {
       "zh": {
@@ -547,7 +932,12 @@ window.SITE_GAMES = {
         "note": "Reached the third finale"
       },
       "kind": "console",
-      "hours": 21
+      "hours": 21,
+      "rank": 64,
+      "tags": [
+        "duanyou",
+        "jingsu"
+      ]
     },
     {
       "zh": {
@@ -561,7 +951,13 @@ window.SITE_GAMES = {
         "note": "All regional events unlocked, reputation level 25"
       },
       "kind": "console",
-      "hours": 33
+      "hours": 33,
+      "rank": 80,
+      "tags": [
+        "duanyou",
+        "jingsu",
+        "daishijie"
+      ]
     },
     {
       "zh": {
@@ -575,7 +971,12 @@ window.SITE_GAMES = {
         "note": "Main adventure completed"
       },
       "kind": "console",
-      "hours": 18
+      "hours": 18,
+      "rank": 68,
+      "tags": [
+        "duanyou",
+        "jiezou"
+      ]
     },
     {
       "zh": {
@@ -589,7 +990,13 @@ window.SITE_GAMES = {
         "note": "80+ songs unlocked, 43% of achievements"
       },
       "kind": "console",
-      "hours": 28
+      "hours": 28,
+      "rank": 69,
+      "tags": [
+        "duanyou",
+        "jiezou",
+        "paidui"
+      ]
     },
     {
       "zh": {
@@ -602,21 +1009,34 @@ window.SITE_GAMES = {
         "time": "since S2",
         "note": "Since Season 2 — ¥10k+ spent, 400+ skins, Platinum"
       },
-      "kind": "console"
+      "kind": "console",
+      "rank": 8,
+      "tags": [
+        "duanyou",
+        "jingji",
+        "changxian",
+        "hezuo"
+      ]
     },
     {
       "zh": {
         "name": "街霸 6",
         "time": "53h",
-        "note": "大世界主线通关，黄金分段"
+        "note": "大世界主线通关，黄金分段桑吉尔夫"
       },
       "en": {
         "name": "Street Fighter 6",
         "time": "53h",
-        "note": "World Tour completed, Gold rank"
+        "note": "World Tour completed, Gold rank on Zangief"
       },
       "kind": "console",
-      "hours": 53
+      "hours": 53,
+      "rank": 36,
+      "tags": [
+        "duanyou",
+        "gedou",
+        "jingji"
+      ]
     },
     {
       "zh": {
@@ -630,7 +1050,13 @@ window.SITE_GAMES = {
         "note": "70%+ of the campaign completed"
       },
       "kind": "console",
-      "hours": 12
+      "hours": 12,
+      "rank": 59,
+      "tags": [
+        "duanyou",
+        "hezuo",
+        "paidui"
+      ]
     },
     {
       "zh": {
@@ -644,21 +1070,34 @@ window.SITE_GAMES = {
         "note": "Cleared on multiple maps"
       },
       "kind": "console",
-      "hours": 14
+      "hours": 14,
+      "rank": 58,
+      "tags": [
+        "duanyou",
+        "hezuo",
+        "paidui",
+        "jiemi"
+      ]
     },
     {
       "zh": {
         "name": "糖豆人",
-        "time": "20h",
-        "note": "成就解锁率 64%"
+        "time": "18h",
+        "note": "主线关卡通关"
       },
       "en": {
         "name": "Fall Guys",
-        "time": "20h",
-        "note": "64% of achievements unlocked"
+        "time": "18h",
+        "note": "Campaign levels cleared"
       },
       "kind": "console",
-      "hours": 20
+      "hours": 18,
+      "rank": 44,
+      "tags": [
+        "duanyou",
+        "paidui",
+        "jingji"
+      ]
     },
     {
       "zh": {
@@ -672,7 +1111,13 @@ window.SITE_GAMES = {
         "note": "Campaign completed"
       },
       "kind": "console",
-      "hours": 18
+      "hours": 18,
+      "rank": 79,
+      "tags": [
+        "duanyou",
+        "hezuo",
+        "paidui"
+      ]
     },
     {
       "zh": {
@@ -686,7 +1131,13 @@ window.SITE_GAMES = {
         "note": "All levels unlocked"
       },
       "kind": "console",
-      "hours": 14
+      "hours": 14,
+      "rank": 78,
+      "tags": [
+        "duanyou",
+        "moni",
+        "paidui"
+      ]
     },
     {
       "zh": {
@@ -700,7 +1151,13 @@ window.SITE_GAMES = {
         "note": "50% of achievements unlocked"
       },
       "kind": "console",
-      "hours": 17
+      "hours": 17,
+      "rank": 76,
+      "tags": [
+        "duanyou",
+        "paidui",
+        "hezuo"
+      ]
     },
     {
       "zh": {
@@ -714,21 +1171,33 @@ window.SITE_GAMES = {
         "note": "Main story completed, 80%+ of side content"
       },
       "kind": "console",
-      "hours": 48
+      "hours": 48,
+      "rank": 39,
+      "tags": [
+        "duanyou",
+        "rpg",
+        "xushi"
+      ]
     },
     {
       "zh": {
         "name": "Portal 传送门 1 & 2",
         "time": "52h",
-        "note": "主线任务通关"
+        "note": "主线多周目通关"
       },
       "en": {
         "name": "Portal 1 & 2",
         "time": "52h",
-        "note": "Both campaigns completed"
+        "note": "Both campaigns cleared on multiple playthroughs"
       },
       "kind": "console",
-      "hours": 52
+      "hours": 52,
+      "rank": 33,
+      "tags": [
+        "duanyou",
+        "jiemi",
+        "hezuo"
+      ]
     },
     {
       "zh": {
@@ -742,7 +1211,13 @@ window.SITE_GAMES = {
         "note": "Campaign completed"
       },
       "kind": "console",
-      "hours": 21
+      "hours": 21,
+      "rank": 35,
+      "tags": [
+        "duanyou",
+        "shooter",
+        "dongzuo"
+      ]
     },
     {
       "zh": {
@@ -756,7 +1231,13 @@ window.SITE_GAMES = {
         "note": "Main game and DLC cleared on Hard"
       },
       "kind": "console",
-      "hours": 33
+      "hours": 33,
+      "rank": 34,
+      "tags": [
+        "duanyou",
+        "shooter",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -770,7 +1251,14 @@ window.SITE_GAMES = {
         "note": "Main story, side quests and DLC completed"
       },
       "kind": "console",
-      "hours": 112
+      "hours": 112,
+      "rank": 10,
+      "tags": [
+        "duanyou",
+        "daishijie",
+        "rpg",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -784,7 +1272,15 @@ window.SITE_GAMES = {
         "note": "Main story and Phantom Liberty completed"
       },
       "kind": "console",
-      "hours": 92
+      "hours": 92,
+      "rank": 9,
+      "tags": [
+        "duanyou",
+        "daishijie",
+        "rpg",
+        "shooter",
+        "xushi"
+      ]
     },
     {
       "zh": {
@@ -798,69 +1294,278 @@ window.SITE_GAMES = {
         "note": "¥1k+ spent, Saint rank"
       },
       "kind": "console",
-      "hours": 230
+      "hours": 230,
+      "rank": 77,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "huihe",
+        "jingji",
+        "changxian"
+      ]
+    },
+    {
+      "zh": {
+        "name": "星之低语",
+        "time": "5h",
+        "note": ""
+      },
+      "en": {
+        "name": "Whispers from the Star",
+        "time": "5h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 5,
+      "tags": [
+        "duanyou",
+        "shouyou",
+        "erciyuan",
+        "xushi"
+      ],
+      "rank": 5
+    },
+    {
+      "zh": {
+        "name": "B-side: Olivia Lin",
+        "time": "33h",
+        "note": ""
+      },
+      "en": {
+        "name": "B-side: Olivia Lin",
+        "time": "33h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 33,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "xushi"
+      ],
+      "rank": 6
+    },
+    {
+      "zh": {
+        "name": "光与影：33 号远征队",
+        "time": "13h",
+        "note": ""
+      },
+      "en": {
+        "name": "Clair Obscur: Expedition 33",
+        "time": "13h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 13,
+      "tags": [
+        "duanyou",
+        "huihe",
+        "rpg",
+        "xushi"
+      ],
+      "rank": 14
+    },
+    {
+      "zh": {
+        "name": "茶杯头",
+        "time": "17h",
+        "note": ""
+      },
+      "en": {
+        "name": "Cuphead",
+        "time": "17h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 17,
+      "tags": [
+        "duanyou",
+        "dongzuo",
+        "shooter",
+        "hezuo",
+        "duli"
+      ],
+      "rank": 21
+    },
+    {
+      "zh": {
+        "name": "火山的女儿",
+        "time": "10h",
+        "note": ""
+      },
+      "en": {
+        "name": "Volcano Princess",
+        "time": "10h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 10,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "moni",
+        "xushi"
+      ],
+      "rank": 81
+    },
+    {
+      "zh": {
+        "name": "苏丹的游戏",
+        "time": "15h",
+        "note": ""
+      },
+      "en": {
+        "name": "Sultan's Game",
+        "time": "15h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 15,
+      "tags": [
+        "duanyou",
+        "kapai",
+        "xushi",
+        "celue",
+        "duli"
+      ],
+      "rank": 57
+    },
+    {
+      "zh": {
+        "name": "逆转裁判 & 检察官系列",
+        "time": "100h",
+        "note": ""
+      },
+      "en": {
+        "name": "Ace Attorney & Investigations series",
+        "time": "100h",
+        "note": ""
+      },
+      "kind": "console",
+      "hours": 100,
+      "tags": [
+        "duanyou",
+        "erciyuan",
+        "jiemi",
+        "xushi"
+      ],
+      "rank": 26
+    },
+    {
+      "zh": {
+        "name": "杀戮尖塔 2",
+        "time": "150h",
+        "note": "全职业 a10 通关"
+      },
+      "en": {
+        "name": "Slay the Spire 2",
+        "time": "150h",
+        "note": "Cleared A10 with every character"
+      },
+      "kind": "console",
+      "hours": 150,
+      "tags": [
+        "duanyou",
+        "kapai",
+        "rougu",
+        "huihe",
+        "celue",
+        "duli"
+      ],
+      "rank": 41
     }
   ],
   "mobile": [
     {
       "zh": {
         "name": "崩坏：星穹铁道",
-        "time": "2 年",
-        "note": "付费 7k+，全勤 60 级，成就 1003，曾参与封闭测试"
+        "time": "3 年+",
+        "note": "付费 10k+，全勤 60 级，两次美术集，曾参与封闭测试"
       },
       "en": {
         "name": "Honkai: Star Rail",
-        "time": "2 yrs",
-        "note": "2 years — ¥7k+ spent, level 60, 1003 achievements, took part in closed beta"
+        "time": "3+ yrs",
+        "note": "3+ years — ¥10k+ spent, daily-active at level 60, two art books, took part in closed beta"
       },
       "kind": "mobile",
-      "months": 24,
-      "anime": true
+      "months": 36,
+      "rank": 1,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "huihe",
+        "rpg",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
         "name": "绝区零",
-        "time": "3 月",
-        "note": "付费 1k，54 级，满星试炼，爬塔 50 层"
+        "time": "1 年+",
+        "note": "付费 3k，59 级，绝境 1 星"
       },
       "en": {
         "name": "Zenless Zone Zero",
-        "time": "3 mo",
-        "note": "3 months — ¥1k spent, level 54, all trials starred, floor 50"
+        "time": "1+ yr",
+        "note": "1+ year — ¥3k spent, level 59, Hollow Zero tier 1"
       },
       "kind": "mobile",
-      "months": 3,
-      "anime": true
+      "months": 12,
+      "rank": 3,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "dongzuo",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
         "name": "原神",
-        "time": "3 年",
-        "note": "付费 10k，60 级，成就 1100+，地图探索度 96%"
+        "time": "4 年+",
+        "note": "付费 10k，60 级，成就 1100+，纳塔前地图探索度 96%"
       },
       "en": {
         "name": "Genshin Impact",
-        "time": "3 yrs",
-        "note": "3 years — ¥10k spent, AR 60, 1100+ achievements, 96% map exploration"
+        "time": "4+ yrs",
+        "note": "4+ years — ¥10k spent, AR 60, 1100+ achievements, 96% map exploration up to Natlan"
       },
       "kind": "mobile",
-      "months": 36,
-      "anime": true
+      "months": 48,
+      "rank": 2,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "daishijie",
+        "dongzuo",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
         "name": "崩坏 3",
-        "time": "1 年",
+        "time": "1 年+",
         "note": "付费 5k，82 级，主线全通"
       },
       "en": {
         "name": "Honkai Impact 3rd",
-        "time": "1 yr",
-        "note": "1 year — ¥5k spent, level 82, full main story"
+        "time": "1+ yr",
+        "note": "1+ year — ¥5k spent, level 82, full main story"
       },
       "kind": "mobile",
       "months": 12,
-      "anime": true
+      "rank": 4,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "dongzuo",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -875,22 +1580,38 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 12,
-      "anime": true
+      "rank": 62,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "huihe",
+        "rpg",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
         "name": "鸣潮",
-        "time": "3 月",
-        "note": "付费 500，74 级，主线全通，支线完成度 80%"
+        "time": "1 月",
+        "note": "付费 500"
       },
       "en": {
         "name": "Wuthering Waves",
-        "time": "3 mo",
-        "note": "3 months — ¥500 spent, level 74, full main story, 80% side content"
+        "time": "1 mo",
+        "note": "1 month — ¥500 spent"
       },
       "kind": "mobile",
-      "months": 3,
-      "anime": true
+      "months": 1,
+      "rank": 46,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "daishijie",
+        "dongzuo",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -905,7 +1626,15 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 36,
-      "anime": true
+      "rank": 30,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "celue",
+        "rougu",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -920,22 +1649,37 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 12,
-      "anime": true
+      "rank": 83,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "shooter",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
         "name": "FGO",
-        "time": "6 年",
+        "time": "8 年",
         "note": "付费 10k，150 级，主线全通"
       },
       "en": {
         "name": "Fate/Grand Order",
-        "time": "6 yrs",
-        "note": "6 years — ¥10k spent, level 150, full main story"
+        "time": "8 yrs",
+        "note": "8 years — ¥10k spent, level 150, full main story"
       },
       "kind": "mobile",
-      "months": 72,
-      "anime": true
+      "months": 96,
+      "rank": 31,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "huihe",
+        "kapai",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -950,7 +1694,14 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 36,
-      "anime": true
+      "rank": 50,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "huihe",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -965,7 +1716,14 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 6,
-      "anime": true
+      "rank": 84,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "celue",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -980,7 +1738,14 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 3,
-      "anime": true
+      "rank": 61,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "shooter",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -995,37 +1760,37 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 6,
-      "anime": true
+      "rank": 86,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "rpg",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
         "name": "少女前线：云图计划",
-        "time": "2 年",
+        "time": "3 月",
         "note": "付费 200，61 级，主线第九章通关"
       },
       "en": {
         "name": "Girls' Frontline: Neural Cloud",
-        "time": "2 yrs",
-        "note": "2 years — ¥200 spent, level 61, chapter 9 cleared"
+        "time": "3 mo",
+        "note": "3 months — ¥200 spent, level 61, chapter 9 cleared"
       },
       "kind": "mobile",
-      "months": 24,
-      "anime": true
-    },
-    {
-      "zh": {
-        "name": "幻塔",
-        "time": "6 月",
-        "note": "付费 800，76 级，深渊 50 层"
-      },
-      "en": {
-        "name": "Tower of Fantasy",
-        "time": "6 mo",
-        "note": "6 months — ¥800 spent, level 76, abyss floor 50"
-      },
-      "kind": "mobile",
-      "months": 6,
-      "anime": true
+      "months": 3,
+      "rank": 85,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "rougu",
+        "celue",
+        "choka",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -1040,7 +1805,14 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 2,
-      "anime": true
+      "rank": 52,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "jingji",
+        "hezuo",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -1055,7 +1827,14 @@ window.SITE_GAMES = {
       },
       "kind": "mobile",
       "months": 3,
-      "anime": true
+      "rank": 88,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "kapai",
+        "choka",
+        "jingji"
+      ]
     },
     {
       "zh": {
@@ -1069,7 +1848,15 @@ window.SITE_GAMES = {
         "note": "3 months — ¥300 spent, level 450, 40M power"
       },
       "kind": "mobile",
-      "months": 3
+      "months": 3,
+      "rank": 82,
+      "tags": [
+        "shouyou",
+        "choka",
+        "changxian",
+        "celue",
+        "daishijie"
+      ]
     },
     {
       "zh": {
@@ -1083,7 +1870,15 @@ window.SITE_GAMES = {
         "note": "1+ year — ¥1k+ spent, Master rank"
       },
       "kind": "mobile",
-      "months": 12
+      "months": 12,
+      "rank": 53,
+      "tags": [
+        "shouyou",
+        "zizouqi",
+        "jingji",
+        "celue",
+        "changxian"
+      ]
     },
     {
       "zh": {
@@ -1097,7 +1892,14 @@ window.SITE_GAMES = {
         "note": "3+ years — ¥5k spent, Glory rank"
       },
       "kind": "mobile",
-      "months": 36
+      "months": 36,
+      "rank": 12,
+      "tags": [
+        "shouyou",
+        "jingji",
+        "changxian",
+        "hezuo"
+      ]
     },
     {
       "zh": {
@@ -1111,7 +1913,105 @@ window.SITE_GAMES = {
         "note": "3 months — ¥1k+ spent, level 58, year 3 cleared, Epic Duellist"
       },
       "kind": "mobile",
-      "months": 3
+      "months": 3,
+      "rank": 60,
+      "tags": [
+        "shouyou",
+        "kapai",
+        "choka",
+        "jingji",
+        "changxian"
+      ]
+    },
+    {
+      "zh": {
+        "name": "异环",
+        "time": "2 月",
+        "note": "付费 300，50 级"
+      },
+      "en": {
+        "name": "Neverness to Everness",
+        "time": "2 mo",
+        "note": "2 months — ¥300 spent, level 50"
+      },
+      "kind": "mobile",
+      "months": 2,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "daishijie",
+        "dongzuo",
+        "choka",
+        "changxian"
+      ],
+      "rank": 47
+    },
+    {
+      "zh": {
+        "name": "重返未来：1999",
+        "time": "1 月",
+        "note": "付费 100"
+      },
+      "en": {
+        "name": "Reverse: 1999",
+        "time": "1 mo",
+        "note": "1 month — ¥100 spent"
+      },
+      "kind": "mobile",
+      "months": 1,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "huihe",
+        "kapai",
+        "choka",
+        "changxian",
+        "celue"
+      ],
+      "rank": 51
+    },
+    {
+      "zh": {
+        "name": "洛克王国世界",
+        "time": "2 月",
+        "note": "付费 500，PvP S1 / S2 大师"
+      },
+      "en": {
+        "name": "Roco Kingdom: World",
+        "time": "2 mo",
+        "note": "2 months — ¥500 spent, PvP Master in S1 and S2"
+      },
+      "kind": "mobile",
+      "months": 2,
+      "tags": [
+        "shouyou",
+        "huihe",
+        "daishijie",
+        "jingji",
+        "changxian"
+      ],
+      "rank": 74
+    },
+    {
+      "zh": {
+        "name": "卡厄思梦境",
+        "time": "2 月",
+        "note": "付费 300，53 级，满命海德玛丽"
+      },
+      "en": {
+        "name": "Chaos Dreamscape (卡厄思梦境)",
+        "time": "2 mo",
+        "note": "2 months — ¥300 spent, level 53, Hedvig at max constellation"
+      },
+      "kind": "mobile",
+      "months": 2,
+      "tags": [
+        "shouyou",
+        "erciyuan",
+        "choka",
+        "changxian"
+      ],
+      "rank": 87
     }
   ]
 };
