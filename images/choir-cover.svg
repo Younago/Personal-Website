@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Fingertip Choir — four voice quadrants lit by two conducting hands">
+  <!--
+    Cover art for the Fingertip Choir card. Abstract, like the other AI
+    covers: what survives at 240px wide is the layout the demo is actually
+    built on — the screen split into four quadrants, one per voice part, with
+    two glowing hands cueing them.
+
+    Dark plate rather than the site's light background because the demo
+    itself is dark; the hues are the same four the demo assigns to S/A/T/B
+    (335 / 275 / 200 / 150 in HSL).
+    Note for future edits: XML comments cannot contain a double hyphen.
+  -->
+  <defs>
+    <radialGradient id="glowS" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f27ba6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#f27ba6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowT" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5fb6f2" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#5fb6f2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="480" height="360" fill="#070a14"/>
+
+  <!-- quadrant hairlines: the whole interaction model in two strokes -->
+  <line x1="240" y1="28" x2="240" y2="332" stroke="#ffffff" stroke-opacity="0.12"/>
+  <line x1="40" y1="180" x2="440" y2="180" stroke="#ffffff" stroke-opacity="0.12"/>
+
+  <!-- the two cued voices glow; the two waiting ones do not -->
+  <circle cx="336" cy="112" r="104" fill="url(#glowS)"/>
+  <circle cx="144" cy="112" r="92" fill="url(#glowT)"/>
+
+  <!-- voice labels and level bars. Filled bar = singing, empty = waiting. -->
+  <g font-family="IBM Plex Mono, SFMono-Regular, Consolas, monospace" font-size="13" letter-spacing="1.4" text-anchor="middle">
+    <text x="144" y="100" fill="#a8d8f7">T</text>
+    <text x="336" y="100" fill="#f7b9cf">S</text>
+    <text x="144" y="268" fill="#8fe0b4" opacity="0.5">B</text>
+    <text x="336" y="268" fill="#c9b4f0" opacity="0.5">A</text>
+  </g>
+  <g>
+    <rect x="102" y="112" width="84" height="6" fill="#5fb6f2" opacity="0.22"/>
+    <rect x="102" y="112" width="66" height="6" fill="#7cc6f5"/>
+    <rect x="294" y="112" width="84" height="6" fill="#f27ba6" opacity="0.22"/>
+    <rect x="294" y="112" width="78" height="6" fill="#f58fb5"/>
+    <rect x="102" y="280" width="84" height="6" fill="#3fd694" opacity="0.18"/>
+    <rect x="294" y="280" width="84" height="6" fill="#a98cf0" opacity="0.18"/>
+  </g>
+
+  <!-- the two hands: open hand cueing a part in, fist cutting one off -->
+  <g>
+    <circle cx="336" cy="150" r="26" fill="#f7b9cf" opacity="0.28"/>
+    <circle cx="336" cy="150" r="13" fill="#ffe3ee"/>
+    <g stroke="#ffe3ee" stroke-width="3" stroke-linecap="round" opacity="0.9">
+      <line x1="336" y1="132" x2="336" y2="118"/>
+      <line x1="322" y1="138" x2="312" y2="127"/>
+      <line x1="350" y1="138" x2="360" y2="127"/>
+      <line x1="317" y1="152" x2="303" y2="152"/>
+      <line x1="355" y1="152" x2="369" y2="152"/>
+    </g>
+  </g>
+  <circle cx="144" cy="152" r="14" fill="#bfe4fb"/>
+
+  <!-- the beat line along the bottom: a transport that keeps running once cued -->
+  <line x1="96" y1="322" x2="384" y2="322" stroke="#ffffff" stroke-opacity="0.16" stroke-width="3"/>
+  <circle cx="212" cy="322" r="6" fill="#ffd36e"/>
+
+  <text x="56" y="52" font-family="IBM Plex Mono, SFMono-Regular, Consolas, monospace"
+        font-size="11" letter-spacing="1.6" fill="#8a90b6">HANDS IN</text>
+  <text x="424" y="52" text-anchor="end" font-family="IBM Plex Mono, SFMono-Regular, Consolas, monospace"
+        font-size="11" letter-spacing="1.6" fill="#8a90b6">4 VOICES OUT</text>
+</svg>

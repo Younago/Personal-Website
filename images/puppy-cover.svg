@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Puppy in the Rose Garden — a small white dog following a cursor across a rose field">
+  <!--
+    Cover art for the Puppy in the Rose Garden card. Drawn in the demo's own
+    palette (field #86a556, cream roses, off-white dog) so the thumbnail and
+    the running demo read as the same thing.
+
+    What survives at 240px wide: a cursor, a dotted trail, and a small white
+    dog at the end of it. That is the entire interaction, so that is all this
+    draws — no attempt to reproduce the demo's procedural rose field.
+    Note for future edits: XML comments cannot contain a double hyphen.
+  -->
+  <rect width="480" height="360" fill="#86a556"/>
+
+  <!-- crayon grass strokes, thinned down from the demo's 46 to a handful -->
+  <g stroke-linecap="round" fill="none">
+    <path d="M64 300 q 12 -18 26 -34" stroke="rgba(106,138,58,.55)" stroke-width="3"/>
+    <path d="M118 330 q -10 -16 -18 -34" stroke="rgba(196,150,96,.45)" stroke-width="3"/>
+    <path d="M392 306 q 14 -16 22 -36" stroke="rgba(106,138,58,.55)" stroke-width="3"/>
+    <path d="M262 66 q -12 -14 -16 -32" stroke="rgba(196,150,96,.45)" stroke-width="3"/>
+    <path d="M172 92 q 12 -14 16 -30" stroke="rgba(106,138,58,.5)" stroke-width="3"/>
+  </g>
+
+  <!-- cream roses: flat disc plus the spiral that reads as petals -->
+  <g stroke-linecap="round" fill="none">
+    <circle cx="96" cy="108" r="34" fill="#fdf6dc" stroke="none"/>
+    <path d="M120 108 a24 24 0 1 1 -24 -24" stroke="rgba(196,158,96,.55)" stroke-width="3"/>
+    <path d="M108 108 a12 12 0 1 0 -12 12" stroke="rgba(196,158,96,.55)" stroke-width="3"/>
+
+    <circle cx="400" cy="132" r="27" fill="#fffbe9" stroke="none"/>
+    <path d="M419 132 a19 19 0 1 1 -19 -19" stroke="rgba(196,158,96,.5)" stroke-width="2.6"/>
+    <path d="M410 132 a10 10 0 1 0 -10 10" stroke="rgba(196,158,96,.5)" stroke-width="2.6"/>
+
+    <circle cx="196" cy="298" r="30" fill="#fbf1cf" stroke="none"/>
+    <path d="M217 298 a21 21 0 1 1 -21 -21" stroke="rgba(196,158,96,.5)" stroke-width="2.8"/>
+    <path d="M207 298 a11 11 0 1 0 -11 11" stroke="rgba(196,158,96,.5)" stroke-width="2.8"/>
+  </g>
+
+  <!-- the trail of paw prints, fading behind the dog -->
+  <g fill="rgba(96,122,56,.34)">
+    <ellipse cx="352" cy="222" rx="6" ry="8" transform="rotate(18 352 222)" opacity="0.35"/>
+    <ellipse cx="322" cy="214" rx="6" ry="8" transform="rotate(-12 322 214)" opacity="0.5"/>
+    <ellipse cx="292" cy="220" rx="6" ry="8" transform="rotate(22 292 220)" opacity="0.7"/>
+    <ellipse cx="264" cy="212" rx="6" ry="8" transform="rotate(-8 264 212)"/>
+  </g>
+
+  <!-- the dog: one soft blob for body and head, exactly as the demo draws it -->
+  <ellipse cx="196" cy="252" rx="52" ry="9" fill="rgba(52,78,28,.22)"/>
+  <g>
+    <ellipse cx="176" cy="212" rx="15" ry="14" fill="#fffdf6"/>
+    <rect x="164" y="228" width="15" height="26" rx="7.5" fill="#fbf7ec"/>
+    <rect x="212" y="228" width="15" height="26" rx="7.5" fill="#fbf7ec"/>
+    <path d="M196 148
+             c 36 0 60 26 66 56
+             c 8 10 10 24 8 40
+             c -2 26 -32 44 -74 44
+             c -42 0 -72 -18 -74 -44
+             c -2 -16 0 -30 8 -40
+             c 6 -30 30 -56 66 -56 Z"
+          fill="#fffdf6"/>
+    <path d="M150 168 c -4 -20 8 -30 20 -26 c 9 4 9 16 4 25 c -8 -5 -17 -3 -24 1 Z" fill="#fffdf6"/>
+    <path d="M242 168 c 4 -20 -8 -30 -20 -26 c -9 4 -9 16 -4 25 c 8 -5 17 -3 24 1 Z" fill="#fffdf6"/>
+    <ellipse cx="166" cy="218" rx="8" ry="5" fill="#f8d8cf" opacity=".75"/>
+    <ellipse cx="226" cy="218" rx="8" ry="5" fill="#f8d8cf" opacity=".75"/>
+    <circle cx="178" cy="202" r="5" fill="#3b3733"/>
+    <circle cx="214" cy="202" r="5" fill="#3b3733"/>
+    <ellipse cx="196" cy="218" rx="6" ry="4.6" fill="#a4795b"/>
+    <path d="M196 222 v5 M190 229 q6 4 12 0" stroke="#b08a6b" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- the cursor it is running at -->
+  <g transform="translate(300 168)">
+    <path d="M0 0 L0 26 L6 20 L11 30 L16 27 L11 18 L19 17 Z" fill="#fffdf4" stroke="#5c7038" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+
+  <text x="56" y="66" font-family="IBM Plex Mono, SFMono-Regular, Consolas, monospace"
+        font-size="11" letter-spacing="1.6" fill="#fffdf4" opacity="0.85">MOVE THE MOUSE</text>
+</svg>

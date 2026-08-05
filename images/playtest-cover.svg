@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Playtest Feedback Sorter — a pile of raw comments grouped into themed columns">
+  <!--
+    Cover art for the Playtest Feedback Sorter card. Same approach as
+    reffix-cover.svg: abstract rather than a screenshot, because a shrunken
+    UI reads as noise at card size. What survives at 240px wide is the shape
+    of the idea — one undifferentiated pile of comments on top, the same
+    comments sorted into coloured columns underneath.
+
+    The column colours are the same six-colour rotation ai-feedback.js uses
+    for the result cards, so the thumbnail and the live tool agree. Palette
+    otherwise matches the site's own tokens (page background, hairline).
+    Note for future edits: XML comments cannot contain a double hyphen.
+  -->
+  <rect width="480" height="360" fill="#eef0f3"/>
+
+  <!-- panel -->
+  <rect x="56" y="40" width="368" height="280" fill="#ffffff" stroke="#c8ccd3"/>
+
+  <!-- BEFORE: raw pasted feedback, one grey undifferentiated block -->
+  <g fill="#c2c7cf">
+    <rect x="88" y="74"  width="212" height="7" rx="1"/>
+    <rect x="88" y="90"  width="264" height="7" rx="1"/>
+    <rect x="88" y="106" width="168" height="7" rx="1"/>
+    <rect x="88" y="122" width="238" height="7" rx="1"/>
+    <rect x="88" y="138" width="122" height="7" rx="1"/>
+  </g>
+
+  <!-- divider: the sorting step -->
+  <line x1="88" y1="170" x2="392" y2="170" stroke="#c8ccd3" stroke-dasharray="3 5"/>
+  <path d="M240 160 L240 180 M234 174 L240 180 L246 174" fill="none" stroke="#3a5fd9" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- AFTER: the same lines, grouped. Four columns, not a fixed four
+       categories: the model decides how many groups a batch actually needs,
+       so the widths deliberately differ. -->
+  <g>
+    <rect x="88" y="200" width="4" height="88" fill="#c9302c"/>
+    <rect x="100" y="200" width="60" height="9" rx="1" fill="#c9302c" opacity="0.75"/>
+    <rect x="100" y="220" width="64" height="6" rx="1" fill="#c2c7cf"/>
+    <rect x="100" y="234" width="52" height="6" rx="1" fill="#c2c7cf"/>
+    <rect x="100" y="248" width="60" height="6" rx="1" fill="#c2c7cf"/>
+  </g>
+  <g>
+    <rect x="180" y="200" width="4" height="88" fill="#d99a1f"/>
+    <rect x="192" y="200" width="48" height="9" rx="1" fill="#d99a1f" opacity="0.75"/>
+    <rect x="192" y="220" width="58" height="6" rx="1" fill="#c2c7cf"/>
+    <rect x="192" y="234" width="44" height="6" rx="1" fill="#c2c7cf"/>
+  </g>
+  <g>
+    <rect x="272" y="200" width="4" height="88" fill="#3f9155"/>
+    <rect x="284" y="200" width="54" height="9" rx="1" fill="#3f9155" opacity="0.75"/>
+    <rect x="284" y="220" width="62" height="6" rx="1" fill="#c2c7cf"/>
+    <rect x="284" y="234" width="50" height="6" rx="1" fill="#c2c7cf"/>
+    <rect x="284" y="248" width="58" height="6" rx="1" fill="#c2c7cf"/>
+  </g>
+  <g>
+    <rect x="364" y="200" width="4" height="88" fill="#3a5fd9"/>
+    <rect x="376" y="200" width="34" height="9" rx="1" fill="#3a5fd9" opacity="0.75"/>
+    <rect x="376" y="220" width="40" height="6" rx="1" fill="#c2c7cf"/>
+    <rect x="376" y="234" width="30" height="6" rx="1" fill="#c2c7cf"/>
+  </g>
+
+  <text x="56" y="345" font-family="IBM Plex Mono, SFMono-Regular, Consolas, monospace"
+        font-size="11" letter-spacing="1.6" fill="#666e79">RAW FEEDBACK</text>
+  <text x="424" y="345" text-anchor="end" font-family="IBM Plex Mono, SFMono-Regular, Consolas, monospace"
+        font-size="11" letter-spacing="1.6" fill="#666e79">GROUPED BY THEME</text>
+</svg>

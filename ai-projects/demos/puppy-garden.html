@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>玫瑰园里的小白狗 🌼</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    background: #86a556;
+    cursor: default;
+    font-family: "Yuanti SC", "PingFang SC", "Hiragino Sans GB", "Comic Sans MS", sans-serif;
+    -webkit-user-select: none; user-select: none;
+    touch-action: none;
+  }
+  #garden { position: fixed; inset: 0; z-index: 0; }
+  #hint {
+    position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+    background: rgba(255, 253, 244, .88); color: #6f8248;
+    padding: 8px 18px; border-radius: 999px; font-size: 14px;
+    z-index: 30; pointer-events: none; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(60, 80, 30, .18);
+    transition: opacity 1s;
+  }
+  #dogRoot {
+    position: fixed; left: 0; top: 0; z-index: 10;
+    width: 0; height: 0; pointer-events: none;
+    will-change: transform;
+  }
+  #dogRoot svg { overflow: visible; position: absolute; left: -110px; top: -196px; }
+  .part { transform-box: view-box; transform-origin: 110px 110px; }
+  #bubble {
+    position: absolute; left: 40px; top: -230px;
+    background: #fffdf4; color: #d8905f; font-weight: bold;
+    padding: 6px 14px; border-radius: 16px 16px 16px 4px;
+    font-size: 20px; white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(60,80,30,.2);
+    opacity: 0; transform: scale(.4); transition: opacity .18s, transform .18s;
+  }
+  #bubble.show { opacity: 1; transform: scale(1); }
+  .heart, .zz {
+    position: fixed; z-index: 20; pointer-events: none; font-size: 20px;
+    animation: floatUp 1.4s ease-out forwards;
+  }
+  @keyframes floatUp {
+    0%   { opacity: 0; transform: translate(0,0) scale(.5) rotate(-8deg); }
+    15%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--dx,10px),-70px) scale(1.15) rotate(10deg); }
+  }
+  .pawprint {
+    position: fixed; z-index: 1; pointer-events: none;
+    width: 10px; height: 13px; border-radius: 50%;
+    background: rgba(96, 122, 56, .28);
+    animation: pawFade 2.8s linear forwards;
+  }
+  @keyframes pawFade { to { opacity: 0; } }
+</style>
+</head>
+<body>
+<svg id="garden" xmlns="http://www.w3.org/2000/svg"></svg>
+<div id="hint">🌼 移动鼠标，小狗会跟着你跑；点点小狗摸摸它，点点草地叫它过来～</div>
+
+<div id="dogRoot">
+  <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="crayon" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+      </filter>
+    </defs>
+
+    <!-- 影子 -->
+    <ellipse id="shadow" class="part" style="transform-origin: 110px 200px;" cx="110" cy="200" rx="56" ry="10" fill="rgba(52,78,28,.22)"/>
+
+    <g id="jumpG" class="part">
+      <g id="flipG" class="part">
+        <g id="bodyG" class="part" style="transform-origin: 110px 182px;" filter="url(#crayon)">
+
+          <!-- 尾巴（在左后方） -->
+          <g id="tailG" class="part" style="transform-origin: 52px 158px;">
+            <circle cx="38" cy="150" r="16" fill="#fffdf6"/>
+            <circle cx="29" cy="141" r="10" fill="#fffdf6"/>
+          </g>
+
+          <!-- 腿（走路时摆动，坐下时收起） -->
+          <g id="legsG" class="part">
+            <g id="legBL" class="part" style="transform-origin: 74px 168px;">
+              <rect x="66" y="164" width="17" height="34" rx="8.5" fill="#fbf7ec"/></g>
+            <g id="legFL" class="part" style="transform-origin: 138px 168px;">
+              <rect x="130" y="164" width="17" height="34" rx="8.5" fill="#fbf7ec"/></g>
+            <g id="legBR" class="part" style="transform-origin: 90px 168px;">
+              <rect x="82" y="166" width="17" height="34" rx="8.5" fill="#fffdf6"/></g>
+            <g id="legFR" class="part" style="transform-origin: 152px 168px;">
+              <rect x="144" y="166" width="17" height="34" rx="8.5" fill="#fffdf6"/></g>
+          </g>
+
+          <!-- 身体+头：一整个大毛团 -->
+          <g id="blobG" class="part" style="transform-origin: 110px 130px;">
+            <path d="M110 34
+                     C 150 34 176 62 182 96
+                     C 190 106 194 122 192 140
+                     C 190 168 158 188 110 188
+                     C 62 188 30 168 28 140
+                     C 26 122 30 106 38 96
+                     C 44 62 70 34 110 34 Z"
+                  fill="#fffdf6"/>
+            <!-- 淡淡的绒毛阴影 -->
+            <path d="M52 150 C 60 172 90 182 110 182 C 90 186 56 178 46 156 Z" fill="rgba(214,196,160,.35)"/>
+            <path d="M162 66 C 172 78 176 92 176 100 C 170 88 164 76 156 68 Z" fill="rgba(235,222,196,.5)"/>
+
+            <!-- 耳朵 -->
+            <g id="earL" class="part" style="transform-origin: 72px 52px;">
+              <path d="M58 60 C 54 38 66 26 80 30 C 90 34 90 48 84 58 C 76 52 66 54 58 60 Z" fill="#fffdf6"/>
+              <path d="M64 54 C 63 42 70 35 78 37 C 84 40 83 48 79 54 C 74 50 68 51 64 54 Z" fill="#f6ded8"/>
+            </g>
+            <g id="earR" class="part" style="transform-origin: 148px 52px;">
+              <path d="M162 60 C 166 38 154 26 140 30 C 130 34 130 48 136 58 C 144 52 154 54 162 60 Z" fill="#fffdf6"/>
+              <path d="M156 54 C 157 42 150 35 142 37 C 136 40 137 48 141 54 C 146 50 152 51 156 54 Z" fill="#f6ded8"/>
+            </g>
+
+            <!-- 脸 -->
+            <g id="faceG" class="part" style="transform-origin: 110px 110px;">
+              <g id="eyesG" class="part" style="transform-origin: 110px 104px;">
+                <circle id="eyeL" cx="88" cy="104" r="5" fill="#3b3733"/>
+                <circle id="eyeR" cx="132" cy="104" r="5" fill="#3b3733"/>
+                <circle cx="90" cy="102" r="1.6" fill="#fff" opacity=".9"/>
+                <circle cx="134" cy="102" r="1.6" fill="#fff" opacity=".9"/>
+              </g>
+              <!-- 睡觉的眯眯眼 -->
+              <g id="sleepEyes" opacity="0">
+                <path d="M82 104 Q 88 109 94 104" stroke="#3b3733" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+                <path d="M126 104 Q 132 109 138 104" stroke="#3b3733" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+              </g>
+              <!-- 腮红 -->
+              <ellipse cx="74" cy="120" rx="9" ry="5.5" fill="#f8d8cf" opacity=".75"/>
+              <ellipse cx="146" cy="120" rx="9" ry="5.5" fill="#f8d8cf" opacity=".75"/>
+              <!-- 鼻子和嘴 -->
+              <ellipse cx="110" cy="120" rx="6" ry="4.6" fill="#a4795b"/>
+              <path id="mouth" d="M110 124 L 110 129 M 104 131 Q 110 135 116 131"
+                    stroke="#b08a6b" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <!-- 张嘴汪汪 -->
+              <ellipse id="openMouth" cx="110" cy="133" rx="7.5" ry="6" fill="#c76f5e" opacity="0"/>
+              <!-- 小舌头 -->
+              <g id="tongueG" class="part" style="transform-origin: 110px 130px;" opacity="0">
+                <path d="M105 130 Q 110 130 115 130 L 114 141 Q 110 146 106 141 Z" fill="#f5a09a"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div id="bubble">汪!</div>
+</div>
+
+<script>
+(() => {
+  const W = () => innerWidth, H = () => innerHeight;
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  /* ================= 玫瑰花园背景 ================= */
+  const garden = document.getElementById('garden');
+  const NS = 'http://www.w3.org/2000/svg';
+  function drawGarden() {
+    garden.setAttribute('width', W()); garden.setAttribute('height', H());
+    garden.innerHTML = '';
+    const defs = document.createElementNS(NS, 'defs');
+    defs.innerHTML = `<filter id="rough" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>`;
+    garden.appendChild(defs);
+    // 底色上的蜡笔质感草叶
+    for (let i = 0; i < 46; i++) {
+      const p = document.createElementNS(NS, 'path');
+      const x = rand(0, W()), y = rand(0, H()), len = rand(20, 60), a = rand(-0.9, 0.9);
+      p.setAttribute('d', `M${x} ${y} q ${len*a} ${-len*0.5} ${len*a*1.6} ${-len}`);
+      p.setAttribute('stroke', Math.random() < .5 ? 'rgba(106,138,58,.5)' : 'rgba(196,150,96,.4)');
+      p.setAttribute('stroke-width', rand(2, 3.5));
+      p.setAttribute('fill', 'none'); p.setAttribute('stroke-linecap', 'round');
+      p.setAttribute('filter', 'url(#rough)');
+      garden.appendChild(p);
+    }
+    // 奶油色小玫瑰
+    const n = Math.round(W() * H() / 42000);
+    for (let i = 0; i < n; i++) {
+      const g = document.createElementNS(NS, 'g');
+      const x = rand(30, W() - 30), y = rand(30, H() - 30), r = rand(22, 46);
+      const cream = ['#fdf6dc', '#fbf1cf', '#fffbe9'][i % 3];
+      let inner = '';
+      inner += `<circle cx="0" cy="0" r="${r}" fill="${cream}"/>`;
+      // 花瓣螺旋线
+      let d = `M ${r*0.75} 0 `;
+      for (let k = 0; k < 26; k++) {
+        const t = k / 25 * Math.PI * 3.6, rr = r * 0.78 * (1 - k / 30);
+        d += `L ${Math.cos(t)*rr} ${Math.sin(t)*rr} `;
+      }
+      inner += `<path d="${d}" stroke="rgba(196,158,96,.55)" stroke-width="${r*0.07}" fill="none" stroke-linecap="round"/>`;
+      inner += `<path d="M ${-r*0.9} 0 A ${r*0.9} ${r*0.9} 0 0 1 ${r*0.62} ${-r*0.62}" stroke="rgba(255,255,255,.8)" stroke-width="${r*0.16}" fill="none" stroke-linecap="round"/>`;
+      g.innerHTML = inner;
+      g.setAttribute('transform', `translate(${x} ${y}) rotate(${rand(0,360)})`);
+      g.setAttribute('filter', 'url(#rough)');
+      g.setAttribute('opacity', rand(.75, .95));
+      garden.appendChild(g);
+    }
+  }
+  drawGarden();
+  addEventListener('resize', drawGarden);
+
+  /* ================= 元素引用 ================= */
+  const $ = id => document.getElementById(id);
+  const el = {
+    root: $('dogRoot'), jump: $('jumpG'), flip: $('flipG'), body: $('bodyG'),
+    blob: $('blobG'), tail: $('tailG'), legs: $('legsG'),
+    legFL: $('legFL'), legFR: $('legFR'), legBL: $('legBL'), legBR: $('legBR'),
+    earL: $('earL'), earR: $('earR'), face: $('faceG'), eyes: $('eyesG'),
+    sleepEyes: $('sleepEyes'), tongue: $('tongueG'), mouth: $('mouth'),
+    openMouth: $('openMouth'), shadow: $('shadow'), bubble: $('bubble'),
+    hint: $('hint'),
+  };
+
+  /* ================= 状态 ================= */
+  const dog = { x: W()/2, y: H()*0.62, vx: 0, vy: 0 };
+  const mouse = { x: W()/2, y: H()*0.62, vx: 0, vy: 0, lx: W()/2, ly: H()*0.62 };
+  let facing = 1, facingS = 1;          // 朝向与平滑值
+  let pose = 'stand';                   // stand / sit / lie / sleep
+  let action = null;                    // {name,t,dur}
+  let idleTime = 0, nextIdleAct = rand(3, 6);
+  let blinkT = rand(1.5, 4.5), blink = 0;
+  let wag = 0;                          // 摇尾巴强度 0..1
+  let happy = 0, pant = 0;
+  let phase = 0, tGlobal = 0;
+  let wasFar = false;
+  let pawT = 0, hintT = 0;
+  const zzs = [];
+  let zzT = 0;
+
+  function setAction(name, dur) { action = { name, t: 0, dur }; }
+
+  function say(txt, ms = 900) {
+    el.bubble.textContent = txt;
+    el.bubble.classList.add('show');
+    clearTimeout(say._t);
+    say._t = setTimeout(() => el.bubble.classList.remove('show'), ms);
+  }
+
+  function spawnEmoji(char, x, y) {
+    const d = document.createElement('div');
+    d.className = 'heart'; d.textContent = char;
+    d.style.left = (x + rand(-18, 18)) + 'px';
+    d.style.top = (y + rand(-10, 0)) + 'px';
+    d.style.setProperty('--dx', rand(-30, 30) + 'px');
+    document.body.appendChild(d);
+    setTimeout(() => d.remove(), 1500);
+  }
+
+  function pawprint() {
+    const d = document.createElement('div');
+    d.className = 'pawprint';
+    d.style.left = (dog.x + rand(-16, 16)) + 'px';
+    d.style.top = (dog.y - rand(0, 6)) + 'px';
+    d.style.transform = `rotate(${rand(-30,30)}deg)`;
+    document.body.appendChild(d);
+    setTimeout(() => d.remove(), 2900);
+  }
+
+  /* ================= 输入 ================= */
+  function onMove(x, y) { mouse.x = x; mouse.y = clamp(y, 60, H() - 10); }
+  addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
+  addEventListener('touchmove', e => { const t = e.touches[0]; onMove(t.clientX, t.clientY); e.preventDefault(); }, { passive: false });
+
+  addEventListener('pointerdown', e => {
+    const dx = e.clientX - dog.x, dy = e.clientY - (dog.y - 90);
+    onMove(e.clientX, e.clientY);
+    if (Math.hypot(dx, dy) < 95) {              // 摸到小狗：开心转圈摇尾巴
+      wag = 1; happy = 1;
+      setAction('pet', 1.1);
+      for (let i = 0; i < 3; i++)
+        setTimeout(() => spawnEmoji(['💛','🤍','✨'][i % 3], dog.x, dog.y - 150), i * 160);
+      say(['汪汪~ ♪', '呜~ 好舒服', '嘿嘿 ♡'][Math.floor(rand(0,3))], 1100);
+    } else {                                     // 点草地：兴奋地叫一声再跑过去
+      setAction('bark', 0.55);
+      say('汪!', 600);
+    }
+  });
+
+  /* ================= 主循环 ================= */
+  let last = performance.now();
+  function loop(now) {
+    const dt = clamp((now - last) / 1000, 0.001, 0.05);
+    last = now;
+    tGlobal += dt;
+
+    // 鼠标速度
+    mouse.vx = (mouse.x - mouse.lx) / dt; mouse.vy = (mouse.y - mouse.ly) / dt;
+    mouse.lx = mouse.x; mouse.ly = mouse.y;
+    const mouseSpeed = Math.hypot(mouse.vx, mouse.vy);
+
+    const dx = mouse.x - dog.x, dy = mouse.y - dog.y;
+    const dist = Math.hypot(dx, dy);
+    const stopDist = 74;
+    const blocking = action && ['pet','bark','stretch','scratch','shake','tilt'].includes(action.name);
+
+    /* ---- 运动决策 ---- */
+    if (dist > stopDist && !blocking) {
+      if (pose === 'sleep') { setAction('wake', 0.5); pose = 'stand'; say('!', 500); }
+      else pose = 'stand';
+      idleTime = 0;
+      const run = dist > 300;
+      const maxV = run ? 560 : (dist > 140 ? 300 : 170);
+      const ax = dx / dist * maxV, ay = dy / dist * maxV;
+      const k = 1 - Math.exp(-dt * (run ? 4.2 : 3.2));
+      dog.vx += (ax - dog.vx) * k;
+      dog.vy += (ay - dog.vy) * k;
+      wasFar = true;
+    } else {
+      // 减速停下
+      const k = 1 - Math.exp(-dt * 6);
+      dog.vx -= dog.vx * k; dog.vy -= dog.vy * k;
+      if (wasFar && dist <= stopDist) {           // 刚跑到主人身边：开心！
+        wasFar = false; happy = 1; wag = 1;
+        if (Math.random() < 0.45) { setAction('bark', 0.5); say(['汪!','汪汪!','到啦~'][Math.floor(rand(0,3))], 700); }
+        if (Math.random() < 0.3) setAction('tilt', 1.0);
+      }
+      if (!blocking) idleTime += dt;
+    }
+
+    dog.x += dog.vx * dt; dog.y += dog.vy * dt;
+    dog.x = clamp(dog.x, 60, W() - 60); dog.y = clamp(dog.y, 130, H() - 8);
+    const speed = Math.hypot(dog.vx, dog.vy);
+    const moving = speed > 25;
+
+    if (Math.abs(dog.vx) > 30) facing = Math.sign(dog.vx);
+    else if (!moving && Math.abs(dx) > 30 && dist < 300) facing = Math.sign(dx);
+    facingS += (facing - facingS) * (1 - Math.exp(-dt * 10));
+
+    /* ---- 姿势与小动作 ---- */
+    if (!moving && !blocking && !action) {
+      if (idleTime > 20) { if (pose !== 'sleep') { pose = 'sleep'; } }
+      else if (idleTime > 11) pose = 'lie';
+      else if (idleTime > 2.2) pose = 'sit';
+
+      if (pose !== 'sleep' && idleTime > nextIdleAct) {
+        nextIdleAct = idleTime + rand(3, 6.5);
+        const acts = pose === 'lie'
+          ? ['tilt', 'earFlick', 'wagIdle']
+          : ['tilt', 'earFlick', 'scratch', 'stretch', 'wagIdle', 'shake', 'look'];
+        const a = acts[Math.floor(Math.random() * acts.length)];
+        if (a === 'wagIdle') { wag = Math.max(wag, .7); happy = Math.max(happy, .6); }
+        else if (a === 'look') { facing = -facing; }
+        else setAction(a, a === 'stretch' ? 1.4 : a === 'scratch' ? 1.2 : a === 'shake' ? 0.7 : 1.0);
+      }
+    }
+    if (moving) { pose = 'stand'; nextIdleAct = rand(3, 6); }
+
+    // 鼠标在小狗身边快速晃：兴奋摇尾巴
+    if (dist < 190 && mouseSpeed > 900 && !action && pose !== 'sleep') {
+      wag = 1; happy = 1;
+      if (Math.random() < 0.02) { setAction('bark', 0.5); say('汪汪!', 600); }
+    }
+
+    /* ---- 动作计时 ---- */
+    let A = 0, aName = '';
+    if (action) {
+      action.t += dt;
+      A = clamp(action.t / action.dur, 0, 1);
+      aName = action.name;
+      if (A >= 1) action = null;
+    }
+
+    /* ---- 各种参数 ---- */
+    happy = Math.max(0, happy - dt * 0.25);
+    wag = Math.max(happy, wag - dt * 0.5);
+    pant += ((speed > 380 || happy > 0.55 ? 1 : 0) - pant) * (1 - Math.exp(-dt * 3));
+
+    blinkT -= dt;
+    if (blinkT < 0) { blink = 0.14; blinkT = rand(1.8, 5); }
+    blink = Math.max(0, blink - dt);
+
+    phase += dt * (moving ? (7 + speed * 0.035) : 2.2);
+
+    if (moving) { pawT += dt * speed / 90; if (pawT > 1) { pawT = 0; pawprint(); } }
+
+    /* ---- 渲染 ---- */
+    const sin = Math.sin, cos = Math.cos;
+    const gait = sin(phase * 2);
+    const bob = moving ? Math.abs(gait) * (3 + Math.min(speed, 560) * 0.014) : sin(tGlobal * 2.1) * 1.4;
+    const lean = clamp(dog.vx * 0.012, -7, 7) * facingS;
+
+    // 跳跃类动作的离地高度
+    let jumpY = 0, squash = 1;
+    if (aName === 'bark') { jumpY = sin(A * Math.PI) * 46; squash = 1 - sin(A * Math.PI) * 0.08; }
+    if (aName === 'pet')  { jumpY = Math.abs(sin(A * Math.PI * 3)) * 16; }
+    if (aName === 'wake') { jumpY = sin(A * Math.PI) * 24; }
+    if (moving && speed > 420) jumpY += Math.abs(sin(phase)) * 10;   // 飞奔时的小跳步
+
+    // 姿势偏移
+    let poseY = 0, poseSquash = 1, poseRot = 0, legShow = 1;
+    if (pose === 'sit')  { poseY = 10; poseSquash = 0.96; legShow = 0.35; poseRot = -2; }
+    if (pose === 'lie')  { poseY = 22; poseSquash = 0.86; legShow = 0.12; }
+    if (pose === 'sleep'){ poseY = 26; poseSquash = 0.82; legShow = 0.08; }
+    if (!moving && pose === 'stand') legShow = 1;
+
+    // 呼吸
+    const breathe = pose === 'sleep' ? sin(tGlobal * 1.4) * 0.02 : sin(tGlobal * 2.4) * 0.008;
+
+    // 身体旋转（歪头/伸懒腰/甩毛等整体动作）
+    let bodyRot = (moving ? gait * 2.4 : sin(tGlobal * 1.1) * 0.6) + lean;
+    let bodyX = 0;
+    if (aName === 'tilt')    bodyRot += sin(A * Math.PI) * 14;
+    if (aName === 'stretch') { poseRot += sin(A * Math.PI) * 13; poseY += sin(A * Math.PI) * 10; bodyX += sin(A * Math.PI) * -10; }
+    if (aName === 'shake')   bodyRot += sin(A * Math.PI * 7) * 7;
+    if (aName === 'scratch') bodyRot += sin(A * Math.PI * 10) * 3.5;
+    if (aName === 'pet')     bodyRot += sin(A * Math.PI * 6) * 5;
+
+    el.root.style.transform = `translate(${dog.x}px, ${dog.y}px)`;
+    el.jump.style.transform = `translateY(${-jumpY}px)`;
+    el.flip.style.transform = `scaleX(${facingS})`;
+    el.body.style.transform =
+      `translate(${bodyX}px, ${poseY - bob}px) rotate(${bodyRot + poseRot}deg) ` +
+      `scale(${(2 - squash) * (1 + breathe)}, ${squash * poseSquash * (1 - breathe)})`;
+
+    // 影子
+    const shScale = clamp(1 - jumpY / 160, 0.6, 1);
+    el.shadow.style.transform = `scale(${shScale + (moving ? Math.abs(gait)*0.06 : 0)}, ${shScale})`;
+    el.shadow.style.opacity = 0.9 * shScale;
+
+    // 腿
+    const swing = gait * clamp(speed * 0.16, 6, 30);
+    if (moving) {
+      el.legFL.style.transform = `rotate(${ swing}deg)`;
+      el.legBR.style.transform = `rotate(${ swing}deg)`;
+      el.legFR.style.transform = `rotate(${-swing}deg)`;
+      el.legBL.style.transform = `rotate(${-swing}deg)`;
+      el.legs.style.transform = `scaleY(1)`;
+    } else {
+      let scratchKick = 0;
+      if (aName === 'scratch') scratchKick = sin(A * Math.PI * 12) * 18;
+      el.legFL.style.transform = `rotate(0deg)`;
+      el.legFR.style.transform = `rotate(${scratchKick}deg)`;
+      el.legBL.style.transform = `rotate(0deg)`;
+      el.legBR.style.transform = `rotate(0deg)`;
+      el.legs.style.transform = `scaleY(${legShow})`;
+    }
+
+    // 尾巴
+    const wagSpeed = 3 + wag * 15;
+    const wagAmp = 6 + wag * 26 + (moving ? 6 : 0);
+    el.tail.style.transform = `rotate(${sin(tGlobal * wagSpeed) * wagAmp - (moving ? 12 : 0) + (pose==='sleep'?18:0)}deg)`;
+
+    // 耳朵：跑动时向后飘，平时随节奏晃
+    let earR_ = moving ? -clamp(speed*0.03, 4, 14) : sin(tGlobal * 2.2) * 3;
+    let earFlick = 0;
+    if (aName === 'earFlick') earFlick = sin(A * Math.PI * 6) * 14;
+    if (aName === 'tilt') earFlick = sin(A * Math.PI) * 8;
+    el.earL.style.transform = `rotate(${-earR_ - earFlick - bob*0.8}deg)`;
+    el.earR.style.transform = `rotate(${ earR_ + earFlick*0.4 + bob*0.8}deg)`;
+
+    // 脸：看向鼠标方向轻微移动
+    const lookX = clamp(dx * 0.012, -5, 5) * facingS;
+    const lookY = clamp(dy * 0.012, -3, 4);
+    let faceRot = 0;
+    if (aName === 'tilt') faceRot = sin(A * Math.PI) * 6;
+    el.face.style.transform = `translate(${lookX}px, ${lookY}px) rotate(${faceRot}deg)`;
+
+    // 眼睛：眨眼 / 困倦 / 睡觉
+    const sleepy = pose === 'sleep' ? 1 : (pose === 'lie' ? 0.45 : 0);
+    const eyeScale = blink > 0 ? 0.08 : (1 - sleepy * 0.92);
+    el.eyes.style.transform = `scaleY(${Math.max(0.08, eyeScale)})`;
+    el.eyes.style.opacity = pose === 'sleep' ? 0 : 1;
+    el.sleepEyes.setAttribute('opacity', pose === 'sleep' ? 1 : 0);
+
+    // 嘴：汪汪时张嘴，开心/奔跑时吐舌头
+    const barking = aName === 'bark' && A < 0.8;
+    el.openMouth.setAttribute('opacity', barking ? 1 : 0);
+    el.mouth.setAttribute('opacity', barking ? 0 : 1);
+    el.tongue.setAttribute('opacity', pant > 0.4 && !barking ? clamp((pant-0.4)/0.4,0,1) : 0);
+    el.tongue.style.transform = `translateY(${sin(tGlobal * 10) * 1.5}px)`;
+
+    // 睡觉 Zzz
+    if (pose === 'sleep') {
+      zzT -= dt;
+      if (zzT < 0) {
+        zzT = 1.6;
+        const d = document.createElement('div');
+        d.className = 'zz'; d.textContent = '💤';
+        d.style.left = (dog.x + 40 * facingS) + 'px';
+        d.style.top = (dog.y - 150) + 'px';
+        d.style.setProperty('--dx', (20 * facingS) + 'px');
+        document.body.appendChild(d);
+        setTimeout(() => d.remove(), 1500);
+      }
+    }
+
+    // 提示语淡出
+    hintT += dt;
+    if (hintT > 10) el.hint.style.opacity = 0;
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

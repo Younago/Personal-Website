@@ -303,6 +303,35 @@
       });
     },
 
+    // Self-contained browser demos that live in this repo (ai-projects/demos/*).
+    // Same shape as the reffix page — intro, a few prose blocks, then the
+    // thing itself embedded — but keyed by <body data-demo="..."> so every
+    // demo page is the same markup with one attribute changed.
+    demo: function (lang) {
+      var d = get(content[lang], "demos." + document.body.getAttribute("data-demo"));
+      if (!d) return;
+      document.title = d.pageTitle;
+      setText("demoTag", d.tagLabel);
+      setText("demoHeading", d.heading);
+      setText("demoLead", d.lead);
+      setText("demoBack", d.backLink);
+      setText("demoNote", d.embedNote);
+      setText("demoOpen", d.openLabel);
+      var open = document.getElementById("demoOpen");
+      if (open) open.href = root + d.embedUrl;
+      var frame = document.getElementById("demoFrame");
+      // Assigned once. Re-assigning on a language toggle would reload the
+      // iframe, which for these demos means losing the camera permission
+      // prompt or whatever state the visitor had built up.
+      if (frame && !frame.src) frame.src = root + d.embedUrl;
+      var body = document.getElementById("demoBody");
+      if (body) {
+        body.innerHTML = (d.blocks || [])
+          .map(function (b) { return secBlock(b.heading, b.body); })
+          .join("");
+      }
+    },
+
     contact: function (lang) {
       var d = content[lang].contact;
       document.getElementById("contactLocation").textContent = d.location;

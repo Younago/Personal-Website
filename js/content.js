@@ -1294,22 +1294,22 @@ const SITE_CONTENT = {
       "projectsIntro": "Prototypes and experiments, mostly built to answer a question.",
       "projects": [
         {
-          "id": "ai-project-1",
-          "tag": "SIDE PROJECT · TBD",
-          "name": "AI project one — title TBD",
-          "blurb": "Placeholder — one line on what it does and what you learned.",
-          "href": "ai-projects/project-1.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "id": "choir-conductor",
+          "tag": "SIDE PROJECT \u00b7 WEBCAM",
+          "name": "Fingertip Choir",
+          "blurb": "Conduct a four-part choir with your hands. Cue a voice in and it keeps singing in time on its own until you cut it off \u2014 two hands, four voices.",
+          "href": "ai-projects/choir-conductor.html",
+          "image": "images/choir-cover.svg",
+          "placeholder": false
         },
         {
-          "id": "ai-project-2",
-          "tag": "SIDE PROJECT · TBD",
-          "name": "AI project two — title TBD",
-          "blurb": "Placeholder — one line on what it does and what you learned.",
-          "href": "ai-projects/project-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "id": "puppy-garden",
+          "tag": "SIDE PROJECT \u00b7 TOY",
+          "name": "Puppy in the Rose Garden",
+          "blurb": "A hand-drawn dog that follows your cursor, gets bored waiting, sits, lies down and eventually falls asleep. A study in reading intent from a single input.",
+          "href": "ai-projects/puppy-garden.html",
+          "image": "images/puppy-cover.svg",
+          "placeholder": false
         }
       ],
       "toolsHeading": "AI Tools",
@@ -1321,7 +1321,7 @@ const SITE_CONTENT = {
           "name": "Playtest Feedback Sorter",
           "blurb": "Paste raw playtest feedback and get it grouped into themes by an AI model.",
           "href": "ai-tools/playtest-feedback.html",
-          "image": "images/project-placeholder.svg",
+          "image": "images/playtest-cover.svg",
           "placeholder": false
         },
         {
@@ -1334,6 +1334,64 @@ const SITE_CONTENT = {
           "placeholder": false
         }
       ]
+    },
+    "demos": {
+      "choir-conductor": {
+        "pageTitle": "Young Gou — Fingertip Choir",
+        "tagLabel": "SIDE PROJECT · RUNS IN YOUR BROWSER",
+        "heading": "Fingertip Choir",
+        "lead": "A four-part choir you conduct with your hands in front of a webcam. Cue a voice in and it carries on singing in time by itself; close your fist and it stops. Two hands, four voices.",
+        "backLink": "← Back to AI",
+        "openLabel": "Open the demo full screen",
+        "embedNote": "The demo is embedded below and asks for webcam access so it can see your hands. Nothing is recorded or uploaded: the video never leaves the page and the hand tracking runs locally in your browser. It needs sound on, and it works best full screen — use the button above.",
+        "embedUrl": "ai-projects/demos/choir-conductor.html",
+        "blocks": [
+          {
+            "heading": "How to play",
+            "body": "The screen is split into four quadrants, one per voice — soprano top right, alto bottom right, tenor top left, bass bottom left. Hold an open hand in a quadrant for about a third of a second to cue that voice in; it then sings the score on its own. Close that hand into a fist to cut it off. Both fists at once stops everyone. Moving a hand up and down sets the tempo."
+          },
+          {
+            "heading": "Why it works this way",
+            "body": "The obvious version of this — a hand directly holds a note, move the hand and the pitch follows — is a theremin, and it falls apart the moment you want more than one voice, because you only have two hands and four parts. Real conducting is not continuous control: a conductor gives an entrance, the section carries on by itself, and the conductor comes back for the cut-off. So the interaction is latched rather than held. A cue starts a voice, a shared transport keeps it moving through the score, and a cut-off ends it. That one change is what makes four voices playable with two hands."
+          },
+          {
+            "heading": "How it is built",
+            "body": "MediaPipe Hands gives 21 landmarks per hand; from those I derive two numbers that matter — which quadrant the palm sits in, and how open the hand is (average fingertip distance from the wrist, normalised by hand size so it does not change when you move closer to the camera). Openness above a threshold for long enough is a cue; below it is a cut-off. The debounce is deliberate: a single frame of a mis-detected fist should not silence a section. The voices are synthesised with the Web Audio API rather than sampled — a pair of detuned saws through three bandpass filters at vowel formant frequencies, with a re-articulation envelope on every note so it reads as singing rather than as an organ chord."
+          },
+          {
+            "heading": "What I took from it",
+            "body": "Gesture input is unreliable in a specific way: it is fine at telling states apart and bad at holding one steady. Designing around that — asking the hand for transitions and letting a clock own the continuity — turned a demo that only worked when you held very still into something a stranger can pick up. The same split shows up in a lot of game input problems that have nothing to do with cameras."
+          }
+        ]
+      },
+      "puppy-garden": {
+        "pageTitle": "Young Gou — Puppy in the Rose Garden",
+        "tagLabel": "SIDE PROJECT · RUNS IN YOUR BROWSER",
+        "heading": "Puppy in the Rose Garden",
+        "lead": "A small hand-drawn dog in a field of cream roses. It runs after your cursor, gets bored when you stop, sits, lies down, and eventually falls asleep. Move again and it wakes up.",
+        "backLink": "← Back to AI",
+        "openLabel": "Open the demo full screen",
+        "embedNote": "The demo is embedded below. Move the mouse to make the dog follow you, click the dog to pet it, click the grass to call it over. On a touch screen, drag instead.",
+        "embedUrl": "ai-projects/demos/puppy-garden.html",
+        "blocks": [
+          {
+            "heading": "The idea",
+            "body": "One input — a cursor position — and the question of how much apparent inner life you can build on top of it. There is no AI model in here at all; the whole character is a state machine plus a few timers, which is exactly the point. Most of what reads as personality in a game companion is not intelligence, it is timing and anticipation."
+          },
+          {
+            "heading": "Where the life comes from",
+            "body": "Four things, in descending order of how much they matter. First, lag with intent: the dog accelerates towards you rather than tracking you, and it runs faster when it is further behind, so it looks like it wants to catch up. Second, the boredom ladder — stand still and it goes stand, sit, lie, asleep over about twenty seconds, so leaving the page alone produces a different picture than watching it. Third, unprompted idle actions on a randomised timer: ear flicks, head tilts, a stretch, a scratch, a shake. Fourth, arrival payoff — it barks and wags when it reaches you, so following you is rewarded rather than merely completed."
+          },
+          {
+            "heading": "How it is drawn",
+            "body": "The dog is a single SVG with a nested transform hierarchy — jump, flip, body, blob, then ears, face, tail, legs — so each animation layer can be written independently and multiplied together at render time. Squash and stretch, breathing, and the gait bob all end up on the same node without fighting each other. The crayon texture on the dog and the roses is one SVG turbulence-and-displacement filter, which does more for the hand-drawn feel than any amount of extra path work would."
+          },
+          {
+            "heading": "What I took from it",
+            "body": "The cheapest believable behaviour is behaviour that happens when the player is not doing anything. A companion that only reacts feels like a cursor attachment; one that gets bored on its own feels like it exists when you are not looking at it."
+          }
+        ]
+      }
     },
     "stories": {
       "photography": {
@@ -4628,22 +4686,22 @@ const SITE_CONTENT = {
       "projectsIntro": "为了回答某个问题而做的原型和实验。",
       "projects": [
         {
-          "id": "ai-project-1",
-          "tag": "小项目 · 待定",
-          "name": "AI 小项目一 — 标题待定",
-          "blurb": "占位文字 — 一句话说明它做什么、你学到了什么。",
-          "href": "ai-projects/project-1.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "id": "choir-conductor",
+          "tag": "\u5c0f\u9879\u76ee \u00b7 \u6444\u50cf\u5934",
+          "name": "\u6307\u5c16\u5408\u5531\u56e2",
+          "blurb": "\u7528\u4e24\u53ea\u624b\u6307\u6325\u56db\u4e2a\u58f0\u90e8\u3002\u7ed9\u4e00\u4e2a\u58f0\u90e8\u201c\u8fdb\u5165\u201d\u63d0\u793a\uff0c\u5b83\u5c31\u4f1a\u81ea\u5df1\u8ddf\u7740\u62cd\u5b50\u5531\u4e0b\u53bb\uff0c\u76f4\u5230\u4f60\u7ed9\u5b83\u6536\u62cd\u3002",
+          "href": "ai-projects/choir-conductor.html",
+          "image": "images/choir-cover.svg",
+          "placeholder": false
         },
         {
-          "id": "ai-project-2",
-          "tag": "小项目 · 待定",
-          "name": "AI 小项目二 — 标题待定",
-          "blurb": "占位文字 — 一句话说明它做什么、你学到了什么。",
-          "href": "ai-projects/project-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "id": "puppy-garden",
+          "tag": "\u5c0f\u9879\u76ee \u00b7 \u73a9\u5177",
+          "name": "\u73ab\u7470\u56ed\u91cc\u7684\u5c0f\u767d\u72d7",
+          "blurb": "\u4e00\u53ea\u8ddf\u7740\u9f20\u6807\u8dd1\u7684\u624b\u7ed8\u5c0f\u72d7\uff0c\u7b49\u4e45\u4e86\u4f1a\u65e0\u804a\u3001\u4f1a\u5750\u4e0b\u3001\u4f1a\u8db4\u7740\uff0c\u6700\u540e\u4f1a\u7761\u7740\u3002\u4e00\u4e2a\u5173\u4e8e\u201c\u5982\u4f55\u4ece\u5355\u4e00\u8f93\u5165\u91cc\u8bfb\u51fa\u610f\u56fe\u201d\u7684\u7ec3\u4e60\u3002",
+          "href": "ai-projects/puppy-garden.html",
+          "image": "images/puppy-cover.svg",
+          "placeholder": false
         }
       ],
       "toolsHeading": "AI 工具",
@@ -4655,7 +4713,7 @@ const SITE_CONTENT = {
           "name": "Playtest 反馈归纳器",
           "blurb": "粘贴原始 playtest 反馈，AI 自动归纳成分类主题。",
           "href": "ai-tools/playtest-feedback.html",
-          "image": "images/project-placeholder.svg",
+          "image": "images/playtest-cover.svg",
           "placeholder": false
         },
         {
@@ -4668,6 +4726,64 @@ const SITE_CONTENT = {
           "placeholder": false
         }
       ]
+    },
+    "demos": {
+      "choir-conductor": {
+        "pageTitle": "苟仲胤 — 指尖合唱团",
+        "tagLabel": "小项目 · 浏览器内运行",
+        "heading": "指尖合唱团",
+        "lead": "对着摄像头，用两只手指挥一个四声部合唱团。给一个声部“进入”提示，它就会自己跟着拍子唱下去；握拳，它就收声。两只手，四个声部。",
+        "backLink": "← 返回 AI",
+        "openLabel": "全屏打开 demo",
+        "embedNote": "下面直接嵌入了 demo，它会请求摄像头权限来看你的手。不录制、不上传：画面不会离开这个页面，手部识别全部在你自己的浏览器里跑。需要开声音，全屏体验更好——点上面的按钮。",
+        "embedUrl": "ai-projects/demos/choir-conductor.html",
+        "blocks": [
+          {
+            "heading": "怎么玩",
+            "body": "画面分成四个象限，一个象限一个声部——右上女高、右下女低、左上男高、左下男低。张开手在某个象限里停约三分之一秒，这个声部就“进入”，之后会自己按谱唱下去；把那只手握成拳，它就收声。双手同时握拳是全体收拍。手上下打拍可以控制速度。"
+          },
+          {
+            "heading": "为什么是这个交互",
+            "body": "最直接的做法——一只手直接拿着一个音，手动音高就变——其实就是特雷门琴，而且只要声部超过两个就玩不下去了，因为你只有两只手、却有四个声部。真正的指挥本来也不是连续控制：指挥给一个进入，声部自己往下走，指挥到该收的时候再回来。所以这里的交互是“锁存式”而不是“持续按住式”：手势负责起拍和收拍，中间的行进交给一个全局拍子。就这一个改动，让两只手能同时管四个声部。"
+          },
+          {
+            "heading": "怎么做的",
+            "body": "MediaPipe Hands 每只手给 21 个关键点，我只从里面算两个真正有用的量：掌心在哪个象限，以及手张开的程度（四个指尖到手腕的平均距离，除以手本身的尺寸归一化，这样人靠近或者远离摄像头都不影响判断）。张开度高于阈值并且持续足够久算进入，低于阈值算收声——这个防抖是故意的，不能因为一帧误识别就把一个声部弄哑。声音不是采样，是用 Web Audio 合成的：两个失谐的锯齿波过三个元音共振峰位置的带通滤波器，每个音重新起一次“咬字”包络，这样听起来才像在唱而不是风琴长音。"
+          },
+          {
+            "heading": "学到了什么",
+            "body": "手势输入的不可靠是有方向的：它分辨“状态变化”很行，“稳定保持一个值”很差。顺着这个特性设计——只问手要跳变，连续性交给时钟——把一个“必须纹丝不动才能用”的 demo 变成了陌生人上手就能玩的东西。同样的拆分在很多跟摄像头无关的游戏输入问题里都成立。"
+          }
+        ]
+      },
+      "puppy-garden": {
+        "pageTitle": "苟仲胤 — 玫瑰园里的小白狗",
+        "tagLabel": "小项目 · 浏览器内运行",
+        "heading": "玫瑰园里的小白狗",
+        "lead": "一片奶油色玫瑰花丛里的手绘小狗。它会追着你的鼠标跑，你停下来它就无聊，依次坐下、趴下、睡着；你一动，它又醒了。",
+        "backLink": "← 返回 AI",
+        "openLabel": "全屏打开 demo",
+        "embedNote": "下面直接嵌入了 demo。移动鼠标小狗会跟着你，点小狗是摸摸它，点草地是叫它过来。触屏上用手拖动。",
+        "embedUrl": "ai-projects/demos/puppy-garden.html",
+        "blocks": [
+          {
+            "heading": "想试什么",
+            "body": "只给一个输入——鼠标位置——能在上面堆出多少“它好像真的活着”的感觉。里面没有任何 AI 模型，整个角色就是一个状态机加几个计时器——而这正是重点：游戏里伙伴角色让人觉得“有性格”的部分，大多不是智能，而是节奏和预期。"
+          },
+          {
+            "heading": "“活气”具体从哪来",
+            "body": "四件事，按重要程度排序。一是带意图的滞后：小狗是朝你加速而不是跟随你，落得越远跑得越快，看起来就像它想追上你。二是无聊梯度：你不动，它在约二十秒内依次经过站、坐、趴、睡，所以“放着不管”和“盯着看”看到的是两幅不同的画面。三是随机间隔的待机小动作：抖耳朵、歪头、伸懒腰、挠痒、甩毛。四是抵达奖励：它跑到你身边会叫一声、摇尾巴，“跟上你”因此是一件有反馈的事，而不只是一个已完成状态。"
+          },
+          {
+            "heading": "怎么画的",
+            "body": "小狗是一个 SVG，里面是嵌套的变换层级——跳跃、镜像、身体、毛团，再到耳朵、脸、尾巴、腿——每一层动画都可以单独写，渲染时自然相乘。挤压拉伸、呼吸起伏、跑步颚动可以落在同一个节点上而不互相打架。小狗和玫瑰的蜡笔质感是一个 SVG 湍流 + 位移滤镜，它对“手绘感”的贡献比多画多少条路径都大。"
+          },
+          {
+            "heading": "学到了什么",
+            "body": "最便宜的可信行为，是玩家什么都不做时发生的行为。只会反应的伙伴像个鼠标挂件；会自己无聊的伙伴，才像在你不看它的时候也存在。"
+          }
+        ]
+      }
     },
     "stories": {
       "photography": {

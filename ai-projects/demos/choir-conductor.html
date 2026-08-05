@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>指尖合唱团 · 小星星（走谱指挥版）</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#070a14;
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#eef;user-select:none;}
+  #stage{position:fixed;inset:0;}
+  #cam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transform:scaleX(-1);filter:brightness(0.26) saturate(0.55);opacity:0.5;}
+  #art{position:absolute;inset:0;width:100%;height:100%;}
+  #hud{position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;
+    align-items:center;gap:22px;padding:9px 20px;background:rgba(10,14,28,0.5);
+    border:1px solid rgba(255,255,255,0.12);border-radius:999px;backdrop-filter:blur(8px);
+    z-index:3;font-size:14px;}
+  #bpm{font-variant-numeric:tabular-nums;font-weight:600;}
+  #bpm span{opacity:0.55;font-weight:400;}
+  #beatDot{width:12px;height:12px;border-radius:50%;background:#ffd36e;}
+  #lyric{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:3;
+    font-size:34px;font-weight:600;letter-spacing:1px;text-shadow:0 2px 20px rgba(0,0,0,0.6);
+    opacity:0.95;min-height:44px;}
+  #overlay{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;
+    background:radial-gradient(circle at 50% 38%,#141a30,#070a14 72%);}
+  #overlay h1{margin:0;font-size:clamp(24px,5vw,42px);font-weight:600;letter-spacing:2px;}
+  #overlay p{margin:0;max-width:560px;line-height:1.7;color:#aeb4d6;font-size:15px;}
+  #overlay .legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+    font-size:13px;color:#c9cdea;margin-top:2px;}
+  #overlay .legend b{color:#fff;}
+  #startBtn{margin-top:6px;padding:14px 40px;font-size:17px;color:#0b0f1a;
+    background:linear-gradient(135deg,#bfe3ff,#8ec9ff);border:none;border-radius:999px;
+    cursor:pointer;letter-spacing:1px;box-shadow:0 8px 30px rgba(140,200,255,0.35);}
+  #startBtn:hover{transform:translateY(-2px);}
+  #loading{font-size:14px;color:#8a90b6;min-height:20px;}
+</style>
+</head>
+<body>
+<div id="stage">
+  <video id="cam" playsinline muted></video>
+  <canvas id="art"></canvas>
+  <div id="hud">
+    <div id="beatDot"></div>
+    <div id="bpm">-- <span>BPM</span></div>
+    <div style="opacity:0.75">张手进入 · 握拳收声 · 双拳收全体</div>
+  </div>
+  <div id="lyric"></div>
+</div>
+
+<div id="overlay">
+  <h1>指尖合唱团 · 小星星</h1>
+  <p>给每个声部一个「进入」提示，它就会自己跟着拍子往下唱，直到你给它「收拍」。两只手就能指挥四个声部。</p>
+  <div class="legend">
+    <div><b>张开手</b>停在某声部象限≈0.3秒 → <b>进入</b>（之后自行行进）</div>
+    <div><b>握拳</b> → 该声部<b>收声</b></div>
+    <div><b>双手握拳</b> → 全体收拍</div>
+    <div><b>上下打拍</b> → 控制速度</div>
+  </div>
+  <p style="font-size:13px;opacity:0.8">右上=女高S　右下=女低A　左上=男高T　左下=男低B</p>
+  <button id="startBtn">开始 · 允许摄像头</button>
+  <div id="loading"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/hands.js" crossorigin="anonymous"></script>
+
+<script>
+/* =======================================================================
+   指尖合唱团 v2 —— 锁存式走谱四声部指挥（小星星）
+   机制：cue-in 让声部进入并自行随全局拍子(transport)走谱，直到 cutoff 收声。
+   MediaPipe Hands 捕捉手 + Web Audio 共振峰合成"啊"元音。
+   想换歌：改 SCORE（每个音符 [S,A,T,B, 拍数]）与歌词 LYRICS 即可。
+   ======================================================================= */
+
+// ---------- 乐谱：小星星 四声部编配（同节奏赞美诗式；音名，末音为2拍）----------
+// 每个短句 7 个音：6 个四分音符 + 1 个二分音符
+const PH_A = [ // "Twinkle twinkle little star" —— C C G G A A G
+  ['C4','G3','E3','C3',1],['C4','G3','E3','C3',1],
+  ['G4','G3','E3','C3',1],['G4','G3','E3','C3',1],
+  ['A4','C4','A3','F3',1],['A4','C4','A3','F3',1],
+  ['G4','G3','E3','C3',2] ];
+const PH_B = [ // "How I wonder what you are" —— F F E E D D C
+  ['F4','C4','A3','F3',1],['F4','C4','A3','F3',1],
+  ['E4','G3','E3','C3',1],['E4','G3','E3','C3',1],
+  ['D4','D4','B3','G3',1],['D4','D4','B3','G3',1],
+  ['C4','G3','E3','C3',2] ];
+const PH_C = [ // "Up above / Like a diamond" —— G G F F E E D
+  ['G4','G3','E3','C3',1],['G4','G3','E3','C3',1],
+  ['F4','C4','A3','F3',1],['F4','C4','A3','F3',1],
+  ['E4','G3','E3','C3',1],['E4','G3','E3','C3',1],
+  ['D4','D4','B3','G3',2] ];
+const SEQ = [
+  {ph:PH_A, ly:['Twin','kle','twin','kle','lit','tle','star']},
+  {ph:PH_B, ly:['How','I','won','der','what','you','are']},
+  {ph:PH_C, ly:['Up','a','bove','the','world','so','high']},
+  {ph:PH_C, ly:['Like','a','dia','mond','in','the','sky']},
+  {ph:PH_A, ly:['Twin','kle','twin','kle','lit','tle','star']},
+  {ph:PH_B, ly:['How','I','won','der','what','you','are']},
+];
+// 展开成事件表：{S,A,T,B, dur, start(拍), ly}
+const SCORE=[]; let acc=0;
+SEQ.forEach(seg=>seg.ph.forEach((n,i)=>{
+  SCORE.push({S:n[0],A:n[1],T:n[2],B:n[3],dur:n[4],start:acc,ly:seg.ly[i]}); acc+=n[4];
+}));
+const TOTAL_BEATS=acc;
+
+const VOICES={ S:{name:'女高 S',hue:335,col:'R',row:'T'},
+               A:{name:'女低 A',hue:275,col:'R',row:'B'},
+               T:{name:'男高 T',hue:200,col:'L',row:'T'},
+               B:{name:'男低 B',hue:150,col:'L',row:'B'} };
+const FORMANTS=[{f:700,q:9,g:1.0},{f:1180,q:11,g:0.7},{f:2600,q:12,g:0.35}];
+
+function noteFreq(nm){ // 例 "C4" → Hz
+  const map={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+  const s=nm.match(/^([A-G])(#?)(\d)$/); if(!s) return 220;
+  let semi=map[s[1]]+(s[2]?1:0); const oct=+s[3];
+  const midi=12*(oct+1)+semi; return 440*Math.pow(2,(midi-69)/12);
+}
+
+// ---------------- 画布 ----------------
+const video=document.getElementById('cam'),canvas=document.getElementById('art'),ctx=canvas.getContext('2d');
+const overlay=document.getElementById('overlay'),startBtn=document.getElementById('startBtn'),loading=document.getElementById('loading');
+const bpmEl=document.getElementById('bpm'),beatDot=document.getElementById('beatDot'),lyricEl=document.getElementById('lyric');
+let W=0,H=0,DPR=Math.min(devicePixelRatio||1,2);
+function resize(){W=innerWidth;H=innerHeight;canvas.width=W*DPR;canvas.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+addEventListener('resize',resize);resize();
+
+// ---------------- 音频 ----------------
+let audio=null,master=null,voiceNodes={};
+function buildVoice(){
+  const ac=audio;
+  const osc=ac.createOscillator();osc.type='sawtooth';
+  const osc2=ac.createOscillator();osc2.type='sawtooth';osc2.detune.value=6;
+  const lfo=ac.createOscillator();lfo.type='sine';lfo.frequency.value=5.2;
+  const lfoGain=ac.createGain();lfoGain.gain.value=5;
+  lfo.connect(lfoGain);lfoGain.connect(osc.detune);lfoGain.connect(osc2.detune);
+  const src=ac.createGain();src.gain.value=0.5;osc.connect(src);osc2.connect(src);
+  const sum=ac.createGain();sum.gain.value=1;
+  FORMANTS.forEach(F=>{const bp=ac.createBiquadFilter();bp.type='bandpass';bp.frequency.value=F.f;bp.Q.value=F.q;
+    const fg=ac.createGain();fg.gain.value=F.g;src.connect(bp);bp.connect(fg);fg.connect(sum);});
+  const body=ac.createBiquadFilter();body.type='lowpass';body.frequency.value=900;body.Q.value=0.4;
+  src.connect(body);body.connect(sum);
+  const art=ac.createGain();art.gain.value=1;      // 咬字发音包络
+  const level=ac.createGain();level.gain.value=0.0001; // 声部音量
+  sum.connect(art);art.connect(level);
+  [osc,osc2,lfo].forEach(o=>o.start());
+  return {osc,osc2,art,level,freq:0};
+}
+function makeReverb(sec){const rate=audio.sampleRate,len=rate*sec,buf=audio.createBuffer(2,len,rate);
+  for(let c=0;c<2;c++){const d=buf.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.5);}return buf;}
+function startAudio(){
+  audio=new (window.AudioContext||window.webkitAudioContext)();
+  master=audio.createGain();master.gain.value=0.85;
+  const comp=audio.createDynamicsCompressor();master.connect(comp);comp.connect(audio.destination);
+  const rev=audio.createConvolver();rev.buffer=makeReverb(2.6);const wet=audio.createGain();wet.gain.value=0.55;
+  rev.connect(wet);wet.connect(master);
+  for(const k in VOICES){const v=buildVoice();v.level.connect(master);v.level.connect(rev);voiceNodes[k]=v;}
+}
+function setVoiceFreq(k,freq){const v=voiceNodes[k];if(!v||Math.abs(v.freq-freq)<0.1)return;v.freq=freq;
+  const t=audio.currentTime;v.osc.frequency.setTargetAtTime(freq,t,0.03);v.osc2.frequency.setTargetAtTime(freq,t,0.03);}
+function articulate(k){const v=voiceNodes[k];const t=audio.currentTime; // 每个音重新咬字
+  v.art.gain.cancelScheduledValues(t);v.art.gain.setValueAtTime(0.35,t);v.art.gain.linearRampToValueAtTime(1,t+0.11);}
+
+// ---------------- 声部状态 ----------------
+const st={}; for(const k in VOICES) st[k]={on:false,g:0,cueT:0,cutT:0};
+let hands=[];
+function smoothstep(a,b,x){x=Math.max(0,Math.min(1,(x-a)/(b-a)));return x*x*(3-2*x);}
+
+// 打拍 / BPM
+let beatTimes=[],bpm=96,lastY=null,vy=0,lastIctus=0,beatPulse=0;
+// 走谱
+let transportOn=false, pos=0, curIdx=-1;
+
+function onResults(res){
+  hands=[];
+  const lms=res.multiHandLandmarks||[];
+  let batonY=null, fistCount=0, handCount=lms.length;
+  const perVoice={S:{p:false,o:0},A:{p:false,o:0},T:{p:false,o:0},B:{p:false,o:0}};
+  lms.forEach(lm=>{
+    const cx=(1-lm[9].x)*W, cy=lm[9].y*H;
+    const hs=Math.hypot((lm[9].x-lm[0].x)*W,(lm[9].y-lm[0].y)*H)||1;
+    let spread=0;[8,12,16,20].forEach(t=>spread+=Math.hypot((lm[t].x-lm[0].x)*W,(lm[t].y-lm[0].y)*H));spread/=4;
+    const openness=Math.max(0,Math.min(1,(spread/hs-1.1)/1.05));
+    if(openness<0.16) fistCount++;
+    const col=cx>W/2?'R':'L', row=cy<H/2?'T':'B';
+    let vk=null; for(const k in VOICES) if(VOICES[k].col===col&&VOICES[k].row===row) vk=k;
+    if(vk){ perVoice[vk].p=true; perVoice[vk].o=Math.max(perVoice[vk].o,openness); }
+    hands.push({cx,cy,openness,vk,hue:VOICES[vk].hue});
+    if(batonY===null||cy<batonY) batonY=cy;
+  });
+
+  // 全体收拍：双手同时握拳
+  const grandCut = handCount>=2 && fistCount>=2;
+
+  // 声部状态机
+  for(const k in VOICES){
+    const s=st[k], pv=perVoice[k];
+    if(grandCut){ s.on=false; s.cueT=0; s.cutT=0; continue; }
+    if(pv.p){
+      if(!s.on){ s.cueT += pv.o>0.6 ? 0.033 : -s.cueT; if(s.cueT>0.22){ s.on=true; s.cueT=0; if(!transportOn){transportOn=true;} } }
+      else { s.cutT += pv.o<0.16 ? 0.033 : -s.cutT; if(s.cutT>0.18){ s.on=false; s.cutT=0; } }
+    } else { s.cueT=0; s.cutT=0; }
+    // 记录当前手对该声部的表情强度(供帧循环用)
+    s.expr = pv.p ? (0.42 + Math.min(1,pv.o)*0.58) : null;
+  }
+
+  // 打拍检测
+  if(batonY!==null){
+    if(lastY!==null){ const nvy=batonY-lastY;
+      if(vy>0.6&&nvy<=0.6){ const now=performance.now();
+        if(now-lastIctus>260){ if(lastIctus>0){ beatTimes.push(now-lastIctus); if(beatTimes.length>5)beatTimes.shift();
+          const avg=beatTimes.reduce((a,b)=>a+b,0)/beatTimes.length; bpm=Math.max(50,Math.min(150,Math.round(60000/avg))); }
+          lastIctus=now; beatPulse=1; } }
+      vy=nvy; }
+    lastY=batonY;
+  } else lastY=null;
+}
+
+// ---------------- 帧循环 ----------------
+let last=performance.now();
+function frame(now){
+  const dt=Math.min((now-last)/1000,0.05); last=now;
+
+  // 走谱推进
+  if(transportOn){
+    pos += dt*bpm/60; if(pos>=TOTAL_BEATS) pos-=TOTAL_BEATS;
+    // 找当前音符
+    let idx=0; for(let i=0;i<SCORE.length;i++){ if(pos>=SCORE[i].start) idx=i; else break; }
+    if(idx!==curIdx){ curIdx=idx; const ev=SCORE[idx];
+      for(const k in VOICES){ setVoiceFreq(k, noteFreq(ev[k])); articulate(k); }
+      lyricEl.textContent = ev.ly;
+    }
+  }
+
+  // 声部音量平滑并写入
+  for(const k in VOICES){ const s=st[k];
+    const targetG = s.on ? (s.expr!=null? s.expr : 0.55) : 0;
+    s.g += (targetG - s.g)*Math.min(1,dt*6);
+    if(audio){ const swell=1+beatPulse*0.18;
+      voiceNodes[k].level.gain.setTargetAtTime(Math.max(0.0001,s.g*0.24*swell),audio.currentTime,0.05); }
+  }
+  beatPulse*=Math.pow(0.001,dt);
+  beatDot.style.transform=`scale(${1+beatPulse*0.9})`;
+  bpmEl.innerHTML=(transportOn?bpm:'--')+' <span>BPM</span>';
+
+  ctx.globalCompositeOperation='source-over';
+  ctx.fillStyle='rgba(7,10,20,0.30)';ctx.fillRect(0,0,W,H);
+  drawQuadrants(); drawAuras(); drawHands(); drawTimeline();
+  requestAnimationFrame(frame);
+}
+
+const POS={ T:[0.25,0.25], S:[0.75,0.25], B:[0.25,0.75], A:[0.75,0.75] };
+function drawQuadrants(){
+  ctx.save();
+  ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(W/2,0);ctx.lineTo(W/2,H);ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  for(const k in VOICES){ const v=VOICES[k],s=st[k],x=POS[k][0]*W,y=POS[k][1]*H;
+    ctx.font='600 20px sans-serif';
+    const bright = s.on?0.55+s.g*0.45:0.28;
+    ctx.fillStyle=`hsla(${v.hue},80%,75%,${bright})`;
+    ctx.fillText(v.name+(s.on?' ●':' ○'), x, y-16);
+    ctx.fillStyle=`hsla(${v.hue},80%,60%,0.22)`;ctx.fillRect(x-42,y+6,84,6);
+    ctx.fillStyle=`hsla(${v.hue},85%,65%,0.95)`;ctx.fillRect(x-42,y+6,84*Math.min(1,s.g),6);
+  }
+  ctx.restore();
+}
+function drawAuras(){
+  ctx.globalCompositeOperation='lighter';
+  for(const k in VOICES){ const s=st[k]; if(s.g<0.02)continue; const v=VOICES[k],x=POS[k][0]*W,y=POS[k][1]*H;
+    const r=Math.min(W,H)*(0.10+s.g*0.34)*(1+beatPulse*0.12);
+    const g=ctx.createRadialGradient(x,y,0,x,y,r);
+    g.addColorStop(0,`hsla(${v.hue},90%,70%,${0.34*s.g})`);g.addColorStop(1,`hsla(${v.hue},90%,60%,0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill(); }
+  ctx.globalCompositeOperation='source-over';
+}
+function drawHands(){
+  ctx.globalCompositeOperation='lighter';
+  hands.forEach(h=>{ const r=14+h.openness*30;
+    const g=ctx.createRadialGradient(h.cx,h.cy,0,h.cx,h.cy,r);
+    g.addColorStop(0,`hsla(${h.hue},95%,80%,0.9)`);g.addColorStop(1,`hsla(${h.hue},95%,70%,0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(h.cx,h.cy,r,0,7);ctx.fill();
+    ctx.strokeStyle=`hsla(${h.hue},95%,85%,${0.4+h.openness*0.5})`;ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(h.cx,h.cy,r*0.55,0,7);ctx.stroke(); });
+  ctx.globalCompositeOperation='source-over';
+}
+function drawTimeline(){ // 底部走谱进度条
+  const y=H-30,x0=W*0.2,x1=W*0.8,w=x1-x0;
+  ctx.strokeStyle='rgba(255,255,255,0.15)';ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();
+  if(transportOn){ const px=x0+w*(pos/TOTAL_BEATS);
+    ctx.fillStyle='#ffd36e';ctx.beginPath();ctx.arc(px,y,5,0,7);ctx.fill(); }
+}
+
+// ---------------- 启动 ----------------
+async function start(){
+  startBtn.disabled=true;loading.textContent='正在加载手部识别模型…';
+  try{ startAudio(); await audio.resume(); }catch(e){}
+  const h=new Hands({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/${f}`});
+  h.setOptions({maxNumHands:2,modelComplexity:1,minDetectionConfidence:0.6,minTrackingConfidence:0.6});
+  h.onResults(onResults);
+  try{ const cam=new Camera(video,{onFrame:async()=>{await h.send({image:video});},width:1280,height:720}); await cam.start(); }
+  catch(e){ loading.textContent='无法访问摄像头，请检查浏览器权限后刷新。';startBtn.disabled=false;return; }
+  overlay.style.display='none'; requestAnimationFrame(frame);
+}
+startBtn.addEventListener('click',start);
+</script>
+</body>
+</html>

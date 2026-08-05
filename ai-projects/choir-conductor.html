@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();</script>
+<title>Young Gou — Fingertip Choir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/profile.css" />
+<link rel="stylesheet" href="../css/subpage.css" />
+</head>
+<body data-page="demo" data-demo="choir-conductor" data-root="../">
+
+<div id="chromeTop"></div>
+<nav id="chromeNav"></nav>
+
+<div class="profile-bar">
+  <a class="back-link" id="demoBack" href="../ai-feedback.html"></a>
+</div>
+
+<main class="resume">
+  <div class="resume-header" style="border-bottom-color: var(--color-line);">
+    <div>
+      <p class="mono detail-tag" id="demoTag"></p>
+      <h1 id="demoHeading"></h1>
+    </div>
+  </div>
+
+  <section class="resume-section">
+    <p class="resume-summary" id="demoLead"></p>
+    <div class="tool-actions">
+      <a class="btn-download" id="demoOpen" href="#" target="_blank" rel="noopener"></a>
+    </div>
+  </section>
+
+  <div id="demoBody"></div>
+
+  <section class="resume-section">
+    <p class="ai-tool-disclaimer" id="demoNote"></p>
+    <!-- allow="camera" is required: the demo reads hand positions from the
+         webcam through MediaPipe, and an iframe does not inherit that
+         permission from the parent document. -->
+    <div class="tool-embed">
+      <iframe id="demoFrame" title="Fingertip Choir" loading="lazy"
+              allow="camera; microphone; autoplay; fullscreen"></iframe>
+    </div>
+  </section>
+
+  <div class="page-contact-cta" id="pageContactCta"></div>
+</main>
+
+<footer id="chromeFooter"></footer>
+
+<script src="../js/content.js"></script>
+<script src="../js/chrome.js"></script>
+<script src="../js/pages.js"></script>
+</body>
+</html>
