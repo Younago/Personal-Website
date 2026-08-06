@@ -224,7 +224,10 @@
         // "temporarily" much more expensive than it is.
         // ["writing", root + "writing.html"],
         ["games", root + "games.html"],
-        ["beyondWork", root + "beyond-work.html"],
+        // Beyond Work is hidden for now — same treatment as Blog above.
+        // The page, its subpages, its content keys and its nav label all
+        // still exist; uncommenting this line is the only step to restore it.
+        // ["beyondWork", root + "beyond-work.html"],
         ["aiTool", root + "ai-feedback.html"],
         ["resume", root + "resume.html"],
       ];

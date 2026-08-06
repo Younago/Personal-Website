@@ -46,7 +46,8 @@ const SITE_CONTENT = {
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
       "scroll": "SCROLL",
-      "heroBanner": "images/presentation-hero.jpg"
+      "heroBanner": "images/presentation-hero.jpg",
+      "aboutPhoto": "images/about-portrait.jpg"
     },
     "home": {
       "teamProjectsHeading": "Team Projects",
@@ -432,8 +433,6 @@ const SITE_CONTENT = {
       "platform": "PC — mouse & keyboard primary, controller as a stretch goal",
       "synopsisHeading": "Synopsis",
       "synopsis": "Box Shot is a first-person shooter set inside the cardboard world of a child's imagination. Colby, ten years old and newly moved into a house he didn't choose, can't find his console — so he builds an adventure out of his dad's toolbox and the moving boxes stacked around him. Players race through short handcrafted levels made of cardboard, garage scrap and household objects, using a modular Tool Gun to fight, traverse and improvise their way through objectives as quickly and cleanly as they can.",
-      "trailerHeading": "Trailer",
-      "trailerNote": "No trailer yet — the project is in production. This page will be updated when there is footage worth showing.",
       "responsibilitiesHeading": "Responsibilities",
       "responsibilities": [
         "Carried Box Shot from concept to a playable prototype demo through full pre-production, standing up the team's operating model from scratch: sprint cadence, ceremonies, shared task board, and team norms.",
@@ -575,7 +574,9 @@ const SITE_CONTENT = {
           "caption": "The four design pillars",
           "full": true
         }
-      ]
+      ],
+      "trailerHeading": "Trailer",
+      "trailerNote": "No trailer yet — the project is in production. This page will be updated when there is footage worth showing."
     },
     "individualProjects": {
       "heading": "Individual Projects & Certifications",
@@ -1031,17 +1032,17 @@ const SITE_CONTENT = {
       "intro": "Teardowns of the systems, economies and level flow behind games I keep coming back to — and retrospectives on the projects I ran.",
       "list": [
         {
-          "id": "analysis-1",
+          "id": "retro-hamsterballin",
           "tags": [
-            "teamfight_tactics",
-            "systems_teardown",
-            "10_seasons"
+            "retrospective",
+            "shipped_on_steam",
+            "team_of_43"
           ],
-          "tag": "ANALYSIS · TEAMFIGHT TACTICS",
-          "name": "Analysis and Practice of the TFT Synergy System",
-          "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
-          "href": "game-analysis/analysis-1.html",
-          "image": "images/tft/cover.jpg"
+          "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
+          "name": "Hamsterballin' — Project Retrospective",
+          "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
+          "href": "game-analysis/retro-hamsterballin.html",
+          "image": "images/hamsterballin-card.jpg"
         },
         {
           "id": "retro-box-shot",
@@ -1058,35 +1059,17 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
-          "id": "retro-hamsterballin",
+          "id": "analysis-1",
           "tags": [
-            "retrospective",
-            "shipped_on_steam",
-            "team_of_43"
+            "teamfight_tactics",
+            "systems_teardown",
+            "10_seasons"
           ],
-          "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
-          "name": "Hamsterballin' — Project Retrospective",
-          "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
-          "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg"
-        },
-        {
-          "id": "analysis-2",
-          "tag": "ANALYSIS · TBD",
-          "name": "Analysis two — title TBD",
-          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
-          "href": "game-analysis/analysis-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
-        },
-        {
-          "id": "analysis-3",
-          "tag": "ANALYSIS · TBD",
-          "name": "Analysis three — title TBD",
-          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
-          "href": "game-analysis/analysis-3.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "tag": "ANALYSIS · TEAMFIGHT TACTICS",
+          "name": "Analysis and Practice of the TFT Synergy System",
+          "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
+          "href": "game-analysis/analysis-1.html",
+          "image": "images/tft/cover.jpg"
         }
       ]
     },
@@ -1159,7 +1142,6 @@ const SITE_CONTENT = {
       "strategyHeading": "Conversion approach",
       "strategy": "Features 1–6 carry over from the demo — the fold mechanic, the four levels, the player character, interactive objects, the comic narrative and the menus — with rework limited to what mobile requires: touch input, a level authoring toolset and store-facing UI. The core loop is retained because it is the element with the most validation behind it. Features 7–11 are new systems required to operate the title live: progression, LiveOps, monetization, backend services, and device compatibility and certification.",
       "deckHeading": "Presentation deck",
-      "deckNote": "15 slides. Scroll within the frame, or download below.",
       "deckDownload": "Download deck (PDF)",
       "milestoneHeading": "Milestone schedule",
       "milestoneNote": "Seven gates from signing through a repeating live-service cycle. Deliverables for each gate are listed in the schedule document below.",
@@ -1331,7 +1313,8 @@ const SITE_CONTENT = {
         }
       ],
       "relatedHeading": "Source project",
-      "relatedLabel": "Detective Folder — the original demo →"
+      "relatedLabel": "Detective Folder — the original demo →",
+      "deckNote": "15 slides. Scroll within the frame, or download below."
     },
     "aiHubPage": {
       "pageTitle": "Young Gou — AI",
@@ -1343,16 +1326,16 @@ const SITE_CONTENT = {
       "projects": [
         {
           "id": "choir-conductor",
-          "tag": "SIDE PROJECT \u00b7 WEBCAM",
+          "tag": "SIDE PROJECT · WEBCAM",
           "name": "Fingertip Choir",
-          "blurb": "Conduct a four-part choir with your hands. Cue a voice in and it keeps singing in time on its own until you cut it off \u2014 two hands, four voices.",
+          "blurb": "Conduct a four-part choir with your hands. Cue a voice in and it keeps singing in time on its own until you cut it off — two hands, four voices.",
           "href": "ai-projects/choir-conductor.html",
           "image": "images/choir-cover.svg",
           "placeholder": false
         },
         {
           "id": "puppy-garden",
-          "tag": "SIDE PROJECT \u00b7 TOY",
+          "tag": "SIDE PROJECT · TOY",
           "name": "Puppy in the Rose Garden",
           "blurb": "A hand-drawn dog that follows your cursor, gets bored waiting, sits, lies down and eventually falls asleep. A study in reading intent from a single input.",
           "href": "ai-projects/puppy-garden.html",
@@ -3610,13 +3593,13 @@ const SITE_CONTENT = {
           "note": "A 2.5D Hades-like demo — concept, character, mechanics and level design."
         },
         {
-          "year": 2025,
-          "sort": 202501,
-          "kind": "study",
-          "dates": "2025",
-          "title": "SMU Guildhall",
-          "org": "Digital Game Development · Production Track",
-          "note": "Master's, with a Level Design minor."
+          "year": 2024,
+          "sort": 202406,
+          "kind": "work",
+          "dates": "2024",
+          "title": "Xinyuanhong Catering",
+          "org": "Operations",
+          "note": "Asset review and staff management for a multi-site catering business."
         },
         {
           "year": 2025,
@@ -3626,6 +3609,15 @@ const SITE_CONTENT = {
           "title": "Lilith Games",
           "org": "Systems Designer Intern",
           "note": "Systems design on AFK Arena, including building and balancing a new PvP ranking system from scratch."
+        },
+        {
+          "year": 2025,
+          "sort": 202508,
+          "kind": "study",
+          "dates": "2025",
+          "title": "SMU Guildhall",
+          "org": "Digital Game Development · Production Track",
+          "note": "Master's, with a Level Design minor."
         },
         {
           "year": 2025,
@@ -3667,7 +3659,7 @@ const SITE_CONTENT = {
       "gamesHeading": "Play History",
       "searchPlaceholder": "Filter by title…",
       "empty": "Nothing matches that filter.",
-            "cloudHint": "Click a tag to jump to it",
+      "cloudHint": "Click a tag to jump to it",
       "gamesPageTitle": "Young Gou — Play History",
       "gamesTagLabel": "PLAY HISTORY"
     }
@@ -3713,7 +3705,8 @@ const SITE_CONTENT = {
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
       "scroll": "Scroll",
-      "heroBanner": "images/presentation-hero.jpg"
+      "heroBanner": "images/presentation-hero.jpg",
+      "aboutPhoto": "images/about-portrait.jpg"
     },
     "home": {
       "teamProjectsHeading": "团队项目",
@@ -4099,8 +4092,6 @@ const SITE_CONTENT = {
       "platform": "PC —— 以键鼠为主，手柄作为附加目标",
       "synopsisHeading": "游戏简介",
       "synopsis": "《Box Shot》是一款第一人称射击游戏，场景设定在一个孩子想象出来的纸板世界里。十岁的 Colby 刚被迫搬进一个不是自己选的新家，又找不到游戏机，于是用爸爸的工具箱和堆在身边的搬家纸箱造出了一场冒险。玩家在一个个由纸板、车库杂物和家居物品手工搭出的短关卡里穿行，用一把模块化的 Tool Gun 战斗、位移、随机应变，尽可能又快又干净地完成目标。",
-      "trailerHeading": "预告片",
-      "trailerNote": "暂无预告片 —— 项目仍在制作中，等有值得展示的实机内容再更新。",
       "responsibilitiesHeading": "主要职责",
       "responsibilities": [
         "主导项目从概念到可玩原型 Demo 的完整 Pre-production 阶段，为新组建的跨职能团队从零搭建运转方式：Sprint 节奏、会议机制、共享任务看板与团队协作公约。",
@@ -4242,7 +4233,9 @@ const SITE_CONTENT = {
           "caption": "四条设计支柱",
           "full": true
         }
-      ]
+      ],
+      "trailerHeading": "预告片",
+      "trailerNote": "暂无预告片 —— 项目仍在制作中，等有值得展示的实机内容再更新。"
     },
     "individualProjects": {
       "heading": "个人项目与认证",
@@ -4698,17 +4691,17 @@ const SITE_CONTENT = {
       "intro": "拆解那些我反复回去玩的游戏——系统、经济与关卡节奏；以及我带过的项目的复盘。",
       "list": [
         {
-          "id": "analysis-1",
+          "id": "retro-hamsterballin",
           "tags": [
-            "teamfight_tactics",
-            "systems_teardown",
-            "10_seasons"
+            "retrospective",
+            "shipped_on_steam",
+            "team_of_43"
           ],
-          "tag": "分析 · 云顶之弈",
-          "name": "云顶之弈羁绊关系的分析与实践",
-          "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",
-          "href": "game-analysis/analysis-1.html",
-          "image": "images/tft/cover.jpg"
+          "tag": "复盘 · HAMSTERBALLIN'",
+          "name": "Hamsterballin' — 项目复盘",
+          "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
+          "href": "game-analysis/retro-hamsterballin.html",
+          "image": "images/hamsterballin-card.jpg"
         },
         {
           "id": "retro-box-shot",
@@ -4725,35 +4718,17 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
-          "id": "retro-hamsterballin",
+          "id": "analysis-1",
           "tags": [
-            "retrospective",
-            "shipped_on_steam",
-            "team_of_43"
+            "teamfight_tactics",
+            "systems_teardown",
+            "10_seasons"
           ],
-          "tag": "复盘 · HAMSTERBALLIN'",
-          "name": "Hamsterballin' — 项目复盘",
-          "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
-          "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg"
-        },
-        {
-          "id": "analysis-2",
-          "tag": "分析 · 待定",
-          "name": "分析二 — 标题待定",
-          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
-          "href": "game-analysis/analysis-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
-        },
-        {
-          "id": "analysis-3",
-          "tag": "分析 · 待定",
-          "name": "分析三 — 标题待定",
-          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
-          "href": "game-analysis/analysis-3.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "tag": "分析 · 云顶之弈",
+          "name": "云顶之弈羁绊关系的分析与实践",
+          "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",
+          "href": "game-analysis/analysis-1.html",
+          "image": "images/tft/cover.jpg"
         }
       ]
     },
@@ -4826,7 +4801,6 @@ const SITE_CONTENT = {
       "strategyHeading": "转化路径",
       "strategy": "Feature 1–6 自 demo 继承——折页机制、四个关卡、主角、可交互物件、漫画叙事与菜单——改动仅限于移动端所必需的部分：触屏输入、关卡搭建工具链与商店相关界面。保留核心循环，是因为它是整个产品中验证程度最高的部分。Feature 7–11 为长线运营所需的新增系统：养成、活动运营、商业化、后端服务，以及设备兼容与过审。",
       "deckHeading": "演示稿",
-      "deckNote": "共 15 页，可在框内翻阅，或在下方下载。",
       "deckDownload": "下载演示稿（PDF）",
       "milestoneHeading": "里程碑排期",
       "milestoneNote": "从签约到可循环的长线版本模板，共七个节点。各节点的交付物清单见下方排期文档。",
@@ -4998,7 +4972,8 @@ const SITE_CONTENT = {
         }
       ],
       "relatedHeading": "对应项目",
-      "relatedLabel": "Detective Folder — 原始 demo →"
+      "relatedLabel": "Detective Folder — 原始 demo →",
+      "deckNote": "共 15 页，可在框内翻阅，或在下方下载。"
     },
     "aiHubPage": {
       "pageTitle": "苟仲胤 — AI",
@@ -5010,18 +4985,18 @@ const SITE_CONTENT = {
       "projects": [
         {
           "id": "choir-conductor",
-          "tag": "\u5c0f\u9879\u76ee \u00b7 \u6444\u50cf\u5934",
-          "name": "\u6307\u5c16\u5408\u5531\u56e2",
-          "blurb": "\u7528\u4e24\u53ea\u624b\u6307\u6325\u56db\u4e2a\u58f0\u90e8\u3002\u7ed9\u4e00\u4e2a\u58f0\u90e8\u201c\u8fdb\u5165\u201d\u63d0\u793a\uff0c\u5b83\u5c31\u4f1a\u81ea\u5df1\u8ddf\u7740\u62cd\u5b50\u5531\u4e0b\u53bb\uff0c\u76f4\u5230\u4f60\u7ed9\u5b83\u6536\u62cd\u3002",
+          "tag": "小项目 · 摄像头",
+          "name": "指尖合唱团",
+          "blurb": "用两只手指挥四个声部。给一个声部“进入”提示，它就会自己跟着拍子唱下去，直到你给它收拍。",
           "href": "ai-projects/choir-conductor.html",
           "image": "images/choir-cover.svg",
           "placeholder": false
         },
         {
           "id": "puppy-garden",
-          "tag": "\u5c0f\u9879\u76ee \u00b7 \u73a9\u5177",
-          "name": "\u73ab\u7470\u56ed\u91cc\u7684\u5c0f\u767d\u72d7",
-          "blurb": "\u4e00\u53ea\u8ddf\u7740\u9f20\u6807\u8dd1\u7684\u624b\u7ed8\u5c0f\u72d7\uff0c\u7b49\u4e45\u4e86\u4f1a\u65e0\u804a\u3001\u4f1a\u5750\u4e0b\u3001\u4f1a\u8db4\u7740\uff0c\u6700\u540e\u4f1a\u7761\u7740\u3002\u4e00\u4e2a\u5173\u4e8e\u201c\u5982\u4f55\u4ece\u5355\u4e00\u8f93\u5165\u91cc\u8bfb\u51fa\u610f\u56fe\u201d\u7684\u7ec3\u4e60\u3002",
+          "tag": "小项目 · 玩具",
+          "name": "玫瑰园里的小白狗",
+          "blurb": "一只跟着鼠标跑的手绘小狗，等久了会无聊、会坐下、会趴着，最后会睡着。一个关于“如何从单一输入里读出意图”的练习。",
           "href": "ai-projects/puppy-garden.html",
           "image": "images/puppy-cover.svg",
           "placeholder": false
@@ -7277,13 +7252,13 @@ const SITE_CONTENT = {
           "note": "2.5D 类 Hades Demo，独立完成概念、角色、玩法与关卡设计。"
         },
         {
-          "year": 2025,
-          "sort": 202501,
-          "kind": "study",
-          "dates": "2025",
-          "title": "SMU Guildhall",
-          "org": "数字游戏开发 · 制作方向",
-          "note": "硕士入学，辅修关卡设计。"
+          "year": 2024,
+          "sort": 202406,
+          "kind": "work",
+          "dates": "2024",
+          "title": "欣源宏餐饮有限公司",
+          "org": "运营管理",
+          "note": "负责公司资产梳理与人员管理。"
         },
         {
           "year": 2025,
@@ -7293,6 +7268,15 @@ const SITE_CONTENT = {
           "title": "莉莉丝游戏",
           "org": "系统策划实习生",
           "note": "在剑与远征项目做系统设计，并从零搭建平衡了一套新的 PvP 排位机制。"
+        },
+        {
+          "year": 2025,
+          "sort": 202508,
+          "kind": "study",
+          "dates": "2025",
+          "title": "SMU Guildhall",
+          "org": "数字游戏开发 · 制作方向",
+          "note": "硕士入学，辅修关卡设计。"
         },
         {
           "year": 2025,
@@ -7334,7 +7318,7 @@ const SITE_CONTENT = {
       "gamesHeading": "游戏经历",
       "searchPlaceholder": "按名称筛选…",
       "empty": "没有匹配的结果。",
-            "cloudHint": "点击标签跳转到对应分区",
+      "cloudHint": "点击标签跳转到对应分区",
       "gamesPageTitle": "苟仲胤 — 游戏经历",
       "gamesTagLabel": "游戏经历"
     }

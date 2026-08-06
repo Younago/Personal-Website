@@ -43,7 +43,11 @@
       var d = content[lang].aboutPage;
       document.title = d.pageTitle;
       var photoEl = document.getElementById("aboutPhoto");
-      if (photoEl && content[lang].hero.portrait) photoEl.src = content[lang].hero.portrait;
+      // aboutPhoto, falling back to the shared portrait. hero.portrait is also
+      // the homepage hero banner and the first frame of the marquee, so the
+      // About page needs its own key to change independently of those.
+      var aboutSrc = content[lang].hero.aboutPhoto || content[lang].hero.portrait;
+      if (photoEl && aboutSrc) photoEl.src = aboutSrc;
       var wrap = document.getElementById("aboutBody");
       wrap.innerHTML =
         secBlock(d.whoHeading, d.who) +
