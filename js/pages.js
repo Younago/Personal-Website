@@ -282,6 +282,7 @@
       if (back) back.textContent = d.backLink;
       var wrap = document.getElementById("storyBlocks");
       if (!wrap) return;
+      var stacked = d.layout === "stacked";
       wrap.innerHTML = "";
       (d.blocks || []).forEach(function (b) {
         // <article>, not <section>: the site's global `section { padding: ... }`
@@ -291,14 +292,58 @@
         // The alternating left/right rhythm is done in CSS with
         // :nth-child(even) rather than by emitting two different markup
         // orders, so the DOM order always matches the reading order.
-        row.className = "story-block";
+        //
+        // `image` is optional. The photo essays (Beyond Work) give every block
+        // a picture; the project retrospectives are mostly argument, and a
+        // decorative screenshot next to "we had no branching strategy" would
+        // be filler. A block without an image spans the full column instead.
+        // Two layouts. The photo essays alternate image and text in two
+        // columns; a retrospective section is several paragraphs plus a
+        // callout, which that column is far too narrow to hold — those pages
+        // set `layout: "stacked"` and get one column with the image, when
+        // there is one, as a band above the text.
+        row.className =
+          "story-block" + (stacked || !b.image ? " is-wide" : "") + (stacked ? " is-stacked" : "");
+        var figure = b.image
+          ? '<figure class="story-figure"><img src="' + root + b.image + '" alt="' + (b.caption || "") + '" />' +
+            (b.caption ? "<figcaption>" + b.caption + "</figcaption>" : "") +
+            "</figure>"
+          : "";
+        // `text` is a string on the photo essays and an array of paragraphs on
+        // the retrospectives — normalised here so both shapes render.
+        var paras = Array.isArray(b.text) ? b.text : b.text ? [b.text] : [];
+        // Optional labelled sub-points: a retrospective section usually has to
+        // separate two or three distinct causes, which a single paragraph
+        // flattens into one undifferentiated wall.
+        var points = (b.points || [])
+          .map(function (pt) {
+            return (
+              "<li>" +
+              (pt.label ? '<span class="story-point-label mono">' + pt.label + "</span>" : "") +
+              pt.text +
+              "</li>"
+            );
+          })
+          .join("");
         row.innerHTML =
-          '<figure class="story-figure"><img src="' + root + b.image + '" alt="' + (b.caption || "") + '" />' +
-          (b.caption ? "<figcaption>" + b.caption + "</figcaption>" : "") +
-          "</figure>" +
+          figure +
           '<div class="story-body">' +
           (b.heading ? "<h3>" + b.heading + "</h3>" : "") +
-          "<p>" + b.text + "</p></div>";
+          paras
+            .map(function (t) {
+              return "<p>" + t + "</p>";
+            })
+            .join("") +
+          (points ? '<ul class="story-points">' + points + "</ul>" : "") +
+          // Optional callout for the "what I would change" half of a
+          // retrospective section. It is visually separated because it is the
+          // part a reader skimming for conclusions is looking for.
+          (b.fix
+            ? '<div class="story-fix">' +
+              (b.fix.label ? '<span class="story-fix-label mono">' + b.fix.label + "</span>" : "") +
+              "<p>" + b.fix.text + "</p></div>"
+            : "") +
+          "</div>";
         wrap.appendChild(row);
       });
 

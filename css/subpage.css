@@ -618,6 +618,87 @@ a.blog-row {
   color: var(--color-text);
 }
 
+/* A block with no image spans the full column. Used by the project
+   retrospectives, where most sections are argument rather than picture. */
+.story-block.is-wide {
+  grid-template-columns: 1fr;
+}
+
+/* Stacked layout (project retrospectives): the image becomes a band above the
+   text rather than a column beside it. A 4:3 crop at full width would push the
+   prose off the fold, so these are letterboxed. */
+.story-block.is-stacked {
+  align-items: start;
+}
+
+.story-block.is-stacked .story-figure img {
+  aspect-ratio: 21 / 9;
+}
+
+.story-block.is-stacked .story-figure {
+  margin-bottom: calc(var(--u) * 3);
+}
+
+/* Multi-paragraph blocks — the photo essays pass a single string, so this
+   only ever fires on the retrospectives. */
+.story-body p + p {
+  margin-top: calc(var(--u) * 1.5);
+}
+
+/* Labelled sub-points: two or three distinct causes under one section. The
+   rule on the left is what separates them from the surrounding prose without
+   adding bullet glyphs, which read as a checklist rather than an argument. */
+.story-points {
+  list-style: none;
+  padding: 0;
+  margin: calc(var(--u) * 2.5) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 2);
+}
+
+.story-points li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+  padding-left: calc(var(--u) * 2);
+  border-left: 2px solid var(--color-line);
+}
+
+.story-point-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 5px;
+}
+
+/* The "what I would change" callout. Accent rule rather than a full box: it
+   should read as the conclusion of the section it sits in, not as a separate
+   card floating next to it. */
+.story-fix {
+  margin-top: calc(var(--u) * 3);
+  padding: calc(var(--u) * 2) calc(var(--u) * 2.5);
+  background: var(--color-bg-alt);
+  border-left: 2px solid var(--color-accent);
+}
+
+.story-fix-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.story-fix p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
 @media (max-width: 760px) {
   .story-block {
     grid-template-columns: 1fr;

@@ -208,7 +208,7 @@ const SITE_CONTENT = {
         "heading": "Retrospective on this project",
         "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
         "name": "Hamsterballin' — Project Retrospective",
-        "blurb": "Placeholder — a producer's retrospective on running a 43-person team through one semester to a Steam release: what held, what broke, and what I would do differently.",
+        "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
         "cta": "Read the retrospective →",
         "href": "game-analysis/retro-hamsterballin.html"
       },
@@ -1066,10 +1066,9 @@ const SITE_CONTENT = {
           ],
           "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
           "name": "Hamsterballin' — Project Retrospective",
-          "blurb": "Placeholder — running a 43-person team through one semester to a Steam release: what held, what broke, and what I would do differently.",
+          "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
           "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": true
+          "image": "images/hamsterballin-card.jpg"
         },
         {
           "id": "analysis-2",
@@ -1665,7 +1664,8 @@ const SITE_CONTENT = {
         "pageTitle": "Young Gou — Hamsterballin' Retrospective",
         "tagLabel": "RETROSPECTIVE · HAMSTERBALLIN'",
         "heading": "Hamsterballin' — Project Retrospective",
-        "lead": "Placeholder — a retrospective on Hamsterballin', a Mario Kart-style racer built in UE5 by a team of 43 in one semester and shipped on Steam. The first team of that size I ran.",
+        "layout": "stacked",
+        "lead": "Hamsterballin' is a kart racer built in Unreal Engine 5 by a team of 43 over one semester, shipped on Steam. It was the first team of that size I ran. This retrospective isn't a list of what went well — it's ten things that went wrong, each one worked through the same three questions: what broke, why it broke, and what I would do differently.",
         "backLink": "← Back to Projects",
         "relatedHeading": "The project this looks back on",
         "related": {
@@ -1677,16 +1677,184 @@ const SITE_CONTENT = {
         },
         "blocks": [
           {
-            "heading": "What held",
-            "text": "Placeholder — the processes that survived contact with a 43-person team, and why.",
-            "image": "images/hamsterballin/01-menu.jpg",
-            "caption": "Placeholder caption"
+            "heading": "Tooling: three different kinds of resistance",
+            "text": [
+              "Most of the 43 people on this team had never worked at this scale before; their habits came from solo work or groups of four. On the surface the problem read as \"some people won't follow the pipeline.\" Pulled apart, it was three different kinds of resistance that need three different responses.",
+              "The visible symptom was submit descriptions. Someone would upload a new asset and put a single letter in the description field. In the moment, that meant designers couldn't find assets by searching the history. Further out, it meant that if we ever needed to roll back, we couldn't identify which files to touch. The incident below cashed that cheque."
+            ],
+            "points": [
+              {
+                "label": "Can't use it",
+                "text": "Nobody had been taught P4V or Jira systematically. That is a skills gap, and the answer is scheduled training that brings everyone to the same baseline."
+              },
+              {
+                "label": "Can't use it comfortably",
+                "text": "Both tools present an engineering view of the work. Asking people who think visually to search and submit through text-only forms is inefficient by construction. The answer is a visual submission path — fitting the tool to the person rather than the other way round."
+              },
+              {
+                "label": "Won't use it",
+                "text": "This one is about leverage, and a student team has almost none: no compensation, no performance review, no ability to remove anyone. Escalating upward buys compliance for a week. The durable version is pushing the standard down into the discipline leads, so it is enforced inside each group rather than imposed on it."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Diagnose which of the three you are looking at before choosing a response — conflating them is how you end up running a training session and seeing no behaviour change. In parallel, write down what a usable submit description contains and spot-check it, instead of relying on individual conscientiousness."
+            }
           },
           {
-            "heading": "What broke",
-            "text": "Placeholder — where the plan came apart, what it cost, and what I changed mid-project.",
+            "heading": "The version-control incident on the last day",
+            "text": [
+              "On the final day before lockdown, the import path for art assets was changed. A large share of assets lost their engine references an hour before the build was due. We lost roughly two days of work recovering.",
+              "There are two layers of cause here, and they are not the same kind of thing."
+            ],
+            "points": [
+              {
+                "label": "Trigger: the communication path failed",
+                "text": "Twice, at two different moments. When the change was raised, there was no defined route for it — a project-wide change reached execution without passing the lead group. When we tried to stop it, there was no confirmation loop — we held an emergency meeting, agreed to freeze, and left the room believing we had consensus. On a team working across languages, \"nobody objected\" is not the same as \"everybody understood.\""
+              },
+              {
+                "label": "Amplifier: no branching strategy",
+                "text": "All work happened directly on the mainline. That didn't cause the mistake, but it set the price of one: a single bad change could reach everything, and rollback cost more than the deadline could absorb. The same mistake on a project with branch isolation is a couple of hours, not two days."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "For the trigger: define the decision path for scope and pipeline changes and get the lead group to agree to it explicitly. After any significant decision, have the responsible owner restate it in their own words — far more reliable than asking \"does that make sense?\", and much more so across a language boundary. For the amplifier: agree a branching strategy with the tech lead up front, and isolate high-risk changes on their own branch until they are verified."
+            }
+          },
+          {
+            "heading": "UI: a chain that went wrong at the estimate",
+            "image": "images/hamsterballin/03-character-select.jpg",
+            "caption": "Character select · the UI was owned end to end by one programmer",
+            "text": [
+              "The UI shipped with serious bugs, some of them intermittent enough that they survived to launch. This wasn't an execution failure — it was a chain that started at the estimate. We underestimated the scope and difficulty of the UI; because it read as small, we staffed one programmer to own all of it; because one person owned it, the technical approach was never formally settled and the code grew around one person's mental model; and so the knowledge of how it worked lived in a single head.",
+              "The bill came due in the back half. As test coverage went up, UI bugs surfaced in volume — and by then, bringing in another programmer cost more in explanation than it saved in throughput, because there was a lot of code and no shared conventions to enter it through. One person ended up fixing the severe issues alone, and the smaller experience-level bugs shipped.",
+              "Worth being precise about where this started: it was the estimate, not the headcount. An accurate read of the difficulty would have changed both the staffing and the technical approach that followed from it."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Raise UI's priority in task grading and settle its technical approach before the first production gate, so the code has conventions somebody else can enter through. And staff every feature group with at least two people, at least one of whom understands the implementation — not just UI."
+            }
+          },
+          {
+            "heading": "Requirements that never froze",
+            "text": [
+              "Controller mapping is the clearest case: what each button did was still changing at beta, and typically only the designer and the one programmer on that module knew the current state. At one point a designer testing the build concluded a feature had been cut, when in fact the binding had moved. The change itself wasn't necessarily wrong — but an unannounced change contaminated a test result.",
+              "Two problems stacked here: requirements that never froze (should this change?) and changes that weren't broadcast (who knows it changed?). The first needs a requirements process; the second needs a notification rule. Neither substitutes for the other."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Run a visible requirements pool with an explicit priority and target sprint on every item. Alongside it, one rule: any change that affects the play experience or could alter a test result goes to the whole team, not just to the people directly touching it."
+            }
+          },
+          {
+            "heading": "Dependencies that were never defined",
+            "text": [
+              "This is the same root as the previous section, but the direction matters. It isn't that vague dependencies caused the requirement churn. It's that unfrozen requirements plus undefined dependencies — whose output is whose input, and what condition lets downstream start — together caused downstream work to begin too early.",
+              "Item design is the example. Art was asked to produce final assets for the full item set before we had settled which items were actually shipping. The design then converged, and a large batch of finished work was discarded. That costs hours, but the more expensive part is morale: repeatedly finishing work that never ships is about the most demoralising thing you can ask of a team."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Short term: when a decision is genuinely still moving, the default is \"don't build it yet\" — and if it does need to move forward, it goes through the normal request process first. Long term: the same requirements pool as above, with an explicit upstream freeze condition on anything that has downstream work hanging off it. Downstream starts when the condition is met, not when someone asks."
+            }
+          },
+          {
+            "heading": "Asset lock existed on paper only",
+            "text": [
+              "My first read on this was that the team didn't take asset lock seriously. Looking at it properly, the causality runs the other way. The schedule put asset lock one day ahead of delivery, which badly underestimated what QA costs. One day is not enough to run a test pass and fix what it finds, so the gate could not actually be honoured — and a gate that has never once been enforced is a gate nobody plans around. The lack of respect for it was the consequence, not the cause.",
+              "In practice that meant no boundary between building features and fixing bugs. We did both continuously, so every sprint's problems surfaced with no lead time and got handled in a rush."
+            ],
+            "points": [
+              {
+                "label": "Changed during the project",
+                "text": "Later sprints reserved two days exclusively for bug fixing and urgent changes, which took the worst of the pressure off."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Reserving the window is necessary but not sufficient — it doesn't stop new features from flowing into it. The real fix is upstream: revisit scope and the sprint plan so the committed work genuinely lands before the gate. A schedule people believe is a gate people respect."
+            }
+          },
+          {
+            "heading": "Art had no authorship",
             "image": "images/hamsterballin/07-race-city.jpg",
-            "caption": "Placeholder caption"
+            "caption": "City track · the visual identity of the three tracks was the last thing to converge",
+            "text": [
+              "The art pipeline ran strictly one way: design writes a request, art fulfils it. Even environment work with no gameplay function waited on a written request. Art had no say in the overall direction of a track, and therefore no room to imagine one.",
+              "That produced three problems. The first two are about output; the third is about the team — and the third feeds back into the first two."
+            ],
+            "points": [
+              {
+                "label": "Style drift",
+                "text": "Each designer specified their own stretch of track, so the small assets that came back didn't add up to a consistent look."
+              },
+              {
+                "label": "No identity",
+                "text": "At alpha the three tracks were assemblies of individually-requested props rather than three places with distinct character."
+              },
+              {
+                "label": "Falling ownership",
+                "text": "Art became the last link in an execution chain and stopped having opinions about the game. And once ownership drops, nobody is thinking about overall style either — which makes the first two worse. It's a self-reinforcing loop."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Break the loop at the top. In concept, art leads on establishing a visual direction for each track and produces a reference other work can be checked against. Gameplay requests are then made inside that frame, and art keeps authority over how a given request is expressed. That addresses style and identity — and puts art back at the start of the chain instead of the end of it."
+            }
+          },
+          {
+            "heading": "Playtest feedback never became scheduled work",
+            "text": [
+              "The playtest produced a great deal of raw material and comparatively few actionable tasks. The reasons sit in two different places."
+            ],
+            "points": [
+              {
+                "label": "Test design",
+                "text": "This was the only formal test in the entire cycle, which had two consequences. Everything we wanted to learn got compressed into one session, so the objectives were necessarily broad and the feedback came back unfocused. And that single session sat after alpha, so even excellent feedback arrived when very little could still change direction. The problem isn't that this one test was designed badly — it's that the schedule had no testing rhythm at all."
+              },
+              {
+                "label": "Capture",
+                "text": "Two of us covered the whole session. Even taking notes live, there was never going to be time afterwards to go back through the footage properly. Information was lost at capture and lost again at synthesis."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Build a testing cadence across the whole cycle with a narrow, stated objective per session, and move the sessions early enough that the answers can still change something. And distribute capture: instead of two people recording everything, each lead records against the questions they own."
+            }
+          },
+          {
+            "heading": "AI assets: prevention and provenance are two problems",
+            "text": [
+              "About three days before lockdown, a playthrough turned up assets that appeared to be AI-generated and carried copyright risk. The line had always been explicit — no AI-generated content in the shipped build — and it happened anyway. The assets had to be remade.",
+              "I originally treated this as one failure. It's two."
+            ],
+            "points": [
+              {
+                "label": "How it got in — prevention",
+                "text": "The rule was communicated verbally and never enforced at a checkpoint. Nothing inspected assets on the way into the repository, so the material travelled all the way to lockdown and was caught by an incidental playthrough. The later you catch this, the fewer options you have."
+              },
+              {
+                "label": "Why it had to be remade — provenance",
+                "text": "There was no record of how the work was made. Without process files, an asset that may well have been original can't be shown to be — so it all gets remade regardless."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Prevention: a review checkpoint when assets enter the repository, and a concrete statement of where the line is — what counts as generated, what counts as reference. Provenance: layered working files as a condition of asset acceptance. The point of a paper trail isn't distrust; it's being able to stand behind the work when someone questions it."
+            }
+          },
+          {
+            "heading": "Performance: with no budget, you wait for it to break",
+            "image": "images/hamsterballin/09-race-factory.jpg",
+            "caption": "Factory track · lighting and materials drove most of the performance rework",
+            "text": [
+              "Performance touches lighting, materials, procedural generation and modelling all at once. We didn't hit a visible wall on target hardware until late, started optimising then, and paid for it in rework — relighting, repeated passes over the generation tooling.",
+              "\"We found out late\" is the outcome, not the cause. The cause is that the project never set a performance budget and never monitored performance continuously. Each discipline worked without knowing how much headroom it was consuming, so nothing surfaced until every contribution had stacked up and the build fell over on hardware. That's the defining property of this class of problem: the later you find it, the more of it is already built, because what you have to change is finished work."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Set a performance budget early — frame-rate target, polygon and material ceilings, constraints on the lighting approach — and break it down per discipline with the art and tech leads. Then monitor continuously and make on-hardware performance an acceptance criterion each sprint, so a regression is caught in the sprint that caused it."
+            }
           }
         ]
       }
@@ -3707,7 +3875,7 @@ const SITE_CONTENT = {
         "heading": "本项目的复盘",
         "tag": "复盘 · HAMSTERBALLIN'",
         "name": "Hamsterballin' — 项目复盘",
-        "blurb": "占位文字 —— 从项目管理视角复盘一个学期带 43 人团队做到 Steam 发售的过程：哪些做法立住了、哪些崩了、重来一次会怎么做。",
+        "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
         "cta": "阅读复盘 →",
         "href": "game-analysis/retro-hamsterballin.html"
       },
@@ -4565,10 +4733,9 @@ const SITE_CONTENT = {
           ],
           "tag": "复盘 · HAMSTERBALLIN'",
           "name": "Hamsterballin' — 项目复盘",
-          "blurb": "占位文字 —— 一个学期带 43 人团队做到 Steam 发售：哪些做法立住了、哪些崩了、重来一次我会怎么做。",
+          "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
           "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": true
+          "image": "images/hamsterballin-card.jpg"
         },
         {
           "id": "analysis-2",
@@ -5161,31 +5328,200 @@ const SITE_CONTENT = {
         ]
       },
       "retro-hamsterballin": {
-        "pageTitle": "苟仲胤 — Hamsterballin' 复盘",
+        "pageTitle": "Young Gou — Hamsterballin' 项目复盘",
         "tagLabel": "复盘 · HAMSTERBALLIN'",
         "heading": "Hamsterballin' — 项目复盘",
-        "lead": "占位文字 —— 对 Hamsterballin' 的复盘：43 人团队用一个学期在 UE5 上做完并在 Steam 发售的卡丁车竞速游戏，也是我带过的第一个这个规模的团队。",
+        "layout": "stacked",
+        "lead": "Hamsterballin' 是一款用 UE5 开发的竞速游戏，43 人团队，一个学期，最终在 Steam 上线。这是我带过的第一个这个规模的团队。这篇复盘记的不是哪里做得好，而是十件出了问题的事——每一件都在回答同样的三个问题：出了什么问题、为什么会发生、重来一次会怎么做。",
         "backLink": "← 返回项目",
-        "relatedHeading": "对应项目",
+        "relatedHeading": "这篇复盘对应的项目",
         "related": {
-          "tag": "团队项目",
+          "tag": "游戏项目",
           "name": "Hamsterballin'",
-          "blurb": "43 人团队用一个学期在 Unreal Engine 5 上完成并在 Steam 发售的卡丁车竞速游戏。",
-          "cta": "查看项目 →",
+          "blurb": "一款用虚幻引擎 5 开发的马里奥赛车式竞速游戏，43 人团队，一个学期完成并在 Steam 发售。",
+          "cta": "打开项目页 →",
           "href": "team-projects/tgp2.html"
         },
         "blocks": [
           {
-            "heading": "占位标题",
-            "text": "占位文字 —— 在 43 人规模下真正站住了的流程，以及为什么。",
-            "image": "images/hamsterballin/01-menu.jpg",
-            "caption": "占位说明"
+            "heading": "工具与流程：三种不同的抗力",
+            "text": [
+              "43 人里绝大多数是第一次参与这个规模的开发，此前的习惯来自个人独立开发或三四人的小组。表面上看问题是「有人不走流程」，但拆开来是三种性质完全不同的抗力，需要三种不同的应对。",
+              "最直接的表现是提交描述。有人上传新素材，描述栏只写一个字母。当下的后果是策划无法按提交记录检索素材；更远的后果是一旦需要版本回退，无法快速锁定该改哪些文件。下面那次事故把这笔账兑现了。"
+            ],
+            "points": [
+              {
+                "label": "不会用",
+                "text": "团队此前没有系统使用过 P4V 和 Jira，这是能力缺口，对应手段是安排统一培训，把基础操作拉齐。"
+              },
+              {
+                "label": "不好用",
+                "text": "这两个工具的面板都是按工程视角设计的。让以视觉方式思考的人在纯文本表单里检索和提交，本身就是低效的。对应手段是提供可视化的提交入口——让工具去贴合人，而不是反过来。"
+              },
+              {
+                "label": "不想用",
+                "text": "本质是约束力缺失，而学生团队几乎没有约束力：没有薪酬、没有绩效、也无法请人离开。向上升级只能买来一周的配合。可持续的做法是把规范下沉到各组组长，让它在组内被执行，而不是从外部压给这个组。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "先判断面对的是哪一类，再选手段——把三者混为一谈，结果就是培训开完了行为却没有变化。同时把「合格的提交描述包含什么」写成可检查的规范并定期抽查，而不是依赖个人自觉。"
+            }
           },
           {
-            "heading": "占位标题",
-            "text": "占位文字 —— 计划在哪里失效、代价是什么、项目中途我改了什么。",
+            "heading": "封板前一天的版本管理事故",
+            "text": [
+              "最终封板前的最后一天，美术素材的导入路径被改动，大量素材在交付前一小时失去引擎索引。为此我们损失了约两天的开发进度。",
+              "这次事故有两层原因，性质不同，不能并列看待。"
+            ],
+            "points": [
+              {
+                "label": "触发原因：沟通链路失效",
+                "text": "在两个不同的时刻失效了两次。变更发起时没有既定路径——一条会影响全项目的改动没有经过 lead 层就进入了执行；变更叫停时没有确认闭环——我们紧急开会决定冻结，散会时以为达成了共识。但在一个跨语言协作的团队里，「没有人反对」不等于「所有人理解」。"
+              },
+              {
+                "label": "放大原因：没有分支策略",
+                "text": "所有开发都直接在主分支上进行。它不会让错误发生，但决定了错误的价格：一次误操作就能波及全部产出，而回退成本高于截止日期能承受的范围。同样的失误发生在有分支隔离的项目里，损失可能是几小时而不是两天。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "针对触发原因：明确范围与管线变更的决策路径，并让 lead 层显式确认这条路径。重大决策后请主责任人用自己的话复述一遍，比问「明白了吗」可靠得多，跨语言场景下尤其如此。针对放大原因：与主程提前约定分支策略，高风险改动一律隔离在独立分支上验证后再合入。"
+            }
+          },
+          {
+            "heading": "UI：一条从估算就跑偏的链路",
+            "image": "images/hamsterballin/03-character-select.jpg",
+            "caption": "角色选择界面 · UI 由一名程序员独立完成",
+            "text": [
+              "UI 上线时仍带着严重 bug，其中一部分随机性很强，一直残留到发布。这不是执行层面的失误，而是一条从估算开始的链条：排期时低估了 UI 的工作量和技术难度；因为判断「量不大」，只配了一名程序员全权负责；因为只有一个人，技术路线始终没有正式敲定，代码完全跟着一个人的思路生长；于是 UI 如何工作这件事，只存在于一个人的脑子里。",
+              "代价在后半程集中兑现。测试覆盖上来后 UI 的 bug 成批暴露，而此时再调人进来，解释成本已经高于产出收益——代码量大，且没有可供他人切入的统一约定。最终只能靠一个人独自修完严重问题，那些体验层面的小 bug 随版本发了出去。",
+              "这里值得说准确：问题的起点是估算，不是人手。如果最初对难度的判断是对的，后面的人员配置和技术路线都会不同。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "在任务评级上提高 UI 的优先级，并在第一个制作节点之前敲定技术路线，让代码从一开始就有别人能切入的约定。同时，不只是 UI——所有 feature 组都至少配两人，且至少有一人真正理解实现。"
+            }
+          },
+          {
+            "heading": "始终没有冻结的需求",
+            "text": [
+              "手柄按键是最清楚的例子：直到 beta，每个键对应什么功能仍在变，而通常只有设计师和该模块的那名程序员知道当前状态。曾经有策划在测试时判断某个功能被砍掉了，实际上只是按键映射改了位置。变更本身未必是错的，但一次没有广播的变更，直接污染了一条测试结论。",
+              "这里叠着两个问题：需求始终不冻结（这个该不该改），以及变更不广播（改了谁知道）。前者要靠需求管理机制，后者要靠同步机制，两者不能互相替代。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "维护一个所有人可见的需求池，每条需求都标注明确的优先级和目标 sprint。配套一条规则：任何影响游戏体验、或可能改变测试结论的变更，必须通知全团队，而不是只通知直接相关的人。"
+            }
+          },
+          {
+            "heading": "从未定义过的依赖关系",
+            "text": [
+              "这一条和上一条同根，但方向要说清楚：不是「依赖模糊导致了需求反复」，而是需求未冻结、加上依赖关系未定义（谁的产出是谁的输入、满足什么条件下游才能启动），共同导致了下游过早开工。",
+              "道具是那个例子。在还没确定最终要上哪些道具时，就已经通知美术制作全套最终素材。方案随后收敛，大批已完成的工作直接作废。浪费的工时是一部分，更贵的是士气：反复完成永远不会上线的东西，大概是最消耗一个团队的方式。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "短期：当一个决定确实还在摇摆时，默认选项是「先不做」；确有必要推进，也要先走正规的需求增补流程。长期：沿用上一条的需求池，并为所有挂着下游工作的需求标注上游冻结条件——条件满足下游才启动，而不是有人开口就启动。"
+            }
+          },
+          {
+            "heading": "只存在于纸面上的 Asset lock",
+            "text": [
+              "我最初把这条归因于「团队不重视 asset lock」，但认真看下来，因果是反的。排期上 asset lock 只比交付提前一天，严重低估了 QA 的成本。一天既跑不完一轮测试、也修不完它发现的问题，这个节点事实上无法被执行——而一个从未真正生效过的节点，没有人会围绕它做计划。不重视是结果，不是原因。",
+              "实际表现就是「做功能」和「修 bug」之间没有界限，两件事全程并行，于是每个 sprint 的问题都在毫无提前量的情况下暴露，只能仓促处理。"
+            ],
+            "points": [
+              {
+                "label": "项目中已做的调整",
+                "text": "后续 sprint 预留了两天，专门用于 bug 修复和紧急变更，缓解了最急迫的部分。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "留出窗口是必要的，但不充分——它拦不住新功能涌进这个窗口。真正的修法在上游：重新审视 scope 和 sprint 计划，让承诺的内容确实能在节点前落地。排期可信，节点才会被尊重。"
+            }
+          },
+          {
+            "heading": "美术没有作者身份",
             "image": "images/hamsterballin/07-race-city.jpg",
-            "caption": "占位说明"
+            "caption": "城市赛道 · 三条赛道的视觉 identity 是最晚收敛的部分",
+            "text": [
+              "美术管线是严格单向的：策划写需求，美术做执行。即使是没有玩法功能的环境部分，也要等一条书面需求。美术对一条赛道的整体方向没有发言权，因此也没有想象它的空间。",
+              "这带来三个问题。前两个关于产出，第三个关于团队状态——而第三个会反过来喂养前两个。"
+            ],
+            "points": [
+              {
+                "label": "风格离散",
+                "text": "每位策划各自定义自己负责的那段赛道，回来的小素材拼不成一个统一的面貌。"
+              },
+              {
+                "label": "缺乏 identity",
+                "text": "alpha 阶段的三条赛道是逐条需求堆出来的道具集合，而不是三个各有性格的地方。"
+              },
+              {
+                "label": "主动性下降",
+                "text": "美术变成执行链条的最后一环，对游戏本身不再有观点。而一旦没有人在意整体风格，前两个问题只会更糟——这是一个自我强化的循环。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "从最上游打断这个循环：concept 阶段由美术牵头确立每条赛道的视觉方向，产出一份其他工作可以对照的基准。玩法需求在这个框架内提出，而具体如何表达由美术决定。这解决了风格统一和赛道 identity，也把美术从链条末端重新放回起点。"
+            }
+          },
+          {
+            "heading": "Playtest 的反馈没有变成排期",
+            "text": [
+              "测试产出了大量原始素材，但真正转化成可执行任务的比例偏低。原因分属两个环节。"
+            ],
+            "points": [
+              {
+                "label": "测试设计",
+                "text": "这是整个周期里唯一一次正式测试，带来两个后果：所有想验证的东西都被压进这一场，目标只能宽泛，回来的反馈自然不聚焦；而这唯一一场排在 alpha 之后，即使反馈质量很高，也已经很难再改变大方向。问题不是「这次测试设计得不好」，而是整个排期里根本没有测试节奏。"
+              },
+              {
+                "label": "记录采集",
+                "text": "整场测试由两个人覆盖。即便做了实时笔记，事后也不可能再有时间完整回看录像。信息在采集环节损失一次，在整理环节又损失一次。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "在整个周期里建立测试节奏，每场设定一个收敛的验证目标，并把测试节点前移到答案还能改变什么的阶段。同时把记录分摊出去：不再是两个人记全部，而是每位 lead 负责记录自己关心的那条线。"
+            }
+          },
+          {
+            "heading": "AI 素材：预防和举证是两个问题",
+            "text": [
+              "封板前约三天的一次通关测试中，发现了疑似 AI 生成、存在版权风险的素材。红线一直是明确的——最终版本里不能有 AI 生成内容——但它还是发生了，相关素材只能重做。",
+              "我最初把这当成一个失误，实际上是两个。"
+            ],
+            "points": [
+              {
+                "label": "它是怎么进来的（预防）",
+                "text": "红线只做了口头宣贯，入库环节没有任何审查。没有人在素材进仓库时检查它，于是这批内容一路走到封板前，靠一次顺手的通关测试才被发现。发现得越晚，可选项越少。"
+              },
+              {
+                "label": "为什么只能重做（举证）",
+                "text": "没有创作过程的记录。缺少分层过程文件，一份很可能确实是原创的素材也无法被证明是原创——于是只能一律重做。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "预防层面：在素材入库处设置审查节点，并把红线的判定标准讲具体——什么算生成、什么算参考。举证层面：把分层的过程文件作为素材验收的前置条件。留痕不是为了防人，而是为了在被质疑时能站得住。"
+            }
+          },
+          {
+            "heading": "性能：没有预算，就只能等它炸",
+            "image": "images/hamsterballin/09-race-factory.jpg",
+            "caption": "工厂赛道 · 光照与材质是性能返工的主要来源",
+            "text": [
+              "性能同时牵涉光照、材质、程序化生成和建模。我们直到很晚才在目标硬件上撞到明显的墙，那时才开始优化，代价是大量返工——重做灯光、对生成工具反复调参。",
+              "「发现得晚」是结果，不是原因。真正的原因是整个项目从未设定性能预算，也没有常态化的性能监控。各环节各做各的，没人知道自己占用了多少余量，于是问题只能等到全部叠加起来、在实机上炸掉时才暴露。这类问题的特征就是：发现得越晚，已经建成的部分越多，因为要动的正是那些已完成的资产。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "在项目早期设定明确的性能预算——帧率目标、面数与材质球上限、光照方案的约束——并与主美、主程一起把它拆解到各个环节。然后建立常态化监控，把实机性能纳入每个 sprint 的验收项，让性能回退在造成它的那个 sprint 里就被发现。"
+            }
           }
         ]
       }
