@@ -32,11 +32,18 @@
 
 
 
-  function renderEmbed() {
+  // There are two resume PDFs — an English one and a Chinese one — and the
+  // language toggle picks between them. The iframe is only rebuilt when the
+  // file actually changes: re-assigning the same src would reload the PDF
+  // viewer and throw away the reader's scroll position on every toggle.
+  function renderEmbed(lang) {
     var wrap = document.getElementById("resumeEmbedWrap");
-    if (!wrap || wrap.childElementCount) return; // only needs building once
+    if (!wrap) return;
+    var href = content[lang].resumePage.pdfHref || "ZhongyinGou_resume.pdf";
+    if (wrap.getAttribute("data-src") === href) return;
+    wrap.setAttribute("data-src", href);
     wrap.innerHTML =
-      '<iframe src="ZhongyinGou_resume.pdf" title="Resume PDF" ' +
+      '<iframe src="' + href + '" title="Resume PDF" ' +
       'style="width:100%;height:130vh;min-height:900px;border:1px solid var(--color-line);background:var(--color-surface);"></iframe>';
   }
 
@@ -47,7 +54,7 @@
       btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
     });
     applyStaticText(lang);
-    renderEmbed();
+    renderEmbed(lang);
     window.SITE_CHROME.renderNav(lang, content, "resume");
   }
 

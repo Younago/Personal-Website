@@ -193,6 +193,19 @@
       window.SITE_CHROME._root = root;
     },
     renderNav: function (lang, content, activeKey) {
+      // Language-dependent hrefs (currently the resume PDF, which exists in an
+      // English and a Chinese edition) are resolved here rather than in each
+      // page's own applyStaticText: renderNav is the one function every page
+      // calls on every language change, so there is a single owner for it.
+      var dict = content[lang];
+      document.querySelectorAll("[data-i18n-href]").forEach(function (el) {
+        var value = dict, path = el.getAttribute("data-i18n-href").split(".");
+        for (var i = 0; i < path.length && value != null; i++) value = value[path[i]];
+        if (typeof value === "string") {
+          el.setAttribute("href", (window.SITE_CHROME._root || "") + value);
+        }
+      });
+
       var list = document.getElementById("navList");
       if (!list) return;
       var dict = content[lang].nav;
