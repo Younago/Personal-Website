@@ -339,6 +339,23 @@
             })
             .join("") +
           (points ? '<ul class="story-points">' + points + "</ul>" : "") +
+          // Optional stat row and data table. The research write-ups are built
+          // on survey and voting numbers; paraphrasing a ranking in prose loses
+          // exactly the thing that makes it evidence. Both reuse the existing
+          // .prod-stat / .prod-table styles so there is one table look sitewide.
+          (b.stats && b.stats.length
+            ? '<div class="story-stats">' +
+              b.stats.map(function (st) {
+                return '<div class="prod-stat"><strong>' + st.value + "</strong><span>" + st.label + "</span></div>";
+              }).join("") +
+              "</div>"
+            : "") +
+          (b.table
+            ? '<div class="prod-table-wrap"><table class="prod-table">' +
+              table(b.table.cols, b.table.rows) +
+              "</table></div>" +
+              (b.table.note ? '<p class="story-table-note mono">' + b.table.note + "</p>" : "")
+            : "") +
           // Optional callout for the "what I would change" half of a
           // retrospective section. It is visually separated because it is the
           // part a reader skimming for conclusions is looking for.

@@ -241,8 +241,6 @@ const SITE_CONTENT = {
       ],
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Screenshots from the Steam release.",
-      "postmortemHeading": "Postmortem",
-      "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned.",
       "links": [
         {
           "label": "View on Steam ↗",
@@ -412,14 +410,24 @@ const SITE_CONTENT = {
     },
     "capstone": {
       "backLink": "← Back to Projects",
-      "linkedDoc": {
-        "heading": "Retrospective on this project",
-        "tag": "RETROSPECTIVE · BOX SHOT",
-        "name": "Box Shot — Pre-Production Retrospective",
-        "blurb": "Placeholder — a producer's retrospective on the P1–P3 pre-production gates: what each gate was meant to prove, what it actually proved, and what I would scope differently going into full production.",
-        "cta": "Read the retrospective →",
-        "href": "game-analysis/retro-box-shot.html"
-      },
+      "linkedDoc": [
+        {
+          "heading": "Retrospective on this project",
+          "tag": "RETROSPECTIVE · BOX SHOT",
+          "name": "Box Shot — Pre-Production Retrospective",
+          "blurb": "Placeholder — a producer's retrospective on the P1–P3 pre-production gates: what each gate was meant to prove, what it actually proved, and what I would scope differently going into full production.",
+          "cta": "Read the retrospective →",
+          "href": "game-analysis/retro-box-shot.html"
+        },
+        {
+          "heading": "Research behind this project",
+          "tag": "RESEARCH · SELECTION & VALIDATION",
+          "name": "Box Shot — Selection & Concept Validation",
+          "blurb": "How Box Shot was chosen out of eight pitches across three voting methods, and what a concept survey of the development team changed about its design direction.",
+          "cta": "Read the research →",
+          "href": "game-analysis/box-shot-research.html"
+        }
+      ],
       "tagLabel": "CAPSTONE PROJECT · IN PRODUCTION",
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
@@ -446,9 +454,7 @@ const SITE_CONTENT = {
         "Coordinated seating and in-person collaboration across multiple studio rooms, lowering cross-discipline communication cost so dependencies could be resolved face to face."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team. Where the GDD records an individual artist the piece is credited by name; the rest come from the team's shared art depot, which carries no attribution. Click any image to open it full size.",
-      "postmortemHeading": "Postmortem",
-      "postmortem": "Postmortem pending — Box Shot is still in production. It will be written once the project ships.",
+      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team. Click any image to open it full size.",
       "imageCaption": "Character concept — Ling",
       "designHeading": "Design",
       "design": [
@@ -1837,6 +1843,272 @@ const SITE_CONTENT = {
             "fix": {
               "label": "What I would change",
               "text": "Set a performance budget early — frame-rate target, polygon and material ceilings, constraints on the lighting approach — and break it down per discipline with the art and tech leads. Then monitor continuously and make on-hardware performance an acceptance criterion each sprint, so a regression is caught in the sprint that caused it."
+            }
+          }
+        ]
+      },
+      "box-shot-research": {
+        "pageTitle": "Young Gou — Box Shot: Selection & Concept Validation",
+        "tagLabel": "RESEARCH · BOX SHOT",
+        "heading": "Box Shot — Selection & Concept Validation",
+        "layout": "stacked",
+        "lead": "Before Box Shot became the capstone, it had to survive two rounds of evidence: a ranked vote across the whole class that chose it out of eight pitches, and a concept survey of the development team that tested whether its design direction actually matched what the people building it wanted to play. This page collects what those two exercises measured and what they concluded.",
+        "backLink": "← Back to Projects",
+        "relatedHeading": "The project this research is for",
+        "related": {
+          "tag": "CAPSTONE GAME PROJECT",
+          "name": "Box Shot",
+          "blurb": "A first-person shooter set in a kid's imagined cardboard world, built by a team of 41. Through the P1–P3 pre-production gates and entering full production.",
+          "cta": "Open the project →",
+          "href": "team-projects/capstone.html"
+        },
+        "blocks": [
+          {
+            "heading": "Part one — choosing the project",
+            "text": [
+              "Eight concepts were pitched to the cohort. Every respondent ranked all eight from 1 to 8, and the rankings were run through three independent methods rather than one, because each answers a different question and they frequently disagree.",
+              "Borda count asks how well liked a project is overall. Instant-runoff ranked choice asks whether it can survive elimination rounds. Pairwise comparison asks who would win a straight one-on-one election against each other candidate — many voting theorists treat that last one as the most intuitive test of collective preference, on the grounds that a project which beats every alternative head-to-head is hard to argue against."
+            ],
+            "stats": [
+              {
+                "value": "8",
+                "label": "concepts pitched"
+              },
+              {
+                "value": "40",
+                "label": "ranked ballots"
+              },
+              {
+                "value": "3",
+                "label": "voting methods"
+              }
+            ]
+          },
+          {
+            "heading": "What the ballots said",
+            "text": [
+              "Box Shot led the Borda count by a single point over Anti-Anti Defender — effectively a tie, and the reason the result was reported as a top tier rather than a mandate. The separation only becomes clear one layer down."
+            ],
+            "table": {
+              "cols": [
+                "Rank",
+                "Project",
+                "Borda",
+                "Avg rank",
+                "1st-place",
+                "Bottom-2",
+                "Polarization"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Box Shot",
+                  "210",
+                  "3.75",
+                  "7",
+                  "3",
+                  "66.2"
+                ],
+                [
+                  "2",
+                  "Anti-Anti Defender",
+                  "209",
+                  "3.77",
+                  "8",
+                  "6",
+                  "84.6"
+                ],
+                [
+                  "3",
+                  "Dungeon Dishes!",
+                  "198",
+                  "4.05",
+                  "8",
+                  "8",
+                  "100.0"
+                ],
+                [
+                  "4",
+                  "Project Armond",
+                  "194",
+                  "4.15",
+                  "6",
+                  "6",
+                  "83.3"
+                ],
+                [
+                  "5",
+                  "Necro Knight",
+                  "186",
+                  "4.35",
+                  "5",
+                  "6",
+                  "84.9"
+                ],
+                [
+                  "6",
+                  "Hyperion",
+                  "171",
+                  "4.72",
+                  "3",
+                  "12",
+                  "92.5"
+                ],
+                [
+                  "7",
+                  "Minute Maze",
+                  "168",
+                  "4.80",
+                  "2",
+                  "14",
+                  "96.6"
+                ],
+                [
+                  "8",
+                  "Fight or Flight",
+                  "104",
+                  "6.40",
+                  "1",
+                  "25",
+                  "66.3"
+                ]
+              ],
+              "note": "Polarization index — higher means the pitch drew strong supporters and meaningful detractors alike."
+            }
+          },
+          {
+            "heading": "Polarization was the deciding variable",
+            "text": [
+              "Dungeon Dishes! attracted the most passionate support of any pitch — sixteen top-two placements, more than Box Shot — but it also drew the most opposition, and scored the maximum polarization index. That matters more than raw enthusiasm here: a project half the team is unwilling to work on for a year does not ship, regardless of how strongly the other half feels.",
+              "Box Shot had the lowest polarization of the leading candidates, and only three bottom-two placements against seven first-place votes. It was almost nobody's least-favourite option."
+            ],
+            "points": [
+              {
+                "label": "Borda",
+                "text": "First — 210 points, one ahead of the runner-up."
+              },
+              {
+                "label": "Instant runoff",
+                "text": "First — survived every elimination round and took the final runoff 23 to 17."
+              },
+              {
+                "label": "Pairwise",
+                "text": "First — 7 wins, 0 losses, the only pitch that beat every other concept head-to-head."
+              }
+            ],
+            "fix": {
+              "label": "Why this mattered",
+              "text": "The three methods often disagree; when all three converge on the same winner, the result is unlikely to be a faction's favourite, a voting-system artifact, or the product of vote splitting. Two further checks pointed the same way: leads and non-leads both ranked Box Shot favourably, so the people leading the project were not working against the room, and Box Shot's support did not depend on its own pitch team — its team-affiliation lift was ordinary rather than the kind of insider enthusiasm that fails to transfer."
+            }
+          },
+          {
+            "heading": "Part two — testing the concept against its own team",
+            "text": [
+              "Winning a vote establishes that people want to build something. It does not establish that the design direction is the one they want to play. A concept survey ran across the development team in July 2026 — ten valid responses, covering preferred genres, player-character framing, the protagonist players imagine, desired gameplay, the weight narrative should carry, and what actually drives them to replay a level.",
+              "The point was not to poll for design decisions. It was to find where the stated direction and the team's instincts diverged, early enough for that to be cheap."
+            ]
+          },
+          {
+            "heading": "Where the direction was validated",
+            "text": [
+              "Two findings supported calls the team had already made. On narrative weight, not one respondent rated strong emotional storytelling \"very important\" — 90% landed at moderate or slight. That is direct support for telling the story through brief between-level illustrations and mission objectives instead of long cutscenes.",
+              "On player character, the split looked like a problem at first: 60% wanted a low-investment protagonist to project onto, 40% wanted an established or customizable one. But Box Shot's framing — the player controls the imagined version of Colby, the version he pictures himself becoming — serves both. It can carry a distinct, capable personality while remaining, structurally, a child's projected fantasy with no realistic backstory to negotiate."
+            ],
+            "table": {
+              "cols": [
+                "What drives a replay",
+                "Respondents",
+                "Share"
+              ],
+              "rows": [
+                [
+                  "Enjoying the moment-to-moment gameplay",
+                  "8",
+                  "80%"
+                ],
+                [
+                  "Experiencing more of the story",
+                  "7",
+                  "70%"
+                ],
+                [
+                  "Discovering hidden secrets or shortcuts",
+                  "6",
+                  "60%"
+                ],
+                [
+                  "Mastering mechanics and combat",
+                  "4",
+                  "40%"
+                ],
+                [
+                  "Chasing a better score, time or leaderboard rank",
+                  "4",
+                  "40%"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "What changed",
+              "text": "Score-chasing was the weakest of the four replay drivers, which argued against building the end-of-level flow around leaderboard competition. The recommendation was to keep the score-and-retry loop but invest alongside it in discoverable hidden content and narrative easter eggs — matching what players said actually brings them back."
+            }
+          },
+          {
+            "heading": "What players asked for that wasn't planned",
+            "text": [
+              "The open-ended answers converged on something more specific than \"more content.\" Three respondents wanted deeper enemy interaction — not more ways to kill enemies, but ways to influence their position and behaviour. \"Being able to influence their movement/position outside of shooting them.\" \"Deflect bullet!!!\"",
+              "That maps almost exactly onto the Tool Gun's canister system, which already splits into three distinct tactical functions — Bungee Shot repositions, Glob Shot launches and displaces, Staple Shot pins and strips armour. The specific request to deflect bullets is not currently covered by any of them, and was logged as a direction for a future canister rather than a gap in the existing three.",
+              "One respondent asked for scoring that rewards style rather than only speed — \"Score > time\" — which became a recommendation to add a creative-combination bonus, giving the Creative Improvisation pillar something measurable to point at."
+            ]
+          },
+          {
+            "heading": "The finding worth arguing about",
+            "text": [
+              "One response did not fit the pattern and was the most useful thing in the survey. A colleague who had tested the mechanics reported that they had too much in common with each other, and that the design was drifting from creative mechanical exploration toward execution-based play."
+            ],
+            "points": [
+              {
+                "label": "In their words",
+                "text": "\"Mechanics should be distinguished from each other and be able to be used in many different contexts. They shouldn't have more than 3 things in common with each other. I think the mechanics are moving in a more serious execution based direction rather than a creative mechanic exploration based one.\""
+              }
+            ],
+            "fix": {
+              "label": "How it was handled",
+              "text": "On paper the three canisters are well differentiated, so it would have been easy to dismiss this as a misreading. The response instead was to treat differentiation-on-paper as an unverified claim: the risk was carried forward as something to confirm in playtesting once levels were playable, watching specifically for whether players spontaneously combine canisters or converge on one dominant solution. A design intent that only holds in the design document is not yet a finding."
+            }
+          },
+          {
+            "heading": "Mapping findings back onto the pillars",
+            "text": [
+              "The survey was closed out by checking each finding against the project's three design pillars, so that the output was a set of concrete calls rather than a list of observations."
+            ],
+            "table": {
+              "cols": [
+                "Pillar",
+                "What the survey showed",
+                "What it changed"
+              ],
+              "rows": [
+                [
+                  "Colby's Imagination",
+                  "Players wanted more stylised effects and said incongruity between elements made the world feel more imagined, not less",
+                  "Push further into the surreal side of the cardboard world instead of realistic consistency; keep illustration beats brief and visually led"
+                ],
+                [
+                  "Satisfying Combat",
+                  "Protagonist expectations clustered on a calm, capable, highly mobile tone; enemy variety and interaction depth were the most frequent asks",
+                  "Seven base enemies plus combinations and an armoured variant are enough foundation — the work is making those behavioural differences read clearly in levels"
+                ],
+                [
+                  "Creative Improvisation",
+                  "Players wanted combinable enemy and environment interactions; one warned of mechanic homogeneity",
+                  "Canister roles stay distinct; validate through playtest whether players actually combine them rather than converging on one solution"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "How the recommendations were framed",
+              "text": "As material for team discussion, not as decisions. Ten responses from inside the team is a signal about the people building the game, not about the players who will eventually buy it — useful for catching drift early, not for settling a design argument on its own."
             }
           }
         ]
@@ -3900,8 +4172,6 @@ const SITE_CONTENT = {
       ],
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "截图取自 Steam 发行版本。",
-      "postmortemHeading": "项目复盘",
-      "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。",
       "links": [
         {
           "label": "在 Steam 上查看 ↗",
@@ -4071,14 +4341,24 @@ const SITE_CONTENT = {
     },
     "capstone": {
       "backLink": "← 返回项目",
-      "linkedDoc": {
-        "heading": "本项目的复盘",
-        "tag": "复盘 · BOX SHOT",
-        "name": "Box Shot — 前期制作复盘",
-        "blurb": "占位文字 —— 从项目管理视角对 P1–P3 前期制作阶段的复盘：每个节点原本要验证什么、实际验证了什么，以及进入正式制作前我会如何调整范围。",
-        "cta": "阅读复盘 →",
-        "href": "game-analysis/retro-box-shot.html"
-      },
+      "linkedDoc": [
+        {
+          "heading": "本项目的复盘",
+          "tag": "复盘 · BOX SHOT",
+          "name": "Box Shot — 前期制作复盘",
+          "blurb": "占位文字 —— 从项目管理视角对 P1–P3 前期制作阶段的复盘：每个节点原本要验证什么、实际验证了什么，以及进入正式制作前我会如何调整范围。",
+          "cta": "阅读复盘 →",
+          "href": "game-analysis/retro-box-shot.html"
+        },
+        {
+          "heading": "这个项目背后的研究",
+          "tag": "研究 · 立项与验证",
+          "name": "Box Shot — 立项与概念验证",
+          "blurb": "八个提案、三种计票方法，Box Shot 是怎么被选出来的；以及一次面向开发团队的概念调研，改变了它设计方向上的哪些判断。",
+          "cta": "阅读研究 →",
+          "href": "game-analysis/box-shot-research.html"
+        }
+      ],
       "tagLabel": "毕业项目 · 制作中",
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
@@ -4105,9 +4385,7 @@ const SITE_CONTENT = {
         "统筹多工作室房间的座位安排与线下协作方式，降低跨职能沟通成本，使依赖问题可当面快速解决。"
       ],
       "screenshotsHeading": "游戏截图",
-      "screenshotsNote": "概念美术、白盒与模型均由 Box Shot 团队完成。GDD 中记录了作者的作品按名字署名；其余来自团队共享的美术库，文件本身没有署名信息。点击任意图片可打开原图。",
-      "postmortemHeading": "项目复盘",
-      "postmortem": "复盘待写 —— Box Shot 仍在制作中，等项目完成后再补。",
+      "screenshotsNote": "概念美术、白盒与模型均由 Box Shot 团队完成。点击任意图片可打开原图。",
       "imageCaption": "角色概念 — Ling",
       "designHeading": "设计",
       "design": [
@@ -5496,6 +5774,272 @@ const SITE_CONTENT = {
             "fix": {
               "label": "改进方向",
               "text": "在项目早期设定明确的性能预算——帧率目标、面数与材质球上限、光照方案的约束——并与主美、主程一起把它拆解到各个环节。然后建立常态化监控，把实机性能纳入每个 sprint 的验收项，让性能回退在造成它的那个 sprint 里就被发现。"
+            }
+          }
+        ]
+      },
+      "box-shot-research": {
+        "pageTitle": "Young Gou — Box Shot：立项与概念验证",
+        "tagLabel": "研究 · BOX SHOT",
+        "heading": "Box Shot — 立项与概念验证",
+        "layout": "stacked",
+        "lead": "Box Shot 成为毕业设计项目之前，先后经过两轮验证：一次全班范围的排序投票，从八个提案里把它选出来；以及一次面向开发团队的概念调研，检验它的设计方向是否真的是这群要做它的人想玩的东西。这一页整理的是这两次工作各自量了什么、得出了什么。",
+        "backLink": "← 返回项目",
+        "relatedHeading": "这份研究对应的项目",
+        "related": {
+          "tag": "毕业设计项目",
+          "name": "Box Shot",
+          "blurb": "41 人团队的第一人称射击，设定在孩子想象出的纸箱世界。已走完 P1–P3 前期制作节点，正在进入完整生产。",
+          "cta": "打开项目页 →",
+          "href": "team-projects/capstone.html"
+        },
+        "blocks": [
+          {
+            "heading": "第一部分 —— 怎么选出这个项目",
+            "text": [
+              "八个概念向全年级提案。每位参与者把八个提案从 1 到 8 全部排序，然后用三种独立的计票方法分别跑一遍，而不是只用一种——因为它们回答的是不同的问题，而且经常给出不同的答案。",
+              "Borda 计数问的是「这个项目整体上有多受欢迎」；排序复选（instant-runoff）问的是「它能不能扛过一轮轮淘汰」；两两对比问的是「如果只在两个项目之间做一次简单选举，大家会选谁」。不少投票理论研究者认为最后一种最接近集体偏好的直觉定义——一个能在一对一比较中击败所有其他选项的项目，很难说还有别的项目更能代表这个群体的意愿。"
+            ],
+            "stats": [
+              {
+                "value": "8",
+                "label": "个提案"
+              },
+              {
+                "value": "40",
+                "label": "份排序选票"
+              },
+              {
+                "value": "3",
+                "label": "种计票方法"
+              }
+            ]
+          },
+          {
+            "heading": "投票结果",
+            "text": [
+              "Box Shot 在 Borda 计数上只比 Anti-Anti Defender 高出一分——实际上是平手，这也是结果被表述为「第一梯队」而不是「压倒性胜出」的原因。真正的分野要往下看一层。"
+            ],
+            "table": {
+              "cols": [
+                "名次",
+                "项目",
+                "Borda",
+                "平均排位",
+                "第一名票",
+                "末二位",
+                "极化度"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Box Shot",
+                  "210",
+                  "3.75",
+                  "7",
+                  "3",
+                  "66.2"
+                ],
+                [
+                  "2",
+                  "Anti-Anti Defender",
+                  "209",
+                  "3.77",
+                  "8",
+                  "6",
+                  "84.6"
+                ],
+                [
+                  "3",
+                  "Dungeon Dishes!",
+                  "198",
+                  "4.05",
+                  "8",
+                  "8",
+                  "100.0"
+                ],
+                [
+                  "4",
+                  "Project Armond",
+                  "194",
+                  "4.15",
+                  "6",
+                  "6",
+                  "83.3"
+                ],
+                [
+                  "5",
+                  "Necro Knight",
+                  "186",
+                  "4.35",
+                  "5",
+                  "6",
+                  "84.9"
+                ],
+                [
+                  "6",
+                  "Hyperion",
+                  "171",
+                  "4.72",
+                  "3",
+                  "12",
+                  "92.5"
+                ],
+                [
+                  "7",
+                  "Minute Maze",
+                  "168",
+                  "4.80",
+                  "2",
+                  "14",
+                  "96.6"
+                ],
+                [
+                  "8",
+                  "Fight or Flight",
+                  "104",
+                  "6.40",
+                  "1",
+                  "25",
+                  "66.3"
+                ]
+              ],
+              "note": "极化度：数值越高，表示这个提案同时吸引了强支持者和明确的反对者。"
+            }
+          },
+          {
+            "heading": "真正起决定作用的是极化度",
+            "text": [
+              "Dungeon Dishes! 拿到了所有提案里最热烈的支持——16 个前二排位，比 Box Shot 还多——但它同时也招来了最强的反对，极化度拉满。在这个场景里，这比热情本身更要紧：一个有一半人不愿意做上一年的项目做不出来，无论另一半人多想做。",
+              "Box Shot 是领先候选里极化度最低的，7 张第一名票，而只有 3 个末二位排位。几乎没有人把它排在最后。"
+            ],
+            "points": [
+              {
+                "label": "Borda 计数",
+                "text": "第一 —— 210 分，领先第二名一分。"
+              },
+              {
+                "label": "排序复选",
+                "text": "第一 —— 扛过全部淘汰轮次，最终对决 23 比 17 胜出。"
+              },
+              {
+                "label": "两两对比",
+                "text": "第一 —— 7 胜 0 负，是唯一一个在一对一比较中击败了所有其他概念的提案。"
+              }
+            ],
+            "fix": {
+              "label": "为什么这件事重要",
+              "text": "这三种方法经常互相矛盾；当它们同时指向同一个赢家时，这个结果就不太可能是某个小团体的偏好、某种计票机制的产物，或者票源分散的意外。另外两项检查也指向同一方向：leads 和非 leads 都把 Box Shot 排得靠前，说明带项目的人不是在跟整个房间对着干；同时 Box Shot 的支持并不依赖它自己的提案团队——它的「本队加成」处在正常范围，而不是那种没能传达给别人的内部热情。"
+            }
+          },
+          {
+            "heading": "第二部分 —— 拿概念去问自己的团队",
+            "text": [
+              "赢下投票只说明大家想做这个东西，不说明当前的设计方向就是他们想玩的那个版本。2026 年 7 月，一份概念调研在开发团队内部展开，回收 10 份有效问卷，覆盖常玩品类、主角设定倾向、他们想象中的主角形象、期待的玩法、叙事应该占多大分量，以及究竟是什么让他们愿意重玩一个关卡。",
+              "目的不是靠投票做设计决策，而是找出「已经写下来的方向」和「团队真实直觉」之间的分歧点——趁改动还便宜的时候。"
+            ]
+          },
+          {
+            "heading": "被验证成立的部分",
+            "text": [
+              "两项结果支持了团队此前已经做出的判断。在叙事分量上，没有任何一位受访者把「强情感叙事」评为非常重要，90% 落在中等或轻微。这直接支持了用关卡间的短插画和任务目标讲故事、而不是长过场动画的做法。",
+              "在主角设定上，结果乍看像个问题：60% 想要一个可以投射自我的低设定主角，40% 想要有既定人格或可自定义的角色。但 Box Shot 的设定——玩家操控的是 Colby 想象中的自己，是他幻想中自己成为的那个版本——同时满足这两边。它可以有鲜明、能打的个性，而在结构上仍然是一个孩子投射出的幻想形象，没有现实背景故事需要处理。"
+            ],
+            "table": {
+              "cols": [
+                "是什么让你重玩一个关卡",
+                "人数",
+                "占比"
+              ],
+              "rows": [
+                [
+                  "单纯享受当下的玩法手感",
+                  "8",
+                  "80%"
+                ],
+                [
+                  "想看到更多剧情",
+                  "7",
+                  "70%"
+                ],
+                [
+                  "寻找隐藏内容或捷径",
+                  "6",
+                  "60%"
+                ],
+                [
+                  "精通机制与战斗",
+                  "4",
+                  "40%"
+                ],
+                [
+                  "刷更高的分数、更快的时间或排行榜",
+                  "4",
+                  "40%"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "改了什么",
+              "text": "刷分是四个重玩动机里最弱的一个，这反对把关卡结算流程建立在排行榜竞争上。对应建议是保留「结算 — 立刻重来跑得更干净」这个循环，但同时投入可发现的隐藏内容和叙事彩蛋——那才是玩家自己说的、真正把他们带回来的东西。"
+            }
+          },
+          {
+            "heading": "玩家要的、但原本没规划的东西",
+            "text": [
+              "开放题的答案收敛到了比「更多内容」具体得多的地方。三位受访者想要更深的敌人互动——不是更多杀敌方式，而是能影响敌人位置和行为的方式。「除了射它们之外，能影响它们的移动和站位。」「弹反子弹！！！」",
+              "这几乎正好落在 Tool Gun 的弹匣系统上：三种弹匣本就分成三种不同的战术功能——Bungee Shot 拉扯改变位置，Glob Shot 弹射与位移，Staple Shot 钉住并剥离护甲。而「弹反子弹」这个具体请求目前三者都没有覆盖，被记录为未来弹匣的方向，而不是当前三者的缺口。",
+              "还有一位提出希望计分奖励风格而不只是速度——「Score > time」——这变成了增加「创造性组合加分」的建议，让「创造性即兴」这条支柱有一个可衡量的信号。"
+            ]
+          },
+          {
+            "heading": "最值得争论的那一条",
+            "text": [
+              "有一条回答不符合整体模式，而它是整份调研里最有价值的东西。一位测试过机制的同事反馈：这些机制彼此的共同点太多了，整体设计正在从「创造性的机制探索」漂移向「偏执行的严肃方向」。"
+            ],
+            "points": [
+              {
+                "label": "原话",
+                "text": "「机制之间应该有区分度，并且能在很多不同情境下使用。它们彼此的共同点不应该超过三个。我觉得现在的机制正在往更严肃的、执行导向的方向走，而不是创造性的机制探索方向。」"
+              }
+            ],
+            "fix": {
+              "label": "怎么处理的",
+              "text": "纸面上三种弹匣的区分度是清楚的，所以很容易把这条当成误读打发掉。实际的处理是把「纸面上区分得好」当成一个尚未验证的主张：这个风险被带进后续流程，等到有可玩关卡后在测试中确认——具体要看玩家是自发地组合弹匣，还是收敛到某一个万能解。一个只在设计文档里成立的设计意图，还不算一个结论。"
+            }
+          },
+          {
+            "heading": "把结论映射回设计支柱",
+            "text": [
+              "调研最后把每一条发现对照项目的三条设计支柱走了一遍，让产出是一组具体的决定，而不是一串观察。"
+            ],
+            "table": {
+              "cols": [
+                "设计支柱",
+                "调研显示了什么",
+                "带来了什么改动"
+              ],
+              "rows": [
+                [
+                  "Colby 的想象",
+                  "玩家希望特效更风格化，并表示元素之间的不协调反而让世界更像「想象出来的」，而不是更少",
+                  "在纸箱世界里更往超现实一侧推，而不是追求写实的一致性；插画节奏保持简短、以视觉为主"
+                ],
+                [
+                  "爽快的战斗",
+                  "对主角的期待集中在冷静、能打、高机动的调性；敌人多样性与互动深度是最高频的诉求",
+                  "七种基础敌人加组合与护甲变体已经是足够的底子——真正的工作是让这些行为差异在关卡里被清楚地读出来"
+                ],
+                [
+                  "创造性即兴",
+                  "玩家想要可组合的敌人与环境互动；有人警告机制同质化",
+                  "弹匣的功能定位保持互不重叠；通过实测验证玩家是否真的会去组合，而不是收敛到单一解法"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "结论是怎么表述的",
+              "text": "作为团队讨论的材料，而不是决定。团队内部的十份回答反映的是「做这个游戏的人」，而不是最终会买它的玩家——它适合用来尽早发现方向漂移，不适合单独用来终结一场设计争论。"
             }
           }
         ]

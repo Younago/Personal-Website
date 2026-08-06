@@ -243,22 +243,38 @@
     // the document is and isn't — a coursework plan is not a shipped roadmap.
     var linked = document.getElementById("linkedDoc");
     if (linked) {
-      if (d.linkedDoc) {
-        linked.innerHTML =
-          '<section class="resume-section"><h2>' + d.linkedDoc.heading + "</h2>" +
-          '<a class="linked-doc" href="' + root + d.linkedDoc.href + '">' +
-          '<span class="linked-doc-tag mono">' + d.linkedDoc.tag + "</span>" +
-          "<h3>" + d.linkedDoc.name + "</h3>" +
-          "<p>" + d.linkedDoc.blurb + "</p>" +
-          '<span class="linked-doc-cta mono">' + d.linkedDoc.cta + "</span>" +
-          "</a></section>";
-      } else {
-        linked.innerHTML = "";
-      }
+      // One companion document or several: Box Shot has both a retrospective
+      // and the selection/validation research, so the field accepts an array.
+      // A bare object is still valid — the other project pages use that form.
+      var docs = d.linkedDoc ? (Array.isArray(d.linkedDoc) ? d.linkedDoc : [d.linkedDoc]) : [];
+      linked.innerHTML = docs
+        .map(function (doc) {
+          return (
+            '<section class="resume-section"><h2>' + doc.heading + "</h2>" +
+            '<a class="linked-doc" href="' + root + doc.href + '">' +
+            '<span class="linked-doc-tag mono">' + doc.tag + "</span>" +
+            "<h3>" + doc.name + "</h3>" +
+            "<p>" + doc.blurb + "</p>" +
+            '<span class="linked-doc-cta mono">' + doc.cta + "</span>" +
+            "</a></section>"
+          );
+        })
+        .join("");
     }
 
-    document.getElementById("postHeading").textContent = d.postmortemHeading;
-    document.getElementById("postBody").textContent = d.postmortem;
+    // Optional. Hamsterballin' and Box Shot both have a full retrospective
+    // linked above (linkedDoc), so a second, thinner "Postmortem" block on
+    // the same page was redundant — the section is dropped entirely rather
+    // than left showing an empty heading.
+    var postHeadingEl = document.getElementById("postHeading");
+    var postSection = postHeadingEl ? postHeadingEl.closest("section") : null;
+    if (d.postmortem) {
+      if (postSection) postSection.style.display = "";
+      postHeadingEl.textContent = d.postmortemHeading;
+      document.getElementById("postBody").textContent = d.postmortem;
+    } else if (postSection) {
+      postSection.style.display = "none";
+    }
 
     renderRelated(lang);
 

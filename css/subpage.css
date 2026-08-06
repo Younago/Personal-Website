@@ -699,6 +699,38 @@ a.blog-row {
   color: var(--color-text);
 }
 
+/* Stat row inside a story block. Fixed column counts rather than auto-fit:
+   an auto-fit grid leaves empty cells that read as missing data against the
+   1px-gap grey backing. */
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+  margin-top: calc(var(--u) * 3);
+}
+
+/* Grid items default to min-width:auto, so the 460px-min table inside
+   .prod-table-wrap widens the whole track instead of scrolling within it —
+   which pushes the page itself sideways on a phone. */
+.story-body {
+  min-width: 0;
+}
+
+.story-table-note {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-top: calc(var(--u) * 1);
+}
+
+@media (max-width: 760px) {
+  .story-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 760px) {
   .story-block {
     grid-template-columns: 1fr;
