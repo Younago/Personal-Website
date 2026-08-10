@@ -292,7 +292,14 @@
     if (!results) return;
     results.style.display = "";
     var summaryEl = document.getElementById("aiToolSummary");
-    if (summaryEl) summaryEl.textContent = data.summary || "";
+    // A backend that failed to parse the model's output used to pass the raw
+    // JSON through as the summary, which renders as a wall of braces where a
+    // sentence belongs. The worker no longer does that, but the check stays
+    // client-side too: this file ships independently of the worker, so it
+    // should not depend on which revision is deployed to look sane.
+    var summary = typeof data.summary === "string" ? data.summary : "";
+    if (/^\s*[{[]/.test(summary) || /"findings"\s*:/.test(summary)) summary = "";
+    if (summaryEl) summaryEl.textContent = summary;
     var findings = toFindings(data);
     renderStaleNote(summaryEl);
     renderPriority(findings);

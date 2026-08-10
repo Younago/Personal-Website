@@ -68,8 +68,6 @@ const SYSTEM_PROMPT = {
     "terms, under ~15 words; playerFix = the solution the player proposed, " +
     "or \"\" if they proposed none (never invent one); mentions = how many " +
     "separate times this came up in the text (integer, at least 1).\n" +
-    "Output at most 16 findings — merge near-duplicates and raise `mentions` " +
-    "instead of listing them twice.\n" +
     "Output STRICT JSON only, in the shape " +
     '{"summary": "one-line overall summary", "findings": [{"type": "bug", ' +
     '"severity": "major", "note": "...", "playerFix": "...", "mentions": 1}]}. ' +
@@ -87,7 +85,6 @@ const SYSTEM_PROMPT = {
     "每条还要给出：note = **玩家观察到的现象**，用玩家的说法，不超过约 20 个字；" +
     "playerFix = 玩家自己提出的解决方案，如果没有提就填 \"\"（绝对不要替他编造）；" +
     "mentions = 这一点在文本中被单独提到的次数（整数，至少为 1）。\n" +
-    "最多输出 16 条 —— 意思接近的合并成一条并把 mentions 加一，不要重复列。\n" +
     "只输出严格的 JSON，格式为 " +
     '{"summary": "一句话总体总结", "findings": [{"type": "bug", "severity": ' +
     '"major", "note": "...", "playerFix": "...", "mentions": 1}]}。' +
@@ -134,43 +131,6 @@ function normaliseSeverity(value, type) {
   return "minor";
 }
 
-// A response can be well-formed right up to the point where the model ran out
-// of tokens, which leaves a JSON document with no closing brackets — useless
-// to JSON.parse, but most of the findings in it are intact. Rather than
-// throwing the whole batch away, pull out every complete object and the
-// summary string on their own.
-//
-// The object pattern deliberately matches only *innermost* braces: a finding
-// contains no nested objects, while the envelope does, so this picks up the
-// findings and skips the wrapper. An object cut off mid-write simply has no
-// closing brace and is left behind.
-function salvage(raw) {
-  const out = { summary: "", findings: [] };
-  const text = String(raw || "");
-
-  const sm = text.match(/"summary"\s*:\s*"((?:[^"\\]|\\.)*)"/);
-  if (sm) {
-    try {
-      out.summary = JSON.parse('"' + sm[1] + '"');
-    } catch (e) {
-      /* leave the summary empty rather than emitting a half-escaped string */
-    }
-  }
-
-  const objects = text.match(/\{[^{}]*\}/g) || [];
-  for (const chunk of objects) {
-    try {
-      const o = JSON.parse(chunk);
-      if (o && typeof o === "object" && typeof o.note === "string" && o.note.trim()) {
-        out.findings.push(o);
-      }
-    } catch (e) {
-      /* not a finding, or truncated — skip it */
-    }
-  }
-  return out;
-}
-
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
@@ -200,13 +160,6 @@ export default {
           { role: "system", content: SYSTEM_PROMPT[lang] },
           { role: "user", content: feedback },
         ],
-        // Workers AI defaults to a small completion budget — a session with a
-        // dozen findings runs straight past it and the JSON comes back cut
-        // off mid-array, which then fails to parse. Give it room for the
-        // whole object, and keep the temperature low: this is a
-        // classification task, not a writing one.
-        max_tokens: 2048,
-        temperature: 0.2,
       });
 
       // Different Workers AI models (and even different variants of the
@@ -220,23 +173,20 @@ export default {
           ? responseField
           : JSON.stringify(responseField !== undefined ? responseField : aiResponse || {});
 
-      let parsed = null;
+      let parsed;
       try {
         const match = raw.match(/\{[\s\S]*\}/);
         parsed = JSON.parse(match ? match[0] : raw);
       } catch (parseErr) {
-        parsed = null;
+        // Model didn't return clean JSON — fall back to a minimal shape
+        // rather than surfacing a raw-text blob as if it were structured.
+        parsed = { summary: raw.slice(0, 300), findings: [] };
       }
       if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-        parsed = salvage(raw);
+        parsed = { summary: raw.slice(0, 300), findings: [] };
       }
 
-      // A summary that still looks like JSON means every parse path above
-      // failed; showing it would render a wall of braces where a sentence
-      // belongs. Better an empty summary and the findings that survived.
-      let summary = typeof parsed.summary === "string" ? parsed.summary : "";
-      if (/^\s*[{[]/.test(summary) || /"findings"\s*:/.test(summary)) summary = "";
-      summary = summary.slice(0, 400);
+      const summary = typeof parsed.summary === "string" ? parsed.summary : "";
       const rawFindings = Array.isArray(parsed.findings) ? parsed.findings : [];
       const findings = rawFindings
         .filter(function (f) {
