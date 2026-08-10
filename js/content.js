@@ -46,7 +46,8 @@ const SITE_CONTENT = {
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
       "scroll": "SCROLL",
-      "heroBanner": "images/presentation-hero.jpg"
+      "heroBanner": "images/presentation-hero.jpg",
+      "aboutPhoto": "images/about-portrait.jpg"
     },
     "home": {
       "teamProjectsHeading": "Team Projects",
@@ -208,7 +209,7 @@ const SITE_CONTENT = {
         "heading": "Retrospective on this project",
         "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
         "name": "Hamsterballin' — Project Retrospective",
-        "blurb": "Placeholder — a producer's retrospective on running a 43-person team through one semester to a Steam release: what held, what broke, and what I would do differently.",
+        "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
         "cta": "Read the retrospective →",
         "href": "game-analysis/retro-hamsterballin.html"
       },
@@ -240,8 +241,6 @@ const SITE_CONTENT = {
       ],
       "screenshotsHeading": "Screenshots",
       "screenshotsNote": "Screenshots from the Steam release.",
-      "postmortemHeading": "Postmortem",
-      "postmortem": "Placeholder — reflect on what went well, what you'd do differently, and what you learned.",
       "links": [
         {
           "label": "View on Steam ↗",
@@ -411,14 +410,24 @@ const SITE_CONTENT = {
     },
     "capstone": {
       "backLink": "← Back to Projects",
-      "linkedDoc": {
-        "heading": "Retrospective on this project",
-        "tag": "RETROSPECTIVE · BOX SHOT",
-        "name": "Box Shot — Pre-Production Retrospective",
-        "blurb": "Placeholder — a producer's retrospective on the P1–P3 pre-production gates: what each gate was meant to prove, what it actually proved, and what I would scope differently going into full production.",
-        "cta": "Read the retrospective →",
-        "href": "game-analysis/retro-box-shot.html"
-      },
+      "linkedDoc": [
+        {
+          "heading": "Retrospective on this project",
+          "tag": "RETROSPECTIVE · BOX SHOT",
+          "name": "Box Shot — Pre-Production Retrospective",
+          "blurb": "Placeholder — a producer's retrospective on the P1–P3 pre-production gates: what each gate was meant to prove, what it actually proved, and what I would scope differently going into full production.",
+          "cta": "Read the retrospective →",
+          "href": "game-analysis/retro-box-shot.html"
+        },
+        {
+          "heading": "Research behind this project",
+          "tag": "RESEARCH · SELECTION & VALIDATION",
+          "name": "Box Shot — Selection & Concept Validation",
+          "blurb": "How Box Shot was chosen out of eight pitches across three voting methods, and what a concept survey of the development team changed about its design direction.",
+          "cta": "Read the research →",
+          "href": "game-analysis/box-shot-research.html"
+        }
+      ],
       "tagLabel": "CAPSTONE PROJECT · IN PRODUCTION",
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
@@ -447,9 +456,7 @@ const SITE_CONTENT = {
         "Coordinated seating and in-person collaboration across multiple studio rooms, lowering cross-discipline communication cost so dependencies could be resolved face to face."
       ],
       "screenshotsHeading": "Screenshots",
-      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team. Where the GDD records an individual artist the piece is credited by name; the rest come from the team's shared art depot, which carries no attribution. Click any image to open it full size.",
-      "postmortemHeading": "Postmortem",
-      "postmortem": "Postmortem pending — Box Shot is still in production. It will be written once the project ships.",
+      "screenshotsNote": "Concept art, whitebox and models by the Box Shot team. Click any image to open it full size.",
       "imageCaption": "Character concept — Ling",
       "designHeading": "Design",
       "design": [
@@ -1031,17 +1038,17 @@ const SITE_CONTENT = {
       "intro": "Teardowns of the systems, economies and level flow behind games I keep coming back to — and retrospectives on the projects I ran.",
       "list": [
         {
-          "id": "analysis-1",
+          "id": "retro-hamsterballin",
           "tags": [
-            "teamfight_tactics",
-            "systems_teardown",
-            "10_seasons"
+            "retrospective",
+            "shipped_on_steam",
+            "team_of_43"
           ],
-          "tag": "ANALYSIS · TEAMFIGHT TACTICS",
-          "name": "Analysis and Practice of the TFT Synergy System",
-          "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
-          "href": "game-analysis/analysis-1.html",
-          "image": "images/tft/cover.jpg"
+          "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
+          "name": "Hamsterballin' — Project Retrospective",
+          "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
+          "href": "game-analysis/retro-hamsterballin.html",
+          "image": "images/hamsterballin-card.jpg"
         },
         {
           "id": "retro-box-shot",
@@ -1058,36 +1065,17 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
-          "id": "retro-hamsterballin",
+          "id": "analysis-1",
           "tags": [
-            "retrospective",
-            "shipped_on_steam",
-            "team_of_43"
+            "teamfight_tactics",
+            "systems_teardown",
+            "10_seasons"
           ],
-          "tag": "RETROSPECTIVE · HAMSTERBALLIN'",
-          "name": "Hamsterballin' — Project Retrospective",
-          "blurb": "Placeholder — running a 43-person team through one semester to a Steam release: what held, what broke, and what I would do differently.",
-          "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": true
-        },
-        {
-          "id": "analysis-2",
-          "tag": "ANALYSIS · TBD",
-          "name": "Analysis two — title TBD",
-          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
-          "href": "game-analysis/analysis-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
-        },
-        {
-          "id": "analysis-3",
-          "tag": "ANALYSIS · TBD",
-          "name": "Analysis three — title TBD",
-          "blurb": "Placeholder — one line on which game you pulled apart and what the takeaway was.",
-          "href": "game-analysis/analysis-3.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "tag": "ANALYSIS · TEAMFIGHT TACTICS",
+          "name": "Analysis and Practice of the TFT Synergy System",
+          "blurb": "Ten seasons of TFT traits counted, classified and cross-referenced into design rules — then used to build a season that doesn't exist.",
+          "href": "game-analysis/analysis-1.html",
+          "image": "images/tft/cover.jpg"
         }
       ]
     },
@@ -1344,16 +1332,16 @@ const SITE_CONTENT = {
       "projects": [
         {
           "id": "choir-conductor",
-          "tag": "SIDE PROJECT \u00b7 WEBCAM",
+          "tag": "SIDE PROJECT · WEBCAM",
           "name": "Fingertip Choir",
-          "blurb": "Conduct a four-part choir with your hands. Cue a voice in and it keeps singing in time on its own until you cut it off \u2014 two hands, four voices.",
+          "blurb": "Conduct a four-part choir with your hands. Cue a voice in and it keeps singing in time on its own until you cut it off — two hands, four voices.",
           "href": "ai-projects/choir-conductor.html",
           "image": "images/choir-cover.svg",
           "placeholder": false
         },
         {
           "id": "puppy-garden",
-          "tag": "SIDE PROJECT \u00b7 TOY",
+          "tag": "SIDE PROJECT · TOY",
           "name": "Puppy in the Rose Garden",
           "blurb": "A hand-drawn dog that follows your cursor, gets bored waiting, sits, lies down and eventually falls asleep. A study in reading intent from a single input.",
           "href": "ai-projects/puppy-garden.html",
@@ -1665,7 +1653,7 @@ const SITE_CONTENT = {
         "pageTitle": "Young Gou — Hamsterballin' Retrospective",
         "tagLabel": "RETROSPECTIVE · HAMSTERBALLIN'",
         "heading": "Hamsterballin' — Project Retrospective",
-        "lead": "Placeholder — a retrospective on Hamsterballin', a Mario Kart-style racer built in UE5 by a team of 43 in one semester and shipped on Steam. The first team of that size I ran.",
+        "lead": "Hamsterballin' is a kart racer built in Unreal Engine 5 by a team of 43 over one semester, shipped on Steam. It was the first team of that size I ran. This retrospective isn't a list of what went well — it's ten things that went wrong, each one worked through the same three questions: what broke, why it broke, and what I would do differently.",
         "backLink": "← Back to Projects",
         "relatedHeading": "The project this looks back on",
         "related": {
@@ -1677,16 +1665,451 @@ const SITE_CONTENT = {
         },
         "blocks": [
           {
-            "heading": "What held",
-            "text": "Placeholder — the processes that survived contact with a 43-person team, and why.",
-            "image": "images/hamsterballin/01-menu.jpg",
-            "caption": "Placeholder caption"
+            "heading": "Tooling: three different kinds of resistance",
+            "text": [
+              "Most of the 43 people on this team had never worked at this scale before; their habits came from solo work or groups of four. On the surface the problem read as \"some people won't follow the pipeline.\" Pulled apart, it was three different kinds of resistance that need three different responses.",
+              "The visible symptom was submit descriptions. Someone would upload a new asset and put a single letter in the description field. In the moment, that meant designers couldn't find assets by searching the history. Further out, it meant that if we ever needed to roll back, we couldn't identify which files to touch. The incident below cashed that cheque."
+            ],
+            "points": [
+              {
+                "label": "Can't use it",
+                "text": "Nobody had been taught P4V or Jira systematically. That is a skills gap, and the answer is scheduled training that brings everyone to the same baseline."
+              },
+              {
+                "label": "Can't use it comfortably",
+                "text": "Both tools present an engineering view of the work. Asking people who think visually to search and submit through text-only forms is inefficient by construction. The answer is a visual submission path — fitting the tool to the person rather than the other way round."
+              },
+              {
+                "label": "Won't use it",
+                "text": "This one is about leverage, and a student team has almost none: no compensation, no performance review, no ability to remove anyone. Escalating upward buys compliance for a week. The durable version is pushing the standard down into the discipline leads, so it is enforced inside each group rather than imposed on it."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Diagnose which of the three you are looking at before choosing a response — conflating them is how you end up running a training session and seeing no behaviour change. In parallel, write down what a usable submit description contains and spot-check it, instead of relying on individual conscientiousness."
+            }
           },
           {
-            "heading": "What broke",
-            "text": "Placeholder — where the plan came apart, what it cost, and what I changed mid-project.",
+            "heading": "The version-control incident on the last day",
+            "text": [
+              "On the final day before lockdown, the import path for art assets was changed. A large share of assets lost their engine references an hour before the build was due. We lost roughly two days of work recovering.",
+              "There are two layers of cause here, and they are not the same kind of thing."
+            ],
+            "points": [
+              {
+                "label": "Trigger: the communication path failed",
+                "text": "Twice, at two different moments. When the change was raised, there was no defined route for it — a project-wide change reached execution without passing the lead group. When we tried to stop it, there was no confirmation loop — we held an emergency meeting, agreed to freeze, and left the room believing we had consensus. On a team working across languages, \"nobody objected\" is not the same as \"everybody understood.\""
+              },
+              {
+                "label": "Amplifier: no branching strategy",
+                "text": "All work happened directly on the mainline. That didn't cause the mistake, but it set the price of one: a single bad change could reach everything, and rollback cost more than the deadline could absorb. The same mistake on a project with branch isolation is a couple of hours, not two days."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "For the trigger: define the decision path for scope and pipeline changes and get the lead group to agree to it explicitly. After any significant decision, have the responsible owner restate it in their own words — far more reliable than asking \"does that make sense?\", and much more so across a language boundary. For the amplifier: agree a branching strategy with the tech lead up front, and isolate high-risk changes on their own branch until they are verified."
+            }
+          },
+          {
+            "heading": "UI: a chain that went wrong at the estimate",
+            "image": "images/hamsterballin/03-character-select.jpg",
+            "caption": "Character select · the UI was owned end to end by one programmer",
+            "text": [
+              "The UI shipped with serious bugs, some of them intermittent enough that they survived to launch. This wasn't an execution failure — it was a chain that started at the estimate. We underestimated the scope and difficulty of the UI; because it read as small, we staffed one programmer to own all of it; because one person owned it, the technical approach was never formally settled and the code grew around one person's mental model; and so the knowledge of how it worked lived in a single head.",
+              "The bill came due in the back half. As test coverage went up, UI bugs surfaced in volume — and by then, bringing in another programmer cost more in explanation than it saved in throughput, because there was a lot of code and no shared conventions to enter it through. One person ended up fixing the severe issues alone, and the smaller experience-level bugs shipped.",
+              "Worth being precise about where this started: it was the estimate, not the headcount. An accurate read of the difficulty would have changed both the staffing and the technical approach that followed from it."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Raise UI's priority in task grading and settle its technical approach before the first production gate, so the code has conventions somebody else can enter through. And staff every feature group with at least two people, at least one of whom understands the implementation — not just UI."
+            }
+          },
+          {
+            "heading": "Requirements that never froze",
+            "text": [
+              "Controller mapping is the clearest case: what each button did was still changing at beta, and typically only the designer and the one programmer on that module knew the current state. At one point a designer testing the build concluded a feature had been cut, when in fact the binding had moved. The change itself wasn't necessarily wrong — but an unannounced change contaminated a test result.",
+              "Two problems stacked here: requirements that never froze (should this change?) and changes that weren't broadcast (who knows it changed?). The first needs a requirements process; the second needs a notification rule. Neither substitutes for the other."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Run a visible requirements pool with an explicit priority and target sprint on every item. Alongside it, one rule: any change that affects the play experience or could alter a test result goes to the whole team, not just to the people directly touching it."
+            }
+          },
+          {
+            "heading": "Dependencies that were never defined",
+            "text": [
+              "This is the same root as the previous section, but the direction matters. It isn't that vague dependencies caused the requirement churn. It's that unfrozen requirements plus undefined dependencies — whose output is whose input, and what condition lets downstream start — together caused downstream work to begin too early.",
+              "Item design is the example. Art was asked to produce final assets for the full item set before we had settled which items were actually shipping. The design then converged, and a large batch of finished work was discarded. That costs hours, but the more expensive part is morale: repeatedly finishing work that never ships is about the most demoralising thing you can ask of a team."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Short term: when a decision is genuinely still moving, the default is \"don't build it yet\" — and if it does need to move forward, it goes through the normal request process first. Long term: the same requirements pool as above, with an explicit upstream freeze condition on anything that has downstream work hanging off it. Downstream starts when the condition is met, not when someone asks."
+            }
+          },
+          {
+            "heading": "Asset lock existed on paper only",
+            "text": [
+              "My first read on this was that the team didn't take asset lock seriously. Looking at it properly, the causality runs the other way. The schedule put asset lock one day ahead of delivery, which badly underestimated what QA costs. One day is not enough to run a test pass and fix what it finds, so the gate could not actually be honoured — and a gate that has never once been enforced is a gate nobody plans around. The lack of respect for it was the consequence, not the cause.",
+              "In practice that meant no boundary between building features and fixing bugs. We did both continuously, so every sprint's problems surfaced with no lead time and got handled in a rush."
+            ],
+            "points": [
+              {
+                "label": "Changed during the project",
+                "text": "Later sprints reserved two days exclusively for bug fixing and urgent changes, which took the worst of the pressure off."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Reserving the window is necessary but not sufficient — it doesn't stop new features from flowing into it. The real fix is upstream: revisit scope and the sprint plan so the committed work genuinely lands before the gate. A schedule people believe is a gate people respect."
+            }
+          },
+          {
+            "heading": "Art had no authorship",
             "image": "images/hamsterballin/07-race-city.jpg",
-            "caption": "Placeholder caption"
+            "caption": "City track · the visual identity of the three tracks was the last thing to converge",
+            "text": [
+              "The art pipeline ran strictly one way: design writes a request, art fulfils it. Even environment work with no gameplay function waited on a written request. Art had no say in the overall direction of a track, and therefore no room to imagine one.",
+              "That produced three problems. The first two are about output; the third is about the team — and the third feeds back into the first two."
+            ],
+            "points": [
+              {
+                "label": "Style drift",
+                "text": "Each designer specified their own stretch of track, so the small assets that came back didn't add up to a consistent look."
+              },
+              {
+                "label": "No identity",
+                "text": "At alpha the three tracks were assemblies of individually-requested props rather than three places with distinct character."
+              },
+              {
+                "label": "Falling ownership",
+                "text": "Art became the last link in an execution chain and stopped having opinions about the game. And once ownership drops, nobody is thinking about overall style either — which makes the first two worse. It's a self-reinforcing loop."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Break the loop at the top. In concept, art leads on establishing a visual direction for each track and produces a reference other work can be checked against. Gameplay requests are then made inside that frame, and art keeps authority over how a given request is expressed. That addresses style and identity — and puts art back at the start of the chain instead of the end of it."
+            }
+          },
+          {
+            "heading": "Playtest feedback never became scheduled work",
+            "text": [
+              "The playtest produced a great deal of raw material and comparatively few actionable tasks. The reasons sit in two different places."
+            ],
+            "points": [
+              {
+                "label": "Test design",
+                "text": "This was the only formal test in the entire cycle, which had two consequences. Everything we wanted to learn got compressed into one session, so the objectives were necessarily broad and the feedback came back unfocused. And that single session sat after alpha, so even excellent feedback arrived when very little could still change direction. The problem isn't that this one test was designed badly — it's that the schedule had no testing rhythm at all."
+              },
+              {
+                "label": "Capture",
+                "text": "Two of us covered the whole session. Even taking notes live, there was never going to be time afterwards to go back through the footage properly. Information was lost at capture and lost again at synthesis."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Build a testing cadence across the whole cycle with a narrow, stated objective per session, and move the sessions early enough that the answers can still change something. And distribute capture: instead of two people recording everything, each lead records against the questions they own."
+            }
+          },
+          {
+            "heading": "AI assets: prevention and provenance are two problems",
+            "text": [
+              "About three days before lockdown, a playthrough turned up assets that appeared to be AI-generated and carried copyright risk. The line had always been explicit — no AI-generated content in the shipped build — and it happened anyway. The assets had to be remade.",
+              "I originally treated this as one failure. It's two."
+            ],
+            "points": [
+              {
+                "label": "How it got in — prevention",
+                "text": "The rule was communicated verbally and never enforced at a checkpoint. Nothing inspected assets on the way into the repository, so the material travelled all the way to lockdown and was caught by an incidental playthrough. The later you catch this, the fewer options you have."
+              },
+              {
+                "label": "Why it had to be remade — provenance",
+                "text": "There was no record of how the work was made. Without process files, an asset that may well have been original can't be shown to be — so it all gets remade regardless."
+              }
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Prevention: a review checkpoint when assets enter the repository, and a concrete statement of where the line is — what counts as generated, what counts as reference. Provenance: layered working files as a condition of asset acceptance. The point of a paper trail isn't distrust; it's being able to stand behind the work when someone questions it."
+            }
+          },
+          {
+            "heading": "Performance: with no budget, you wait for it to break",
+            "image": "images/hamsterballin/09-race-factory.jpg",
+            "caption": "Factory track · lighting and materials drove most of the performance rework",
+            "text": [
+              "Performance touches lighting, materials, procedural generation and modelling all at once. We didn't hit a visible wall on target hardware until late, started optimising then, and paid for it in rework — relighting, repeated passes over the generation tooling.",
+              "\"We found out late\" is the outcome, not the cause. The cause is that the project never set a performance budget and never monitored performance continuously. Each discipline worked without knowing how much headroom it was consuming, so nothing surfaced until every contribution had stacked up and the build fell over on hardware. That's the defining property of this class of problem: the later you find it, the more of it is already built, because what you have to change is finished work."
+            ],
+            "fix": {
+              "label": "What I would change",
+              "text": "Set a performance budget early — frame-rate target, polygon and material ceilings, constraints on the lighting approach — and break it down per discipline with the art and tech leads. Then monitor continuously and make on-hardware performance an acceptance criterion each sprint, so a regression is caught in the sprint that caused it."
+            }
+          }
+        ],
+        "layout": "stacked"
+      },
+      "box-shot-research": {
+        "pageTitle": "Young Gou — Box Shot: Selection & Concept Validation",
+        "tagLabel": "RESEARCH · BOX SHOT",
+        "heading": "Box Shot — Selection & Concept Validation",
+        "layout": "stacked",
+        "lead": "Before Box Shot became the capstone, it had to survive two rounds of evidence: a ranked vote across the whole class that chose it out of eight pitches, and a concept survey of the development team that tested whether its design direction actually matched what the people building it wanted to play. This page collects what those two exercises measured and what they concluded.",
+        "backLink": "← Back to Projects",
+        "relatedHeading": "The project this research is for",
+        "related": {
+          "tag": "CAPSTONE GAME PROJECT",
+          "name": "Box Shot",
+          "blurb": "A first-person shooter set in a kid's imagined cardboard world, built by a team of 41. Through the P1–P3 pre-production gates and entering full production.",
+          "cta": "Open the project →",
+          "href": "team-projects/capstone.html"
+        },
+        "blocks": [
+          {
+            "heading": "Part one — choosing the project",
+            "text": [
+              "Eight concepts were pitched to the cohort. Every respondent ranked all eight from 1 to 8, and the rankings were run through three independent methods rather than one, because each answers a different question and they frequently disagree.",
+              "Borda count asks how well liked a project is overall. Instant-runoff ranked choice asks whether it can survive elimination rounds. Pairwise comparison asks who would win a straight one-on-one election against each other candidate — many voting theorists treat that last one as the most intuitive test of collective preference, on the grounds that a project which beats every alternative head-to-head is hard to argue against."
+            ],
+            "stats": [
+              {
+                "value": "8",
+                "label": "concepts pitched"
+              },
+              {
+                "value": "40",
+                "label": "ranked ballots"
+              },
+              {
+                "value": "3",
+                "label": "voting methods"
+              }
+            ]
+          },
+          {
+            "heading": "What the ballots said",
+            "text": [
+              "Box Shot led the Borda count by a single point over Anti-Anti Defender — effectively a tie, and the reason the result was reported as a top tier rather than a mandate. The separation only becomes clear one layer down."
+            ],
+            "table": {
+              "cols": [
+                "Rank",
+                "Project",
+                "Borda",
+                "Avg rank",
+                "1st-place",
+                "Bottom-2",
+                "Polarization"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Box Shot",
+                  "210",
+                  "3.75",
+                  "7",
+                  "3",
+                  "66.2"
+                ],
+                [
+                  "2",
+                  "Anti-Anti Defender",
+                  "209",
+                  "3.77",
+                  "8",
+                  "6",
+                  "84.6"
+                ],
+                [
+                  "3",
+                  "Dungeon Dishes!",
+                  "198",
+                  "4.05",
+                  "8",
+                  "8",
+                  "100.0"
+                ],
+                [
+                  "4",
+                  "Project Armond",
+                  "194",
+                  "4.15",
+                  "6",
+                  "6",
+                  "83.3"
+                ],
+                [
+                  "5",
+                  "Necro Knight",
+                  "186",
+                  "4.35",
+                  "5",
+                  "6",
+                  "84.9"
+                ],
+                [
+                  "6",
+                  "Hyperion",
+                  "171",
+                  "4.72",
+                  "3",
+                  "12",
+                  "92.5"
+                ],
+                [
+                  "7",
+                  "Minute Maze",
+                  "168",
+                  "4.80",
+                  "2",
+                  "14",
+                  "96.6"
+                ],
+                [
+                  "8",
+                  "Fight or Flight",
+                  "104",
+                  "6.40",
+                  "1",
+                  "25",
+                  "66.3"
+                ]
+              ],
+              "note": "Polarization index — higher means the pitch drew strong supporters and meaningful detractors alike."
+            }
+          },
+          {
+            "heading": "Polarization was the deciding variable",
+            "text": [
+              "Dungeon Dishes! attracted the most passionate support of any pitch — sixteen top-two placements, more than Box Shot — but it also drew the most opposition, and scored the maximum polarization index. That matters more than raw enthusiasm here: a project half the team is unwilling to work on for a year does not ship, regardless of how strongly the other half feels.",
+              "Box Shot had the lowest polarization of the leading candidates, and only three bottom-two placements against seven first-place votes. It was almost nobody's least-favourite option."
+            ],
+            "points": [
+              {
+                "label": "Borda",
+                "text": "First — 210 points, one ahead of the runner-up."
+              },
+              {
+                "label": "Instant runoff",
+                "text": "First — survived every elimination round and took the final runoff 23 to 17."
+              },
+              {
+                "label": "Pairwise",
+                "text": "First — 7 wins, 0 losses, the only pitch that beat every other concept head-to-head."
+              }
+            ],
+            "fix": {
+              "label": "Why this mattered",
+              "text": "The three methods often disagree; when all three converge on the same winner, the result is unlikely to be a faction's favourite, a voting-system artifact, or the product of vote splitting. Two further checks pointed the same way: leads and non-leads both ranked Box Shot favourably, so the people leading the project were not working against the room, and Box Shot's support did not depend on its own pitch team — its team-affiliation lift was ordinary rather than the kind of insider enthusiasm that fails to transfer."
+            }
+          },
+          {
+            "heading": "Part two — testing the concept against its own team",
+            "text": [
+              "Winning a vote establishes that people want to build something. It does not establish that the design direction is the one they want to play. A concept survey ran across the development team in July 2026 — ten valid responses, covering preferred genres, player-character framing, the protagonist players imagine, desired gameplay, the weight narrative should carry, and what actually drives them to replay a level.",
+              "The point was not to poll for design decisions. It was to find where the stated direction and the team's instincts diverged, early enough for that to be cheap."
+            ]
+          },
+          {
+            "heading": "Where the direction was validated",
+            "text": [
+              "Two findings supported calls the team had already made. On narrative weight, not one respondent rated strong emotional storytelling \"very important\" — 90% landed at moderate or slight. That is direct support for telling the story through brief between-level illustrations and mission objectives instead of long cutscenes.",
+              "On player character, the split looked like a problem at first: 60% wanted a low-investment protagonist to project onto, 40% wanted an established or customizable one. But Box Shot's framing — the player controls the imagined version of Colby, the version he pictures himself becoming — serves both. It can carry a distinct, capable personality while remaining, structurally, a child's projected fantasy with no realistic backstory to negotiate."
+            ],
+            "table": {
+              "cols": [
+                "What drives a replay",
+                "Respondents",
+                "Share"
+              ],
+              "rows": [
+                [
+                  "Enjoying the moment-to-moment gameplay",
+                  "8",
+                  "80%"
+                ],
+                [
+                  "Experiencing more of the story",
+                  "7",
+                  "70%"
+                ],
+                [
+                  "Discovering hidden secrets or shortcuts",
+                  "6",
+                  "60%"
+                ],
+                [
+                  "Mastering mechanics and combat",
+                  "4",
+                  "40%"
+                ],
+                [
+                  "Chasing a better score, time or leaderboard rank",
+                  "4",
+                  "40%"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "What changed",
+              "text": "Score-chasing was the weakest of the four replay drivers, which argued against building the end-of-level flow around leaderboard competition. The recommendation was to keep the score-and-retry loop but invest alongside it in discoverable hidden content and narrative easter eggs — matching what players said actually brings them back."
+            }
+          },
+          {
+            "heading": "What players asked for that wasn't planned",
+            "text": [
+              "The open-ended answers converged on something more specific than \"more content.\" Three respondents wanted deeper enemy interaction — not more ways to kill enemies, but ways to influence their position and behaviour. \"Being able to influence their movement/position outside of shooting them.\" \"Deflect bullet!!!\"",
+              "That maps almost exactly onto the Tool Gun's canister system, which already splits into three distinct tactical functions — Bungee Shot repositions, Glob Shot launches and displaces, Staple Shot pins and strips armour. The specific request to deflect bullets is not currently covered by any of them, and was logged as a direction for a future canister rather than a gap in the existing three.",
+              "One respondent asked for scoring that rewards style rather than only speed — \"Score > time\" — which became a recommendation to add a creative-combination bonus, giving the Creative Improvisation pillar something measurable to point at."
+            ]
+          },
+          {
+            "heading": "The finding worth arguing about",
+            "text": [
+              "One response did not fit the pattern and was the most useful thing in the survey. A colleague who had tested the mechanics reported that they had too much in common with each other, and that the design was drifting from creative mechanical exploration toward execution-based play."
+            ],
+            "points": [
+              {
+                "label": "In their words",
+                "text": "\"Mechanics should be distinguished from each other and be able to be used in many different contexts. They shouldn't have more than 3 things in common with each other. I think the mechanics are moving in a more serious execution based direction rather than a creative mechanic exploration based one.\""
+              }
+            ],
+            "fix": {
+              "label": "How it was handled",
+              "text": "On paper the three canisters are well differentiated, so it would have been easy to dismiss this as a misreading. The response instead was to treat differentiation-on-paper as an unverified claim: the risk was carried forward as something to confirm in playtesting once levels were playable, watching specifically for whether players spontaneously combine canisters or converge on one dominant solution. A design intent that only holds in the design document is not yet a finding."
+            }
+          },
+          {
+            "heading": "Mapping findings back onto the pillars",
+            "text": [
+              "The survey was closed out by checking each finding against the project's three design pillars, so that the output was a set of concrete calls rather than a list of observations."
+            ],
+            "table": {
+              "cols": [
+                "Pillar",
+                "What the survey showed",
+                "What it changed"
+              ],
+              "rows": [
+                [
+                  "Colby's Imagination",
+                  "Players wanted more stylised effects and said incongruity between elements made the world feel more imagined, not less",
+                  "Push further into the surreal side of the cardboard world instead of realistic consistency; keep illustration beats brief and visually led"
+                ],
+                [
+                  "Satisfying Combat",
+                  "Protagonist expectations clustered on a calm, capable, highly mobile tone; enemy variety and interaction depth were the most frequent asks",
+                  "Seven base enemies plus combinations and an armoured variant are enough foundation — the work is making those behavioural differences read clearly in levels"
+                ],
+                [
+                  "Creative Improvisation",
+                  "Players wanted combinable enemy and environment interactions; one warned of mechanic homogeneity",
+                  "Canister roles stay distinct; validate through playtest whether players actually combine them rather than converging on one solution"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "How the recommendations were framed",
+              "text": "As material for team discussion, not as decisions. Ten responses from inside the team is a signal about the people building the game, not about the players who will eventually buy it — useful for catching drift early, not for settling a design argument on its own."
+            }
           }
         ]
       }
@@ -3442,13 +3865,13 @@ const SITE_CONTENT = {
           "note": "A 2.5D Hades-like demo — concept, character, mechanics and level design."
         },
         {
-          "year": 2025,
-          "sort": 202501,
-          "kind": "study",
-          "dates": "2025",
-          "title": "SMU Guildhall",
-          "org": "Digital Game Development · Production Track",
-          "note": "Master's, with a Level Design minor."
+          "year": 2024,
+          "sort": 202406,
+          "kind": "work",
+          "dates": "2024",
+          "title": "Xinyuanhong Catering",
+          "org": "Operations",
+          "note": "Asset review and staff management for a multi-site catering business."
         },
         {
           "year": 2025,
@@ -3458,6 +3881,15 @@ const SITE_CONTENT = {
           "title": "Lilith Games",
           "org": "Systems Designer Intern",
           "note": "Systems design on AFK Arena, including building and balancing a new PvP ranking system from scratch."
+        },
+        {
+          "year": 2025,
+          "sort": 202508,
+          "kind": "study",
+          "dates": "2025",
+          "title": "SMU Guildhall",
+          "org": "Digital Game Development · Production Track",
+          "note": "Master's, with a Level Design minor."
         },
         {
           "year": 2025,
@@ -3499,7 +3931,7 @@ const SITE_CONTENT = {
       "gamesHeading": "Play History",
       "searchPlaceholder": "Filter by title…",
       "empty": "Nothing matches that filter.",
-            "cloudHint": "Click a tag to jump to it",
+      "cloudHint": "Click a tag to jump to it",
       "gamesPageTitle": "Young Gou — Play History",
       "gamesTagLabel": "PLAY HISTORY"
     }
@@ -3545,7 +3977,8 @@ const SITE_CONTENT = {
       "role": "Producer/Project manager",
       "intro": "Passion-Driven; ACG Enthusiast; Servant Leadership",
       "scroll": "Scroll",
-      "heroBanner": "images/presentation-hero.jpg"
+      "heroBanner": "images/presentation-hero.jpg",
+      "aboutPhoto": "images/about-portrait.jpg"
     },
     "home": {
       "teamProjectsHeading": "团队项目",
@@ -3707,7 +4140,7 @@ const SITE_CONTENT = {
         "heading": "本项目的复盘",
         "tag": "复盘 · HAMSTERBALLIN'",
         "name": "Hamsterballin' — 项目复盘",
-        "blurb": "占位文字 —— 从项目管理视角复盘一个学期带 43 人团队做到 Steam 发售的过程：哪些做法立住了、哪些崩了、重来一次会怎么做。",
+        "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
         "cta": "阅读复盘 →",
         "href": "game-analysis/retro-hamsterballin.html"
       },
@@ -3739,8 +4172,6 @@ const SITE_CONTENT = {
       ],
       "screenshotsHeading": "游戏截图",
       "screenshotsNote": "截图取自 Steam 发行版本。",
-      "postmortemHeading": "项目复盘",
-      "postmortem": "占位文字 — 回顾项目中做得好的地方、可以改进之处，以及你的收获。",
       "links": [
         {
           "label": "在 Steam 上查看 ↗",
@@ -3910,14 +4341,24 @@ const SITE_CONTENT = {
     },
     "capstone": {
       "backLink": "← 返回项目",
-      "linkedDoc": {
-        "heading": "本项目的复盘",
-        "tag": "复盘 · BOX SHOT",
-        "name": "Box Shot — 前期制作复盘",
-        "blurb": "占位文字 —— 从项目管理视角对 P1–P3 前期制作阶段的复盘：每个节点原本要验证什么、实际验证了什么，以及进入正式制作前我会如何调整范围。",
-        "cta": "阅读复盘 →",
-        "href": "game-analysis/retro-box-shot.html"
-      },
+      "linkedDoc": [
+        {
+          "heading": "本项目的复盘",
+          "tag": "复盘 · BOX SHOT",
+          "name": "Box Shot — 前期制作复盘",
+          "blurb": "占位文字 —— 从项目管理视角对 P1–P3 前期制作阶段的复盘：每个节点原本要验证什么、实际验证了什么，以及进入正式制作前我会如何调整范围。",
+          "cta": "阅读复盘 →",
+          "href": "game-analysis/retro-box-shot.html"
+        },
+        {
+          "heading": "这个项目背后的研究",
+          "tag": "研究 · 立项与验证",
+          "name": "Box Shot — 立项与概念验证",
+          "blurb": "八个提案、三种计票方法，Box Shot 是怎么被选出来的；以及一次面向开发团队的概念调研，改变了它设计方向上的哪些判断。",
+          "cta": "阅读研究 →",
+          "href": "game-analysis/box-shot-research.html"
+        }
+      ],
       "tagLabel": "毕业项目 · 制作中",
       "gameName": "Box Shot",
       "image": "../images/box-shot/characters.jpg",
@@ -3946,9 +4387,7 @@ const SITE_CONTENT = {
         "统筹多工作室房间的座位安排与线下协作方式，降低跨职能沟通成本，使依赖问题可当面快速解决。"
       ],
       "screenshotsHeading": "游戏截图",
-      "screenshotsNote": "概念美术、白盒与模型均由 Box Shot 团队完成。GDD 中记录了作者的作品按名字署名；其余来自团队共享的美术库，文件本身没有署名信息。点击任意图片可打开原图。",
-      "postmortemHeading": "项目复盘",
-      "postmortem": "复盘待写 —— Box Shot 仍在制作中，等项目完成后再补。",
+      "screenshotsNote": "概念美术、白盒与模型均由 Box Shot 团队完成。点击任意图片可打开原图。",
       "imageCaption": "角色概念 — Ling",
       "designHeading": "设计",
       "design": [
@@ -4530,17 +4969,17 @@ const SITE_CONTENT = {
       "intro": "拆解那些我反复回去玩的游戏——系统、经济与关卡节奏；以及我带过的项目的复盘。",
       "list": [
         {
-          "id": "analysis-1",
+          "id": "retro-hamsterballin",
           "tags": [
-            "teamfight_tactics",
-            "systems_teardown",
-            "10_seasons"
+            "retrospective",
+            "shipped_on_steam",
+            "team_of_43"
           ],
-          "tag": "分析 · 云顶之弈",
-          "name": "云顶之弈羁绊关系的分析与实践",
-          "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",
-          "href": "game-analysis/analysis-1.html",
-          "image": "images/tft/cover.jpg"
+          "tag": "复盘 · HAMSTERBALLIN'",
+          "name": "Hamsterballin' — 项目复盘",
+          "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
+          "href": "game-analysis/retro-hamsterballin.html",
+          "image": "images/hamsterballin-card.jpg"
         },
         {
           "id": "retro-box-shot",
@@ -4557,36 +4996,17 @@ const SITE_CONTENT = {
           "placeholder": true
         },
         {
-          "id": "retro-hamsterballin",
+          "id": "analysis-1",
           "tags": [
-            "retrospective",
-            "shipped_on_steam",
-            "team_of_43"
+            "teamfight_tactics",
+            "systems_teardown",
+            "10_seasons"
           ],
-          "tag": "复盘 · HAMSTERBALLIN'",
-          "name": "Hamsterballin' — 项目复盘",
-          "blurb": "占位文字 —— 一个学期带 43 人团队做到 Steam 发售：哪些做法立住了、哪些崩了、重来一次我会怎么做。",
-          "href": "game-analysis/retro-hamsterballin.html",
-          "image": "images/hamsterballin-card.jpg",
-          "placeholder": true
-        },
-        {
-          "id": "analysis-2",
-          "tag": "分析 · 待定",
-          "name": "分析二 — 标题待定",
-          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
-          "href": "game-analysis/analysis-2.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
-        },
-        {
-          "id": "analysis-3",
-          "tag": "分析 · 待定",
-          "name": "分析三 — 标题待定",
-          "blurb": "占位文字 — 一句话说明拆的是哪款游戏、结论是什么。",
-          "href": "game-analysis/analysis-3.html",
-          "image": "images/project-placeholder.svg",
-          "placeholder": true
+          "tag": "分析 · 云顶之弈",
+          "name": "云顶之弈羁绊关系的分析与实践",
+          "blurb": "把十个赛季的羁绊数完、分类、两两关联，反推成一套设计规则，再用它搭出一个并不存在的赛季。",
+          "href": "game-analysis/analysis-1.html",
+          "image": "images/tft/cover.jpg"
         }
       ]
     },
@@ -4843,18 +5263,18 @@ const SITE_CONTENT = {
       "projects": [
         {
           "id": "choir-conductor",
-          "tag": "\u5c0f\u9879\u76ee \u00b7 \u6444\u50cf\u5934",
-          "name": "\u6307\u5c16\u5408\u5531\u56e2",
-          "blurb": "\u7528\u4e24\u53ea\u624b\u6307\u6325\u56db\u4e2a\u58f0\u90e8\u3002\u7ed9\u4e00\u4e2a\u58f0\u90e8\u201c\u8fdb\u5165\u201d\u63d0\u793a\uff0c\u5b83\u5c31\u4f1a\u81ea\u5df1\u8ddf\u7740\u62cd\u5b50\u5531\u4e0b\u53bb\uff0c\u76f4\u5230\u4f60\u7ed9\u5b83\u6536\u62cd\u3002",
+          "tag": "小项目 · 摄像头",
+          "name": "指尖合唱团",
+          "blurb": "用两只手指挥四个声部。给一个声部“进入”提示，它就会自己跟着拍子唱下去，直到你给它收拍。",
           "href": "ai-projects/choir-conductor.html",
           "image": "images/choir-cover.svg",
           "placeholder": false
         },
         {
           "id": "puppy-garden",
-          "tag": "\u5c0f\u9879\u76ee \u00b7 \u73a9\u5177",
-          "name": "\u73ab\u7470\u56ed\u91cc\u7684\u5c0f\u767d\u72d7",
-          "blurb": "\u4e00\u53ea\u8ddf\u7740\u9f20\u6807\u8dd1\u7684\u624b\u7ed8\u5c0f\u72d7\uff0c\u7b49\u4e45\u4e86\u4f1a\u65e0\u804a\u3001\u4f1a\u5750\u4e0b\u3001\u4f1a\u8db4\u7740\uff0c\u6700\u540e\u4f1a\u7761\u7740\u3002\u4e00\u4e2a\u5173\u4e8e\u201c\u5982\u4f55\u4ece\u5355\u4e00\u8f93\u5165\u91cc\u8bfb\u51fa\u610f\u56fe\u201d\u7684\u7ec3\u4e60\u3002",
+          "tag": "小项目 · 玩具",
+          "name": "玫瑰园里的小白狗",
+          "blurb": "一只跟着鼠标跑的手绘小狗，等久了会无聊、会坐下、会趴着，最后会睡着。一个关于“如何从单一输入里读出意图”的练习。",
           "href": "ai-projects/puppy-garden.html",
           "image": "images/puppy-cover.svg",
           "placeholder": false
@@ -5164,7 +5584,7 @@ const SITE_CONTENT = {
         "pageTitle": "苟仲胤 — Hamsterballin' 复盘",
         "tagLabel": "复盘 · HAMSTERBALLIN'",
         "heading": "Hamsterballin' — 项目复盘",
-        "lead": "占位文字 —— 对 Hamsterballin' 的复盘：43 人团队用一个学期在 UE5 上做完并在 Steam 发售的卡丁车竞速游戏，也是我带过的第一个这个规模的团队。",
+        "lead": "Hamsterballin' 是一款用 UE5 开发的竞速游戏，43 人团队，一个学期，最终在 Steam 上线。这是我带过的第一个这个规模的团队。这篇复盘记的不是哪里做得好，而是十件出了问题的事——每一件都在回答同样的三个问题：出了什么问题、为什么会发生、重来一次会怎么做。",
         "backLink": "← 返回项目",
         "relatedHeading": "对应项目",
         "related": {
@@ -5176,16 +5596,451 @@ const SITE_CONTENT = {
         },
         "blocks": [
           {
-            "heading": "占位标题",
-            "text": "占位文字 —— 在 43 人规模下真正站住了的流程，以及为什么。",
-            "image": "images/hamsterballin/01-menu.jpg",
-            "caption": "占位说明"
+            "heading": "工具与流程：三种不同的抗力",
+            "text": [
+              "43 人里绝大多数是第一次参与这个规模的开发，此前的习惯来自个人独立开发或三四人的小组。表面上看问题是「有人不走流程」，但拆开来是三种性质完全不同的抗力，需要三种不同的应对。",
+              "最直接的表现是提交描述。有人上传新素材，描述栏只写一个字母。当下的后果是策划无法按提交记录检索素材；更远的后果是一旦需要版本回退，无法快速锁定该改哪些文件。下面那次事故把这笔账兑现了。"
+            ],
+            "points": [
+              {
+                "label": "不会用",
+                "text": "团队此前没有系统使用过 P4V 和 Jira，这是能力缺口，对应手段是安排统一培训，把基础操作拉齐。"
+              },
+              {
+                "label": "不好用",
+                "text": "这两个工具的面板都是按工程视角设计的。让以视觉方式思考的人在纯文本表单里检索和提交，本身就是低效的。对应手段是提供可视化的提交入口——让工具去贴合人，而不是反过来。"
+              },
+              {
+                "label": "不想用",
+                "text": "本质是约束力缺失，而学生团队几乎没有约束力：没有薪酬、没有绩效、也无法请人离开。向上升级只能买来一周的配合。可持续的做法是把规范下沉到各组组长，让它在组内被执行，而不是从外部压给这个组。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "先判断面对的是哪一类，再选手段——把三者混为一谈，结果就是培训开完了行为却没有变化。同时把「合格的提交描述包含什么」写成可检查的规范并定期抽查，而不是依赖个人自觉。"
+            }
           },
           {
-            "heading": "占位标题",
-            "text": "占位文字 —— 计划在哪里失效、代价是什么、项目中途我改了什么。",
+            "heading": "封板前一天的版本管理事故",
+            "text": [
+              "最终封板前的最后一天，美术素材的导入路径被改动，大量素材在交付前一小时失去引擎索引。为此我们损失了约两天的开发进度。",
+              "这次事故有两层原因，性质不同，不能并列看待。"
+            ],
+            "points": [
+              {
+                "label": "触发原因：沟通链路失效",
+                "text": "在两个不同的时刻失效了两次。变更发起时没有既定路径——一条会影响全项目的改动没有经过 lead 层就进入了执行；变更叫停时没有确认闭环——我们紧急开会决定冻结，散会时以为达成了共识。但在一个跨语言协作的团队里，「没有人反对」不等于「所有人理解」。"
+              },
+              {
+                "label": "放大原因：没有分支策略",
+                "text": "所有开发都直接在主分支上进行。它不会让错误发生，但决定了错误的价格：一次误操作就能波及全部产出，而回退成本高于截止日期能承受的范围。同样的失误发生在有分支隔离的项目里，损失可能是几小时而不是两天。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "针对触发原因：明确范围与管线变更的决策路径，并让 lead 层显式确认这条路径。重大决策后请主责任人用自己的话复述一遍，比问「明白了吗」可靠得多，跨语言场景下尤其如此。针对放大原因：与主程提前约定分支策略，高风险改动一律隔离在独立分支上验证后再合入。"
+            }
+          },
+          {
+            "heading": "UI：一条从估算就跑偏的链路",
+            "image": "images/hamsterballin/03-character-select.jpg",
+            "caption": "角色选择界面 · UI 由一名程序员独立完成",
+            "text": [
+              "UI 上线时仍带着严重 bug，其中一部分随机性很强，一直残留到发布。这不是执行层面的失误，而是一条从估算开始的链条：排期时低估了 UI 的工作量和技术难度；因为判断「量不大」，只配了一名程序员全权负责；因为只有一个人，技术路线始终没有正式敲定，代码完全跟着一个人的思路生长；于是 UI 如何工作这件事，只存在于一个人的脑子里。",
+              "代价在后半程集中兑现。测试覆盖上来后 UI 的 bug 成批暴露，而此时再调人进来，解释成本已经高于产出收益——代码量大，且没有可供他人切入的统一约定。最终只能靠一个人独自修完严重问题，那些体验层面的小 bug 随版本发了出去。",
+              "这里值得说准确：问题的起点是估算，不是人手。如果最初对难度的判断是对的，后面的人员配置和技术路线都会不同。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "在任务评级上提高 UI 的优先级，并在第一个制作节点之前敲定技术路线，让代码从一开始就有别人能切入的约定。同时，不只是 UI——所有 feature 组都至少配两人，且至少有一人真正理解实现。"
+            }
+          },
+          {
+            "heading": "始终没有冻结的需求",
+            "text": [
+              "手柄按键是最清楚的例子：直到 beta，每个键对应什么功能仍在变，而通常只有设计师和该模块的那名程序员知道当前状态。曾经有策划在测试时判断某个功能被砍掉了，实际上只是按键映射改了位置。变更本身未必是错的，但一次没有广播的变更，直接污染了一条测试结论。",
+              "这里叠着两个问题：需求始终不冻结（这个该不该改），以及变更不广播（改了谁知道）。前者要靠需求管理机制，后者要靠同步机制，两者不能互相替代。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "维护一个所有人可见的需求池，每条需求都标注明确的优先级和目标 sprint。配套一条规则：任何影响游戏体验、或可能改变测试结论的变更，必须通知全团队，而不是只通知直接相关的人。"
+            }
+          },
+          {
+            "heading": "从未定义过的依赖关系",
+            "text": [
+              "这一条和上一条同根，但方向要说清楚：不是「依赖模糊导致了需求反复」，而是需求未冻结、加上依赖关系未定义（谁的产出是谁的输入、满足什么条件下游才能启动），共同导致了下游过早开工。",
+              "道具是那个例子。在还没确定最终要上哪些道具时，就已经通知美术制作全套最终素材。方案随后收敛，大批已完成的工作直接作废。浪费的工时是一部分，更贵的是士气：反复完成永远不会上线的东西，大概是最消耗一个团队的方式。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "短期：当一个决定确实还在摇摆时，默认选项是「先不做」；确有必要推进，也要先走正规的需求增补流程。长期：沿用上一条的需求池，并为所有挂着下游工作的需求标注上游冻结条件——条件满足下游才启动，而不是有人开口就启动。"
+            }
+          },
+          {
+            "heading": "只存在于纸面上的 Asset lock",
+            "text": [
+              "我最初把这条归因于「团队不重视 asset lock」，但认真看下来，因果是反的。排期上 asset lock 只比交付提前一天，严重低估了 QA 的成本。一天既跑不完一轮测试、也修不完它发现的问题，这个节点事实上无法被执行——而一个从未真正生效过的节点，没有人会围绕它做计划。不重视是结果，不是原因。",
+              "实际表现就是「做功能」和「修 bug」之间没有界限，两件事全程并行，于是每个 sprint 的问题都在毫无提前量的情况下暴露，只能仓促处理。"
+            ],
+            "points": [
+              {
+                "label": "项目中已做的调整",
+                "text": "后续 sprint 预留了两天，专门用于 bug 修复和紧急变更，缓解了最急迫的部分。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "留出窗口是必要的，但不充分——它拦不住新功能涌进这个窗口。真正的修法在上游：重新审视 scope 和 sprint 计划，让承诺的内容确实能在节点前落地。排期可信，节点才会被尊重。"
+            }
+          },
+          {
+            "heading": "美术没有作者身份",
             "image": "images/hamsterballin/07-race-city.jpg",
-            "caption": "占位说明"
+            "caption": "城市赛道 · 三条赛道的视觉 identity 是最晚收敛的部分",
+            "text": [
+              "美术管线是严格单向的：策划写需求，美术做执行。即使是没有玩法功能的环境部分，也要等一条书面需求。美术对一条赛道的整体方向没有发言权，因此也没有想象它的空间。",
+              "这带来三个问题。前两个关于产出，第三个关于团队状态——而第三个会反过来喂养前两个。"
+            ],
+            "points": [
+              {
+                "label": "风格离散",
+                "text": "每位策划各自定义自己负责的那段赛道，回来的小素材拼不成一个统一的面貌。"
+              },
+              {
+                "label": "缺乏 identity",
+                "text": "alpha 阶段的三条赛道是逐条需求堆出来的道具集合，而不是三个各有性格的地方。"
+              },
+              {
+                "label": "主动性下降",
+                "text": "美术变成执行链条的最后一环，对游戏本身不再有观点。而一旦没有人在意整体风格，前两个问题只会更糟——这是一个自我强化的循环。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "从最上游打断这个循环：concept 阶段由美术牵头确立每条赛道的视觉方向，产出一份其他工作可以对照的基准。玩法需求在这个框架内提出，而具体如何表达由美术决定。这解决了风格统一和赛道 identity，也把美术从链条末端重新放回起点。"
+            }
+          },
+          {
+            "heading": "Playtest 的反馈没有变成排期",
+            "text": [
+              "测试产出了大量原始素材，但真正转化成可执行任务的比例偏低。原因分属两个环节。"
+            ],
+            "points": [
+              {
+                "label": "测试设计",
+                "text": "这是整个周期里唯一一次正式测试，带来两个后果：所有想验证的东西都被压进这一场，目标只能宽泛，回来的反馈自然不聚焦；而这唯一一场排在 alpha 之后，即使反馈质量很高，也已经很难再改变大方向。问题不是「这次测试设计得不好」，而是整个排期里根本没有测试节奏。"
+              },
+              {
+                "label": "记录采集",
+                "text": "整场测试由两个人覆盖。即便做了实时笔记，事后也不可能再有时间完整回看录像。信息在采集环节损失一次，在整理环节又损失一次。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "在整个周期里建立测试节奏，每场设定一个收敛的验证目标，并把测试节点前移到答案还能改变什么的阶段。同时把记录分摊出去：不再是两个人记全部，而是每位 lead 负责记录自己关心的那条线。"
+            }
+          },
+          {
+            "heading": "AI 素材：预防和举证是两个问题",
+            "text": [
+              "封板前约三天的一次通关测试中，发现了疑似 AI 生成、存在版权风险的素材。红线一直是明确的——最终版本里不能有 AI 生成内容——但它还是发生了，相关素材只能重做。",
+              "我最初把这当成一个失误，实际上是两个。"
+            ],
+            "points": [
+              {
+                "label": "它是怎么进来的（预防）",
+                "text": "红线只做了口头宣贯，入库环节没有任何审查。没有人在素材进仓库时检查它，于是这批内容一路走到封板前，靠一次顺手的通关测试才被发现。发现得越晚，可选项越少。"
+              },
+              {
+                "label": "为什么只能重做（举证）",
+                "text": "没有创作过程的记录。缺少分层过程文件，一份很可能确实是原创的素材也无法被证明是原创——于是只能一律重做。"
+              }
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "预防层面：在素材入库处设置审查节点，并把红线的判定标准讲具体——什么算生成、什么算参考。举证层面：把分层的过程文件作为素材验收的前置条件。留痕不是为了防人，而是为了在被质疑时能站得住。"
+            }
+          },
+          {
+            "heading": "性能：没有预算，就只能等它炸",
+            "image": "images/hamsterballin/09-race-factory.jpg",
+            "caption": "工厂赛道 · 光照与材质是性能返工的主要来源",
+            "text": [
+              "性能同时牵涉光照、材质、程序化生成和建模。我们直到很晚才在目标硬件上撞到明显的墙，那时才开始优化，代价是大量返工——重做灯光、对生成工具反复调参。",
+              "「发现得晚」是结果，不是原因。真正的原因是整个项目从未设定性能预算，也没有常态化的性能监控。各环节各做各的，没人知道自己占用了多少余量，于是问题只能等到全部叠加起来、在实机上炸掉时才暴露。这类问题的特征就是：发现得越晚，已经建成的部分越多，因为要动的正是那些已完成的资产。"
+            ],
+            "fix": {
+              "label": "改进方向",
+              "text": "在项目早期设定明确的性能预算——帧率目标、面数与材质球上限、光照方案的约束——并与主美、主程一起把它拆解到各个环节。然后建立常态化监控，把实机性能纳入每个 sprint 的验收项，让性能回退在造成它的那个 sprint 里就被发现。"
+            }
+          }
+        ],
+        "layout": "stacked"
+      },
+      "box-shot-research": {
+        "pageTitle": "苟仲胤 — Box Shot 立项与概念验证",
+        "tagLabel": "研究 · BOX SHOT",
+        "heading": "Box Shot — 立项与概念验证",
+        "layout": "stacked",
+        "lead": "Box Shot 成为毕业设计项目之前，先后经过两轮验证：一次全班范围的排序投票，从八个提案里把它选出来；以及一次面向开发团队的概念调研，检验它的设计方向是否真的是这群要做它的人想玩的东西。这一页整理的是这两次工作各自量了什么、得出了什么。",
+        "backLink": "← 返回项目",
+        "relatedHeading": "这份研究对应的项目",
+        "related": {
+          "tag": "毕业设计项目",
+          "name": "Box Shot",
+          "blurb": "41 人团队的第一人称射击，设定在孩子想象出的纸箱世界。已走完 P1–P3 前期制作节点，正在进入完整生产。",
+          "cta": "打开项目页 →",
+          "href": "team-projects/capstone.html"
+        },
+        "blocks": [
+          {
+            "heading": "第一部分 —— 怎么选出这个项目",
+            "text": [
+              "八个概念向全年级提案。每位参与者把八个提案从 1 到 8 全部排序，然后用三种独立的计票方法分别跑一遍，而不是只用一种——因为它们回答的是不同的问题，而且经常给出不同的答案。",
+              "Borda 计数问的是「这个项目整体上有多受欢迎」；排序复选（instant-runoff）问的是「它能不能扛过一轮轮淘汰」；两两对比问的是「如果只在两个项目之间做一次简单选举，大家会选谁」。不少投票理论研究者认为最后一种最接近集体偏好的直觉定义——一个能在一对一比较中击败所有其他选项的项目，很难说还有别的项目更能代表这个群体的意愿。"
+            ],
+            "stats": [
+              {
+                "value": "8",
+                "label": "个提案"
+              },
+              {
+                "value": "40",
+                "label": "份排序选票"
+              },
+              {
+                "value": "3",
+                "label": "种计票方法"
+              }
+            ]
+          },
+          {
+            "heading": "投票结果",
+            "text": [
+              "Box Shot 在 Borda 计数上只比 Anti-Anti Defender 高出一分——实际上是平手，这也是结果被表述为「第一梯队」而不是「压倒性胜出」的原因。真正的分野要往下看一层。"
+            ],
+            "table": {
+              "cols": [
+                "名次",
+                "项目",
+                "Borda",
+                "平均排位",
+                "第一名票",
+                "末二位",
+                "极化度"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Box Shot",
+                  "210",
+                  "3.75",
+                  "7",
+                  "3",
+                  "66.2"
+                ],
+                [
+                  "2",
+                  "Anti-Anti Defender",
+                  "209",
+                  "3.77",
+                  "8",
+                  "6",
+                  "84.6"
+                ],
+                [
+                  "3",
+                  "Dungeon Dishes!",
+                  "198",
+                  "4.05",
+                  "8",
+                  "8",
+                  "100.0"
+                ],
+                [
+                  "4",
+                  "Project Armond",
+                  "194",
+                  "4.15",
+                  "6",
+                  "6",
+                  "83.3"
+                ],
+                [
+                  "5",
+                  "Necro Knight",
+                  "186",
+                  "4.35",
+                  "5",
+                  "6",
+                  "84.9"
+                ],
+                [
+                  "6",
+                  "Hyperion",
+                  "171",
+                  "4.72",
+                  "3",
+                  "12",
+                  "92.5"
+                ],
+                [
+                  "7",
+                  "Minute Maze",
+                  "168",
+                  "4.80",
+                  "2",
+                  "14",
+                  "96.6"
+                ],
+                [
+                  "8",
+                  "Fight or Flight",
+                  "104",
+                  "6.40",
+                  "1",
+                  "25",
+                  "66.3"
+                ]
+              ],
+              "note": "极化度：数值越高，表示这个提案同时吸引了强支持者和明确的反对者。"
+            }
+          },
+          {
+            "heading": "真正起决定作用的是极化度",
+            "text": [
+              "Dungeon Dishes! 拿到了所有提案里最热烈的支持——16 个前二排位，比 Box Shot 还多——但它同时也招来了最强的反对，极化度拉满。在这个场景里，这比热情本身更要紧：一个有一半人不愿意做上一年的项目做不出来，无论另一半人多想做。",
+              "Box Shot 是领先候选里极化度最低的，7 张第一名票，而只有 3 个末二位排位。几乎没有人把它排在最后。"
+            ],
+            "points": [
+              {
+                "label": "Borda 计数",
+                "text": "第一 —— 210 分，领先第二名一分。"
+              },
+              {
+                "label": "排序复选",
+                "text": "第一 —— 扛过全部淘汰轮次，最终对决 23 比 17 胜出。"
+              },
+              {
+                "label": "两两对比",
+                "text": "第一 —— 7 胜 0 负，是唯一一个在一对一比较中击败了所有其他概念的提案。"
+              }
+            ],
+            "fix": {
+              "label": "为什么这件事重要",
+              "text": "这三种方法经常互相矛盾；当它们同时指向同一个赢家时，这个结果就不太可能是某个小团体的偏好、某种计票机制的产物，或者票源分散的意外。另外两项检查也指向同一方向：leads 和非 leads 都把 Box Shot 排得靠前，说明带项目的人不是在跟整个房间对着干；同时 Box Shot 的支持并不依赖它自己的提案团队——它的「本队加成」处在正常范围，而不是那种没能传达给别人的内部热情。"
+            }
+          },
+          {
+            "heading": "第二部分 —— 拿概念去问自己的团队",
+            "text": [
+              "赢下投票只说明大家想做这个东西，不说明当前的设计方向就是他们想玩的那个版本。2026 年 7 月，一份概念调研在开发团队内部展开，回收 10 份有效问卷，覆盖常玩品类、主角设定倾向、他们想象中的主角形象、期待的玩法、叙事应该占多大分量，以及究竟是什么让他们愿意重玩一个关卡。",
+              "目的不是靠投票做设计决策，而是找出「已经写下来的方向」和「团队真实直觉」之间的分歧点——趁改动还便宜的时候。"
+            ]
+          },
+          {
+            "heading": "被验证成立的部分",
+            "text": [
+              "两项结果支持了团队此前已经做出的判断。在叙事分量上，没有任何一位受访者把「强情感叙事」评为非常重要，90% 落在中等或轻微。这直接支持了用关卡间的短插画和任务目标讲故事、而不是长过场动画的做法。",
+              "在主角设定上，结果乍看像个问题：60% 想要一个可以投射自我的低设定主角，40% 想要有既定人格或可自定义的角色。但 Box Shot 的设定——玩家操控的是 Colby 想象中的自己，是他幻想中自己成为的那个版本——同时满足这两边。它可以有鲜明、能打的个性，而在结构上仍然是一个孩子投射出的幻想形象，没有现实背景故事需要处理。"
+            ],
+            "table": {
+              "cols": [
+                "是什么让你重玩一个关卡",
+                "人数",
+                "占比"
+              ],
+              "rows": [
+                [
+                  "单纯享受当下的玩法手感",
+                  "8",
+                  "80%"
+                ],
+                [
+                  "想看到更多剧情",
+                  "7",
+                  "70%"
+                ],
+                [
+                  "寻找隐藏内容或捷径",
+                  "6",
+                  "60%"
+                ],
+                [
+                  "精通机制与战斗",
+                  "4",
+                  "40%"
+                ],
+                [
+                  "刷更高的分数、更快的时间或排行榜",
+                  "4",
+                  "40%"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "改了什么",
+              "text": "刷分是四个重玩动机里最弱的一个，这反对把关卡结算流程建立在排行榜竞争上。对应建议是保留「结算 — 立刻重来跑得更干净」这个循环，但同时投入可发现的隐藏内容和叙事彩蛋——那才是玩家自己说的、真正把他们带回来的东西。"
+            }
+          },
+          {
+            "heading": "玩家要的、但原本没规划的东西",
+            "text": [
+              "开放题的答案收敛到了比「更多内容」具体得多的地方。三位受访者想要更深的敌人互动——不是更多杀敌方式，而是能影响敌人位置和行为的方式。「除了射它们之外，能影响它们的移动和站位。」「弹反子弹！！！」",
+              "这几乎正好落在 Tool Gun 的弹匣系统上：三种弹匣本就分成三种不同的战术功能——Bungee Shot 拉扯改变位置，Glob Shot 弹射与位移，Staple Shot 钉住并剥离护甲。而「弹反子弹」这个具体请求目前三者都没有覆盖，被记录为未来弹匣的方向，而不是当前三者的缺口。",
+              "还有一位提出希望计分奖励风格而不只是速度——「Score > time」——这变成了增加「创造性组合加分」的建议，让「创造性即兴」这条支柱有一个可衡量的信号。"
+            ]
+          },
+          {
+            "heading": "最值得争论的那一条",
+            "text": [
+              "有一条回答不符合整体模式，而它是整份调研里最有价值的东西。一位测试过机制的同事反馈：这些机制彼此的共同点太多了，整体设计正在从「创造性的机制探索」漂移向「偏执行的严肃方向」。"
+            ],
+            "points": [
+              {
+                "label": "原话",
+                "text": "「机制之间应该有区分度，并且能在很多不同情境下使用。它们彼此的共同点不应该超过三个。我觉得现在的机制正在往更严肃的、执行导向的方向走，而不是创造性的机制探索方向。」"
+              }
+            ],
+            "fix": {
+              "label": "怎么处理的",
+              "text": "纸面上三种弹匣的区分度是清楚的，所以很容易把这条当成误读打发掉。实际的处理是把「纸面上区分得好」当成一个尚未验证的主张：这个风险被带进后续流程，等到有可玩关卡后在测试中确认——具体要看玩家是自发地组合弹匣，还是收敛到某一个万能解。一个只在设计文档里成立的设计意图，还不算一个结论。"
+            }
+          },
+          {
+            "heading": "把结论映射回设计支柱",
+            "text": [
+              "调研最后把每一条发现对照项目的三条设计支柱走了一遍，让产出是一组具体的决定，而不是一串观察。"
+            ],
+            "table": {
+              "cols": [
+                "设计支柱",
+                "调研显示了什么",
+                "带来了什么改动"
+              ],
+              "rows": [
+                [
+                  "Colby 的想象",
+                  "玩家希望特效更风格化，并表示元素之间的不协调反而让世界更像「想象出来的」，而不是更少",
+                  "在纸箱世界里更往超现实一侧推，而不是追求写实的一致性；插画节奏保持简短、以视觉为主"
+                ],
+                [
+                  "爽快的战斗",
+                  "对主角的期待集中在冷静、能打、高机动的调性；敌人多样性与互动深度是最高频的诉求",
+                  "七种基础敌人加组合与护甲变体已经是足够的底子——真正的工作是让这些行为差异在关卡里被清楚地读出来"
+                ],
+                [
+                  "创造性即兴",
+                  "玩家想要可组合的敌人与环境互动；有人警告机制同质化",
+                  "弹匣的功能定位保持互不重叠；通过实测验证玩家是否真的会去组合，而不是收敛到单一解法"
+                ]
+              ]
+            },
+            "fix": {
+              "label": "结论是怎么表述的",
+              "text": "作为团队讨论的材料，而不是决定。团队内部的十份回答反映的是「做这个游戏的人」，而不是最终会买它的玩家——它适合用来尽早发现方向漂移，不适合单独用来终结一场设计争论。"
+            }
           }
         ]
       }
@@ -6941,13 +7796,13 @@ const SITE_CONTENT = {
           "note": "2.5D 类 Hades Demo，独立完成概念、角色、玩法与关卡设计。"
         },
         {
-          "year": 2025,
-          "sort": 202501,
-          "kind": "study",
-          "dates": "2025",
-          "title": "SMU Guildhall",
-          "org": "数字游戏开发 · 制作方向",
-          "note": "硕士入学，辅修关卡设计。"
+          "year": 2024,
+          "sort": 202406,
+          "kind": "work",
+          "dates": "2024",
+          "title": "欣源宏餐饮有限公司",
+          "org": "运营管理",
+          "note": "负责公司资产梳理与人员管理。"
         },
         {
           "year": 2025,
@@ -6957,6 +7812,15 @@ const SITE_CONTENT = {
           "title": "莉莉丝游戏",
           "org": "系统策划实习生",
           "note": "在剑与远征项目做系统设计，并从零搭建平衡了一套新的 PvP 排位机制。"
+        },
+        {
+          "year": 2025,
+          "sort": 202508,
+          "kind": "study",
+          "dates": "2025",
+          "title": "SMU Guildhall",
+          "org": "数字游戏开发 · 制作方向",
+          "note": "硕士入学，辅修关卡设计。"
         },
         {
           "year": 2025,
@@ -6998,7 +7862,7 @@ const SITE_CONTENT = {
       "gamesHeading": "游戏经历",
       "searchPlaceholder": "按名称筛选…",
       "empty": "没有匹配的结果。",
-            "cloudHint": "点击标签跳转到对应分区",
+      "cloudHint": "点击标签跳转到对应分区",
       "gamesPageTitle": "苟仲胤 — 游戏经历",
       "gamesTagLabel": "游戏经历"
     }
