@@ -97,8 +97,6 @@
         other: "Other", positive: "What worked" },
       severityLabels: { critical: "Critical", major: "Major", minor: "Minor", unrated: "Unrated" },
       priorityHeading: "Fix first",
-      staleBackendNote:
-        "Heads up: the backend returned an older response format, so severity ratings aren't available for these findings. Redeploy the Worker to restore them.",
       playerFixLabel: "Player's suggested fix",
       mentionsLabel: "raised {n}x",
     },
@@ -108,8 +106,6 @@
         other: "其他", positive: "做对了的地方" },
       severityLabels: { critical: "严重", major: "较重", minor: "轻微", unrated: "未分级" },
       priorityHeading: "优先处理",
-      staleBackendNote:
-        "提示：后端返回的是旧版格式，因此这批条目没有严重度评级。重新部署 Worker 后即可恢复。",
       playerFixLabel: "玩家提出的方案",
       mentionsLabel: "被提到 {n} 次",
     },
@@ -257,16 +253,8 @@
     return "other";
   }
 
-  // Set by toFindings() whenever it had to lift an older response shape.
-  // Surfaced in the UI: a stale backend and a broken classifier look
-  // identical otherwise — every row reads "unrated" either way — and the
-  // first is a two-minute redeploy while the second is a real bug.
-  var usedLegacyShape = false;
-
   function toFindings(data) {
-    usedLegacyShape = false;
     if (data && Array.isArray(data.findings)) return data.findings;
-    usedLegacyShape = true;
     var out = [];
     if (data && Array.isArray(data.categories)) {
       data.categories.forEach(function (c) {
@@ -294,23 +282,8 @@
     var summaryEl = document.getElementById("aiToolSummary");
     if (summaryEl) summaryEl.textContent = data.summary || "";
     var findings = toFindings(data);
-    renderStaleNote(summaryEl);
     renderPriority(findings);
     renderTypeCards(findings);
-  }
-
-  // The note is created and removed here rather than living in the page
-  // markup, so the tool's HTML file needs no change and the element simply
-  // does not exist on a healthy response.
-  function renderStaleNote(summaryEl) {
-    var existing = document.getElementById("aiStaleNote");
-    if (existing) existing.remove();
-    if (!usedLegacyShape || !summaryEl || !summaryEl.parentNode) return;
-    var note = document.createElement("p");
-    note.id = "aiStaleNote";
-    note.className = "ai-stale-note";
-    note.textContent = text("staleBackendNote");
-    summaryEl.parentNode.insertBefore(note, summaryEl.nextSibling);
   }
 
   function updateRateLimitNote() {
