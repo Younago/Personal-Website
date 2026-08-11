@@ -412,14 +412,6 @@ const SITE_CONTENT = {
       "backLink": "← Back to Projects",
       "linkedDoc": [
         {
-          "heading": "Retrospective on this project",
-          "tag": "RETROSPECTIVE · BOX SHOT",
-          "name": "Box Shot — Pre-Production Retrospective",
-          "blurb": "Placeholder — a producer's retrospective on the P1–P3 pre-production gates: what each gate was meant to prove, what it actually proved, and what I would scope differently going into full production.",
-          "cta": "Read the retrospective →",
-          "href": "game-analysis/retro-box-shot.html"
-        },
-        {
           "heading": "Research behind this project",
           "tag": "RESEARCH · SELECTION & VALIDATION",
           "name": "Box Shot — Selection & Concept Validation",
@@ -1049,20 +1041,6 @@ const SITE_CONTENT = {
           "blurb": "Ten things that went wrong running a 43-person team through one semester to a Steam release — what broke, why, and what I would change.",
           "href": "game-analysis/retro-hamsterballin.html",
           "image": "images/hamsterballin-card.jpg"
-        },
-        {
-          "id": "retro-box-shot",
-          "tags": [
-            "retrospective",
-            "pre_production",
-            "team_of_41"
-          ],
-          "tag": "RETROSPECTIVE · BOX SHOT",
-          "name": "Box Shot — Pre-Production Retrospective",
-          "blurb": "Placeholder — what the P1–P3 pre-production gates cost, what the 41-person team learned, and what I would scope differently going into full production.",
-          "href": "game-analysis/retro-box-shot.html",
-          "image": "images/box-shot/cover.jpg",
-          "placeholder": true
         },
         {
           "id": "analysis-1",
@@ -4343,14 +4321,6 @@ const SITE_CONTENT = {
       "backLink": "← 返回项目",
       "linkedDoc": [
         {
-          "heading": "本项目的复盘",
-          "tag": "复盘 · BOX SHOT",
-          "name": "Box Shot — 前期制作复盘",
-          "blurb": "占位文字 —— 从项目管理视角对 P1–P3 前期制作阶段的复盘：每个节点原本要验证什么、实际验证了什么，以及进入正式制作前我会如何调整范围。",
-          "cta": "阅读复盘 →",
-          "href": "game-analysis/retro-box-shot.html"
-        },
-        {
           "heading": "这个项目背后的研究",
           "tag": "研究 · 立项与验证",
           "name": "Box Shot — 立项与概念验证",
@@ -4980,20 +4950,6 @@ const SITE_CONTENT = {
           "blurb": "带 43 人团队用一个学期做到 Steam 发售，十件出了问题的事：哪里崩了、为什么，以及重来一次会怎么改。",
           "href": "game-analysis/retro-hamsterballin.html",
           "image": "images/hamsterballin-card.jpg"
-        },
-        {
-          "id": "retro-box-shot",
-          "tags": [
-            "retrospective",
-            "pre_production",
-            "team_of_41"
-          ],
-          "tag": "复盘 · BOX SHOT",
-          "name": "Box Shot — 前期制作复盘",
-          "blurb": "占位文字 —— P1–P3 前期制作节点各自的代价、41 人团队的收获，以及进入正式制作前我会如何调整范围。",
-          "href": "game-analysis/retro-box-shot.html",
-          "image": "images/box-shot/cover.jpg",
-          "placeholder": true
         },
         {
           "id": "analysis-1",
