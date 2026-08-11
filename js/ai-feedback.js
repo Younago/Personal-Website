@@ -16,7 +16,7 @@
   // Deployed Cloudflare Worker backend (see /cloudflare-worker/README.md).
   var AI_TOOL_ENDPOINT = "https://playtest-feedback-worker.younggou.workers.dev";
 
-  var DAILY_LIMIT = 8;
+  var DAILY_LIMIT = 20;
   var MAX_CHARS = 4000;
   var RATE_KEY = "ai-tool-usage";
 
